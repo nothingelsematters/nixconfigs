@@ -1,0 +1,89 @@
+// vim:ts=4:sw=4:et
+{
+    // splitv split container with 2 children
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "percent": null,
+    "type": "con",
+    "nodes": [
+        {
+            // splith split container with 2 children
+            "border": "pixel",
+            "floating": "auto_off",
+            "layout": "splith",
+            "percent": 0.5,
+            "type": "con",
+            "nodes": [
+                {
+                    // splitv split container with 1 children
+                    "border": "pixel",
+                    "floating": "auto_off",
+                    "layout": "splitv",
+                    "percent": 0.5,
+                    "type": "con",
+                    "nodes": [
+                        {
+                            "border": "none",
+                            "current_border_width": 0,
+                            "floating": "auto_off",
+                            "geometry": {
+                               "height": 600,
+                               "width": 800,
+                               "x": 0,
+                               "y": 0
+                            },
+                            "name": "GLava",
+                            "percent": 1,
+                            "swallows": [
+                               {
+                                    "class": "^GLava$"
+                               }
+                            ],
+                            "type": "con"
+                        }
+                    ]
+                },
+                {
+                    "border": "pixel",
+                    "current_border_width": 2,
+                    "floating": "auto_off",
+                    "geometry": {
+                       "height": 1017,
+                       "width": 626,
+                       "x": 0,
+                       "y": 0
+                    },
+                    "name": "The Dø - Going Through Walls",
+                    "percent": 0.5,
+                    "swallows": [
+                       {
+                            "class": "^playlist$"
+                       }
+                    ],
+                    "type": "con"
+                }
+            ]
+        },
+        {
+            "border": "pixel",
+            "current_border_width": 2,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 1017,
+               "width": 626,
+               "x": 0,
+               "y": 0
+            },
+            "name": "The Dø - Going Through Walls",
+            "percent": 0.5,
+            "swallows": [
+               {
+                  "class": "^music_library$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
