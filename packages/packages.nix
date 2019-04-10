@@ -88,8 +88,7 @@ in
     exa
     bat
     fzf
-    tree
-    guake
+    wget
 
     arc-theme
   ]

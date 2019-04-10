@@ -11,25 +11,24 @@ in
     ./xsession/gnome
     ./services/unclutter.nix
     ./services/nm-applet.nix
+    ./services/guake
     ./services/udiskie.nix
     ./programs/browserpass.nix
     ./programs/zsh.nix
     ./programs/most.nix
-    ./programs/alacritty.nix
-    ./programs/kitty.nix
     ./programs/zathura.nix
   ];
 
   home = {
     packages = general ++ dev;
     sessionVariables = {
-      PATH="$HOME/.yarn/bin/:$PATH";
       FZF_DEFAULT_COMMAND="rg --files";
       EDITOR="atom";
       PAGER="most";
     };
     keyboard = {
       layout = "us,ru";
+      options = [ "grp:caps_toggle" ];
     };
   };
 
@@ -49,9 +48,7 @@ in
   };
 
   programs = {
-
     home-manager.enable = true;
     home-manager.path = https://github.com/rycee/home-manager/archive/master.tar.gz;
-
- };
+  };
 }

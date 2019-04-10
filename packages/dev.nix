@@ -19,6 +19,9 @@ let
 
   haskell-packages = haskellPackages: with haskellPackages; [
     tidal
+    happy
+    alex
+    unordered-containers
   ];
 
   haskell = pkgs.ghc.withPackages haskell-packages;
@@ -31,22 +34,18 @@ with pkgs;
 
   # C++
   gcc
+  gdb
+  cmake
+  valgrind
 
   # Python
   python2
   python
 
-  # Js
-  nodejs
-
   # Haskell
   haskell
 
-  # llvm
-  llvmPackages.clang-unwrapped
-  llvm
-
-  # Editors
+  # Editor
   atom
 
   # Java

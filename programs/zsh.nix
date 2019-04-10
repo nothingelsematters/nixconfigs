@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   programs.zsh = {
@@ -17,13 +17,13 @@
       l = "exa -lh --git";
       ll = "exa -lhT --git -L 2";
       lll = "exa -lhT --git -L 3";
-      r = "ranger";
+      tree = "exa --tree";
 
       hms = "home-manager switch";
       nrs = "sudo nixos-rebuild switch";
 
       homed = "nano ~/.config/nixpkgs/home.nix";
-      confed = "sudo micro /etc/nixos/configuration.nix";
+      confed = "sudo nano /etc/nixos/configuration.nix";
 
       bat = "bat --paging never";
       nsp = "nix-shell -p";
