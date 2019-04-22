@@ -2,16 +2,12 @@ pkgs:
 
 let
   python-packages = python-packages: with python-packages; [
-    virtualenv
     pip
-    tkinter
-    python-language-server
   ];
 
   python = pkgs.python3.withPackages python-packages;
 
   python2-packages = python-packages: with python-packages; [
-    virtualenv
     pip
   ];
 
@@ -45,7 +41,7 @@ with pkgs;
   # Haskell
   haskell
 
-  # Editor
+  # Editors
   atom
 
   # Java

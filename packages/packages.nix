@@ -12,10 +12,13 @@ in
     unrar
     unzip
     bzip2
+    zip
 
     # Image editing
-    imagemagick
-    pinta
+    # imagemagick
+    # pinta
+    # krita
+    # gimp
 
     # Messaging
     tdesktop
@@ -30,22 +33,18 @@ in
     # w3m    # For ranger previews
     # xpdf   # For ranger previews
 
-    # Image editing
-    krita
-    gimp
-
     # Browsing
     firefox
 
     # Unsorted yet. Fuck it.
     tldr
     unclutter
-    pv
-    gparted
-    zathura
-    highlight
+    # pv
+    # gparted
+    # zathura
+    # highlight
     htop
-    alacritty
+    # alacritty
     psmisc
     playerctl
     # supercollider
@@ -55,7 +54,7 @@ in
     file
     nox
     libreoffice-unwrapped
-    texlive.combined.scheme-full
+    # texlive.combined.scheme-full
     hunspell
     hunspellDicts.en-us
     gnumake
@@ -74,7 +73,6 @@ in
     pavucontrol
     telnet
     speechd-pulse
-    ripgrep
     gnupg
 
     # Fixes "failed to commit changes to dconf" issues
@@ -89,6 +87,8 @@ in
     bat
     fzf
     wget
+
+    libinput-gestures
 
     arc-theme
   ]
