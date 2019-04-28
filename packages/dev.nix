@@ -28,22 +28,22 @@ with pkgs;
 [
   git
 
+  # Editors
+  atom
+
   # C++
   gcc
   gdb
   cmake
   valgrind
 
-  # Python
-  python2
-  python
-
+  # Java
+  openjdk11
+  
   # Haskell
   haskell
 
-  # Editors
-  atom
-
-  # Java
-  openjdk11
+  # Python
+  python2
+  python
 ]

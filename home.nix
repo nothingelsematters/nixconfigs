@@ -11,12 +11,11 @@ in
     ./xsession/gnome
     ./services/unclutter.nix
     ./services/nm-applet.nix
-    ./services/guake
     ./services/udiskie.nix
     ./programs/browserpass.nix
-    ./programs/zsh.nix
     ./programs/most.nix
     ./programs/zathura.nix
+    ./programs/zsh.nix
   ];
 
   home = {
