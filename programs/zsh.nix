@@ -9,9 +9,38 @@
 
     oh-my-zsh = {
       enable = true;
-      theme = "norm";
-      plugins = [ "git" "sudo" "python" "pip" "git-extras" "catimg" ];
+      theme = "half-life";
+      plugins = [ "git" "sudo" "python" "pip" "git-extras" "catimg" "colored-man-pages" "zsh-syntax-highlighting" ];
     };
+
+    plugins = [
+      {
+        # ga  - Interactive git add selector
+        # glo - Interactive git log viewer
+        # gi  - Interactive .gitignore generator
+        # gd  - Interactive git diff viewer
+        # gcf - Interactive git checkout <file> selector
+        # gss - Interactive git stash viewer
+        # gclean - Interactive git clean selector
+
+        name = "forgit";
+        src = pkgs.fetchFromGitHub {
+          owner = "wfxr";
+          repo = "forgit";
+          rev = "1.1.0";
+          sha256 = "0vv03y5gz944ri56z6j775ngp5gc5ikav2k6q4vbhs83k0zpnpsr";
+        };
+      }
+      {
+        name = "diff-so-fancy";
+        src = pkgs.fetchFromGitHub {
+          owner = "so-fancy";
+          repo = "diff-so-fancy";
+          rev = "v1.2.5";
+          sha256 = "1jqq7zd75aypxchrq0vjcw5gyn3wyjqy6w79mq2lzky8m6mqn8vr";
+        };
+      }
+    ];
 
     shellAliases = {
       l = "exa -lh --git";
@@ -30,6 +59,8 @@
 
       gl = "git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold yellow)%<|(27)%ar%C(reset) %C(bold green)%<|(70)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold red)%d%C(reset)%n' --all --stat";
       gs = "git status -s";
+
+      fzf = "fzf --preview='bat --color always {}'";
     };
 
     initExtra =
