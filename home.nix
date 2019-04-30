@@ -12,6 +12,7 @@ in
     ./services/unclutter.nix
     ./services/nm-applet.nix
     ./services/udiskie.nix
+    ./services/guake
     ./programs/browserpass.nix
     ./programs/most.nix
     ./programs/zathura.nix
