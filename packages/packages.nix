@@ -7,7 +7,6 @@ in
   with pkgs;
   [
     # Utility packages
-    fzf      # a command-line fuzzy finder
     htop     # interactive process viewer
     gnumake  # control the generation of non-source files from sources
     binutils # tools for manipulating binaries (linker, assembler, etc.)
@@ -20,12 +19,14 @@ in
     lf       # terminal file manager
     most     # page text file
     fd       # find
+    fzf      # a command-line fuzzy finder
     wget     # download
     jmtpfs   # a FUSE filesystem for MTP devices like Android phones
 
     # Terminal helpful
     tldr     # a collection of simplified and community-driven man pages
     psmisc   # small useful utilities (such as fuser, killall and pstree)
+    man      # an interface to the on-line reference manuals
 
     # Messaging
     tdesktop

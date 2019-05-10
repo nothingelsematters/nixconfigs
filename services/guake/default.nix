@@ -7,7 +7,6 @@
       WantedBy = [ "graphical-session.target" ];
     };
     Service = {
-      ExecStart = "${pkgs.guake-fixed}/bin/guake";
       Restart = "on-abort";
     };
   };

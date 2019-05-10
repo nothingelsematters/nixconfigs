@@ -32,14 +32,15 @@ with pkgs;
   atom
 
   # C++
-  gcc
+  llvmPackages.clang-unwrapped
+  (lowPrio gcc)
   gdb
   cmake
   valgrind
 
   # Java
   openjdk11
-  
+
   # Haskell
   haskell
 
