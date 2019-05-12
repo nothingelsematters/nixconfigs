@@ -30,6 +30,7 @@ with pkgs;
 
   # Editors
   atom
+  jetbrains.idea-ultimate
 
   # C++
   llvmPackages.clang-unwrapped
@@ -40,6 +41,11 @@ with pkgs;
 
   # Java
   openjdk11
+  maven
+
+  # Server
+  tomcat9
+  mariadb
 
   # Haskell
   haskell
