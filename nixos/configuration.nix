@@ -12,13 +12,6 @@
     ];
 
   boot = {
-    kernelPatches = [
-      {
-          name = "i2c-oops";
-          patch = ./i2c-oops.patch;
-      }
-    ];
-
     # Use the systemd-boot EFI boot loader.
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
@@ -64,7 +57,7 @@
 
     mysql = {
       enable = true;
-      package = pkgs.mariadb;    
+      package = pkgs.mariadb;
     };
   };
 
