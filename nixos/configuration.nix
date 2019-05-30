@@ -5,111 +5,128 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./users.nix
-    ];
+    imports =
+        [ # Include the results of the hardware scan.
+            ./hardware-configuration.nix
+            ./users.nix
+            <nixpkgs/nixos/modules/services/hardware/sane_extra_backends/brscan4.nix>
+            ./hardware-configuration.nix
+        ];
 
-  boot = {
-    # Use the systemd-boot EFI boot loader.
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
-    plymouth.enable = true;
-  };
-
-  hardware = {
-    enableAllFirmware = true;
-
-    # Enable sound
-    pulseaudio = {
-      enable = true;
-      package = pkgs.pulseaudioFull;
-      support32Bit = true;
+    boot = {
+        # Use the systemd-boot EFI boot loader.
+        loader = {
+            systemd-boot.enable = true;
+            efi.canTouchEfiVariables = true;
+        };
+        plymouth.enable = true;
     };
 
-    opengl.driSupport32Bit = true;
-  };
+    hardware = {
+        enableAllFirmware = true;
 
-  system = {
-    stateVersion = "18.09"; # Did you read the comment?
-    autoUpgrade.enable = true;
-  };
+        # Enable sound
+        pulseaudio = {
+            enable = true;
+            package = pkgs.pulseaudioFull;
+            support32Bit = true;
+        };
 
-  services = {
-    xserver = {
-      enable = true;
-      libinput.enable = true;
-          desktopManager.gnome3 = {
-              enable = true;
-          };
-      displayManager.sddm.enable = true;
-      layout = "us,ru";
+        opengl.driSupport32Bit = true;
+
+        sane = {
+            enable = true;
+            brscan4 = {
+                enable = true;
+                netDevices = {
+                    home = { model = "MFC-L2700DN"; ip = "192.168.178.23"; };
+                };
+            };
+        };
     };
 
-    gnome3.at-spi2-core.enable = true;
-    printing.enable = true;
-    printing.drivers = [ pkgs.brlaser ];
-    zerotierone = {
-        enable = true;
-        joinNetworks = ["8bd5124fd62082f4"];
+    system = {
+        stateVersion = "18.09"; # Did you read the comment?
+        autoUpgrade.enable = true;
     };
 
-    mysql = {
-      enable = true;
-      package = pkgs.mariadb;
+    services = {
+        xserver = {
+            enable = true;
+            libinput.enable = true;
+            desktopManager.gnome3 = {
+                enable = true;
+            };
+            displayManager.sddm.enable = true;
+            layout = "us,ru";
+        };
+
+        gnome3.at-spi2-core.enable = true;
+        printing = {
+            enable = true;
+            drivers = [ pkgs.brlaser ];
+        };
+
+        zerotierone = {
+            enable = true;
+            joinNetworks = ["8bd5124fd62082f4"];
+        };
+
+        mysql = {
+            enable = true;
+            package = pkgs.mariadb;
+        };
     };
-  };
 
-  networking.networkmanager.enable = true;
-  nixpkgs.config.allowUnfree = true;
+    networking.networkmanager.enable = true;
+    nixpkgs.config.allowUnfree = true;
 
-  # Set your time zone.
-  time.timeZone = "Europe/Moscow";
+    # Set your time zone.
+    time.timeZone = "Europe/Moscow";
 
-  # Enable sound.
-  sound.enable = true;
+    # Enable sound.
+    sound.enable = true;
 
-  # networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+    # networking.hostName = "nixos"; # Define your hostname.
+    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+    # Configure network proxy if necessary
+    # networking.proxy.default = "http://user:password@proxy:port/";
+    # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Select internationalisation properties.
-  # i18n = {
-  #   consoleFont = "Lat2-Terminus16";
-  #   consoleKeyMap = "us";
-  #   defaultLocale = "en_US.UTF-8";
-  # };
+    # Select internationalisation properties.
+    # i18n = {
+    #   consoleFont = "Lat2-Terminus16";
+    #   consoleKeyMap = "us";
+    #   defaultLocale = "en_US.UTF-8";
+    # };
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
+    # Some programs need SUID wrappers, can be configured further or are
+    # started in user sessions.
+    # programs.mtr.enable = true;
+    # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
 
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+    # Enable the OpenSSH daemon.
+    # services.openssh.enable = true;
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+    # Open ports in the firewall.
+    # networking.firewall.allowedTCPPorts = [ ... ];
+    # networking.firewall.allowedUDPPorts = [ ... ];
+    # Or disable the firewall altogether.
+    # networking.firewall.enable = false;
 
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
-
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-  # services.xserver.layout = "us";
-  # services.xserver.xkbOptions = "eurosign:e";
+    # Enable CUPS to print documents.
+    # services.printing.enable = true;
 
 
+    # Enable the X11 windowing system.
+    # services.xserver.enable = true;
+    # services.xserver.layout = "us";
+    # services.xserver.xkbOptions = "eurosign:e";
 
-  # This value determines the NixOS release with which your system is to be
-  # compatible, in order to avoid breaking some software such as database
-  # servers. You should change this only after NixOS release notes say you
-  # should.
+
+
+    # This value determines the NixOS release with which your system is to be
+    # compatible, in order to avoid breaking some software such as database
+    # servers. You should change this only after NixOS release notes say you
+    # should.
 }

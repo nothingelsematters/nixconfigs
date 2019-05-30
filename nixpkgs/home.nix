@@ -15,7 +15,6 @@ in
     ./services/guake
     ./programs/browserpass.nix
     ./programs/most.nix
-    ./programs/zathura.nix
     ./programs/zsh.nix
   ];
 

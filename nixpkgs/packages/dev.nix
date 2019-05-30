@@ -2,6 +2,7 @@ pkgs:
 
 let
   python-packages = python-packages: with python-packages; [
+    virtualenv
     pip
   ];
 
@@ -30,7 +31,7 @@ with pkgs;
 
   # Editors
   atom
-  jetbrains.idea-ultimate
+  # jetbrains.idea-ultimate
 
   # C++
   llvmPackages.clang-unwrapped
