@@ -9,8 +9,6 @@
         [ # Include the results of the hardware scan.
             ./hardware-configuration.nix
             ./users.nix
-            <nixpkgs/nixos/modules/services/hardware/sane_extra_backends/brscan4.nix>
-            ./hardware-configuration.nix
         ];
 
     boot = {
@@ -33,16 +31,6 @@
         };
 
         opengl.driSupport32Bit = true;
-
-        sane = {
-            enable = true;
-            brscan4 = {
-                enable = true;
-                netDevices = {
-                    home = { model = "MFC-L2700DN"; ip = "192.168.178.23"; };
-                };
-            };
-        };
     };
 
     system = {
