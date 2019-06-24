@@ -27,6 +27,7 @@ in with pkgs; {
   home.packages =
     [
       git
+      gitAndTools.diff-so-fancy
 
       # docker
       docker
