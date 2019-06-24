@@ -1,25 +1,19 @@
 { lib, pkgs, ... }:
-let
-
-dev = import ./packages/dev.nix pkgs;
-general = import ./packages/packages.nix pkgs;
-
-in
 
 {
   imports = [
+    ./packages
     ./xsession/gnome
     ./services/unclutter.nix
     ./services/nm-applet.nix
     ./services/udiskie.nix
     ./services/guake
-    ./programs/browserpass.nix
+    /* ./programs/browserpass.nix
     ./programs/most.nix
-    ./programs/zsh.nix
+    ./programs/zsh.nix */
   ];
 
   home = {
-    packages = general ++ dev;
     sessionVariables = {
       FZF_DEFAULT_COMMAND="rg --files";
       EDITOR="atom";
