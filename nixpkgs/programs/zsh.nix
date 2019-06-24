@@ -64,6 +64,7 @@
             bat = "bat --paging never";
             fzf = "fzf --preview='bat --color always {}'";
             cal = "cal -3m";
+            mdr = "pandoc $1 | lynx -stdin";
         };
 
         initExtra =

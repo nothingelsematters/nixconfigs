@@ -27,6 +27,8 @@ in
     tldr     # a collection of simplified and community-driven man pages
     psmisc   # small useful utilities (such as fuser, killall and pstree)
     man      # an interface to the on-line reference manuals
+    pandoc   # conversion between markup formats
+    lynx     # a text-mode web browser
 
     # Messaging
     tdesktop
