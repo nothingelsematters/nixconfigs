@@ -29,6 +29,10 @@ with pkgs;
 [
   git
 
+  # docker
+  docker
+  docker_compose
+
   # Editors
   atom
   # jetbrains.idea-ultimate
