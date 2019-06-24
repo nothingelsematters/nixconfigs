@@ -6,7 +6,7 @@
         enableAutosuggestions = true;
         history = {
             expireDuplicatesFirst = false;
-            history.ignoreDups = false;
+            ignoreDups = false;
         };
 
         oh-my-zsh = {
