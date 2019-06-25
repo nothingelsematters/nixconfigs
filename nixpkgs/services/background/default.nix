@@ -10,7 +10,7 @@
 
     Service = {
       Type = "oneshot";
-      ExecStart = "${pkgs.feh}/bin/feh /home/quentin/Pictures/wallpaper.png --bg-fill";
+      ExecStart = "${pkgs.feh}/bin/feh /home/simon/life/wall/mnt.png --bg-fill";
       IOSchedulingClass = "idle";
     };
 
