@@ -47,7 +47,7 @@
         shellAliases = {
             hms = "home-manager switch";
             nrs = "sudo nixos-rebuild switch";
-            nsp = "nix-shell -p";
+            nsp = "nix-shell --run zsh -p";
 
             homed = "nano ~/.config/nixpkgs/home.nix";
             confed = "sudo nano /etc/nixos/configuration.nix";
