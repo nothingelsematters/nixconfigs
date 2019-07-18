@@ -4,6 +4,8 @@ let
   python-packages = python-packages: with python-packages; [
     virtualenv
     pip
+    pytorch
+    torchvision
   ];
 
   python = pkgs.python3.withPackages python-packages;
