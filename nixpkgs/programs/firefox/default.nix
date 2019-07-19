@@ -214,7 +214,7 @@ in {
 
           "browser.uidensity" = 1;
           "browser.tabs.drawInTitlebar" = true;
-          "layout.css.devPixelsPerPx" = 0.9;
+          "layout.css.devPixelsPerPx" = "0.9";
         };
         # UI styling
         userChrome = userChrome;
