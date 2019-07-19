@@ -1,0 +1,140 @@
+/**
+ ** Tree Style Tab styling
+ **/
+
+@-moz-document url-prefix("moz-extension://") {
+
+    :root {
+        --tab-text: var(--theme-text);
+    }
+
+    #tabbar {
+        /* Hide scrollbar */
+        scrollbar-width: none !important;
+        /* Flatten */
+        border: none;
+        box-shadow: none !important;
+        background-color: var(--theme-primary);
+        /* Adjust favicons */
+        --favicon-size: 30px;
+        --faviconized-tab-size: 50px;
+        --svg-small-icon-size: 25px;
+    }
+
+    #tabbar .newtab-button {
+        border: none;
+        padding-top: 15px;
+    }
+
+    /* Hide sound playing/muted button. */
+    #tabbar .sound-button::before {
+        display: none !important;
+    }
+
+    /* Tab styling */
+    #tabbar .tab {
+        margin-left: 1px;
+        height: 50px;
+        /* Flatten */
+        background-color: transparent;
+        border: none !important;
+        box-shadow: none !important;
+        color: var(--theme-text);
+    }
+    #tabbar .tab:hover {
+        background-color: var(--theme-accent) !important;
+    }
+    #tabbar .tab.active {
+        border-left: 4px solid var(--theme-strong) !important;
+    }
+    #tabbar .tab.discarded {
+        color: var(--theme-disabled) !important;
+    }
+    #tabbar .tab.muted {
+        opacity: 0.5;
+    }
+    /* Adjust style for tab that has sound playing. */
+    #tabbar .tab.sound-playing .favicon::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border-radius: 50%;
+        background: var(--theme-strong);
+        animation: pulse 3s ease-out 0s infinite;
+        z-index: -1;
+        opacity: 0;
+    }
+    #tabbar .tab.collapsed-completely {
+        display: none;
+    }
+    #tabbar .tab .label {
+        margin-left: 12px;
+    }
+
+    /* Remove highlighter */
+    #tabbar .tab .highlighter {
+        display: none;
+    }
+
+    /* Adjust favicons */
+    #tabbar .tab .favicon {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+    #tabbar .tab .favicon-image {
+        min-height: var(--favicon-size);
+        min-width: var(--favicon-size);
+    }
+    #tabbar .tab .favicon-builtin {
+        margin-left: 3px;
+    }
+
+    /**
+     ** When collapsed
+     **/
+
+    /* Move tabs to the left */
+    #tabbar:not(:hover) .tab .twisty {
+        visibility: hidden;
+        margin-left: -20px;
+    }
+
+    /* Adjust collapsed children counter */
+    #tabbar:not(:hover) .tab .counter {
+        position: relative;
+        bottom: -35%;
+        left: -70%;
+        background-color: var(--theme-strong);
+        color: var(--theme-primary);
+        border-radius: 25%;
+        min-width: 15px;
+    }
+
+    /* Add borders */
+    #tabbar:not(:hover) .tab {
+        border-bottom: 1px solid var(--theme-disabled) !important;
+    }
+
+    #tabbar:not(:hover) .tab:not(.active) {
+        border-left: 4px solid var(--theme-disabled) !important;
+    }
+
+    /**
+     ** Animations
+     **/
+    @keyframes pulse {
+        0% {
+            width: 0px;
+            height: 0px;
+            opacity: 1;
+        }
+        100% {
+            width: 350px;
+            height: 350px;
+            opacity: 0;
+            top: calc(50% - 175px);
+            left: calc(50% - 175px);
+        }
+    }
+}

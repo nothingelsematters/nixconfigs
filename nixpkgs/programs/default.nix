@@ -4,6 +4,7 @@
   imports = [
     ./browserpass
     ./most
-    ./zsh    
+    ./zsh
+    ./firefox
   ];
 }
