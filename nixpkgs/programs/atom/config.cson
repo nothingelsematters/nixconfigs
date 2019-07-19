@@ -81,7 +81,6 @@
       "language-clojure"
       "language-coffee-script"
       "language-csharp"
-      "language-css"
       "language-go"
       "language-html"
       "language-hyperlink"
@@ -92,7 +91,6 @@
       "language-perl"
       "language-php"
       "language-property-list"
-      "language-python"
       "language-ruby"
       "language-ruby-on-rails"
       "language-rust-bundled"
@@ -116,6 +114,9 @@
       "autocomplete-haskell"
       "haskell-ghc-mod"
       "atom-latex"
+      "docblockr"
+      "ide-java"
+      "language-tex"
     ]
     telemetryConsent: "no"
     themes: [
