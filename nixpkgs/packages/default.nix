@@ -31,15 +31,8 @@ in with pkgs; {
       git
       gitAndTools.diff-so-fancy
 
-      # docker
-      docker
-      docker_compose
-
       # editors
       atom
-
-      # text
-      texlive.combined.scheme-full
 
       # c++
       llvmPackages.clang-unwrapped
@@ -52,12 +45,19 @@ in with pkgs; {
       openjdk11
       maven
 
+      # kotlin
+      kotlin
+
       # haskell
       haskell
 
       # python
       python2
       python
+      
+      # docker
+      docker
+      docker_compose
 
       # utility packages
       htop     # interactive process viewer
@@ -130,6 +130,9 @@ in with pkgs; {
 
       # Could be useful someday
       # gparted
+      #
+      # Text
+      # texlive.combined.scheme-full
       #
       # Image editing
       # imagemagick

@@ -159,6 +159,15 @@
           "uri": "https://docs.oracle.com/en/java/javase/12/docs/api/index.html"
         },
         {
+          "guid": "t3qMDYiOw1sP",
+          "title": "kotlin",
+          "index": 13,
+          "id": 23,
+          "typeCode": 1,
+          "iconuri": "https://kotlinlang.org/assets/images/apple-touch-icon-144x144.png",
+          "type": "text/x-moz-place",
+        },
+        {
           "guid": "CxYelkoir2Wd",
           "title": "haskell",
           "index": 13,
