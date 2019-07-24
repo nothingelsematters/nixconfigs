@@ -22,12 +22,12 @@
   gtk = {
     enable = true;
     iconTheme = {
-      name = "Arc";
-      package = pkgs.arc-icon-theme;
+      name = "Paper";
+      package = pkgs.paper-icon-theme;
     };
     theme = {
-      name = "Arc-Dark";
-      package = pkgs.arc-theme;
+      name = "Adapta";
+      package = pkgs.adapta-gtk-theme;
     };
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = true;
