@@ -118,6 +118,8 @@
       "ide-java"
       "language-tex"
     ]
+    reopenProjectMenuCount: 8
+    restorePreviousWindowsOnStart: "no"
     telemetryConsent: "no"
     themes: [
       "material-ui"
