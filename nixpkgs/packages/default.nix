@@ -54,7 +54,7 @@ in with pkgs; {
       # python
       python2
       python
-      
+
       # docker
       docker
       docker_compose
@@ -101,7 +101,7 @@ in with pkgs; {
       unclutter            # remove idle cursor image from screen
       networkmanagerapplet # network manager applet
       inotify-tools
-      arc-theme
+      gnomeExtensions.dash-to-panel
 
       # media
       google-play-music-desktop-player
@@ -109,6 +109,7 @@ in with pkgs; {
       pulseeffects            # limiter, compressor, reverberation, equalizer and auto volume effects
       playerctl               # controlling media players
       pavucontrol             # PulseAudio Volume Control
+      libinput-gestures       # gesture mapper
       speechd-pulse
 
       # spell checkers

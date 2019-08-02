@@ -1,12 +1,14 @@
 #!/bin/sh
 
 USERNAME="simon"
+HOME="/home/"$USERNAME
 
 declare -A symlinks
-symlinks=([/home/$USERNAME/.config]=nixpkgs
+symlinks=([$HOME/.config]=nixpkgs
           [/etc]=nixos
-          [/home/$USERNAME/.atom]=nixpkgs/programs/atom/config.cson
-          [/home/$USERNAME/.atom]=nixpkgs/programs/atom/snippets.cson)
+          [$HOME/.atom]=nixpkgs/programs/atom/config.cson
+          [$HOME/.atom]=nixpkgs/programs/atom/snippets.cson
+          [$HOME/.config]=nixpkgs/programs/libinput-gestures/libinput-gestures.conf)
 
 for i in "${!symlinks[@]}"
 do
