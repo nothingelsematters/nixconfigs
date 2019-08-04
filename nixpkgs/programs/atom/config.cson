@@ -152,9 +152,6 @@
       "split-diffDecorationsZIndex": 0
   welcome:
     showOnStartup: false
-".c2hs.source":
+".nix":
   editor:
-    showIndentGuide: true
-".haskell.source":
-  editor:
-    showIndentGuide: true
+    tabLength: 2

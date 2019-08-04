@@ -62,7 +62,6 @@ in with pkgs; {
       # filesystem utility packages
       autojump # rip cd
       exa      # rip ls
-      bat      # rip cat
       ripgrep  # rip grep
       lf       # terminal file manager
       file     # determine file type
