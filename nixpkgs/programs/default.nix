@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./atom
     ./bat
     ./browserpass
     ./most
