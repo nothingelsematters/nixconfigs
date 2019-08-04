@@ -2,6 +2,24 @@
   home.file.".atom/config.cson".text =
     ''
     "*":
+      "atom-ide-ui":
+        hyperclick:
+          linuxTriggerKeys: "altKey"
+        use:
+          "atom-ide-busy-signal": "never"
+          "atom-ide-code-actions": "never"
+          "atom-ide-code-format": "never"
+          "atom-ide-console": "never"
+          "atom-ide-debugger": "never"
+          "atom-ide-diagnostics": "never"
+          "atom-ide-diagnostics-ui": "never"
+          "atom-ide-find-references": "never"
+          "atom-ide-global": "never"
+          "atom-ide-outline-view": "always"
+          "atom-ide-refactor": "never"
+          "atom-ide-signature-help": "never"
+          "atom-ide-terminal": "never"
+          hyperclick: "always"
       "autocomplete-clang":
         clangCommand: "clang++"
         "preCompiledHeaders c++": [
