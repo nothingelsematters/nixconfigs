@@ -5,6 +5,7 @@
     ./bat
     ./browserpass
     ./most
+    ./fzf
     ./zsh
     ./firefox
   ];

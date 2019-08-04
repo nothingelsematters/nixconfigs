@@ -61,7 +61,6 @@
       gl = "git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold yellow)%<|(27)%ar%C(reset) %C(bold green)%<|(70)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold red)%d%C(reset)%n' --all --stat";
       gs = "git status -s";
 
-      fzf = "fzf --preview='bat --color always {}'";
       cal = "cal -3m";
       mdr = "pandoc $1 | lynx -stdin";
     };
