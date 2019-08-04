@@ -48,10 +48,10 @@
       hms = "home-manager switch";
       nrs = "sudo nixos-rebuild switch";
       nsp = "nix-shell --run zsh -p";
+      npd = "nix-channel --update && hms";
 
       homed = "nano ~/.config/nixpkgs/home.nix";
       confed = "sudo nano /etc/nixos/configuration.nix";
-      nupdate = "nix-channel --update; hms";
 
       l = "exa -lh --git";
       ll = "exa -lhT --git -L 2";
@@ -62,7 +62,6 @@
       gs = "git status -s";
 
       cal = "cal -3m";
-      mdr = "pandoc $1 | lynx -stdin";
     };
 
     initExtra =
