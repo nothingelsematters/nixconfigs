@@ -10,7 +10,6 @@ symlinks=(
     [$HOME/.config]=nixpkgs
     [/etc]=nixos
     [$HOME/.atom]=$PROGRAMS/atom/config.cson
-    [$HOME/.config]=$PROGRAMS/libinput-gestures/libinput-gestures.conf
 )
 
 for i in "${!symlinks[@]}"

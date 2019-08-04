@@ -9,5 +9,6 @@
     ./fzf
     ./zsh
     ./firefox
+    ./libinput-gestures
   ];
 }
