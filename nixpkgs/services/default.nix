@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./background
     ./guake
     ./nm-applet
     ./udiskie
