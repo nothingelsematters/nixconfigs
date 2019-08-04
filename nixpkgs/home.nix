@@ -10,7 +10,6 @@
 
   home = {
     sessionVariables = {
-      FZF_DEFAULT_COMMAND="rg --files";
       EDITOR="atom";
       PAGER="most";
     };
