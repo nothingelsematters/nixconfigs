@@ -36,7 +36,7 @@ in with pkgs; {
 
       # languages related
       /* c++ */
-      llvmPackages.clang-unwrapped
+      (hiPrio clang)
       (lowPrio gcc)
       gdb
       cmake
