@@ -34,26 +34,21 @@ in with pkgs; {
       # editors
       atom
 
-      # c++
+      # languages related
+      /* c++ */
       llvmPackages.clang-unwrapped
       (lowPrio gcc)
       gdb
       cmake
       valgrind
-
-      # java
+      /* java */
       openjdk11
       maven
-
-      # kotlin
+      /* others */
       kotlin
-
-      # haskell
       haskell
-
-      # python
-      python2
       python
+      python2
 
       # docker
       docker
@@ -81,8 +76,6 @@ in with pkgs; {
       tldr     # a collection of simplified and community-driven man pages
       psmisc   # small useful utilities (such as fuser, killall and pstree)
       man      # an interface to the on-line reference manuals
-      pandoc   # conversion between markup formats
-      lynx     # a text-mode web browser
 
       # messaging
       tdesktop
@@ -120,6 +113,11 @@ in with pkgs; {
       aspellDicts.en-science
       aspellDicts.ru
 
+      # fonts
+      hasklig
+      hack-font
+      ubuntu_font_family
+
       # other
       blueman                 # bluetooth
       nox                     # tools to make nix nicer to use
@@ -127,18 +125,5 @@ in with pkgs; {
       shared-mime-info        # a database of common MIME types
       gnutls                  # the GNU Transport Layer Security Library
       gnupg                   # the GNU Privacy Guard suite of programs
-      telnet
-
-      # Could be useful someday
-      # gparted
-      #
-      # Text
-      # texlive.combined.scheme-full
-      #
-      # Image editing
-      # imagemagick
-      # pinta
-      # krita
-      # gimp
     ];
 }

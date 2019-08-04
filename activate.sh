@@ -4,11 +4,13 @@ USERNAME="simon"
 HOME="/home/"$USERNAME
 
 declare -A symlinks
-symlinks=([$HOME/.config]=nixpkgs
-          [/etc]=nixos
-          [$HOME/.atom]=nixpkgs/programs/atom/config.cson
-          [$HOME/.atom]=nixpkgs/programs/atom/snippets.cson
-          [$HOME/.config]=nixpkgs/programs/libinput-gestures/libinput-gestures.conf)
+symlinks=(
+    [$HOME/.config]=nixpkgs
+    [/etc]=nixos
+    [$HOME/.atom]=nixpkgs/programs/atom/config.cson
+    [$HOME/.atom]=nixpkgs/programs/atom/snippets.cson
+    [$HOME/.config]=nixpkgs/programs/libinput-gestures/libinput-gestures.conf
+)
 
 for i in "${!symlinks[@]}"
 do

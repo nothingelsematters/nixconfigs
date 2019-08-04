@@ -18,8 +18,7 @@
       "atom-ide-terminal": "never"
       hyperclick: "always"
   "autocomplete-clang":
-    clangCommand: "clang-7"
-    ignoreClangErrors: false
+    clangCommand: "clang++"
     "preCompiledHeaders c++": [
       "cassert"
       "cerrno"
@@ -126,6 +125,7 @@
       "material-monokai-syntax"
     ]
   editor:
+    fontFamily: "Hasklig Medium"
     fontSize: 10
     showIndentGuide: true
     tabLength: 4
