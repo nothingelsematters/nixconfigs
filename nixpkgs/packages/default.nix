@@ -58,6 +58,7 @@ in with pkgs; {
       htop     # interactive process viewer
       gnumake  # control the generation of non-source files from sources
       binutils # tools for manipulating binaries (linker, assembler, etc.)
+      guake    # drop-down terminal
 
       # filesystem utility packages
       autojump # rip cd

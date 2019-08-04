@@ -1,7 +1,7 @@
 { config, pkgs, ...}:
 
 {
-  home.packages = [ pkgs.guake-fixed ];
+  home.packages = [ pkgs.guake ];
   systemd.user.services.guake = {
     Install = {
       WantedBy = [ "graphical-session.target" ];
