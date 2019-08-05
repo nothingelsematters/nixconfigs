@@ -33,7 +33,7 @@ in {
           "dom.battery.enabled" = false;
           "dom.enable_performance" = false;
           "dom.enable_user_timing" = false;
-          "dom.event.contextmenu.enabled" =	false; # This may actually break some sites, but I hate RMB highjacking
+          "dom.event.contextmenu.enabled" = false; # This may actually break some sites, but I hate RMB highjacking
           "dom.gamepad.enabled" = false;
           "dom.netinfo.enabled" = false;
           "dom.network.enabled" = false;
@@ -44,8 +44,8 @@ in {
           "media.webspeech.recognition.enable" = false;
 
           # WebRTC leaks internal IP
-          "media.peerconnection.ice.default_address_only" =	true;
-          "media.peerconnection.ice.no_host" =	true;
+          "media.peerconnection.ice.default_address_only" = true;
+          "media.peerconnection.ice.no_host" = true;
 
           # JS leaks locale
           "javascript.use_us_english_locale" = true;
@@ -62,7 +62,7 @@ in {
           "toolkit.telemetry.bhrPing.enabled"= false;
           "toolkit.telemetry.firstShutdownPing.enabled"= false;
           "toolkit.telemetry.hybridContent.enabled"= false;
-          "experiments.supported" =	false;
+          "experiments.supported" = false;
           "experiments.enabled" = false;
           "experiments.manifest.uri" = "";
           "network.allow-experiments" = false;
@@ -93,33 +93,33 @@ in {
           "app.shield.optoutstudies.enabled" = false;
 
           # Disable all sorts of auto-connections
-          "network.prefetch-next" =	false;
-          "network.dns.disablePrefetch" =	true;
+          "network.prefetch-next" = false;
+          "network.dns.disablePrefetch" = true;
           "network.dns.disablePrefetchFromHTTPS" = true;
-          "network.predictor.enabled" =	false;
-          "browser.casting.enabled" =	false;
-          "media.gmp-gmpopenh264.enabled" =	false;
-          "media.gmp-manager.url" =	"";
-          "network.http.speculative-parallel-limit" =	0;
-          "browser.search.update" =	false;
+          "network.predictor.enabled" = false;
+          "browser.casting.enabled" = false;
+          "media.gmp-gmpopenh264.enabled" = false;
+          "media.gmp-manager.url" = "";
+          "network.http.speculative-parallel-limit" = 0;
+          "browser.search.update" = false;
 
           # Spoof referrer
           "network.http.referer.spoofSource" = true;
 
           # Disable third-party cookies
-          "network.cookie.cookieBehavior" =	1;
+          "network.cookie.cookieBehavior" = 1;
 
           # Enable first-party isolation
           "privacy.firstparty.isolate" = true;
 
           # Disable built-in password manager and autofill
           "signon.rememberSignons" = false;
-          "browser.formfill.enable" =	false;
+          "browser.formfill.enable" = false;
 
           # Stop communicating with Google
           # I mean, I don't use Chrome for a reason
           "geo.wifi.uri" = "https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%";
-          "browser.safebrowsing.downloads.remote.enabled" =	false;
+          "browser.safebrowsing.downloads.remote.enabled" = false;
 
           # Disable auto-update
           "app.update.enabled" = false;
@@ -150,8 +150,54 @@ in {
           "browser.sessionstore.resume_session_once" = true;
 
 
-          # my own changes
-          "browser.download.dir" = "/home/simon/downloads/firefox"; # WARN username dependent
+          # end of copy-paste, my own changes
+
+          # doesn't work with Linux
+          "apz.android.chrome_fling_physics.enabled" = false;
+          "browser.touchmode.auto" = false;
+          "dom.keyboardevent.dispatch_during_composition" = false;
+          "gfx.work-around-driver-bugs" = false;
+          "layers.geometry.d3d11.enabled" = false;
+          "security.family_safety.mode" = 0;
+
+          # telemetry
+          "browser.ping-centre.telemetry" = false;
+          "security.certerrors.recordEventTelemetry" = false;
+          "security.identitypopup.recordEventElemetry" = false;
+
+          "security.ssl.errorReporting.enabled" = false;
+          # stop accessibility services from having access to your browser
+          "accessibility.force_disabled" = true;
+          # unexpected Mozilla polls
+          "app.normandy.enabled" = false;
+          # streaming media elements to WebRTC
+          "canvas.capturestream.enabled" = false;
+          # turn off advices
+          "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
+          "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
+
+          # counts time since installation
+          "app.update.checkInstallTime" = false;
+          # sensor screen feature
+          "apz.allow_double_tap_zooming" = false;
+          # output on a screen/tv using DisplayPort
+          "apz.peek_messages.enabled" = false;
+          # big blue downloading arrow animation
+          "browser.download.animateNotifications" = false;
+          "browser.preferences.defaultPerformanceSettings.enabled" = false;
+          "browser.shell.checkDefaultBrowser" = false;
+          # disabling previously visited pages caching
+          "browser.sessionhistory.max_total_viewers" = 0;
+          # caching session and unsend messages interval
+          "browser.sessionstore.interval" = 600000;
+          "browser.slowStartup.notificationDisabled" = true;
+          "browser.uitour.enabled" = false;
+          "dom.gamepad.extensions.enabled" = false;
+          # full-screen notification timeout
+          "full-screen-api.warning.timeout" = 1000;
+          # disk cache size
+          "browser.cache.disk.smart_size.enabled" = false;
+          "browser.cache.disk.capacity" = 102400;
 
           # fonts
           "font.name.monospace.x-western" = "Fantasque Sans Mono";
@@ -160,6 +206,7 @@ in {
           "font.size.fixed.x-western" = 11;
           "font.size.variable.x-western" = 11;
 
+          "browser.download.dir" = "/home/simon/downloads/firefox"; # WARN username dependent
           "browser.uiCustomization.state" =
             "{\
                 \"placements\":\
