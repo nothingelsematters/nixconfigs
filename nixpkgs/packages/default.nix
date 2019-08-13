@@ -61,7 +61,6 @@ in with pkgs; {
       guake    # drop-down terminal
 
       # filesystem utility packages
-      autojump # rip cd
       exa      # rip ls
       ripgrep  # rip grep
       lf       # terminal file manager

@@ -1,6 +1,19 @@
 { config, lib, pkgs, ... }:
 
 {
+  home.file.zlua = {
+    text = builtins.readFile (
+      pkgs.fetchurl {
+        url = "https://raw.githubusercontent.com/skywind3000/z.lua/master/z.lua";
+        sha256 = "1183f1fm7nqshsssaxw7a095aza0bwy5y7dwbcv6qdl1zhfv03ih";
+      }
+    );
+    target = ".local/share/z.lua/z.lua";
+    executable = true;
+  };
+
+  home.packages = [ pkgs.lua ];
+
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;
@@ -57,6 +70,9 @@
       ll = "exa -lhT --git -L 2";
       lll = "exa -lhT --git -L 3";
       tree = "exa --tree";
+      fzf = "fzf --preview 'bat --color always {}'";
+      zz = "z -I";
+      bd = "z -b";
 
       gl = "git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold yellow)%<|(27)%ar%C(reset) %C(bold green)%<|(70)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold red)%d%C(reset)%n' --all --stat";
       gs = "git status -s";
@@ -77,11 +93,12 @@
 
       eval "$(dircolors ~/.dir_colors)";
 
+      eval "$(${pkgs.lua}/bin/lua ~/.local/share/z.lua/z.lua --init zsh enhanced once fzf)"
+      export _ZL_ECHO=1
+
       if [ -n "$name" ]; then
         PROMPT="[$name] $PROMPT";
       fi
-
-      . ${pkgs.autojump}/share/autojump/autojump.zsh
       '';
   };
 }
