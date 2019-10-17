@@ -34,7 +34,7 @@
   };
 
   system = {
-    stateVersion = "19.03";
+    stateVersion = "19.09";
     autoUpgrade.enable = true;
   };
 
@@ -49,7 +49,11 @@
       layout = "us,ru";
     };
 
-    gnome3.at-spi2-core.enable = true;
+    gnome3 = {
+      core-utilities.enable = true;
+      at-spi2-core.enable = true;
+    };
+
     printing = {
       enable = true;
       drivers = [ pkgs.brlaser ];

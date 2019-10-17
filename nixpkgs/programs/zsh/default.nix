@@ -5,7 +5,7 @@
     text = builtins.readFile (
       pkgs.fetchurl {
         url = "https://raw.githubusercontent.com/skywind3000/z.lua/master/z.lua";
-        sha256 = "1183f1fm7nqshsssaxw7a095aza0bwy5y7dwbcv6qdl1zhfv03ih";
+        sha256 = "0sbgiygi3k91ynj80pvmmh0vrglfzckd5zxdk6hv6z0ivgzs5yki";
       }
     );
     target = ".local/share/z.lua/z.lua";
@@ -98,6 +98,10 @@
 
       if [ -n "$name" ]; then
         PROMPT="[$name] $PROMPT";
+      fi
+      
+      if [ "$NIX_NAME" ]; then
+          export PROMPT="[$NIX_NAME] $PROMPT";
       fi
       '';
   };

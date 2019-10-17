@@ -118,7 +118,6 @@
           "atom-latex"
           "docblockr"
           "ide-java"
-          "language-tex"
         ]
         reopenProjectMenuCount: 8
         restorePreviousWindowsOnStart: "no"
@@ -149,6 +148,9 @@
     ".nix":
       editor:
         tabLength: 2
+    ".g4":
+      editor:
+        showIndentGuide: false
     '';
 
   home.file.".atom/snippets.cson".text =
