@@ -6,10 +6,6 @@ let
     pip
     pytorch
     torchvision
-    numpy
-    pandas
-    scipy
-    matplotlib
   ];
 
   python = pkgs.python3.withPackages python-packages;
@@ -32,17 +28,11 @@ let
 in with pkgs; {
   home.packages =
     [
-      # temporary section
-      /* huawei course */
-      jupyter        # python notebook
-
-      # git
       git
       gitAndTools.diff-so-fancy
 
       # editors
       atom
-      typora
 
       # languages related
       /* c++ */
@@ -53,7 +43,6 @@ in with pkgs; {
       valgrind
       /* java */
       openjdk11
-      antlr4
       maven
       /* others */
       kotlin
@@ -70,7 +59,6 @@ in with pkgs; {
       gnumake  # control the generation of non-source files from sources
       binutils # tools for manipulating binaries (linker, assembler, etc.)
       guake    # drop-down terminal
-      xclip    # clipboard manipulations
 
       # filesystem utility packages
       exa      # rip ls

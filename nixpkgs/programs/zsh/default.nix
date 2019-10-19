@@ -1,18 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  home.file.zlua = {
-    text = builtins.readFile (
-      pkgs.fetchurl {
-        url = "https://raw.githubusercontent.com/skywind3000/z.lua/master/z.lua";
-        sha256 = "0sbgiygi3k91ynj80pvmmh0vrglfzckd5zxdk6hv6z0ivgzs5yki";
-      }
-    );
-    target = ".local/share/z.lua/z.lua";
-    executable = true;
-  };
-
-  home.packages = [ pkgs.lua ];
+  home.packages = [ pkgs.z-lua ];
 
   programs.zsh = {
     enable = true;
