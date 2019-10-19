@@ -33,6 +33,7 @@ in with pkgs; {
 
       # editors
       atom
+      typora
 
       # languages related
       /* c++ */
@@ -43,6 +44,7 @@ in with pkgs; {
       valgrind
       /* java */
       openjdk11
+      antlr4
       maven
       /* others */
       kotlin
@@ -59,6 +61,7 @@ in with pkgs; {
       gnumake  # control the generation of non-source files from sources
       binutils # tools for manipulating binaries (linker, assembler, etc.)
       guake    # drop-down terminal
+      xclip    # clipboard manipulations
 
       # filesystem utility packages
       exa      # rip ls
@@ -118,7 +121,7 @@ in with pkgs; {
       ubuntu_font_family
 
       # other
-      blueman                 # bluetooth
+      # blueman                 # bluetooth
       nox                     # tools to make nix nicer to use
       libreoffice-unwrapped   # office
       shared-mime-info        # a database of common MIME types
