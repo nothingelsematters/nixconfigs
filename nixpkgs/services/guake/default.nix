@@ -3,7 +3,7 @@
 {
   home.packages = [
     (pkgs.guake.overrideAttrs (base: {
-      propagatedBuildInputs = base.propagatedBuildInputs ++ [ pkgs.python37Packages.packaging ];
+      propagatedBuildInputs = base.propagatedBuildInputs ++ [ pkgs.python37Packages.setuptools ];
     }))
   ];
   systemd.user.services.guake = {
