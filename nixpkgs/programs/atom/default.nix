@@ -151,6 +151,9 @@
     ".g4":
       editor:
         showIndentGuide: false
+    ".hs":
+      editor:
+        showIndentGuide: false
     '';
 
   home.file.".atom/snippets.cson".text =

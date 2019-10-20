@@ -50,7 +50,6 @@
     };
 
     gnome3 = {
-      core-utilities.enable = true;
       at-spi2-core.enable = true;
     };
 

@@ -60,7 +60,6 @@ in with pkgs; {
       htop     # interactive process viewer
       gnumake  # control the generation of non-source files from sources
       binutils # tools for manipulating binaries (linker, assembler, etc.)
-      guake    # drop-down terminal
       xclip    # clipboard manipulations
 
       # filesystem utility packages
@@ -119,6 +118,9 @@ in with pkgs; {
       hasklig
       hack-font
       ubuntu_font_family
+
+      # gnome useful
+      gnome3.gnome-tweaks
 
       # other
       # blueman                 # bluetooth
