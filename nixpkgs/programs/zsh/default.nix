@@ -67,6 +67,9 @@
       gs = "git status -s";
 
       cal = "cal -3m";
+
+      ktr = "java -cp /nix/store/4ba4lrrsnvww4xm936dmvif6mxgs7pir-kotlin-1.3.50/lib/kotlin-stdlib.jar:.";
+      ktc = "kotlinc";
     };
 
     initExtra =
@@ -82,7 +85,7 @@
 
       eval "$(dircolors ~/.dir_colors)";
 
-      eval "$(${pkgs.lua}/bin/lua ~/.local/share/z.lua/z.lua --init zsh enhanced once fzf)"
+      eval "$(z --init zsh enhanced once fzf)"
       export _ZL_ECHO=1
 
       if [ -n "$name" ]; then
