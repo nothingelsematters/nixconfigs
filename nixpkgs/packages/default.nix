@@ -1,31 +1,6 @@
 { pkgs, ...}:
 
-let
-  python-packages = python-packages: with python-packages; [
-    virtualenv
-    pip
-    pytorch
-    torchvision
-  ];
-
-  python = pkgs.python3.withPackages python-packages;
-
-  python2-packages = python-packages: with python-packages; [ pip ];
-
-  python2 = pkgs.python2.withPackages python2-packages;
-
-  haskell-packages = haskellPackages: with haskellPackages; [
-    tidal
-    happy
-    alex
-    unordered-containers
-  ];
-
-  haskell = pkgs.ghc.withPackages haskell-packages;
-
-  speechd-pulse = pkgs.speechd.override { withPulse = true; };
-
-in with pkgs; {
+with pkgs; {
   home.packages =
     [
       git
@@ -36,21 +11,12 @@ in with pkgs; {
       typora
 
       # languages related
-      /* c++ */
-      (hiPrio clang)
-      (lowPrio gcc)
-      gdb
-      cmake
-      valgrind
-      /* java */
-      openjdk11
-      antlr4
-      maven
-      /* others */
+      (hiPrio clang) (lowPrio gcc) gdb cmake valgrind
       kotlin
-      haskell
-      python
-      python2
+      openjdk11 maven antlr4
+      (ghc.withPackages (ps: with ps; [ tidal happy alex unordered-containers ]))
+      (python3.withPackages (ps: with ps; [ virtualenv pip pytorch torchvision ]))
+      (python2.withPackages (ps: with ps; [ pip  ]))
 
       # docker
       docker
@@ -104,7 +70,7 @@ in with pkgs; {
       playerctl               # controlling media players
       pavucontrol             # PulseAudio Volume Control
       libinput-gestures       # gesture mapper
-      speechd-pulse
+      (speechd.override { withPulse = true; })
 
       # spell checkers
       hunspell
