@@ -8,7 +8,7 @@ in
   programs.rofi = {
     enable = true;
     lines = 7;
-    font = "Hasklig Semi-Bold 9.6";
+    font = "Hasklig Semibold 9.6";
     extraConfig =
       ''
       rofi.modi:                drun
@@ -33,6 +33,7 @@ in
           background = "${theme.colors.background.secondary}";
           foreground = "${theme.colors.text.primary}";
           backgroundAlt = "${theme.colors.background.secondary}";
+
           highlight = {
             background = "${theme.colors.background.inverted}";
             foreground = "${theme.colors.text.inverted}";

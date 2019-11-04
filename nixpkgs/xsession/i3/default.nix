@@ -177,6 +177,8 @@ rec {
         };
 
         window = {
+          border = 2;
+          
           commands = [
             { command = "border pixel 2";                   criteria = { class = "^.*"; };       }
             { command = "<span>[%instance] %title</span>";  criteria = { class = "^.*"; };       }
@@ -185,14 +187,14 @@ rec {
         };
 
         startup = [
-          { command = "systemctl --user restart polybar";             always = true; notification = false; }
-          { command = "guake";                                        always = true; notification = true; }
-          { command = "exec \"setxkbmap -layout us,ru\"";             always = true; notification = false; }
-          { command = "exec \"setxkbmap -option 'grp:caps_toggle'\""; always = true; notification = false; }
-          { command = "telegram-desktop & disown";                    always = true; notification = true; }
-          { command = "libinput-gestures & disown";                   always = true; notification = true; }
-          { command = "flashfocus";                                   always = true; notification = false; }
-          { command = "echo 0";                                       always = true; notification = false; }
+          { command = "systemctl --user restart polybar";    always = true; notification = false; }
+          { command = "guake";                               always = true; notification = true; }
+          { command = "setxkbmap -layout us,ru";             always = true; notification = false; }
+          { command = "setxkbmap -option 'grp:caps_toggle'"; always = true; notification = false; }
+          { command = "telegram-desktop & disown";           always = true; notification = true; }
+          { command = "libinput-gestures & disown";          always = true; notification = true; }
+          { command = "flashfocus";                          always = true; notification = false; }
+          { command = "echo 0";                              always = true; notification = false; }
         ];
       };
     };

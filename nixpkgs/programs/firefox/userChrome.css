@@ -46,7 +46,7 @@
 }
 
 #navigator-toolbox, #nav-bar, #PersonalToolbar {
-        background-color: var(--theme-primary) !important;
+        background-color: var(--theme-background-primary) !important;
         border: none !important;
 }
 
@@ -56,5 +56,5 @@
 
 
 #main-window {
-        background-color: var(--theme-accent) !important;
+        background-color: var(--theme-background-accent) !important;
 }
