@@ -1,18 +1,38 @@
+{ pkgs, ... }:
+
 {
-  colors = {
-    primary   = "#2e3440"; # nord0
-    accent    = "#3b4252"; # nord1
-    disabled  = "#4c566a"; # nord3
-    text      = "#d8dee9"; # nord4
-    active    = "#eceff4"; # nord6
-    strong    = "#88c0d0"; # nord8
+  colors = rec {
+    background = rec {
+      primary   = "#2e3440"; # nord0
+      secondary = "#3b4252"; # nord1
+      disabled  = "#434c5e"; # nord2
+      accent    = "#eceff4"; # nord6
+      strong    = "#88c0d0"; # nord8
+      urgent    = "#bf616a"; # nord11
+      selection = secondary;
+      inverted  = text.primary;
+    };
+    text = rec {
+      primary   = "#d8dee9"; # nord4
+      disabled  = "#4c566a"; # nord3
+      urgent    = "#bf616a"; # nord11
+      inverted  = background.primary;
+      selection = primary;
+    };
   };
-  opaque = {
-    primary   = "#2e3440bf";
-    accent    = "#3b4252bf";
-    disabled  = "#4c566abf";
-    text      = "#d8dee9bf";
-    active    = "#eceff4bf";
-    strong    = "#88c0d0bf";
+  vim = {
+    plugname = "arcticicestudio/nord-vim";
+    activate = ''
+      colorscheme nord
+      let g:nord_uniform_diff_background = 1
+    '';
   };
+  xresources = builtins.readFile (
+    pkgs.fetchFromGitHub {
+       owner = "arcticicestudio";
+       repo = "nord-xresources";
+       rev = "5a409ca2b4070d08e764a878ddccd7e1584f0096";
+       sha256 = "1b775ilsxxkrvh4z8f978f26sdrih7g8w2pb86zfww8pnaaz403m";
+    } + "/src/nord");
+  isDark = true;
 }

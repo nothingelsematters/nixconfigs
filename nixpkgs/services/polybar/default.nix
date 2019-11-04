@@ -1,5 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
+let
+  theme = import ../../themes { inherit pkgs; };
+  mkINI = import ../../themes/lib/mkINI.nix;
+  cfg = builtins.readFile ./config;
+in
 {
   services.polybar = {
     enable  = true;
@@ -7,14 +12,17 @@
       i3GapsSupport = true;
       alsaSupport = true;
     };
-    config = ./config;
+    extraConfig = ''
+      ${mkINI theme.colors}
+      ${cfg}
+    '';
     script = "PATH=$PATH:${pkgs.i3}/bin polybar bottom &";
   };
 
   xdg.configFile.mpris = {
     target = "polybar/mpris.sh";
     executable = true;
-    text = 
+    text =
       ''
       #!${pkgs.bash}/bin/bash
       # Specifying the icon(s) in the script

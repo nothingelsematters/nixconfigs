@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
 {
@@ -41,11 +37,21 @@
   services = {
     xserver = {
       enable = true;
-      libinput.enable = true;
+
+      libinput = {
+        enable = true;
+        naturalScrolling = true;
+      };
+      
       desktopManager.gnome3 = {
         enable = true;
       };
-      displayManager.sddm.enable = true;
+
+      displayManager.lightdm = {
+        enable = true;
+        greeters.gtk.enable = true;
+      };
+
       layout = "us,ru";
 
       # adding i3
@@ -68,7 +74,12 @@
       enable = true;
       joinNetworks = ["8bd5124fd62082f4"];
     };
+    udev.extraRules = ''
+      ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chgrp video /sys/class/backlight/%k/brightness"
+      ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chmod g+w /sys/class/backlight/%k/brightness"
+    '';
   };
+
   fonts.fonts = with pkgs; [
     hasklig
     hack-font

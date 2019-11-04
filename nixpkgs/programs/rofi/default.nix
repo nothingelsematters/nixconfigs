@@ -1,15 +1,14 @@
-# TODO theme
 { config, pkgs, ...}:
 
 let
-  theme = import ../../themes;
+  theme = import ../../themes { inherit pkgs; };
 in
 
 {
   programs.rofi = {
     enable = true;
     lines = 7;
-    font = "Fira Code 16";
+    font = "Hasklig Semi-Bold 9.6";
     extraConfig =
       ''
       rofi.modi:                drun
@@ -21,21 +20,22 @@ in
       rofi.show-icons:          true
       rofi.kb-row-tab:          shift+Tab
       '';
+
     colors = {
       window = {
-        background = "${theme.colors.accent}";
-        border = "${theme.colors.text}";
-        separator = "${theme.colors.text}";
+        background = "${theme.colors.background.secondary}";
+        border = "${theme.colors.background.inverted}";
+        separator = "${theme.colors.background.inverted}";
       };
 
       rows = {
         normal = {
-          background = "${theme.colors.accent}";
-          foreground = "${theme.colors.text}";
-          backgroundAlt = "${theme.colors.accent}";
+          background = "${theme.colors.background.secondary}";
+          foreground = "${theme.colors.text.primary}";
+          backgroundAlt = "${theme.colors.background.secondary}";
           highlight = {
-            background = "${theme.colors.active}";
-            foreground = "${theme.colors.primary}";
+            background = "${theme.colors.background.inverted}";
+            foreground = "${theme.colors.text.inverted}";
           };
         };
       };

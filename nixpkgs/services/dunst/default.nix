@@ -1,7 +1,7 @@
 { pkgs, ...}:
 
 let
-  theme = import ../../themes;
+  theme = import ../../themes { inherit pkgs; };
 in
 {
   services.dunst = {
@@ -28,9 +28,9 @@ in
         frame_width = 1;
         fullscreen = "delay";
 
-        frame_color = theme.colors.text;
-        separator_color = theme.colors.accent;
-        font = "Fira Code 16";
+        frame_color = theme.colors.background.accent;
+        separator_color = theme.colors.background.accent;
+        font = "Hasklig Semi-Bold 10";
         format = ''%s\n<small>%b</small>'';
         word_wrap = "yes";
 
@@ -43,19 +43,20 @@ in
       };
 
       urgency_low = {
-        background = theme.colors.primary;
-        foreground = theme.colors.text;
+        background = theme.colors.background.primary;
+        foreground = theme.colors.text.primary;
       };
 
       urgency_normal = {
-        background = theme.colors.primary;
-        foreground = theme.colors.text;
+        background = theme.colors.background.primary;
+        foreground = theme.colors.text.primary;
       };
 
       urgency_critical = {
-        background = theme.colors.primary;
-        foreground = theme.colors.text;
+        background = theme.colors.background.primary;
+        foreground = theme.colors.text.urgent;
       };
+
 
       # For functional notifications, such as volume/brightness changes
       # Displays only header to show nice centered progress bars

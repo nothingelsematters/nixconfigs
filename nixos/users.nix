@@ -6,7 +6,7 @@
     users.simon = {
       createHome = true;
       isNormalUser = true;
-      extraGroups = ["wheel" "networkmanager" "audio" "docker" "input"];
+      extraGroups = ["wheel" "networkmanager" "audio" "video" "docker" "input"];
       description = "Simyon Empire";
     };
   };

@@ -1,87 +1,28 @@
-;=====================================================
-;
-;   To learn more about how to configure Polybar
-;   go to https://github.com/jaagr/polybar
-;
-;   The README contains alot of information
-;
-;=====================================================
-[colors]
-nord0   = #2E3440
-nord1   = #3B4252
-nord2   = #434C5E
-nord3   = #4C566A
-nord4   = #D8DEE9
-nord5   = #E5E9F0
-nord6   = #ECEFF4
-nord7   = #8FBCBB
-nord8   = #88C0D0
-nord9   = #81A1C1
-nord10  = #5E81AC
-nord11  = #BF616A
-nord12  = #D08770
-nord13  = #EBCB8B
-nord14  = #A3BE8C
-nord15  = #B48EAD
-nord0o  = #2E3440BF
-nord1o  = #3B4252BF
-nord2o  = #434C5EBF
-nord3o  = #4C566ABF
-nord4o  = #D8DEE9BF
-nord5o  = #E5E9F0BF
-nord6o  = #ECEFF4BF
-nord7o  = #8FBCBBBF
-nord8o  = #88C0D0BF
-nord9o  = #81A1C1BF
-nord10o = #5E81ACBF
-nord11o = #BF616ABF
-nord12o = #D08770BF
-nord13o = #EBCB8BBF
-nord14o = #A3BE8CBF
-nord15o = #B48EADBF
-
-background = #5a000000
-background-alt = #5a000000
-foreground =  #eee
-foreground-alt = #555
-primary = #ffb52a
-secondary = #e60053
-alert = #bd2c40
-
-white = #d1d1d1
-gray = #585858
-black = #1d1d1d
-red = #c795ae
-blue = #95aec7
-yellow = #c7ae95
-green = #aec795
-
-
 [bar/bottom]
 monitor = eDP-1
-bottom = true
+bottom = false
 width = 100%
-height = 35
+height = 23
 fixed-center = true
 
-background = ${colors.nord0}
-foreground = ${colors.nord5}
+background = ${theme.background-primary}
+foreground = ${theme.text-primary}
 
 line-size = 3
-line-color =  ${colors.nord5}
+line-color =  ${theme.text-primary}
 
 border-top-size = 4
-border-top-color =  ${colors.nord0}
+border-top-color =  ${theme.background-primary}
 
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = Noto Sans:pixelsize=13;0
-font-1 = Font Awesome:size=13;1
+font-0 = Noto Sans:pixelsize=10;0
+font-1 = Font Awesome:size=10;1
 
 modules-left = i3
-modules-center = title
-modules-right =  volume battery xkeyboard date backlight-acpi powermenu
+modules-center = date
+modules-right =  xkeyboard volume backlight-acpi battery powermenu
 
 tray-position = right
 tray-padding = 2
@@ -94,7 +35,7 @@ type = internal/xkeyboard
 blacklist-0 = num lock
 
 format-prefix = "  "
-format-prefix-foreground = ${colors.nord4}
+format-prefix-foreground = ${theme.text-primary}
 format-prefix-underline-size = 0
 label-layout = %layout%
 label-layout-underline-size = 0
@@ -106,9 +47,6 @@ index-sort = true
 ws-icon-0 = 1;
 ws-icon-1 = 2;
 ws-icon-2 = 3;
-ws-icon-3 = 4;
-ws-icon-4 = 5;
-ws-icon-5 = 6;
 ws-icon-default = 
 
 format = <label-state> <label-mode>
@@ -116,7 +54,7 @@ format = <label-state> <label-mode>
 label-mode = %mode%
 
 label-focused = %icon%
-label-focused-underline= ${colors.nord4}
+label-focused-underline= ${theme.background-accent}
 label-focused-padding = 3
 
 label-unfocused = %icon%
@@ -124,41 +62,10 @@ label-unfocused-padding = 3
 
 label-urgent = %icon%
 label-urgent-padding = 4
-label-urgent-background = ${colors.nord11}
+label-urgent-background = ${theme.background-urgent}
 
 label-visible = %icon%
 label-visible-padding = 4
-
-[module/title]
-type = internal/xwindow
-; Available tags:
-;   <label> (default)
-format = <label>
-format-foreground = #d8dee9
-format-padding = 4
-
-; Available tokens:
-;   %title%
-; Default: %title%
-label = [ %title% ]
-label-maxlen = 80
-
-; Used instead of label when there is no window title
-; Available tokens:
-;   None
-label-empty = 
-label-empty-foreground = #707880
-
-; [module/music]
-; type = custom/script
-; interval = 1
-; 
-; label = %output:0:45:...%
-; exec = ~/.config/polybar/mpris.sh
-; click-left = playerctl play-pause
-; scroll-up = playerctl previous
-; scroll-down = playerctl next
-; click-right = i3-msg workspace 6
 
 [module/xbacklight]
 type = internal/xbacklight
@@ -245,7 +152,7 @@ format-discharging-padding = 1
 format-full-padding = 1
 
 ramp-capacity-0 = 
-ramp-capacity-0-foreground = ${colors.alert}
+ramp-capacity-0-foreground = ${theme.text-urgent}
 ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 

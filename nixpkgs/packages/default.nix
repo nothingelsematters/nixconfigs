@@ -82,9 +82,6 @@ with pkgs; {
       aspellDicts.en-science
       aspellDicts.ru
 
-      # gnome useful
-      gnome3.gnome-tweaks
-
       # other
       # blueman                 # bluetooth
       nox                     # tools to make nix nicer to use

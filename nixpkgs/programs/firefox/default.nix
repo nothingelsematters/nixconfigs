@@ -1,13 +1,16 @@
 { config, pkgs, ... }:
 
 let
-    theme = import ../../themes;
+    theme = import ../../themes { inherit pkgs; };
+    mkCss = import ../../themes/lib/mkCss.nix;
+    css = mkCss theme.colors;
     userContent = ''
-        ${theme.toCss}
+        :root ${css}
         ${builtins.readFile ./userContent.css}
     '';
     userChrome = ''
-        ${theme.toCss}
+        @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+        :root ${css}
         ${builtins.readFile ./userChrome.css}
     '';
 in {
