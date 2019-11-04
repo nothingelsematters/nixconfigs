@@ -6,6 +6,8 @@ with pkgs; {
       git
       gitAndTools.diff-so-fancy
 
+      feh
+
       # editors
       atom
       typora
@@ -79,11 +81,6 @@ with pkgs; {
       aspellDicts.en-computers
       aspellDicts.en-science
       aspellDicts.ru
-
-      # fonts
-      hasklig
-      hack-font
-      ubuntu_font_family
 
       # gnome useful
       gnome3.gnome-tweaks

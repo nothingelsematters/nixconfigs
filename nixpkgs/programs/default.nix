@@ -10,5 +10,6 @@
     ./zsh
     ./firefox
     ./libinput-gestures
+    ./rofi
   ];
 }

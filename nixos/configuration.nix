@@ -47,6 +47,12 @@
       };
       displayManager.sddm.enable = true;
       layout = "us,ru";
+
+      # adding i3
+      windowManager.i3 = {
+        enable = true;
+        package = pkgs.i3-gaps;
+      };
     };
 
     gnome3 = {
@@ -63,6 +69,21 @@
       joinNetworks = ["8bd5124fd62082f4"];
     };
   };
+  fonts.fonts = with pkgs; [
+    hasklig
+    hack-font
+    ubuntu_font_family
+    font-awesome_4
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    fira-code
+    fira-code-symbols
+    roboto
+    roboto-slab
+    roboto-mono
+    material-icons
+  ];
 
   virtualisation.docker.enable = true;
   networking.networkmanager.enable = true;

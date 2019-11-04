@@ -6,5 +6,6 @@
     ./nm-applet
     ./udiskie
     ./unclutter
+    ./polybar
   ];
 }
