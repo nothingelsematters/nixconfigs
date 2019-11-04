@@ -11,5 +11,6 @@
     ./firefox
     ./libinput-gestures
     ./rofi
+    ./alacritty
   ];
 }
