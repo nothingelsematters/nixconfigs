@@ -1,3 +1,0 @@
-{
-  qt.platformTheme = "gtk";
-}

@@ -42,10 +42,6 @@
         enable = true;
         naturalScrolling = true;
       };
-      
-      desktopManager.gnome3 = {
-        enable = true;
-      };
 
       displayManager.lightdm = {
         enable = true;
@@ -54,15 +50,10 @@
 
       layout = "us,ru";
 
-      # adding i3
       windowManager.i3 = {
         enable = true;
         package = pkgs.i3-gaps;
       };
-    };
-
-    gnome3 = {
-      at-spi2-core.enable = true;
     };
 
     printing = {

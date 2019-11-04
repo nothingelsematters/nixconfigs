@@ -63,7 +63,6 @@ with pkgs; {
       unclutter            # remove idle cursor image from screen
       networkmanagerapplet # network manager applet
       inotify-tools
-      gnomeExtensions.dash-to-panel
 
       # media
       google-play-music-desktop-player
