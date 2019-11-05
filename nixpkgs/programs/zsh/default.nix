@@ -70,6 +70,9 @@
 
       ktr = "java -cp /nix/store/4ba4lrrsnvww4xm936dmvif6mxgs7pir-kotlin-1.3.50/lib/kotlin-stdlib.jar:.";
       ktc = "kotlinc";
+
+      copy = "xclip -sel clip";
+      paste = "xclip -o -sel clip";
     };
 
     initExtra =

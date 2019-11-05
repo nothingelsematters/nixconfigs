@@ -6,8 +6,6 @@ with pkgs; {
       git
       gitAndTools.diff-so-fancy
 
-      feh
-
       # editors
       atom
       typora
@@ -30,7 +28,6 @@ with pkgs; {
       gnumake  # control the generation of non-source files from sources
       binutils # tools for manipulating binaries (linker, assembler, etc.)
       xclip    # clipboard manipulations
-      evince
 
       # filesystem utility packages
       exa      # rip ls
@@ -53,6 +50,11 @@ with pkgs; {
 
       # browsing
       firefox
+
+      # document related
+      libreoffice-unwrapped
+      evince
+      feh
 
       # archive management
       atool   # archive command line helper
@@ -86,7 +88,6 @@ with pkgs; {
       # other
       # blueman                 # bluetooth
       nox                     # tools to make nix nicer to use
-      libreoffice-unwrapped   # office
       shared-mime-info        # a database of common MIME types
       gnutls                  # the GNU Transport Layer Security Library
       gnupg                   # the GNU Privacy Guard suite of programs
