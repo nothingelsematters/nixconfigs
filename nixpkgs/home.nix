@@ -10,6 +10,7 @@
 
   home = {
     sessionVariables = {
+      PATH="$HOME/.yarn/bin/:$PATH";
       EDITOR="atom";
       PAGER="most";
     };

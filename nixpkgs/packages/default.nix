@@ -19,7 +19,8 @@ with pkgs; {
       (ghc.withPackages (ps: with ps; [ tidal happy alex unordered-containers ]))
       (python3.withPackages (ps: with ps; [ virtualenv pip pytorch torchvision ]))
       (python2.withPackages (ps: with ps; [ pip  ]))
-
+      nodejs yarn
+      
       # docker
       docker
       docker_compose
@@ -29,6 +30,7 @@ with pkgs; {
       gnumake  # control the generation of non-source files from sources
       binutils # tools for manipulating binaries (linker, assembler, etc.)
       xclip    # clipboard manipulations
+      evince
 
       # filesystem utility packages
       exa      # rip ls

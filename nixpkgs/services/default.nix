@@ -7,5 +7,6 @@
     ./udiskie
     ./unclutter
     ./polybar
+    ./compton
   ];
 }
