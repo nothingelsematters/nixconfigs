@@ -12,6 +12,31 @@ let
     ${pkgs.i3lock}/bin/i3lock -i /tmp/lock_screenshot.png
     systemctl --user start dunst
   '';
+  
+  graphical_resize = pkgs.writeShellScriptBin "resize.sh" ''
+    SLOP=${pkgs.slop}/bin/slop
+    I3MSG=${pkgs.i3-gaps}/bin/i3-msg
+
+    $I3MSG mark __moving
+
+    read -r X Y W H G ID < <($SLOP -f '%x %y %w %h %g %i')
+
+    if [ -z "$X" ]; then
+      $I3MSG unmark __moving
+      exit;
+    fi;
+
+    $I3MSG [con_mark="__moving"] floating enable
+    $I3MSG [con_mark="__moving"] move position $X $Y
+
+    if [ "$W" -eq "0" ]; then
+      $I3MSG unmark __moving
+      exit;
+    fi;
+
+    $I3MSG [con_mark="__moving"] resize set $W $H
+    $I3MSG unmark __moving
+  '';
 in
 
 rec {
@@ -215,8 +240,7 @@ rec {
 
           "XF86PowerOff"            = "exec ${lock}/bin/lock.sh";
 
-          "${modifier}+r"           = "mode resize";
-
+          "${modifier}+r"           = "exec ${graphical_resize}/bin/resize.sh";
           "${modifier}+F11"         = "fullscreen";
         };
 
