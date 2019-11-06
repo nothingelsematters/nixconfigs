@@ -12,7 +12,7 @@ let
     ${pkgs.i3lock}/bin/i3lock -i /tmp/lock_screenshot.png
     systemctl --user start dunst
   '';
-  
+
   graphical_resize = pkgs.writeShellScriptBin "resize.sh" ''
     SLOP=${pkgs.slop}/bin/slop
     I3MSG=${pkgs.i3-gaps}/bin/i3-msg
@@ -49,65 +49,65 @@ rec {
 
   home.packages = with pkgs; [ maim i3lock flashfocus ];
 
-  xdg.configFile.dunst_volume = {
-    executable = true;
-    target = "i3/scripts/volume";
-    text = ''
-      #!${pkgs.bash}/bin/bash
-
-      PACTL=${pkgs.pulseaudio}/bin/pactl;
-      AWK=${pkgs.gawk}/bin/awk;
-      NOTIFY=${pkgs.notify-desktop}/bin/notify-desktop;
-
-      function get_volume {
-        $PACTL list sinks | $AWK '/^[\t]+Volume/ {print ($5 + $12) / 2}'
-      }
-
-      function is_mute {
-        $PACTL list sinks | $AWK '/^[\t]+Mute/ { print $2 }' | grep yes > /dev/null
-      }
-
-      function notify {
-          volume=`get_volume`
-          third_volume=$((`get_volume` / 3))
-          # third_volume=max(third_volume, 33)
-          third_volume=$(( third_volume < 33 ? third_volume : 33))
-          fullbar=$(seq -s "─" $((third_volume + 1)) | sed 's/[0-9]//g')
-          emptybar=$(seq -s "─" $((33 - third_volume + 1)) | sed 's/[0-9]//g')
-          # Send the notification
-          if is_mute; then
-            icon=audio-volume-low
-          else
-            icon=audio-volume-muted
-          fi
-          $NOTIFY -i $icon -u normal -r 1337 -t 600 -c func "Volume" "$fullbar<span foreground=\"#4c566a\">$emptybar</span> $volume%"
-      }
-
-      case $1 in
-          up)
-            $PACTL set-sink-volume @DEFAULT_SINK@ +3%
-            notify
-            ;;
-          down)
-            $PACTL set-sink-volume @DEFAULT_SINK@ -3%
-            notify
-            ;;
-          mute)
-            $PACTL set-sink-mute @DEFAULT_SINK@ toggle
-            if is_mute ; then
-              $NOTIFY -c func -t 600 -i audio-volume-muted -r 1337 -u normal "Mute"
-            else
-              notify
-            fi
-            ;;
-      esac
-      '';
-  };
-
   xdg.configFile = {
     flashfocus = {
       source = ./flashfocus.yml;
       target = "flashfocus/flashfocus.yml";
+    };
+
+    dunst_volume = {
+      executable = true;
+      target = "i3/scripts/volume";
+      text = ''
+        #!${pkgs.bash}/bin/bash
+
+        PACTL=${pkgs.pulseaudio}/bin/pactl;
+        AWK=${pkgs.gawk}/bin/awk;
+        NOTIFY=${pkgs.notify-desktop}/bin/notify-desktop;
+
+        function get_volume {
+          $PACTL list sinks | $AWK '/^[\t]+Volume/ {print ($5 + $12) / 2}'
+        }
+
+        function is_mute {
+          $PACTL list sinks | $AWK '/^[\t]+Mute/ { print $2 }' | grep yes > /dev/null
+        }
+
+        function notify {
+            volume=`get_volume`
+            third_volume=$((`get_volume` / 3))
+            # third_volume=max(third_volume, 33)
+            third_volume=$(( third_volume < 33 ? third_volume : 33))
+            fullbar=$(seq -s "─" $((third_volume + 1)) | sed 's/[0-9]//g')
+            emptybar=$(seq -s "─" $((33 - third_volume + 1)) | sed 's/[0-9]//g')
+            # Send the notification
+            if is_mute; then
+              icon=audio-volume-low
+            else
+              icon=audio-volume-muted
+            fi
+            $NOTIFY -i $icon -u normal -r 1337 -t 600 -c func "Volume" "$fullbar<span foreground=\"#4c566a\">$emptybar</span> $volume%"
+        }
+
+        case $1 in
+            up)
+              $PACTL set-sink-volume @DEFAULT_SINK@ +3%
+              notify
+              ;;
+            down)
+              $PACTL set-sink-volume @DEFAULT_SINK@ -3%
+              notify
+              ;;
+            mute)
+              $PACTL set-sink-mute @DEFAULT_SINK@ toggle
+              if is_mute ; then
+                $NOTIFY -c func -t 600 -i audio-volume-muted -r 1337 -u normal "Mute"
+              else
+                notify
+              fi
+              ;;
+        esac
+        '';
     };
   };
 
@@ -122,6 +122,8 @@ rec {
       enable = true;
 
       config = {
+        focus.followMouse = false;
+
         assigns = {
           "1" = [{ class = "Firefox"; }];
           "2" = [{ class = "Atom"; }];
@@ -261,7 +263,7 @@ rec {
           commands = [
             { command = "border pixel 2";                   criteria = { class = "^.*"; };       }
             { command = "<span>[%instance] %title</span>";  criteria = { class = "^.*"; };       }
-            { command = "border none";                      criteria = { class = "(Kitty|Alacritty|GLava)"; }; }
+            { command = "border pixel 1";                   criteria = { class = "(Kitty|Alacritty|GLava)"; }; }
           ];
         };
 
