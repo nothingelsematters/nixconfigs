@@ -11,13 +11,14 @@ with pkgs; {
       typora
 
       # languages related
-      (hiPrio clang) (lowPrio gcc) gdb cmake valgrind
-      kotlin
-      openjdk11 maven antlr4
-      (ghc.withPackages (ps: with ps; [ tidal happy alex unordered-containers ]))
-      (python3.withPackages (ps: with ps; [ virtualenv pip pytorch torchvision ]))
-      (python2.withPackages (ps: with ps; [ pip  ]))
-      nodejs yarn
+      /* c++ */       (hiPrio clang) (lowPrio gcc) gdb cmake valgrind
+      /* kotlin */    kotlin
+      /* java */      openjdk11 maven antlr4
+      /* haskell */   (ghc.withPackages (ps: with ps; [ tidal happy alex unordered-containers ]))
+      /* python */    (python3.withPackages (ps: with ps; [ virtualenv pip pytorch torchvision ]))
+                      (python2.withPackages (ps: with ps; [ pip  ]))
+      /* ocaml */     ocaml ocamlPackages.merlin ocamlPackages.ocp-indent
+      /*javascript */ nodejs yarn
       
       # docker
       docker

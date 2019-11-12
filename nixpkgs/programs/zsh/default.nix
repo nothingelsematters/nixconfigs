@@ -65,10 +65,11 @@
 
       gl = "git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold yellow)%<|(27)%ar%C(reset) %C(bold green)%<|(70)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold red)%d%C(reset)%n' --all --stat";
       gs = "git status -s";
+      gmc = "gitmoji -c";
 
       cal = "cal -3m";
 
-      ktr = "java -cp /nix/store/4ba4lrrsnvww4xm936dmvif6mxgs7pir-kotlin-1.3.50/lib/kotlin-stdlib.jar:.";
+      ktr = "kotlin";
       ktc = "kotlinc";
 
       copy = "xclip -sel clip";

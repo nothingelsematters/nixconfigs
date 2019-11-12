@@ -148,10 +148,10 @@ rec {
             text        = theme.colors.text.primary;
           };
           placeholder = {
-            background  = "#0000005a";
-            border      = "#0000005a";
+            background  = "#ff00005a";
+            border      = "#ff00005a";
             childBorder = "#0c0c0c";
-            indicator   = "#000000";
+            indicator   = "#ff000000";
             text        = "#ffffff";
           };
           unfocused = {

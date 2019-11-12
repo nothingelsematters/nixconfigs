@@ -30,7 +30,7 @@ in
 
         frame_color = theme.colors.background.accent;
         separator_color = theme.colors.background.accent;
-        font = "Hasklig Semibold 10";
+        font = "Fira Code 10";
         format = ''%s\n<small>%b</small>'';
         word_wrap = "yes";
 

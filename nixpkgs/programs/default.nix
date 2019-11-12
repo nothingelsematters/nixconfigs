@@ -9,7 +9,6 @@
     ./fzf
     ./zsh
     ./firefox
-    ./libinput-gestures
     ./rofi
     ./alacritty
   ];
