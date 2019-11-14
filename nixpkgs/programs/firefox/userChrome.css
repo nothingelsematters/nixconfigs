@@ -45,6 +45,10 @@
         padding-left: 8px !important;
 }
 
+#nav-bar-customization-target {
+    background-color: var(--theme-background-primary);
+}
+
 #navigator-toolbox, #nav-bar, #PersonalToolbar {
         background-color: var(--theme-background-primary) !important;
         border: none !important;
@@ -56,5 +60,5 @@
 
 
 #main-window {
-        background-color: var(--theme-background-accent) !important;
+        background-color: var(--theme-background-primary) !important;
 }
