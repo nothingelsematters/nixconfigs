@@ -9,30 +9,14 @@ let
         ${builtins.readFile ./userContent.css}
     '';
 
-    userChrome = patchCss (
-      pkgs.fetchFromGitHub {
-        owner = "muckSponge";
-        repo = "materialFox";
-        rev = "92e66339d449561138f52bb193a66303d8bbb5ce";
-        sha256 = "12ys44jv04jx1gyrscqry540w48qz8kdv8f01wrhc04qcg96l8b6";
-      } + "/chrome/userChrome.css");
-
-    patchCss = with builtins; let
-      patchImports = let
-        lines = x: filter isString (split "\n" (readFile x));
-        importLine = "@import";
-        isImport = x: substring 0 (stringLength importLine) x == importLine;
-        imports = x: concatLists (map (match (importLine + " \"(.*)\";")) (filter isImport (lines x)));
-      in file: concatStringsSep "\n" (map (x: patchCss (dirOf file + ("/" + x))) (imports file));
-
-      patchUrls = with builtins; file:
-        let
-          fileStr = readFile file;
-          urls = concatLists (filter isList (split "url\\(([^\\.\\)]+\\.svg)\\)" fileStr));
-          replacement = map (x: toString (dirOf file + ("/" + x))) urls;
-        in replaceStrings urls replacement fileStr;
-
-    in file: patchUrls file + "\n" + patchImports file;
+    userChrome = ''
+        @import "${pkgs.fetchFromGitHub {
+          owner = "muckSponge";
+          repo = "materialFox";
+          rev = "92e66339d449561138f52bb193a66303d8bbb5ce";
+          sha256 = "12ys44jv04jx1gyrscqry540w48qz8kdv8f01wrhc04qcg96l8b6";
+        } + "/chrome/userChrome.css"}"
+    '';
 
 in {
   home.file.userContent = {
