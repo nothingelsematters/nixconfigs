@@ -47,12 +47,32 @@ rec {
     ../../services/background
   ];
 
-  home.packages = with pkgs; [ maim i3lock flashfocus ];
+  home.packages = with pkgs; [ maim i3lock flashfocus acpi ];
 
   xdg.configFile = {
     flashfocus = {
       source = ./flashfocus.yml;
       target = "flashfocus/flashfocus.yml";
+    };
+
+    dunst_charge = {
+      executable = true;
+      target = "i3/scripts/charge";
+      text = ''
+        #!${pkgs.bash}/bin/bash
+
+        ACPI=${pkgs.acpi}/bin/acpi
+        BATTINFO=`$ACPI -b`
+        NOTIFY=${pkgs.notify-desktop}/bin/notify-desktop;
+
+        if [[ `echo $BATTINFO | grep Discharging` && `echo $BATTINFO | cut -f 5 -d " "` < 00:30:00 ]] ; then
+            DISPLAY=:0 $NOTIFY -u critical "low battery" "$BATTINFO"
+        fi
+
+        if [[ `echo $BATTINFO | grep Charging` && `echo $BATTINFO | cut -f 4 -d " "` == 100%, ]] ; then
+            DISPLAY=:0 $NOTIFY -u normal "battery fully charged"
+        fi
+        '';
     };
 
     dunst_volume = {
@@ -269,7 +289,6 @@ rec {
 
         startup = [
           { command = "systemctl --user restart polybar";    always = true; notification = false; }
-          { command = "guake";                               always = true; notification = true; }
           { command = "setxkbmap -layout us,ru";             always = true; notification = false; }
           { command = "setxkbmap -option 'grp:caps_toggle'"; always = true; notification = false; }
           { command = "telegram-desktop & disown";           always = true; notification = true; }
