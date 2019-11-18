@@ -8,11 +8,32 @@ let
         :root ${css}
         ${builtins.readFile ./userContent.css}
     '';
-    userChrome = ''
-        @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
-        :root ${css}
-        ${builtins.readFile ./userChrome.css}
-    '';
+
+    userChrome = patchCss (
+      pkgs.fetchFromGitHub {
+        owner = "muckSponge";
+        repo = "materialFox";
+        rev = "92e66339d449561138f52bb193a66303d8bbb5ce";
+        sha256 = "12ys44jv04jx1gyrscqry540w48qz8kdv8f01wrhc04qcg96l8b6";
+      } + "/chrome/userChrome.css");
+
+    patchCss = with builtins; let
+      patchImports = let
+        lines = x: filter isString (split "\n" (readFile x));
+        importLine = "@import";
+        isImport = x: substring 0 (stringLength importLine) x == importLine;
+        imports = x: concatLists (map (match (importLine + " \"(.*)\";")) (filter isImport (lines x)));
+      in file: concatStringsSep "\n" (map (x: patchCss (dirOf file + ("/" + x))) (imports file));
+
+      patchUrls = with builtins; file:
+        let
+          fileStr = readFile file;
+          urls = concatLists (filter isList (split "url\\(([^\\.\\)]+\\.svg)\\)" fileStr));
+          replacement = map (x: toString (dirOf file + ("/" + x))) urls;
+        in replaceStrings urls replacement fileStr;
+
+    in file: patchUrls file + "\n" + patchImports file;
+
 in {
   home.file.userContent = {
     text = userContent;
@@ -25,6 +46,7 @@ in {
       default = {
         id = 0;
         isDefault = true;
+        userChrome = userChrome; # UI styling
 
         # Hardening cherry-picked from https://github.com/pyllyukko/user.js
         settings = {
@@ -209,6 +231,10 @@ in {
           "font.size.fixed.x-western" = 11;
           "font.size.variable.x-western" = 11;
 
+
+          # custom
+          "svg.context-properties.content.enabled" = true; # theme related
+          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           "browser.download.dir" = "/home/simon/downloads/firefox"; # WARN username dependent
           "browser.uiCustomization.state" =
             "{\
@@ -266,8 +292,6 @@ in {
           "browser.tabs.drawInTitlebar" = true;
           "layout.css.devPixelsPerPx" = "0.9";
         };
-        # UI styling
-        userChrome = userChrome;
       };
     };
   };
