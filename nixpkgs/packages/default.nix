@@ -9,20 +9,20 @@ with pkgs; {
       # editors
       atom
       typora
+      jupyter
 
       # languages related
-      /* c++ */       (hiPrio clang) (lowPrio gcc) gdb cmake valgrind
-      /* kotlin */    kotlin
-      /* java */      openjdk11 maven antlr4
-      /* haskell */   (ghc.withPackages (ps: with ps; [ tidal happy alex unordered-containers ]))
-      /* python */    (python3.withPackages (ps: with ps; [ virtualenv pip pytorch torchvision ]))
-                      (python2.withPackages (ps: with ps; [ pip  ]))
-      /* ocaml */     ocaml ocamlPackages.merlin ocamlPackages.ocp-indent
-      /*javascript */ nodejs yarn
-      
+      /* c++ */        (hiPrio clang) (lowPrio gcc) gdb cmake valgrind
+      /* kotlin */     kotlin
+      /* java */       openjdk11 maven antlr4
+      /* haskell */    (ghc.withPackages (ps: with ps; [ tidal happy alex unordered-containers ]))
+      /* python */     (python3.withPackages (ps: with ps; [ virtualenv pip pytorch torchvision ]))
+      /* python2 */    (python2.withPackages (ps: with ps; [ pip  ]))
+      /* ocaml */      ocaml ocamlPackages.merlin ocamlPackages.ocp-indent
+      /* javascript */ nodejs yarn
+
       # docker
-      docker
-      docker_compose
+      docker docker_compose
 
       # utility packages
       htop     # interactive process viewer
@@ -79,12 +79,8 @@ with pkgs; {
       (speechd.override { withPulse = true; })
 
       # spell checkers
-      hunspell
-      hunspellDicts.en-us
-      aspellDicts.en
-      aspellDicts.en-computers
-      aspellDicts.en-science
-      aspellDicts.ru
+      hunspell hunspellDicts.en-us
+      aspellDicts.en aspellDicts.en-computers aspellDicts.en-science aspellDicts.ru
 
       # other
       # blueman                 # bluetooth
