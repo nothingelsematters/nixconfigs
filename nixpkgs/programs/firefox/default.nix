@@ -1,36 +1,22 @@
 { config, pkgs, ... }:
 
-let
-    theme = import ../../themes { inherit pkgs; };
-    mkCss = import ../../themes/lib/mkCss.nix;
-    css = mkCss theme.colors;
-    userContent = ''
-        :root ${css}
-        ${builtins.readFile ./userContent.css}
-    '';
-
-    userChrome = ''
-        @import "${pkgs.fetchFromGitHub {
-          owner = "muckSponge";
-          repo = "materialFox";
-          rev = "92e66339d449561138f52bb193a66303d8bbb5ce";
-          sha256 = "12ys44jv04jx1gyrscqry540w48qz8kdv8f01wrhc04qcg96l8b6";
-        } + "/chrome/userChrome.css"}"
-    '';
-
-in {
-  home.file.userContent = {
-    text = userContent;
-    target = ".mozilla/firefox/default/chrome/userContent.css";
-  };
-
+{
   programs.firefox = {
     enable = true;
     profiles = {
+
       default = {
         id = 0;
         isDefault = true;
-        userChrome = userChrome; # UI styling
+
+        userChrome = ''
+            @import "${pkgs.fetchFromGitHub {
+              owner = "muckSponge";
+              repo = "materialFox";
+              rev = "92e66339d449561138f52bb193a66303d8bbb5ce";
+              sha256 = "12ys44jv04jx1gyrscqry540w48qz8kdv8f01wrhc04qcg96l8b6";
+            } + "/chrome/userChrome.css"}"
+        ''; # UI styling
 
         # Hardening cherry-picked from https://github.com/pyllyukko/user.js
         settings = {
@@ -219,62 +205,11 @@ in {
           # custom
           "svg.context-properties.content.enabled" = true; # theme related
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-          "browser.download.dir" = "/home/simon/downloads/firefox"; # WARN username dependent
-          "browser.uiCustomization.state" =
-            "{\
-                \"placements\":\
-                    {\
-                        \"widget-overflow-fixed-list\": [],\
-                        \"nav-bar\":\
-                            [\
-                                \"back-button\",\
-                                \"forward-button\",\
-                                \"stop-reload-button\",\
-                                \"home-button\",\
-                                \"customizableui-special-spring1\",\
-                                \"urlbar-container\",\
-                                \"customizableui-special-spring2\",\
-                                \"downloads-button\",\
-                                \"developer-button\",\
-                                \"fxa-toolbar-menu-button\"\
-                            ],\
-                        \"toolbar-menubar\": [\"menubar-items\"],\
-                        \"TabsToolbar\":\
-                            [\
-                                \"tabbrowser-tabs\",\
-                                \"new-tab-button\",\
-                                \"alltabs-button\"\
-                            ],\
-                        \"PersonalToolbar\": [\"personal-bookmarks\"]\
-                    },\
-                \"seen\":\
-                    [\
-                        \"developer-button\",\
-                        \"enhancerforyoutube_maximerf_addons_mozilla_org-browser-action\",\
-                        \"_b3792611-d72c-4251-9a50-0f072f4f3e98_-browser-action\",\
-                        \"jid1-zadieub7xozojw_jetpack-browser-action\",\
-                        \"_a4c4eda4-fb84-4a84-b4a1-f7c1cbf2a1ad_-browser-action\",\
-                        \"_85860b32-02a8-431a-b2b1-40fbd64c9c69_-browser-action\",\
-                        \"_e7fefcf3-b39c-4f17-5215-ebfe120a7031_-browser-action\",\
-                        \"_a94d60a0-8408-4c53-8eec-cb349eb958b8_-browser-action\",\
-                        \"_5a87a431-47c5-4ccf-96dc-228c87d2d146_-browser-action\",\
-                        \"webide-button\"\
-                    ],\
-                \"dirtyAreaCache\":\
-                    [\
-                        \"nav-bar\",\
-                        \"toolbar-menubar\",\
-                        \"TabsToolbar\",\
-                        \"PersonalToolbar\",\
-                        \"widget-overflow-fixed-list\"\
-                    ],\
-                \"currentVersion\": 16,\
-                \"newElementCount\": 7\
-            }";
-
+          "browser.download.dir" = "$HOME/downloads/firefox"; # WARN username dependent
           "browser.uidensity" = 1;
           "browser.tabs.drawInTitlebar" = true;
           "layout.css.devPixelsPerPx" = "0.9";
+          "browser.uiCustomization.state" = builtins.readFile ./uiCustomization.json;
         };
       };
     };
