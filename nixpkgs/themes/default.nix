@@ -1,1 +1,1 @@
-import ./nord.nix
+import ./dracula-mint.nix

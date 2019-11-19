@@ -5,7 +5,7 @@ width = 100%
 height = 23
 fixed-center = true
 
-background = #662e3440
+background = ${theme.background-primary-opaque}
 foreground = ${theme.text-primary}
 
 line-size = 3

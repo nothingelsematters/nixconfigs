@@ -3,31 +3,26 @@
 {
   colors = rec {
     background = rec {
-      primary   = "#fdf6e3"; # base3
-      secondary = "#eee8d5"; # base2
-      disabled  = "#eee8d5"; # base2
-      accent    = "#859900"; # green
-      strong    = "#b58900"; # yellow
-      urgent    = "#dc322f"; # red
-      selection = secondary;
-      inverted  = text.primary;
+      primary        = "#fdf6e3"; # base3
+      primary-opaque = "#66" + builtins.substring 1 6 primary;
+      secondary      = "#eee8d5"; # base2
+      disabled       = "#eee8d5"; # base2
+      accent         = "#859900"; # green
+      strong         = "#b58900"; # yellow
+      urgent         = "#dc322f"; # red
+      selection      = secondary;
+      inverted       = text.primary;
     };
     text = rec {
-      primary   = "#839496"; # base0
-      disabled  = "#93a1a1"; # base1
-      urgent    = "#dc322f"; # nord11
-      inverted  = background.primary;
-      selection = primary;
+      primary        = "#839496"; # base0
+      disabled       = "#93a1a1"; # base1
+      urgent         = "#dc322f"; # nord11
+      inverted       = background.primary;
+      selection      = primary;
     };
   };
-  vim = {
-    plugname = "altercation/vim-colors-solarized";
-    activate = ''
-      set background=light
-      colorscheme solarized
-    '';
-  };
-  xresources = builtins.readFile (pkgs.fetchFromGitHub {
+  xresources = builtins.readFile (
+    pkgs.fetchFromGitHub {
       owner = "solarized";
       repo = "xresources";
       rev = "0c426297b558965d462f0e45f87eb16a10586c53";
@@ -35,4 +30,3 @@
   } + "/Xresources.light");
   isDark = false;
 }
-
