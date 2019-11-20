@@ -1,3 +1,4 @@
+atom-material-ui@2.1.3
 autocomplete-clang@0.12.1
 bracket-colorizer@1.4.0
 file-icons@2.1.36
