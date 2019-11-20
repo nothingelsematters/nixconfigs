@@ -10,5 +10,6 @@
     ./libinput-gestures
     ./dunst
     ./background
+    ./check-battery
   ];
 }
