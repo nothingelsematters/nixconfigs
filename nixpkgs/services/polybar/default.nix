@@ -14,6 +14,7 @@ in
     };
     extraConfig = ''
       ${mkINI theme.colors}
+      background-primary-opaque = ${"#66" + builtins.substring 1 6 theme.colors.background.primary}
       ${cfg}
     '';
     script = "PATH=$PATH:${pkgs.i3}/bin polybar bottom &";

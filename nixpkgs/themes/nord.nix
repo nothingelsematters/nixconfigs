@@ -4,7 +4,6 @@
   colors = rec {
     background = rec {
       primary        = "#2e3440"; # nord0
-      primary-opaque = "#66" + builtins.substring 1 6 primary;
       secondary      = "#3b4252"; # nord1
       disabled       = "#434c5e"; # nord2
       accent         = "#eceff4"; # nord6
