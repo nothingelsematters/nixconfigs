@@ -205,7 +205,7 @@
           # custom
           "svg.context-properties.content.enabled" = true; # theme related
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-          "browser.download.dir" = "$HOME/downloads/firefox"; # WARN username dependent
+          "browser.download.dir" = "/home/simon/downloads/firefox"; # WARN username dependent
           "browser.uidensity" = 1;
           "browser.tabs.drawInTitlebar" = true;
           "layout.css.devPixelsPerPx" = "0.9";
