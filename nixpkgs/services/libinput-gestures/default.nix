@@ -1,4 +1,8 @@
+{ pkgs, ... }:
+
 {
+  home.packages = [ pkgs.libinput-gestures ];
+
   home.file.".config/libinput-gestures.conf".text =
     ''
     ############################################

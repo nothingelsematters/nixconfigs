@@ -75,7 +75,6 @@ with pkgs; {
       pulseeffects            # limiter, compressor, reverberation, equalizer and auto volume effects
       playerctl               # controlling media players
       pavucontrol             # PulseAudio Volume Control
-      libinput-gestures       # gesture mapper
       (speechd.override { withPulse = true; })
 
       # spell checkers
