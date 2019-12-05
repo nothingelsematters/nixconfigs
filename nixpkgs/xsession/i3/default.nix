@@ -207,16 +207,8 @@ rec {
           "${modifier}+Shift+Up"    = "move up";
           "${modifier}+Shift+Right" = "move right";
 
-          "${modifier}+h"           = "focus left";
-          "${modifier}+j"           = "focus down";
-          "${modifier}+k"           = "focus up";
-          "${modifier}+l"           = "focus right";
           "${modifier}+Tab"         = "focus right";
           "${modifier}+Shift+Tab"   = "focus left";
-          "${modifier}+Shift+h"     = "move left";
-          "${modifier}+Shift+j"     = "move down";
-          "${modifier}+Shift+k"     = "move up";
-          "${modifier}+Shift+l"     = "move right";
 
           "${modifier}+1"           = "workspace 1";
           "${modifier}+2"           = "workspace 2";
@@ -233,7 +225,6 @@ rec {
           "${modifier}+Shift+6"     = "move container to workspace 6";
           "${modifier}+Shift+grave" = "move container to workspace 7";
 
-          "${modifier}+f"           = "exec kitty -T=lf lf";
           "${modifier}+w"           = "layout tabbed";
           "${modifier}+e"           = "layout toggle split";
           "${modifier}+Shift+space" = "floating toggle";
@@ -241,17 +232,13 @@ rec {
           "${modifier}+Shift+c"     = "reload";
           "${modifier}+Shift+r"     = "restart";
           "${modifier}+Shift+e"     = "exec i3-nagbar -t warning -m 'Do you want to exit i3?' -b 'Yes' 'i3-msg exit'";
-          "${modifier}+Return"      = "exec kitty";
+          "${modifier}+Return"      = "exec alacritty";
           "Menu"                    = "exec rofi -show";
 
           "Print"                      = "exec maim ~/Pictures/screenshots/$(date +\"%Y-%m-%d_%H:%M:%S\").png";
           "Control+Print"              = "exec maim | xclip -selection clipboard -t image/png";
           "${modifier}+Print"          = "exec maim -s ~/Pictures/screenshots/$(date +\"%Y-%m-%d_%H:%M:%S\").png";
           "${modifier}+Control+Print"  = "exec maim -s | xclip -selection clipboard -t image/png";
-
-          "${modifier}+F3"          = "exec echo $(expr $(cat /sys/devices/platform/asus-nb-wmi/hwmon/hwmon3/pwm1) - 3) > /sys/devices/platform/asus-nb-wmi/hwmon/hwmon3/pwm1";
-          "${modifier}+F4"          = "exec echo $(expr $(cat /sys/devices/platform/asus-nb-wmi/hwmon/hwmon3/pwm1) + 3) > /sys/devices/platform/asus-nb-wmi/hwmon/hwmon3/pwm1";
-          "${modifier}+F2"          = "exec echo $([[ $(cat /sys/devices/platform/asus-nb-wmi/hwmon/hwmon3/pwm1_enable) = 2 ]] && echo 1 || echo 2) > /sys/devices/platform/asus-nb-wmi/hwmon/hwmon3/pwm1_enable";
 
           "XF86AudioRaiseVolume"    = "exec ~/.config/i3/scripts/volume up";
           "XF86AudioLowerVolume"    = "exec ~/.config/i3/scripts/volume down";
