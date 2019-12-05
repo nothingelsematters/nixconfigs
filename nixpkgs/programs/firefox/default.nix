@@ -190,9 +190,6 @@
           "dom.gamepad.extensions.enabled" = false;
           # full-screen notification timeout
           "full-screen-api.warning.timeout" = 1000;
-          # disk cache size
-          "browser.cache.disk.smart_size.enabled" = false;
-          "browser.cache.disk.capacity" = 102400;
 
           # fonts
           "font.name.monospace.x-western" = "Fantasque Sans Mono";
@@ -210,6 +207,9 @@
           "browser.tabs.drawInTitlebar" = true;
           "layout.css.devPixelsPerPx" = "0.9";
           "browser.uiCustomization.state" = builtins.readFile ./uiCustomization.json;
+          "browser.urlbar.openintab" = false;
+          "browser.link.open_newwindow" = 1;
+          "browser.link.open_newwindow.restriction" = 0;
         };
       };
     };
