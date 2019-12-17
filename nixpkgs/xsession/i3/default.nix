@@ -145,9 +145,9 @@ rec {
         focus.followMouse = false;
 
         assigns = {
-          "1" = [{ class = "Firefox"; }];
-          "2" = [{ class = "Atom"; }];
-          "3" = [{ class = "TelegramDesktop"; }];
+          "1" = [{ class = "TelegramDesktop"; }];
+          "2" = [{ class = "Firefox"; }];
+          "3" = [{ class = "Atom"; }];
         };
 
         bars = [];
