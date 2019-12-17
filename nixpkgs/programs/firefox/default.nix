@@ -210,6 +210,20 @@
           "browser.urlbar.openintab" = false;
           "browser.link.open_newwindow" = 1;
           "browser.link.open_newwindow.restriction" = 0;
+
+          # experimental spped up
+          "browser.tabs.remote.autostart" = false;
+          "browser.display.show_image_placeholders" = false;
+          "browser.tabs.animate" = false;
+          "network.http.max-persistent-connections-per-server" = 8;
+          "network.http.pipelining" = true;
+          "network.http.proxy.pipelining" = true;
+          "ui.submenuDelay" = 0;
+          "network.dns.disableIPv6" = true;
+          "nglayout.initialpaint.delay" = 0;
+          "content.notify.backoffcount" = 5;
+          "network.http.pipelining.maxrequests" = 8;
+          "network.http.max-connections" = 96;
         };
       };
     };
