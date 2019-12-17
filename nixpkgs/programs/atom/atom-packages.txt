@@ -1,8 +1,10 @@
+atom-beautify@0.33.4
 atom-material-ui@2.1.3
-autocomplete-clang@0.12.1
+autocomplete-python@1.16.0
 bracket-colorizer@1.4.0
 file-icons@2.1.36
 haskell-scry@1.0.9
+highlight-selected@0.16.0
 language-antlr4@0.1.0
 language-cmake@1.2.0
 language-haskell@1.19.2
@@ -20,5 +22,7 @@ minimap-split-diff@0.3.7
 nix@2.1.0
 ocaml-indent@0.7.1
 ocaml-merlin@0.14.7
+python-indent@1.2.5
 split-diff@1.6.1
 todo-show@2.3.2
+

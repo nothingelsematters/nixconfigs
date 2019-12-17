@@ -11,7 +11,7 @@ with pkgs; {
       typora
 
       # languages related
-      /* c++ */        (hiPrio clang) (lowPrio gcc) gdb cmake valgrind
+      /* c++ */        gcc gdb cmake valgrind
       /* kotlin */     kotlin
       /* java */       openjdk11 maven antlr4
       /* haskell */    (ghc.withPackages (ps: with ps; [ tidal happy alex unordered-containers ]))

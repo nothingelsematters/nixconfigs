@@ -124,7 +124,7 @@
       "material-monokai-syntax"
     ]
   editor:
-    fontFamily: "Hasklig Medium"
+    fontFamily: "Fira code medium"
     fontSize: 10
     showIndentGuide: true
     tabLength: 4
