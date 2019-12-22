@@ -18,17 +18,17 @@ module-margin-left = 1
 module-margin-right = 2
 
 font-0 = Noto Sans:pixelsize=10;0
-font-1 = Font Awesome:size=10;1
+font-1 = Font Awesome 5 Brands:pixelsize=10;1
+font-2 = Font Awesome 5 Free:pixelsize=10;1
+font-3 = Font Awesome 5 Free Solid:pixelsize=10;1
+font-4 = Fira code medium:pixelsize=10;1
 
 modules-left = i3
 modules-center = date
-modules-right =  xkeyboard volume backlight-acpi battery powermenu
+modules-right =  xkeyboard volume backlight-acpi battery cpu
 
 tray-position = right
 tray-padding = 2
-
-scroll-up = i3wm-wsnext
-scroll-down = i3wm-wsprev
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -44,9 +44,9 @@ label-layout-underline-size = 0
 type = internal/i3
 index-sort = true
 
-ws-icon-2 = 1;
+ws-icon-2 = 1;
 ws-icon-0 = 2;
-ws-icon-1 = 3;
+ws-icon-1 = 3;
 ws-icon-default = 
 
 format = <label-state> <label-mode>
@@ -120,7 +120,7 @@ type = internal/volume
 format-volume = <ramp-volume>  <label-volume>
 format-muted = <label-muted>
 label-volume = %percentage%%
-label-muted =  mute
+label-muted =  mute
 label-muted-foreground = #aaa
 format-volume-padding = 1
 format-muted-padding = 1
@@ -165,46 +165,34 @@ animation-charging-3 = 
 animation-charging-4 = 
 animation-charging-framerate = 750
 
-[module/powermenu]
-type = custom/menu
+[module/cpu]
+type = internal/cpu
+interval = 1
 
-label-open = 
-;label-open-background = #dd0000
-;label-open-foreground = #fff
-label-close = 
-;label-close-background = #dd0000
-;label-close-foreground = #fff
-label-open-padding = 4
-label-close-padding = 3
+; Available tags:
+;   <label> (default)
+;   <bar-load>
+;   <ramp-load>
+;   <ramp-coreload>
+format = <label>  <ramp-coreload>
 
-menu-0-0 = 
-menu-0-0-exec = menu-open-1
-menu-0-1 = 
-menu-0-1-exec = menu-open-2
-menu-0-2 = 
-menu-0-2-exec = menu-open-3
-menu-0-3 = 
-menu-0-3-exec = menu-open-4
-menu-0-0-padding = 3
-menu-0-1-padding = 3
-menu-0-2-padding = 3
-menu-0-3-padding = 3
+; Available tokens:
+;   %percentage% (default) - total cpu load averaged over all cores
+;   %percentage-sum% - Cumulative load on all cores
+;   %percentage-cores% - load percentage for each core
+;   %percentage-core[1-9]% - load percentage for specific core
+label = 
 
-menu-1-0 = reboot?
-menu-1-0-exec = systmectl reboot
-menu-1-0-padding = 3
-
-menu-2-0 = power off?
-menu-2-0-exec = systemctl poweroff
-menu-2-0-padding = 3
-
-menu-3-0 = sleep?
-menu-3-0-exec = systemctl suspend
-menu-3-0-padding = 3
-
-menu-4-0 = hibernate?
-menu-4-0-exec = systemctl hibernate
-menu-4-0-padding = 3
+; Spacing between individual per-core ramps
+ramp-coreload-spacing = 1
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
 
 [settings]
 screenchange-reload = true
