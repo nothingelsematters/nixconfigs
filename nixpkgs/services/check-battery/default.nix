@@ -7,36 +7,35 @@ let
     BATTINFO=`$ACPI -b`
     NOTIFY=${pkgs.notify-desktop}/bin/notify-desktop;
     SLEEP=${pkgs.coreutils}/bin/sleep
-
-    DISCHARGING=`echo $BATTINFO | $GREP Discharging`
-    CHARGING=`echo $BATTINFO | $GREP Charging`
-    PROCENT=`echo $BATTINFO | cut -f 4 -d " " | cut -f 1 -d "%"`
-    INFO=`echo $BATTINFO | cut -f 3- -d " "`
-
+    CUT=${pkgs.coreutils}/bin/cut
 
     while :
     do
-        proc=$PROCENT
+        DISCHARGING=`echo $BATTINFO | $GREP Discharging`
+        CHARGING=`echo $BATTINFO | $GREP Charging`
+        PROCENT=`echo $BATTINFO | $CUT -f 4 -d " " | $CUT -f 1 -d "%"`
+        INFO=`echo $BATTINFO | $CUT -f 3- -d " "`
 
-        if [[ $DISCHARGING && $proc -lt 10 ]] ; then
-          DISPLAY=:0 $NOTIFY -u critical "critically low battery" "$INFO"
-          $SLEEP 300
-          continue
+        if [[ $DISCHARGING && $PROCENT -lt 10 ]] ; then
+            DISPLAY=:0 $NOTIFY -u critical "critically low battery" "$INFO"
+            $SLEEP 300
+            continue
         fi
 
-        if [[ $DISCHARGING && $proc -lt 20 ]] ; then
-          DISPLAY=:0 $NOTIFY -u normal "low battery" "$INFO"
-          $SLEEP 300
-          continue
+        if [[ $DISCHARGING && $PROCENT -lt 20 ]] ; then
+            DISPLAY=:0 $NOTIFY -u normal "low battery" "$INFO"
+            $SLEEP 300
+            continue
         fi
 
-        if [[ $CHARGING && $proc -gt 94 ]] ; then
-          DISPLAY=:0 $NOTIFY -u normal "battery charged"
-          $SLEEP 1800
+        if [[ $CHARGING && $PROCENT -gt 94 ]] ; then
+            DISPLAY=:0 $NOTIFY -u normal "battery charged"
+            $SLEEP 1800
         fi
 
         $SLEEP 30
     done
+
   '';
 in
 
