@@ -45,7 +45,19 @@
 
       displayManager.lightdm = {
         enable = true;
-        greeters.gtk.enable = true;
+        greeters.mini = {
+          enable = true;
+          user = "simon";
+          extraConfig = ''
+          [greeter]
+          password-label-text = Slide to unlock:
+          show-input-cursor = false
+          font = "Fira Code Medium"
+
+          [greeter-theme]
+          background-image = ""
+          '';
+        };
       };
 
       layout = "us,ru";
