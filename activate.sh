@@ -1,9 +1,6 @@
 #!/bin/sh
 
-USERNAME="simon"
-HOME="/home/"$USERNAME
 PROGRAMS="nixpkgs/programs"
-SERVICES="nixpkgs/services"
 
 declare -A symlinks
 symlinks=(
@@ -17,8 +14,6 @@ do
     sudo ln -srft $i ${symlinks[$i]}
 done
 
-guake --restore-preferences $SERVICES/guake/preferences.conf
-
-# apm install --packages-file $PROGRAMS/atom/atom-packages.txt
+apm install --packages-file $PROGRAMS/atom/atom-packages.txt
 
 ### manually : import firefox bookmarks from nixpkgs/programs/firefox/bookmarks.json
