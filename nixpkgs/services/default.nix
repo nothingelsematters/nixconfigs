@@ -11,5 +11,6 @@
     ./dunst
     ./background
     ./check-battery
+    ./i3lock-fancy
   ];
 }

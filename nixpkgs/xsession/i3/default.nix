@@ -4,14 +4,7 @@ let
   modifier = "Mod4";
   theme    = import ../../themes { inherit pkgs; };
   mkOpaque = import ../../themes/lib/mkOpaque.nix;
-
-  lock = pkgs.writeShellScriptBin "lock.sh" ''
-    ${pkgs.maim}/bin/maim /tmp/lock_screenshot.jpg
-    ${pkgs.imagemagick}/bin/convert /tmp/lock_screenshot.jpg -filter point -resize 10% -resize 1000% /tmp/lock_screenshot.png
-    systemctl --user stop dunst
-    ${pkgs.i3lock}/bin/i3lock -i /tmp/lock_screenshot.png
-    systemctl --user start dunst
-  '';
+  lock     = import ../../services/i3lock-fancy { inherit config; inherit pkgs; };
 
   graphical_resize = pkgs.writeShellScriptBin "resize.sh" ''
     SLOP=${pkgs.slop}/bin/slop
@@ -267,12 +260,10 @@ rec {
           "XF86AudioLowerVolume"    = "exec ~/.config/i3/scripts/volume down";
           "XF86AudioMute"           = "exec ~/.config/i3/scripts/volume mute";
 
-          /* "XF86MonBrightnessDown"   = "exec echo $(expr $(cat /sys/class/backlight/intel_backlight/brightness) - 100) > /sys/class/backlight/intel_backlight/brightness";
-          "XF86MonBrightnessUp"     = "exec echo $(expr $(cat /sys/class/backlight/intel_backlight/brightness) + 100) > /sys/class/backlight/intel_backlight/brightness"; */
           "XF86MonBrightnessUp"     = "exec ~/.config/i3/scripts/brightness up";
           "XF86MonBrightnessDown"   = "exec ~/.config/i3/scripts/brightness down";
 
-          "XF86PowerOff"            = "exec ${lock}/bin/lock.sh";
+          "XF86PowerOff"            = "exec ${lock.services.screen-locker.lockCmd}";
 
           "${modifier}+r"           = "exec ${graphical_resize}/bin/resize.sh";
           "${modifier}+F11"         = "fullscreen";
