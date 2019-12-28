@@ -205,7 +205,6 @@ rec {
 
         gaps = {
           inner = 10;
-          smartGaps = true;
           smartBorders = "on";
         };
 
