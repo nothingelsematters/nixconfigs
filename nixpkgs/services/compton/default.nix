@@ -5,7 +5,7 @@
     enable = true;
 
     inactiveOpacity = "0.87";
-    opacityRule = [ "93:class_i ?= 'Alacritty'" ];
+    opacityRule = [ "95:class_i ?= 'Alacritty'" ];
 
     blur = true;
 
