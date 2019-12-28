@@ -19,17 +19,18 @@ in
 
         allow_markup = "yes";
         markup = "full";
+        transparency = 12;
 
-        geometry = "580x5-30+10";
+        geometry = "400x5-7+30";
         shrink = false;
         indicate_hidden = "yes";
-        padding = 16;
-        horizontal_padding = 16;
-        frame_width = 1;
+        padding = 10;
+        horizontal_padding = 10;
+        frame_width = 0;
         fullscreen = "delay";
 
         frame_color = theme.colors.background.accent;
-        separator_color = theme.colors.background.accent;
+        separator_color = theme.colors.background.primary;
         font = "Fira Code 10";
         format = ''%s\n<small>%b</small>'';
         word_wrap = "yes";

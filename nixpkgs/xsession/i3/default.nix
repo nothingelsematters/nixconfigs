@@ -55,59 +55,102 @@ rec {
       target = "flashfocus/flashfocus.yml";
     };
 
+    dunst_brightness = {
+      executable = true;
+      target = "i3/scripts/brightness";
+      text = ''
+      #!${pkgs.bash}/bin/bash
+
+      CUT=${pkgs.coreutils}/bin/cut;
+      SED=${pkgs.gnused}/bin/sed;
+      SEQ=${pkgs.coreutils}/bin/seq;
+      CAT=${pkgs.coreutils}/bin/cat;
+      DUNSTIFY=${pkgs.notify-desktop}/bin/notify-desktop;
+
+      # You can call this script like this:
+      # $ ./brightnessControl.sh up
+      # $ ./brightnessControl.sh down
+
+      function get_brightness {
+        $CAT /sys/class/backlight/intel_backlight/brightness
+      }
+
+      function send_notification {
+        icon="preferences-system-brightness-lock"
+        brightness=$(get_brightness)
+        bar=$($SEQ -s "─" 0 $((brightness / 180)) | $SED 's/[0-9]//g')
+        nl=$'\n'
+        $DUNSTIFY -t 1000 -i "$icon" -r 5555 -u normal "$nl    $bar"
+      }
+
+      case $1 in
+        up)
+          echo $(expr $($CAT /sys/class/backlight/intel_backlight/brightness) + 100) > /sys/class/backlight/intel_backlight/brightness
+          send_notification
+          ;;
+        down)
+          echo $(expr $($CAT /sys/class/backlight/intel_backlight/brightness) - 100) > /sys/class/backlight/intel_backlight/brightness
+          send_notification
+          ;;
+      esac
+      '';
+    };
+
     dunst_volume = {
       executable = true;
       target = "i3/scripts/volume";
       text = ''
-        #!${pkgs.bash}/bin/bash
+      #!${pkgs.bash}/bin/bash
 
-        PACTL=${pkgs.pulseaudio}/bin/pactl;
-        AWK=${pkgs.gawk}/bin/awk;
-        NOTIFY=${pkgs.notify-desktop}/bin/notify-desktop;
+      AMIXER=${pkgs.alsaUtils}/bin/amixer;
+      DUNSTIFY=${pkgs.notify-desktop}/bin/notify-desktop;
+      GREP=${pkgs.ripgrep}/bin/rg;
+      CUT=${pkgs.coreutils}/bin/cut;
+      HEAD=head;
 
-        function get_volume {
-          $PACTL list sinks | $AWK '/^[\t]+Volume/ {print ($5 + $12) / 2}'
-        }
+      # You can call this script like this:
+      # $ ./volumeControl.sh up
+      # $ ./volumeControl.sh down
+      # $ ./volumeControl.sh mute
 
-        function is_mute {
-          $PACTL list sinks | $AWK '/^[\t]+Mute/ { print $2 }' | grep yes > /dev/null
-        }
+      function get_volume {
+        $AMIXER get Master | $GREP '%' | $HEAD -n 1 | $CUT -d '[' -f 2 | $CUT -d '%' -f 1
+      }
 
-        function notify {
-            volume=`get_volume`
-            third_volume=$((`get_volume` / 3))
-            # third_volume=max(third_volume, 33)
-            third_volume=$(( third_volume < 33 ? third_volume : 33))
-            fullbar=$(seq -s "─" $((third_volume + 1)) | sed 's/[0-9]//g')
-            emptybar=$(seq -s "─" $((33 - third_volume + 1)) | sed 's/[0-9]//g')
-            # Send the notification
-            if is_mute; then
-              icon=audio-volume-low
-            else
-              icon=audio-volume-muted
-            fi
-            $NOTIFY -i $icon -u normal -r 1337 -t 600 -c func "Volume" "$fullbar<span foreground=\"#4c566a\">$emptybar</span> $volume%"
-        }
+      function is_mute {
+        $AMIXER get Master | $GREP '%' | $GREP -oe '[^ ]+$' | $GREP off > /dev/null
+      }
 
-        case $1 in
-            up)
-              $PACTL set-sink-volume @DEFAULT_SINK@ +3%
-              notify
-              ;;
-            down)
-              $PACTL set-sink-volume @DEFAULT_SINK@ -3%
-              notify
-              ;;
-            mute)
-              $PACTL set-sink-mute @DEFAULT_SINK@ toggle
-              if is_mute ; then
-                $NOTIFY -c func -t 600 -i audio-volume-muted -r 1337 -u normal "Mute"
-              else
-                notify
-              fi
-              ;;
-        esac
-        '';
+      function send_notification {
+        iconSound="audio-volume-high"
+        iconMuted="audio-volume-muted"
+        nl=$'\n'
+        if is_mute ; then
+          $DUNSTIFY -t 1000 -i $iconMuted -r 2593 -u normal "$nl mute"
+        else
+          volume=$(get_volume)
+          bar=$(seq --separator="─" 0 "$((volume / 3))" | sed 's/[0-9]//g')
+          $DUNSTIFY -t 1000 -i $iconSound -r 2593 -u normal "$nl    $bar"
+        fi
+      }
+
+      case $1 in
+        up)
+          $AMIXER set Master on > /dev/null
+          $AMIXER sset Master 5%+ > /dev/null
+          send_notification
+          ;;
+        down)
+          $AMIXER set Master on > /dev/null
+          $AMIXER sset Master 5%- > /dev/null
+          send_notification
+          ;;
+        mute)
+          $AMIXER set Master 1+ toggle > /dev/null
+          send_notification
+          ;;
+      esac
+      '';
     };
   };
 
@@ -224,8 +267,10 @@ rec {
           "XF86AudioLowerVolume"    = "exec ~/.config/i3/scripts/volume down";
           "XF86AudioMute"           = "exec ~/.config/i3/scripts/volume mute";
 
-          "XF86MonBrightnessDown"   = "exec echo $(expr $(cat /sys/class/backlight/intel_backlight/brightness) - 100) > /sys/class/backlight/intel_backlight/brightness";
-          "XF86MonBrightnessUp"     = "exec echo $(expr $(cat /sys/class/backlight/intel_backlight/brightness) + 100) > /sys/class/backlight/intel_backlight/brightness";
+          /* "XF86MonBrightnessDown"   = "exec echo $(expr $(cat /sys/class/backlight/intel_backlight/brightness) - 100) > /sys/class/backlight/intel_backlight/brightness";
+          "XF86MonBrightnessUp"     = "exec echo $(expr $(cat /sys/class/backlight/intel_backlight/brightness) + 100) > /sys/class/backlight/intel_backlight/brightness"; */
+          "XF86MonBrightnessUp"     = "exec ~/.config/i3/scripts/brightness up";
+          "XF86MonBrightnessDown"   = "exec ~/.config/i3/scripts/brightness down";
 
           "XF86PowerOff"            = "exec ${lock}/bin/lock.sh";
 
