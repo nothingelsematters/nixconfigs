@@ -115,15 +115,26 @@ rec {
       }
 
       function send_notification {
-        iconSound="audio-volume-high"
-        iconMuted="audio-volume-muted"
         nl=$'\n'
         if is_mute ; then
-          $DUNSTIFY -t 1000 -i $iconMuted -r 2593 -u normal "$nl mute"
+          $DUNSTIFY -t 1000 -i "audio-volume-muted" -r 2593 -u normal "$nl mute"
         else
           volume=$(get_volume)
           bar=$(seq --separator="─" 0 "$((volume / 3))" | sed 's/[0-9]//g')
-          $DUNSTIFY -t 1000 -i $iconSound -r 2593 -u normal "$nl    $bar"
+
+          if [[ $volume -lt 20 ]] ; then
+            icon="audio-volume-low"
+          fi
+
+          if [[ $volume -ge 20 && $volume -lt 60 ]] ; then
+            icon="audio-volume-medium"
+          fi
+
+          if [[ $volume -ge 60 ]] ; then
+            icon="audio-volume-high"
+          fi
+
+          $DUNSTIFY -t 1000 -i $icon -r 2593 -u normal "$nl    $bar"
         fi
       }
 
@@ -279,15 +290,7 @@ rec {
           };
         };
 
-        window = {
-          border = 2;
-
-          commands = [
-            { command = "border pixel 2";                   criteria = { class = "^.*"; };       }
-            { command = "<span>[%instance] %title</span>";  criteria = { class = "^.*"; };       }
-            { command = "border pixel 1";                   criteria = { class = "(Kitty|Alacritty|GLava)"; }; }
-          ];
-        };
+        window.border = 0;
 
         startup = [
           { command = "systemctl --user restart polybar";    always = true; notification = false; }

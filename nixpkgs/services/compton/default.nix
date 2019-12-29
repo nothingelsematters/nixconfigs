@@ -5,7 +5,7 @@
     enable = true;
 
     inactiveOpacity = "0.87";
-    opacityRule = [ "95:class_i ?= 'Alacritty'" ];
+    menuOpacity = "0.92";
 
     blur = true;
 
