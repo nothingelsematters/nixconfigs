@@ -214,7 +214,7 @@ rec {
           smartBorders = "on";
         };
 
-        fonts = [ "Ubuntu Regular 9.6" ];
+        fonts = [ "Comfortaa 9.6" ];
 
         keybindings = {
           "${modifier}+Shift+q" = "kill";

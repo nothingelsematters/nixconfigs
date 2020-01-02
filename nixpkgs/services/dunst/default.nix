@@ -31,7 +31,7 @@ in
 
         frame_color = theme.colors.background.accent;
         separator_color = theme.colors.background.primary;
-        font = "Fira Code 10";
+        font = "Comfortaa 10";
         format = ''%s\n<small>%b</small>'';
         word_wrap = "yes";
 
