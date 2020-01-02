@@ -15,6 +15,7 @@
     text = rec {
       primary        = "#839496"; # base0
       disabled       = "#93a1a1"; # base1
+      secondary      = "#6c77bb";
       urgent         = "#dc322f"; # nord11
       inverted       = background.primary;
       selection      = primary;

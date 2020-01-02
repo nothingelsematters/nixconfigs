@@ -13,7 +13,7 @@ in
       ''
       colors:
         primary:
-          background: '${zeroX theme.colors.background.secondary}'
+          background: '${zeroX theme.colors.background.primary}'
           foreground: '${zeroX theme.colors.text.primary}'
         cursor:
           text: '${zeroX theme.colors.text.primary}'

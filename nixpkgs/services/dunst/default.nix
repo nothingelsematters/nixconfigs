@@ -30,7 +30,7 @@ in
         fullscreen = "delay";
 
         frame_color = theme.colors.background.accent;
-        separator_color = theme.colors.background.primary;
+        separator_color = theme.colors.background.secondary;
         font = "Comfortaa 10";
         format = ''%s\n<small>%b</small>'';
         word_wrap = "yes";
@@ -44,17 +44,17 @@ in
       };
 
       urgency_low = {
-        background = theme.colors.background.primary;
+        background = theme.colors.background.secondary;
         foreground = theme.colors.text.primary;
       };
 
       urgency_normal = {
-        background = theme.colors.background.primary;
+        background = theme.colors.background.secondary;
         foreground = theme.colors.text.primary;
       };
 
       urgency_critical = {
-        background = theme.colors.background.primary;
+        background = theme.colors.background.secondary;
         foreground = theme.colors.text.urgent;
       };
 

@@ -3,8 +3,8 @@
 {
   colors = rec {
     background = rec {
-      primary        = "#383851";
-      secondary      = "#222433";
+      primary        = "#222433";
+      secondary      = "#383851";
       disabled       = "#434c5e";
       accent         = "#eceff4";
       strong         = "#88c0d0";
@@ -14,18 +14,13 @@
     };
     text = rec {
       primary        = "#b5b9c9";
+      secondary      = "#1fa789";
       disabled       = "#4c566a";
       urgent         = "#bf616a";
       inverted       = background.primary;
       selection      = primary;
     };
   };
-  xresources = builtins.readFile (
-    pkgs.fetchFromGitHub {
-       owner = "arcticicestudio";
-       repo = "nord-xresources";
-       rev = "5a409ca2b4070d08e764a878ddccd7e1584f0096";
-       sha256 = "1b775ilsxxkrvh4z8f978f26sdrih7g8w2pb86zfww8pnaaz403m";
-    } + "/src/nord");
+  xresources = "";
   isDark = true;
 }

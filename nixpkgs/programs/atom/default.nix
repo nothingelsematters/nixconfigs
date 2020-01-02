@@ -19,7 +19,7 @@ with builtins; {
   @syntax-text-color: #CDD3DE;
   @syntax-cursor-color: #c0c5ce;
   @syntax-selection-color: rgba(128, 203, 196, 0.13);
-  @syntax-background-color: ${theme.colors.background.secondary};
+  @syntax-background-color: ${theme.colors.background.primary};
   @syntax-comments-color: #506E79;
 
   // Guide colors
