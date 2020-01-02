@@ -1,6 +1,12 @@
 { pkgs, ... }:
 
+
+let
+  backgroundPath = ".config/background.jpg";
+in
 {
+  home.file."${backgroundPath}".source = ./background.jpg;
+
   systemd.user.services.background = {
     Unit = {
       Description = "Set desktop background using feh";
@@ -10,7 +16,7 @@
 
     Service = {
       Type = "oneshot";
-      ExecStart = "${pkgs.feh}/bin/feh /home/simon/life/wall/nzmc.jpg --bg-fill";
+      ExecStart = "${pkgs.feh}/bin/feh $HOME/${backgroundPath} --bg-fill";
       IOSchedulingClass = "idle";
     };
 

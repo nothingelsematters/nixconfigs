@@ -1,9 +1,7 @@
 { pkgs, ... }:
 
 {
-  home.packages = [
-    pkgs.pass
-  ];
+  home.packages = [ pkgs.pass ];
   programs.browserpass = {
     enable = true;
     browsers = [ "firefox" ];
