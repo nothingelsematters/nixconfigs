@@ -40,14 +40,9 @@ rec {
     ../../services/background
   ];
 
-  home.packages = with pkgs; [ maim i3lock flashfocus acpi ];
+  home.packages = with pkgs; [ maim i3lock acpi ];
 
   xdg.configFile = {
-    flashfocus = {
-      source = ./flashfocus.yml;
-      target = "flashfocus/flashfocus.yml";
-    };
-
     dunst_brightness = {
       executable = true;
       target = "i3/scripts/brightness";
@@ -298,7 +293,6 @@ rec {
           { command = "setxkbmap -option 'grp:caps_toggle'"; always = true; notification = false; }
           { command = "telegram-desktop & disown";           always = true; notification = true; }
           { command = "libinput-gestures & disown";          always = true; notification = true; }
-          { command = "flashfocus";                          always = true; notification = false; }
           { command = "echo 0";                              always = true; notification = false; }
         ];
       };
