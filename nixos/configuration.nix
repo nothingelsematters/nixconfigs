@@ -84,7 +84,6 @@
   };
 
   fonts.fonts = with pkgs; [
-    hasklig
     hack-font
     ubuntu_font_family
     font-awesome_4
@@ -98,6 +97,7 @@
     roboto-slab
     roboto-mono
     material-icons
+    comfortaa
   ];
 
   virtualisation.docker.enable = true;

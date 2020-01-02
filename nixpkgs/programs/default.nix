@@ -11,5 +11,6 @@
     ./firefox
     ./rofi
     ./alacritty
+    ./networkmanager-dmenu
   ];
 }

@@ -2,13 +2,46 @@
 
 let
   theme = import ../../themes { inherit pkgs; };
+  appsmenu = ".config/rofi/appsmenu.rasi";
+  networkmenu = ".config/rofi/networkmenu.rasi";
+
+  makeTheme = with builtins;
+    let
+      lines = x: filter isString (split "\n" (readFile x));
+
+      importLine = "@import";
+      isImport = x: substring 0 (stringLength importLine) x == importLine;
+      imports = x: concatLists (map (match (importLine + " (.*);")) (filter isImport (lines x)));
+      withoutImports = x: concatStringsSep "\n" (filter (y: !(isImport y)) (lines x));
+
+      patchImports = file: ''
+        ${concatStringsSep "\n" (map (x: patchImports (dirOf file + ("/" + x))) (imports file))}
+        ${withoutImports file}
+        '';
+
+    in fileName:
+      ''
+      * {
+        background:       ${theme.colors.background.primary};
+      }
+
+      ${patchImports fileName}
+      '';
 in
 
 {
+  home.file."${appsmenu}".text = makeTheme ./appsmenu.rasi;
+  home.file."${networkmenu}".text = makeTheme ./networkmenu.rasi;
+
   programs.rofi = {
     enable = true;
     lines = 7;
-    font = "Hasklig Semibold 9.6";
+    cycle = true;
+    fullscreen = true;
+    scrollbar = false;
+    theme = appsmenu;
+
+    font = "Comfortaa 10";
     extraConfig =
       ''
       rofi.modi:                drun
@@ -19,27 +52,10 @@ in
       rofi.kb-cancel:           Menu,Escape,alt+r
       rofi.show-icons:          true
       rofi.kb-row-tab:          shift+Tab
+      rofi.icon-theme:          Paper
+      rofi.disable-history:     false
+      rofi.display-drun:        apps
+      rofi.columns:             2
       '';
-
-    colors = {
-      window = {
-        background = "${theme.colors.background.secondary}";
-        border = "${theme.colors.background.inverted}";
-        separator = "${theme.colors.background.inverted}";
-      };
-
-      rows = {
-        normal = {
-          background = "${theme.colors.background.secondary}";
-          foreground = "${theme.colors.text.primary}";
-          backgroundAlt = "${theme.colors.background.secondary}";
-
-          highlight = {
-            background = "${theme.colors.background.inverted}";
-            foreground = "${theme.colors.text.inverted}";
-          };
-        };
-      };
-    };
   };
 }
