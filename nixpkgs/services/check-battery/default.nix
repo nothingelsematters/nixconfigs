@@ -7,6 +7,7 @@ let
     NOTIFY=${pkgs.notify-desktop}/bin/notify-desktop;
     SLEEP=${pkgs.coreutils}/bin/sleep
     CUT=${pkgs.coreutils}/bin/cut
+    NOT_ALARMED=0
 
     while :
     do
@@ -16,16 +17,14 @@ let
         PROCENT=`$ACPI -b | $CUT -f 4 -d " " | $CUT -f 1 -d "%"`
         INFO=`$ACPI -b | $CUT -f 3- -d " "`
 
-        if [[ $DISCHARGING && $PROCENT -lt 10 ]] ; then
+        if [[ $NOT_ALARMED -lt 2 && $DISCHARGING && $PROCENT -lt 10 ]] ; then
             DISPLAY=:0 $NOTIFY -u critical -i battery-caution "critically low battery" "$INFO"
-            $SLEEP 300
-            continue
+            NOT_ALARMED=2
         fi
 
-        if [[ $DISCHARGING && $PROCENT -lt 20 ]] ; then
+        if [[ $NOT_ALARMED -lt 1 && $DISCHARGING && $PROCENT -lt 20 ]] ; then
             DISPLAY=:0 $NOTIFY -u normal -i battery-low "low battery" "$INFO"
-            $SLEEP 300
-            continue
+            NOT_ALARMED=1
         fi
 
         if [[ ($CHARGING || $FULL) && $PROCENT -gt 94 ]] ; then
@@ -33,7 +32,11 @@ let
             $SLEEP 1800
         fi
 
-        $SLEEP 30
+        if [[ $CHARGING ]]; then
+            NOT_ALARMED=0
+        fi
+
+        $SLEEP 5
     done
 
   '';
