@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./nm-applet
     ./udiskie
     ./unclutter
     ./polybar
