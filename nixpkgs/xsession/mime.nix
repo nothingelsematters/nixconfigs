@@ -4,8 +4,8 @@
   xdg.configFile."mimeapps.list".text = ''
     [Default Applications]
     # Doc viewer
-    application/pdf=org.pwmt.zathura.desktop;
-    image/vnd.djvu=org.pwmt.zathura.desktop;
+    application/pdf=evince.desktop;
+    image/vnd.djvu=evince.desktop;
     # Browser
     application/x-extension-htm=firefox.desktop;
     application/x-extension-html=firefox.desktop;
