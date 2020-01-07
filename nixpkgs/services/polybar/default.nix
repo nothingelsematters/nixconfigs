@@ -17,6 +17,8 @@ in
       background-primary-opaque = ${"#AA" + builtins.substring 1 6 theme.colors.background.primary}
       ${cfg}
     '';
-    script = "PATH=$PATH:${pkgs.i3}/bin:${pkgs.rofi}/bin:${pkgs.networkmanager_dmenu}/bin:${pkgs.bash}/bin polybar top &";
+    script = "PATH=$PATH:${pkgs.i3}/bin:${pkgs.rofi}/bin:${pkgs.networkmanager_dmenu}/bin:${pkgs.bash}/bin"
+      + " LABEL_CHARGING=\" %{F${theme.colors.text.primary}}%percentage%%%{F-}\""
+      + " polybar top &";
   };
 }
