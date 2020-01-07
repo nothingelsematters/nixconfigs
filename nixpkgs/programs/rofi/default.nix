@@ -23,6 +23,8 @@ let
       ''
       * {
         background:       ${theme.colors.background.primary};
+        accent:           ${theme.colors.text.secondary};
+        foreground-list:  ${theme.colors.text.primary};
       }
 
       ${patchImports fileName}
