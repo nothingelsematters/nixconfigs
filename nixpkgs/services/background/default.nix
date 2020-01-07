@@ -16,7 +16,7 @@ in
 
     Service = {
       Type = "oneshot";
-      ExecStart = "${pkgs.feh}/bin/feh $HOME/${backgroundPath} --bg-fill";
+      ExecStart = "${pkgs.feh}/bin/feh ${backgroundPath} --bg-fill";
       IOSchedulingClass = "idle";
     };
 
