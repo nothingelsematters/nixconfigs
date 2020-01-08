@@ -18,7 +18,7 @@ with pkgs; {
       /* python */     (python3.withPackages (ps: with ps; [
                           virtualenv pip numpy sklearn-deap scipy matplotlib pandas notebook
                        ]))
-      /* python2 */    (python2.withPackages (ps: with ps; [ pip  ]))
+      /* python2 */    (python2.withPackages (ps: with ps; [ pip ]))
       /* ocaml */      ocaml ocamlPackages.merlin ocamlPackages.ocp-indent
       /* javascript */ nodejs yarn
 
@@ -65,10 +65,8 @@ with pkgs; {
       unrar   # utility for rar archives
 
       # graphics environment related
-      gnome3.dconf         # fixes "failed to commit changes to dconf" issues
-      unclutter            # remove idle cursor image from screen
-      networkmanagerapplet # network manager applet
-      inotify-tools
+      unclutter     # remove idle cursor image from screen
+      inotify-tools # notifier
 
       # media
       google-play-music-desktop-player
@@ -83,7 +81,7 @@ with pkgs; {
       aspellDicts.en aspellDicts.en-computers aspellDicts.en-science aspellDicts.ru
 
       # other
-      # blueman                 # bluetooth
+      blueman                 # bluetooth
       nox                     # tools to make nix nicer to use
       shared-mime-info        # a database of common MIME types
       gnutls                  # the GNU Transport Layer Security Library
