@@ -207,7 +207,14 @@ rec {
         };
 
         modifier = modifier;
-        floating.modifier = modifier;
+
+        floating = {
+          modifier = modifier;
+          criteria = [
+            { title = "yad-calendar"; }
+            { class = "Yad"; }
+          ];
+        };
 
         gaps = {
           inner = 10;
