@@ -4,8 +4,8 @@ let
   theme = import ../../themes { inherit pkgs; };
 in
 with builtins; {
-  home.file.".atom/config.cson".text = readFile ./config.cson;
-  home.file.".atom/snippets.cson".text = readFile ./snippets.cson;
+  home.file.".atom/config.cson".source = ./config.cson;
+  home.file.".atom/snippets.cson".source = ./snippets.cson;
   home.file.".atom/packages/material-monokai-syntax/styles/syntax-variables.less".text =
   ''
   @import "colors";

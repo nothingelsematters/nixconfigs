@@ -1,3 +1,5 @@
 ### nixOS configurations
 
-symlinks and other necessary operations are in the `activate.sh`
+> `$HOME/.config/nixpkgs` must lead to `nixpkgs`
+>
+> `/etc/nixos` must lead to `nixos`
