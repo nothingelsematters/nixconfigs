@@ -22,7 +22,7 @@ let
     in fileName:
       ''
       * {
-        background:       ${theme.colors.background.primary};
+        background:       ${theme.colors.background.secondary};
         accent:           ${theme.colors.text.secondary};
         foreground-list:  ${theme.colors.text.primary};
       }
