@@ -10,7 +10,9 @@
     blur = true;
 
     fade = true;
-    fadeDelta = 3;
-    fadeSteps = [ "0.01"  "0.015" ];
+    fadeDelta = 5;
+    fadeSteps = [ "0.034" "0.018" ];
+
+    shadow = true;
   };
 }

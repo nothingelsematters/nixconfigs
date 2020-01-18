@@ -58,7 +58,6 @@ in
 
     extraConfig = ''
       ${mkINI theme.colors}
-      background-primary-opaque = ${"#EE" + builtins.substring 1 6 theme.colors.background.primary}
       ${cfg}
     '';
 

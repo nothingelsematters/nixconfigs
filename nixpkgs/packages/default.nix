@@ -86,5 +86,6 @@ with pkgs; {
       shared-mime-info        # a database of common MIME types
       gnutls                  # the GNU Transport Layer Security Library
       gnupg                   # the GNU Privacy Guard suite of programs
+      gnome3.dconf            # FIXING bugs, wtf, idk
     ];
 }
