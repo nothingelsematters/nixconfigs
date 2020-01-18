@@ -12,7 +12,5 @@
     fade = true;
     fadeDelta = 5;
     fadeSteps = [ "0.034" "0.018" ];
-
-    shadow = true;
   };
 }
