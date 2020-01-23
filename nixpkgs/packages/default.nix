@@ -1,7 +1,11 @@
 { pkgs, ...}:
 
+let
+  fonts = (import ../themes { inherit pkgs; }).fontPkgs;
+in
 with pkgs; {
   home.packages =
+    fonts ++
     [
       git
       gitAndTools.diff-so-fancy

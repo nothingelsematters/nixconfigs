@@ -3,6 +3,7 @@
 let
   theme = import ../../themes { inherit pkgs; };
   zeroX = color: "0x" + builtins.substring 1 6 color;
+  monoFont = theme.fonts.mono;
 in
 {
   home.packages = [ pkgs.alacritty ];
@@ -38,6 +39,24 @@ in
           magenta: '0xB48EAD'
           cyan: '0x8FBCBB'
           white: '0xECEFF4'
+
+      font:
+        normal:
+          family: ${monoFont}
+        bold:
+          family: ${monoFont} Medium
+        italic:
+          family: ${monoFont} Italic
+
+        size: 7
+        offset:
+          x: 0
+          y: 0
+        glyph_offset:
+          x: 0
+          y: 0
+
+        use_thin_strokes: true
 
       ${builtins.readFile ./alacritty.yml}
       '';

@@ -3,8 +3,6 @@
   background-focus: #282828;
 
   /* General */
-  text-font:                            "Comfortaa 10";
-  text-font-mono:                       "RobotoMono Nerd Font Regular 10";
   icon-font:                            "Hurmit Nerd Font Mono 30";
   icon-font-small:                      "Hurmit Nerd Font Mono 12";
   inputbar-margin:                      4px 4px;

@@ -2,12 +2,16 @@
 
 let
   theme = import ../../themes { inherit pkgs; };
+  cfg = builtins.replaceStrings
+    [ "editor:" ]
+    [ "editor:\n    fontFamily: \"${theme.fonts.mono}\"" ]
+    (builtins.readFile ./config.cson);
 in
 with builtins; {
-  home.file.".atom/config.cson".source = ./config.cson;
+  home.file.".atom/config.cson".text = cfg;
   home.file.".atom/snippets.cson".source = ./snippets.cson;
-  home.file.".atom/packages/material-monokai-syntax/styles/syntax-variables.less".text =
-  ''
+
+  home.file.".atom/packages/material-monokai-syntax/styles/syntax-variables.less".text = ''
   @import "colors";
   // This defines all syntax variables that syntax themes must implement when they
   // include a syntax-variables.less file.
@@ -46,8 +50,7 @@ with builtins; {
   '';
 
 
-  home.file.".atom/packages/atom-material-ui/styles/user-settings.less".text =
-  ''
+  home.file.".atom/packages/atom-material-ui/styles/user-settings.less".text = ''
   @accent-color: ${theme.colors.background.primary};
   @accent-text-color: ${theme.colors.text.selection};
   @base-color: ${theme.colors.background.primary};

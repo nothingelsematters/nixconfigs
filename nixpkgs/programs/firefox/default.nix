@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
 
+let
+  theme = import ../../themes { inherit pkgs; };
+in
 {
   programs.firefox = {
     enable = true;
@@ -192,7 +195,7 @@
           "full-screen-api.warning.timeout" = 1000;
 
           # fonts
-          "font.name.monospace.x-western" = "Fantasque Sans Mono";
+          "font.name.monospace.x-western" = theme.fonts.mono;
           "font.name.sans-serif.x-western" = "Liberation Sans";
           "font.name.serif.x-western" = "Liberation Sans";
           "font.size.fixed.x-western" = 11;

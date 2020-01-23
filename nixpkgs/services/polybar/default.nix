@@ -58,6 +58,8 @@ in
 
     extraConfig = ''
       ${mkINI theme.colors}
+      [fonts]
+      notification = ${theme.fonts.notification}:pixelsize=9;3
       ${cfg}
     '';
 

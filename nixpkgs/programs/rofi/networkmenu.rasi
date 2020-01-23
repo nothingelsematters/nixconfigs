@@ -4,7 +4,7 @@
   network-textbox-prompt-colon-padding: 14px 10px 10px 10px;
   background-color: @background;
   text-color: @foreground-list;
-  font: @text-font-mono;
+  font: @text-font;
 }
 #window {
   padding: @list-8-window-padding;

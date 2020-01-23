@@ -25,6 +25,8 @@ let
         background:       ${theme.colors.background.secondary};
         accent:           ${theme.colors.text.secondary};
         foreground-list:  ${theme.colors.text.primary};
+        text-font:        "${theme.fonts.notification} 10";
+        text-font-mono:   "${theme.fonts.mono} 10";
       }
 
       ${patchImports fileName}

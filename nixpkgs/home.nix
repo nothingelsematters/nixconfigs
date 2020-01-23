@@ -1,5 +1,8 @@
 { lib, pkgs, ... }:
 
+let
+  gtkFont = (import ./themes { inherit pkgs; }).fonts.gtk;
+in
 {
   imports = [
     ./packages
@@ -10,9 +13,10 @@
 
   home = {
     sessionVariables = {
-      PATH="$HOME/.yarn/bin/:$PATH";
-      EDITOR="atom";
-      PAGER="most";
+      PATH = "$HOME/.yarn/bin/:$PATH";
+      EDITOR = "atom";
+      PAGER = "most";
+      USE_NIX2_COMMAND = 1;
     };
     keyboard = {
       layout = "us,ru";
@@ -30,8 +34,8 @@
       package = pkgs.adapta-gtk-theme;
     };
     font = {
-      name = "Ubuntu Regular 9.6";
-      package = pkgs.ubuntu_font_family;
+      name = "${gtkFont.name} ${gtkFont.size}";
+      package = gtkFont.package;
     };
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = true;

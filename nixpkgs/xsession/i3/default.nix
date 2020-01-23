@@ -221,7 +221,7 @@ rec {
           smartBorders = "on";
         };
 
-        fonts = [ "Comfortaa 9.6" ];
+        fonts = [ "${theme.fonts.notification} 9.6" ];
 
         keybindings = {
           "${modifier}+Shift+q" = "kill";

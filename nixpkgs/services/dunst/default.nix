@@ -31,7 +31,7 @@ in
 
         frame_color = theme.colors.background.accent;
         separator_color = theme.colors.background.secondary;
-        font = "Comfortaa 10";
+        font = theme.fonts.notification + " 10";
         format = ''%s\n<small>%b</small>'';
         word_wrap = "yes";
 
