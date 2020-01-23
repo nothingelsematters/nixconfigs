@@ -68,7 +68,7 @@ in
       + " LABEL_MUTED=\" %{F${theme.colors.text.primary}}mute%{F-}\""
       + " LABEL_DISCONNECTED=\"%{A1:networkmanager_dmenu &:} %{F${theme.colors.text.primary}}[not connected]%{F-}%{A}\""
       + " FORMAT_CONNECTED=\"%{A1:networkmanager_dmenu &:}%{F${theme.colors.text.secondary}}  <ramp-signal> <label-connected>%{F-}%{A}\""
-      + " TIME=\"%{A1:${calendarPopup}/bin/${calendarPopupName} &:}%H:%M%{A}\""
+      + " TIME=\"%{A1:${calendarPopup}/bin/${calendarPopupName} &:}%a %H:%M%{A}\""
       + " HEIGHT=\"${height}\""
       + " polybar top &";
   };

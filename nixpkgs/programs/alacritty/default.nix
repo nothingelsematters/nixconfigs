@@ -48,7 +48,7 @@ in
         italic:
           family: ${monoFont} Italic
 
-        size: 7
+        size: 6.8
         offset:
           x: 0
           y: 0
