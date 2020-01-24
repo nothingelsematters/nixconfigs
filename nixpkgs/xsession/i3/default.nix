@@ -221,7 +221,7 @@ rec {
           smartBorders = "on";
         };
 
-        fonts = [ "${theme.fonts.notification} 9.6" ];
+        fonts = [ "${theme.fonts.notification} 9" ];
 
         keybindings = {
           "${modifier}+Shift+q" = "kill";
@@ -296,8 +296,6 @@ rec {
 
         startup = [
           { command = "systemctl --user restart polybar";    always = true; notification = false; }
-          { command = "setxkbmap -layout us,ru";             always = true; notification = false; }
-          { command = "setxkbmap -option 'grp:caps_toggle'"; always = true; notification = false; }
           { command = "telegram-desktop & disown";           always = true; notification = true; }
           { command = "libinput-gestures & disown";          always = true; notification = true; }
           { command = "echo 0";                              always = true; notification = false; }
