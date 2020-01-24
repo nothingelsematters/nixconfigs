@@ -64,7 +64,7 @@ in
     '';
 
     script = "PATH=$PATH:${pkgs.i3}/bin:${pkgs.rofi}/bin:${pkgs.alacritty}/bin:${pkgs.htop}/bin:${pkgs.networkmanager_dmenu}/bin:${pkgs.bash}/bin"
-      + " LABEL_CHARGING=\" %{F${theme.colors.text.primary}}%percentage%%%{F-}\""
+      + " LABEL_CHARGING=\" %{F${theme.colors.text.primary}}%percentage%%%{F-}\""
       + " LABEL_MUTED=\" %{F${theme.colors.text.primary}}mute%{F-}\""
       + " LABEL_DISCONNECTED=\"%{A1:networkmanager_dmenu &:} %{F${theme.colors.text.primary}}[not connected]%{F-}%{A}\""
       + " FORMAT_CONNECTED=\"%{A1:networkmanager_dmenu &:}%{F${theme.colors.text.secondary}}  <ramp-signal> <label-connected>%{F-}%{A}\""
