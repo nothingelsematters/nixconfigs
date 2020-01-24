@@ -28,8 +28,8 @@ in
         @import "${pkgs.fetchFromGitHub {
           owner = "muckSponge";
           repo = "materialFox";
-          rev = "92e66339d449561138f52bb193a66303d8bbb5ce";
-          sha256 = "12ys44jv04jx1gyrscqry540w48qz8kdv8f01wrhc04qcg96l8b6";
+          rev = "f3d6ed009ef8e06bc91c799dc69471d0742f17f6";
+          sha256 = "0cc50c3q7nwcq3kag2rafchqndnnhpl6y4v7m62aiidnl4h5jhjw";
         } + "/chrome/userChrome.css"}"
         '';
 
