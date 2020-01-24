@@ -1,35 +1,50 @@
 {
-    "placements":
-        {
-            "widget-overflow-fixed-list": [],
-            "nav-bar":
-                [
-                    "back-button",
-                    "forward-button",
-                    "stop-reload-button",
-                    "customizableui-special-spring1",
-                    "urlbar-container",
-                    "customizableui-special-spring2",
-                    "downloads-button",
-                    "developer-button",
-                ],
-            "toolbar-menubar": ["menubar-items"],
-            "TabsToolbar":
-                [
-                    "tabbrowser-tabs",
-                    "new-tab-button",
-                    "alltabs-button"
-                ],
-            "PersonalToolbar": ["personal-bookmarks"]
-        },
-    "dirtyAreaCache":
-        [
-            "nav-bar",
-            "toolbar-menubar",
-            "TabsToolbar",
-            "PersonalToolbar",
-            "widget-overflow-fixed-list"
+    "placements": {
+        "widget-overflow-fixed-list": [],
+        "nav-bar": [
+            "back-button",
+            "forward-button",
+            "stop-reload-button",
+            "home-button",
+            "customizableui-special-spring1",
+            "urlbar-container",
+            "customizableui-special-spring2",
+            "customizableui-special-spring3",
+            "downloads-button"
         ],
+        "toolbar-menubar": [
+            "menubar-items"
+        ],
+        "TabsToolbar": [
+            "tabbrowser-tabs",
+            "new-tab-button",
+            "alltabs-button"
+        ],
+        "PersonalToolbar": [
+            "personal-bookmarks"
+        ]
+    },
+    "seen": [
+        "developer-button",
+        "enhancerforyoutube_maximerf_addons_mozilla_org-browser-action",
+        "_b3792611-d72c-4251-9a50-0f072f4f3e98_-browser-action",
+        "jid1-zadieub7xozojw_jetpack-browser-action",
+        "_a4c4eda4-fb84-4a84-b4a1-f7c1cbf2a1ad_-browser-action",
+        "_85860b32-02a8-431a-b2b1-40fbd64c9c69_-browser-action",
+        "_e7fefcf3-b39c-4f17-5215-ebfe120a7031_-browser-action",
+        "_a94d60a0-8408-4c53-8eec-cb349eb958b8_-browser-action",
+        "_5a87a431-47c5-4ccf-96dc-228c87d2d146_-browser-action",
+        "webide-button",
+        "adblockultimate_adblockultimate_net-browser-action",
+        "firefox_ghostery_com-browser-action"
+    ],
+    "dirtyAreaCache": [
+        "nav-bar",
+        "toolbar-menubar",
+        "TabsToolbar",
+        "PersonalToolbar",
+        "widget-overflow-fixed-list"
+    ],
     "currentVersion": 16,
-    "newElementCount": 7
+    "newElementCount": 9
 }
