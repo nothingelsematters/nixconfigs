@@ -1,14 +1,12 @@
 { pkgs, ...}:
 
-let
-  fonts = (import ../themes { inherit pkgs; }).fontPkgs;
-in
 with pkgs; {
-  home.packages =
-    fonts ++
-    [
+  home.packages = [
       git
       gitAndTools.diff-so-fancy
+
+      # temp
+      jetbrains-mono
 
       # editors
       atom

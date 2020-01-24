@@ -83,6 +83,29 @@
     '';
   };
 
+  fonts = {
+    fontconfig = {
+      enable = true;
+      
+      defaultFonts = {
+        monospace = [ "Jetbrains Mono" ];
+      };
+    };
+
+    fonts = with pkgs; [
+     ubuntu_font_family
+     font-awesome_4
+     font-awesome
+     noto-fonts
+     noto-fonts-cjk
+     noto-fonts-emoji
+     fira-code
+     fira-code-symbols
+     material-icons
+     comfortaa
+   ];
+ };
+
   virtualisation.docker.enable = true;
   networking.networkmanager.enable = true;
   nixpkgs.config.allowUnfree = true;
