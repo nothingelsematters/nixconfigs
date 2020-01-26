@@ -3,7 +3,7 @@
 {
   home.packages = [ pkgs.libinput-gestures ];
 
-  home.file.".config/libinput-gestures.conf".text =
+  xdg.configFile."libinput-gestures.conf".text =
     ''
     ############################################
     # SWIPE GESTURES:

@@ -15,7 +15,7 @@ with pkgs; {
       # languages related
       /* c++ */        gcc gdb cmake valgrind
       /* kotlin */     kotlin
-      /* java */       openjdk11 maven antlr4
+      /* java */       jdk12 maven antlr4
       /* haskell */    (ghc.withPackages (ps: with ps; [ tidal happy alex unordered-containers ]))
       /* python */     (python3.withPackages (ps: with ps; [
                           virtualenv pip numpy sklearn-deap scipy matplotlib pandas notebook
@@ -28,7 +28,6 @@ with pkgs; {
       docker docker_compose
 
       # utility packages
-      htop     # interactive process viewer
       gnumake  # control the generation of non-source files from sources
       binutils # tools for manipulating binaries (linker, assembler, etc.)
       xclip    # clipboard manipulations
@@ -40,7 +39,6 @@ with pkgs; {
       file     # determine file type
       most     # page text file
       fd       # find
-      fzf      # a command-line fuzzy finder
       jmtpfs   # a FUSE filesystem for MTP devices like Android phones
       wget     # download
 
@@ -51,9 +49,6 @@ with pkgs; {
 
       # messaging
       tdesktop
-
-      # browsing
-      firefox
 
       # document related
       libreoffice-unwrapped
@@ -67,7 +62,6 @@ with pkgs; {
       unrar   # utility for rar archives
 
       # graphics environment related
-      unclutter     # remove idle cursor image from screen
       inotify-tools # notifier
 
       # media

@@ -2,7 +2,7 @@
 
 {
   home.packages = [ pkgs.networkmanager_dmenu ];
-  home.file.".config/networkmanager-dmenu/config.ini".text =
+  xdg.configFile."networkmanager-dmenu/config.ini".text =
     ''
     [dmenu]
     dmenu_command = rofi -dmenu -no-show-icons -theme .config/rofi/networkmenu.rasi

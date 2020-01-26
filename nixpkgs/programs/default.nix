@@ -12,5 +12,6 @@
     ./rofi
     ./alacritty
     ./networkmanager-dmenu
+    ./htop
   ];
 }

@@ -1,24 +1,27 @@
-{...}:
+{ ... }:
 
+let
+  desktop = x: [ (x + ".desktop") ];
+  browser = desktop "firefox";
+in
 {
-  xdg.configFile."mimeapps.list".text = ''
-    [Default Applications]
+  xdg.mimeApps.defaultApplications = {
     # Doc viewer
-    application/pdf=evince.desktop;
-    image/vnd.djvu=evince.desktop;
+    "application/pdf" = desktop "evince";
+    "image/vnd.djvu" = desktop "evince";
     # Browser
-    application/x-extension-htm=firefox.desktop;
-    application/x-extension-html=firefox.desktop;
-    application/x-extension-shtml=firefox.desktop;
-    application/xhtml+xml=firefox.desktop;
-    application/x-extension-xhtml=firefox.desktop;
-    application/x-extension-xht=firefox.desktop;
-    x-scheme-handler/http=firefox.desktop;
-    x-scheme-handler/https=firefox.desktop;
+    "application/x-extension-htm" = browser;
+    "application/x-extension-html" = browser;
+    "application/x-extension-shtml" = browser;
+    "application/xhtml+xml" = browser;
+    "application/x-extension-xhtml" = browser;
+    "application/x-extension-xht" = browser;
+    "x-scheme-handler/http" = browser;
+    "x-scheme-handler/https" = browser;
     # Pic viewer
-    image/png=feh.desktop;
-    image/jpeg=feh.desktop;
+    "image/png" = desktop "feh";
+    "image/jpeg" = desktop "feh";
     # Text viewer
-    text/plain=atom.desktop;
-    '';
+    "text/plain" = desktop "atom";
+  };
 }
