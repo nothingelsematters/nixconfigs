@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  theme = import ../../themes { inherit pkgs; };
+  theme = import ../../theme { inherit pkgs; };
   cfg = builtins.replaceStrings
     [ "editor:" ]
     [ "editor:\n    fontFamily: \"${theme.fonts.mono}\"" ]

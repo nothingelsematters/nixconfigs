@@ -2,8 +2,8 @@
 
 let
   modifier = "Mod4";
-  theme    = import ../../themes { inherit pkgs; };
-  mkOpaque = import ../../themes/lib/mkOpaque.nix;
+  theme    = import ../../theme { inherit pkgs; };
+  mkOpaque = import ../../theme/lib/mkOpaque.nix;
   lock     = import ../../services/i3lock-fancy { inherit config; inherit pkgs; };
 
   graphical_resize = pkgs.writeShellScriptBin "resize.sh" ''
@@ -154,11 +154,7 @@ rec {
   };
 
   xsession = {
-    pointerCursor = {
-      package = pkgs.paper-icon-theme;
-      name = "Paper";
-      size = 15;
-    };
+    pointerCursor = theme.icons;
 
     windowManager.i3 ={
       enable = true;
@@ -295,10 +291,10 @@ rec {
         window.border = 0;
 
         startup = [
-          { command = "systemctl --user restart polybar";    always = true; notification = false; }
-          { command = "telegram-desktop & disown";           always = true; notification = true; }
-          { command = "libinput-gestures & disown";          always = true; notification = true; }
-          { command = "echo 0";                              always = true; notification = false; }
+          { command = "systemctl --user restart polybar"; always = true; notification = false; }
+          { command = "telegram-desktop & disown";        always = true; notification = false; }
+          { command = "libinput-gestures & disown";       always = true; notification = false; }
+          { command = "echo 0";                           always = true; notification = false; }
         ];
       };
     };

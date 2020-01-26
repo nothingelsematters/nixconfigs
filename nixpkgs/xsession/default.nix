@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  theme = import ../themes { inherit pkgs; };
+  theme = import ../theme { inherit pkgs; };
 in
 {
   imports = [

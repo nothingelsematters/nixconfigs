@@ -1,16 +1,12 @@
 { pkgs, ...}:
 
 let
-  theme = import ../../themes { inherit pkgs; };
+  theme = import ../../theme { inherit pkgs; };
 in
 {
   services.dunst = {
     enable = true;
-
-    iconTheme = {
-      name = "Paper";
-      package = pkgs.paper-icon-theme;
-    };
+    iconTheme = theme.notification-icons;
 
     settings = {
       global = {
@@ -21,7 +17,7 @@ in
         markup = "full";
         transparency = 12;
 
-        geometry = "400x5-7+30";
+        geometry = "400x5-5+30";
         shrink = false;
         indicate_hidden = "yes";
         padding = 10;

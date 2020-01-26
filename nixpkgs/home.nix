@@ -1,7 +1,7 @@
 { lib, pkgs, ... }:
 
 let
-  gtkFont = (import ./themes { inherit pkgs; }).fonts.gtk;
+  theme = import ./theme { inherit pkgs; };
 in
 {
   imports = [
@@ -26,26 +26,19 @@ in
 
   gtk = {
     enable = true;
-    iconTheme = {
-      name = "Paper";
-      package = pkgs.paper-icon-theme;
-    };
-    theme = {
-      name = "Adapta";
-      package = pkgs.adapta-gtk-theme;
-    };
-    font = {
-      name = "${gtkFont.name} ${gtkFont.size}";
-      package = gtkFont.package;
-    };
+    iconTheme = theme.icons;
+    theme = theme.gtk;
+    font = theme.fonts.gtk;
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = true;
     };
   };
 
   programs = {
-    home-manager.enable = true;
-    home-manager.path = https://github.com/rycee/home-manager/archive/master.tar.gz;
+    home-manager = {
+      enable = true;
+      path = https://github.com/rycee/home-manager/archive/master.tar.gz;
+    };
   };
 
   fonts.fontconfig.enable = true;

@@ -1,8 +1,8 @@
 { config, pkgs, lib, ... }:
 
 let
-  theme = import ../../themes { inherit pkgs; };
-  mkINI = import ../../themes/lib/mkINI.nix;
+  theme = import ../../theme { inherit pkgs; };
+  mkINI = import ../../theme/lib/mkINI.nix;
   cfg = builtins.readFile ./config.ini;
   height = "24";
 

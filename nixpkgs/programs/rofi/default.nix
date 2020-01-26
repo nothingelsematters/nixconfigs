@@ -1,7 +1,7 @@
 { config, pkgs, ...}:
 
 let
-  theme = import ../../themes { inherit pkgs; };
+  theme = import ../../theme { inherit pkgs; };
   appsmenu = ".config/rofi/appsmenu.rasi";
   networkmenu = ".config/rofi/networkmenu.rasi";
 
@@ -44,8 +44,9 @@ in
     fullscreen = true;
     scrollbar = false;
     theme = appsmenu;
+    terminal = "alacritty";
 
-    font = "Comfortaa 10";
+    font = "${theme.fonts.notification} 10";
     extraConfig =
       ''
       rofi.modi:                drun

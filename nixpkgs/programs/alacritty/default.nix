@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  theme = import ../../themes { inherit pkgs; };
+  theme = import ../../theme { inherit pkgs; };
   zeroX = color: "0x" + builtins.substring 1 6 color;
   monoFont = theme.fonts.mono;
 in
