@@ -17,18 +17,18 @@
       plugins = [ "git" "sudo" "python" "pip" "git-extras" "catimg" "colored-man-pages" ];
     };
 
-    plugins = [
+    plugins = with pkgs; [
       {
-        # ga  - Interactive git add selector
-        # glo - Interactive git log viewer
-        # gi  - Interactive .gitignore generator
-        # gd  - Interactive git diff viewer
-        # gcf - Interactive git checkout <file> selector
-        # gss - Interactive git stash viewer
-        # gclean - Interactive git clean selector
-
+        name = "you-should-use";
+        src = zsh-you-should-use + "/share/zsh/plugins/you-should-use";
+      }
+      {
+        name = "nix-zsh-completions";
+        src = nix-zsh-completions + "/share/zsh/plugins/nix";
+      }
+      {
         name = "forgit";
-        src = pkgs.fetchFromGitHub {
+        src = fetchFromGitHub {
           owner = "wfxr";
           repo = "forgit";
           rev = "1.1.0";
@@ -36,12 +36,12 @@
         };
       }
       {
-        name = "diff-so-fancy";
-        src = pkgs.fetchFromGitHub {
-          owner = "so-fancy";
-          repo = "diff-so-fancy";
-          rev = "v1.2.5";
-          sha256 = "1jqq7zd75aypxchrq0vjcw5gyn3wyjqy6w79mq2lzky8m6mqn8vr";
+        name = "fast-syntax-highlighting";
+        src = fetchFromGitHub {
+          owner = "zdharma";
+          repo = "fast-syntax-highlighting";
+          rev = "v1.55";
+          sha256 = "0h7f27gz586xxw7cc0wyiv3bx0x3qih2wwh05ad85bh2h834ar8d";
         };
       }
     ];
@@ -54,6 +54,7 @@
 
       homed = "nano ~/.config/nixpkgs/home.nix";
       confed = "sudo nano /etc/nixos/configuration.nix";
+      confs = "z conf; atom .";
 
       l = "exa -lh --git";
       ll = "exa -lhT --git -L 2";
@@ -63,7 +64,9 @@
       zz = "z -I";
       bd = "z -b";
 
-      gl = "git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold yellow)%<|(27)%ar%C(reset) %C(bold green)%<|(70)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold red)%d%C(reset)%n' --all --stat";
+      gl = "git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset)"
+        + " - %C(bold yellow)%<|(27)%ar%C(reset) %C(bold green)%<|(70)%s%C(reset) %C(dim white)-"
+        + " %an%C(reset)%C(bold red)%d%C(reset)%n' --all --stat";
       gs = "git status -s";
       gmc = "gitmoji -c";
 
