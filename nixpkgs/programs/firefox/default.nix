@@ -2,20 +2,52 @@
 
 let
   theme = import ../../theme { inherit pkgs; };
+  mkCss = import ../../theme/lib/mkCss.nix;
 
+  lines = with builtins; file: filter isString (split "\n" (readFile file));
   readSet = with builtins; file:
     let
       matcher = match "[[:space:]]*\"(.*)\"[[:space:]]*=[[:space:]]*(.*);.*";
-      lines = filter isString (split "\n" (readFile file));
-      settings = filter (x: isNull x != true && length x == 2) (map matcher lines);
+      settings = filter (x: isNull x != true && length x == 2) (map matcher (lines file));
       mkSet = list: {
         name = elemAt list 0;
         value = fromJSON (elemAt list 1);
       };
     in
       listToAttrs (map mkSet settings);
+
+  patchedVariables = ''
+    :root ${mkCss theme.colors}
+    ${builtins.readFile ./variables.css}
+    '';
+
+  patchCss = with builtins; let
+    patchImports = let
+      importLine = "@import";
+      isImport = x: substring 0 (stringLength importLine) x == importLine;
+      imports = x: concatLists (map (match (importLine + " \"(.*)\";")) (filter isImport (lines x)));
+      patching = file: x: if x == "global/variables.css" then patchedVariables else patchCss (dirOf file + ("/" + x));
+    in file: concatStringsSep "\n" (map (patching file) (imports file));
+
+    patchUrls = with builtins; file:
+      let
+        fileStr = readFile file;
+        urls = concatLists (filter isList (split "url\\(([^\\.\\)]+\\.svg)\\)" fileStr));
+        replacement = map (x: toString (dirOf file + ("/" + x))) urls;
+      in replaceStrings urls replacement fileStr;
+
+  in file: patchUrls file + "\n" + patchImports file;
+
+  patchedUserChrome = patchCss (
+    pkgs.fetchFromGitHub {
+      owner = "muckSponge";
+      repo = "materialFox";
+      rev = "92e66339d449561138f52bb193a66303d8bbb5ce";
+      sha256 = "12ys44jv04jx1gyrscqry540w48qz8kdv8f01wrhc04qcg96l8b6";
+    } + "/chrome/userChrome.css");
 in
 {
+  home.file.name.text = mkCss theme.colors;
   programs.firefox = {
     enable = true;
     profiles = {
@@ -23,16 +55,7 @@ in
       default = {
         id = 0;
         isDefault = true;
-
-        userChrome = ''
-        @import "${pkgs.fetchFromGitHub {
-          owner = "muckSponge";
-          repo = "materialFox";
-          rev = "f3d6ed009ef8e06bc91c799dc69471d0742f17f6";
-          sha256 = "0cc50c3q7nwcq3kag2rafchqndnnhpl6y4v7m62aiidnl4h5jhjw";
-        } + "/chrome/userChrome.css"}"
-        '';
-
+        userChrome = patchedUserChrome;
         settings = readSet ./settings.conf // {
           "font.name.monospace.x-western" = theme.fonts.mono;
           "browser.uiCustomization.state" = builtins.readFile ./uiCustomization.json;
