@@ -154,7 +154,7 @@ rec {
   };
 
   xsession = {
-    pointerCursor = theme.icons;
+    pointerCursor = theme.cursor;
 
     windowManager.i3 ={
       enable = true;
