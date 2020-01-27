@@ -1,20 +1,3 @@
-{
-    --theme-background-accent: #eceff4;
---theme-background-disabled: #434c5e;
---theme-background-inverted: #c5ccd2;
---theme-background-primary: #222433;
---theme-background-secondary: #383851;
---theme-background-selection: #383851;
---theme-background-strong: #88c0d0;
---theme-background-urgent: #bf616a;
---theme-text-disabled: #4c566a;
---theme-text-inverted: #222433;
---theme-text-primary: #c5ccd2;
---theme-text-secondary: #1fa789;
---theme-text-selection: #c5ccd2;
---theme-text-urgent: #bf616a;
-  }
-
 /* dark mode */
 :root[style*="--lwt-accent-color:rgb(12, 12, 13);"],
 :root[privatebrowsingmode=temporary]
@@ -58,11 +41,11 @@
 	--panel-disabled-color: hsla(0, 0%, 100%, .5) !important;
 
 	/* popup_border */
-	--arrowpanel-border-color: #555 !important;
-	--autocomplete-popup-border-color: #555 !important;
+	--arrowpanel-border-color: var(--theme-background-secondary) !important;
+	--autocomplete-popup-border-color: var(--theme-background-secondary) !important;
 
 	/* popup_highlight */
-	--autocomplete-popup-highlight-background: #4c4f52 !important;
+	--autocomplete-popup-highlight-background: var(--theme-background-secondary) !important;
 
 	/* popup_highlight_text */
 	--autocomplete-popup-highlight-color: #fff !important;
