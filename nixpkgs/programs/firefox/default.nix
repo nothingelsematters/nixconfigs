@@ -47,11 +47,10 @@ let
     } + "/chrome/userChrome.css");
 in
 {
-  home.file.name.text = mkCss theme.colors;
   programs.firefox = {
     enable = true;
     profiles = {
-
+      
       default = {
         id = 0;
         isDefault = true;
