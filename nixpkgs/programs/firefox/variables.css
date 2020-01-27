@@ -2,148 +2,148 @@
 :root[style*="--lwt-accent-color:rgb(12, 12, 13);"],
 :root[privatebrowsingmode=temporary]
 {
-	/* accentcolor */
-	--lwt-accent-color: var(--theme-background-primary) !important;
+    /* accentcolor */
+    --lwt-accent-color: var(--theme-background-primary) !important;
 
-	/* textcolor */
-	--lwt-text-color: var(--theme-text-primary) !important;
+    /* textcolor */
+    --lwt-text-color: var(--theme-text-primary) !important;
 
-	/* toolbar */
-	--toolbar-bgcolor: var(--theme-background-secondary) !important;
+    /* toolbar */
+    --toolbar-bgcolor: var(--theme-background-secondary) !important;
 
-	/* toolbar_text */
-	--toolbar-color: var(--theme-text-primary) !important;
+    /* toolbar_text */
+    --toolbar-color: var(--theme-text-primary) !important;
 
-	/* toolbar_bottom_separator */
-	--toolbox-border-bottom-color: var(--theme-background-primary) !important; /* legacy */
-	--chrome-content-separator-color: var(--theme-background-primary) !important;
+    /* toolbar_bottom_separator */
+    --toolbox-border-bottom-color: var(--theme-background-primary) !important; /* legacy */
+    --chrome-content-separator-color: var(--theme-background-primary) !important;
 
-	/* icons */
-	--lwt-toolbarbutton-icon-fill: #fff !important;
+    /* icons */
+    --lwt-toolbarbutton-icon-fill: #fff !important;
 
-	/* icons_attention */
-	--lwt-toolbarbutton-icon-fill-attention: var(--theme-text-secondary) !important;
+    /* icons_attention */
+    --lwt-toolbarbutton-icon-fill-attention: var(--theme-text-secondary) !important;
 
-	/* button_background_hover */
-	--lwt-toolbarbutton-hover-background: var(--theme-background-secondary) !important;
+    /* button_background_hover */
+    --lwt-toolbarbutton-hover-background: var(--theme-background-secondary) !important;
 
-	/* button_background_active */
-	--lwt-toolbarbutton-active-background: var(--theme-background-disabled) !important;
+    /* button_background_active */
+    --lwt-toolbarbutton-active-background: var(--theme-background-disabled) !important;
 
-	--lwt-toolbar-field-color: #fff !important;
+    --lwt-toolbar-field-color: #fff !important;
 
-	/* popup */
-	--arrowpanel-background: var(--theme-background-secondary) !important;
+    /* popup */
+    --arrowpanel-background: var(--theme-background-secondary) !important;
 
-	/* popup_text */
-	--arrowpanel-color: #fff !important;
-	--autocomplete-popup-color: #fff !important;
-	--panel-disabled-color: hsla(0, 0%, 100%, .5) !important;
+    /* popup_text */
+    --arrowpanel-color: #fff !important;
+    --autocomplete-popup-color: #fff !important;
+    --panel-disabled-color: hsla(0, 0%, 100%, .5) !important;
 
-	/* popup_border */
-	--arrowpanel-border-color: var(--theme-background-secondary) !important;
-	--autocomplete-popup-border-color: var(--theme-background-secondary) !important;
+    /* popup_border */
+    --arrowpanel-border-color: var(--theme-background-secondary) !important;
+    --autocomplete-popup-border-color: var(--theme-background-secondary) !important;
 
-	/* popup_highlight */
-	--autocomplete-popup-highlight-background: var(--theme-background-secondary) !important;
+    /* popup_highlight */
+    --autocomplete-popup-highlight-background: var(--theme-background-secondary) !important;
 
-	/* popup_highlight_text */
-	--autocomplete-popup-highlight-color: #fff !important;
+    /* popup_highlight_text */
+    --autocomplete-popup-highlight-color: #fff !important;
 }
 
 :-moz-any(#sidebar-box, #sidebar)[style*="--sidebar-background-color:rgb(56, 56, 61);"]
 {
-	/* sidebar */
-	--sidebar-background-color: var(--theme-background-secondary) !important;
+    /* sidebar */
+    --sidebar-background-color: var(--theme-background-secondary) !important;
 
-	/* sidebar_text */
-	--sidebar-text-color: var(--theme-text-primary) !important;
+    /* sidebar_text */
+    --sidebar-text-color: var(--theme-text-primary) !important;
 }
 
 :-moz-any(.sidebar-panel, body)[style*="--lwt-sidebar-background-color:rgb(56, 56, 61);"]
 {
-	/* sidebar */
-	--lwt-sidebar-background-color: var(--theme-background-secondary) !important;
+    /* sidebar */
+    --lwt-sidebar-background-color: var(--theme-background-secondary) !important;
 
-	/* sidebar_text */
-	--lwt-sidebar-text-color: var(--theme-text-primary) !important;
+    /* sidebar_text */
+    --lwt-sidebar-text-color: var(--theme-text-primary) !important;
 }
 
 :root
 {
     --ease-in: cubic-bezier(.4, 0, 1, 1);
-	--ease-out: cubic-bezier(0, 0, .2, 1);
-	--ease-basic: linear;
+    --ease-out: cubic-bezier(0, 0, .2, 1);
+    --ease-basic: linear;
 
-	--button-size: 32px; /* is this used? */
-	--icon-size: 24px; /* is this used? */
+    --button-size: 32px; /* is this used? */
+    --icon-size: 24px; /* is this used? */
 
-	--downloads-item-height: 48px !important;
+    --downloads-item-height: 48px !important;
 
-	--toolbar-non-lwt-bgcolor: var(--toolbar-bgcolor) !important;
-	--toolbar-non-lwt-textcolor: var(--toolbar-color) !important;
+    --toolbar-non-lwt-bgcolor: var(--toolbar-bgcolor) !important;
+    --toolbar-non-lwt-textcolor: var(--toolbar-color) !important;
 }
 
 #titlebar,
 #tabbrowser-tabs
 {
- 	--tab-min-height: 34px !important;
+     --tab-min-height: 34px !important;
 }
 
 @supports -moz-bool-pref("materialFox.reduceTabOverflow")
 {
-	#tabbrowser-tabs
-	{
-		--tab-min-width: 32px !important;
-	}
+    #tabbrowser-tabs
+    {
+        --tab-min-width: 32px !important;
+    }
 }
 
 :root
 {
-	--tab-separator-opacity: .35 !important;
+    --tab-separator-opacity: .35 !important;
 
-	--toolbar-field-background-color: hsl(200, 12%, 95%) !important;
-	--toolbar-field-hover-background-color: hsl(216, 12%, 92%) !important;
-	--toolbar-field-focus-background-color: hsl(0, 0%, 100%) !important;
+    --toolbar-field-background-color: hsl(200, 12%, 95%) !important;
+    --toolbar-field-hover-background-color: hsl(216, 12%, 92%) !important;
+    --toolbar-field-focus-background-color: hsl(0, 0%, 100%) !important;
 }
 
 :root:-moz-any(:-moz-lwtheme-brighttext, [privatebrowsingmode=temporary])
 {
-	--toolbar-field-background-color: var(--theme-background-primary) !important;
-	--toolbar-field-hover-background-color: var(--theme-background-primary) !important;
-	--toolbar-field-focus-background-color: var(--theme-background-disabled) !important;
+    --toolbar-field-background-color: var(--theme-background-primary) !important;
+    --toolbar-field-hover-background-color: var(--theme-background-primary) !important;
+    --toolbar-field-focus-background-color: var(--theme-background-disabled) !important;
 }
 
 :root:not(:-moz-lwtheme):not([privatebrowsingmode=temporary])
 {
-	--toolbar-bgcolor: hsl(0, 0%, 100%) !important;
-	--toolbar-color: hsl(213, 5%, 39%) !important;
-	--toolbox-border-bottom-color: hsl(0, 0%, 70%) !important;
+    --toolbar-bgcolor: hsl(0, 0%, 100%) !important;
+    --toolbar-color: hsl(213, 5%, 39%) !important;
+    --toolbox-border-bottom-color: hsl(0, 0%, 70%) !important;
 }
 
 @media (-moz-mac-yosemite-theme)
 {
-	:root[extradragspace]
-	{
-		--space-above-tabbar: 8px !important;
-	}
+    :root[extradragspace]
+    {
+        --space-above-tabbar: 8px !important;
+    }
 }
 
 /* Ubuntu */
 @media (-moz-gtk-csd-available)
 {
-	:root:not(:-moz-lwtheme):not([privatebrowsingmode=temporary])
-	{
-		--toolbar-bgcolor: -moz-dialog !important;
-		--toolbar-color: -moz-dialogtext !important;
-	}
+    :root:not(:-moz-lwtheme):not([privatebrowsingmode=temporary])
+    {
+        --toolbar-bgcolor: -moz-dialog !important;
+        --toolbar-color: -moz-dialogtext !important;
+    }
 }
 
 :root:-moz-lwtheme-darktext,
 :root toolbar:not([brighttext]),
 .tabbrowser-tab[visuallyselected]
 {
-	--toolbarbutton-hover-background: var(--lwt-toolbarbutton-hover-background, hsla(0, 0%, 0%, .07)) !important;
+    --toolbarbutton-hover-background: var(--lwt-toolbarbutton-hover-background, hsla(0, 0%, 0%, .07)) !important;
     --toolbarbutton-active-background: var(--lwt-toolbarbutton-active-background, hsla(0, 0%, 0%, .11)) !important;
 }
 
@@ -158,12 +158,12 @@
 /* special case for urlbar buttons */
 :-moz-any(#urlbar, #searchbar)
 {
-	--toolbarbutton-hover-background: hsl(210, 5%, 85%) !important;
-	--toolbarbutton-active-background: hsl(210, 4%, 80%) !important;
+    --toolbarbutton-hover-background: hsl(210, 5%, 85%) !important;
+    --toolbarbutton-active-background: hsl(210, 4%, 80%) !important;
 }
 
 :root:-moz-any([privatebrowsingmode=temporary], :-moz-lwtheme-brighttext) :-moz-any(#urlbar, #searchbar)
 {
-	--toolbarbutton-hover-background: hsl(206, 5%, 26%) !important;
-	--toolbarbutton-active-background: hsl(210, 4%, 31%) !important;
+    --toolbarbutton-hover-background: hsl(206, 5%, 26%) !important;
+    --toolbarbutton-active-background: hsl(210, 4%, 31%) !important;
 }
