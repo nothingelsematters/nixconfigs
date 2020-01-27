@@ -57,7 +57,7 @@ in
       rofi.kb-cancel:           Menu,Escape,alt+r
       rofi.show-icons:          true
       rofi.kb-row-tab:          shift+Tab
-      rofi.icon-theme:          Paper
+      rofi.icon-theme:          ${theme.icons.name}
       rofi.disable-history:     false
       rofi.display-drun:        apps
       rofi.columns:             2

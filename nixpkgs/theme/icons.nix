@@ -2,7 +2,7 @@
 
 {
   icons = {
-    name = "Papirus-Dark";
+    name = "Papirus";
     package = pkgs.papirus-icon-theme;
   };
   notification-icons = {
