@@ -1,12 +1,13 @@
 atom-material-ui
-autocomplete-python
 bracket-colorizer
 file-icons
 haskell-scry
+highlight-colors
 highlight-selected
 language-antlr4
 language-cmake
 language-haskell
+language-ini
 language-kotlin
 language-markdown
 language-ocaml
