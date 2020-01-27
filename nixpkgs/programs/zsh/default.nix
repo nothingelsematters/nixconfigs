@@ -19,12 +19,21 @@
 
     plugins = with pkgs; [
       {
+        name = "nix-zsh-completions";
+        src = nix-zsh-completions + "/share/zsh/plugins/nix";
+      }
+      {
         name = "you-should-use";
         src = zsh-you-should-use + "/share/zsh/plugins/you-should-use";
       }
       {
-        name = "nix-zsh-completions";
-        src = nix-zsh-completions + "/share/zsh/plugins/nix";
+        name = "fzf-git";
+        src = fetchFromGitHub {
+          owner = "hschne";
+          repo = "fzf-git";
+          rev = "bb1febcac3af711e09150849157e0726056acef9";
+          sha256 = "0rva5n58pa5awnz21vmrvdjar7va9jz2802y8wd553m0fa2nv4xf";
+        };
       }
       {
         name = "forgit";
@@ -98,7 +107,7 @@
       if [ -n "$name" ]; then
         PROMPT="[$name] $PROMPT";
       fi
-      
+
       if [ "$NIX_NAME" ]; then
           export PROMPT="[$NIX_NAME] $PROMPT";
       fi
