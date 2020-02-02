@@ -5,10 +5,8 @@
             "back-button",
             "forward-button",
             "stop-reload-button",
-            "customizableui-special-spring1",
             "urlbar-container",
-            "customizableui-special-spring2",
-            "customizableui-special-spring3",
+            "personal-bookmarks",
             "downloads-button"
         ],
         "toolbar-menubar": [
@@ -19,9 +17,7 @@
             "new-tab-button",
             "alltabs-button"
         ],
-        "PersonalToolbar": [
-            "personal-bookmarks"
-        ]
+        "PersonalToolbar": []
     },
     "seen": [
         "developer-button",
@@ -45,5 +41,5 @@
         "widget-overflow-fixed-list"
     ],
     "currentVersion": 16,
-    "newElementCount": 9
+    "newElementCount": 16
 }

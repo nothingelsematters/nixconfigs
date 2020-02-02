@@ -48,6 +48,8 @@ let
     '';
 in
 {
+  home.file.".mozilla/firefox/default/chrome/userContent.css".text = withTheme (builtins.readFile ./userContent.css);
+
   programs.firefox = {
     enable = true;
     profiles = {
@@ -59,6 +61,7 @@ in
         settings = readSet ./settings.conf // {
           "font.name.monospace.x-western" = theme.fonts.mono;
           "browser.uiCustomization.state" = builtins.readFile ./uiCustomization.json;
+          "ui.systemUsesDarkTheme" = if theme.isDark then 1 else 0;
         };
       };
     };
