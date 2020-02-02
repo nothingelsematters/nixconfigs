@@ -44,7 +44,7 @@ let
         rev = "f3d6ed009ef8e06bc91c799dc69471d0742f17f6";
         sha256 = "0cc50c3q7nwcq3kag2rafchqndnnhpl6y4v7m62aiidnl4h5jhjw";
       } + "/chrome/userChrome.css")}
-    ${builtins.readFile ./diffs.css}
+    ${builtins.readFile ./overrides.css}
     '';
 in
 {
