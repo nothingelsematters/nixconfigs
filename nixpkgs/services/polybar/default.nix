@@ -4,7 +4,8 @@ let
   theme = import ../../theme { inherit pkgs; };
   mkINI = import ../../theme/lib/mkINI.nix;
   cfg = builtins.readFile ./config.ini;
-  height = "24";
+  height = "20";
+  bin = x: builtins.concatStringsSep ":" (builtins.map (y: y + "/bin") x);
 
   calendarPopupName = "calendar-popup.sh";
   calendarPopup = pkgs.writeShellScriptBin calendarPopupName ''
@@ -16,7 +17,7 @@ let
     BAR_HEIGHT=$((${height} + 8))
     BORDER_SIZE=0
     YAD_WIDTH=222
-    YAD_HEIGHT=193
+    YAD_HEIGHT=150
 
     if [ "$($XDOTOOL getwindowfocus getwindowname)" = "yad-calendar" ]; then
         exit 0
@@ -55,21 +56,21 @@ in
       i3GapsSupport = true;
       alsaSupport = true;
     };
+    script = with pkgs; "PATH=$PATH:${bin [ i3 rofi alacritty htop networkmanager_dmenu bash ]} polybar top &";
 
     extraConfig = ''
       ${mkINI theme.colors}
-      [fonts]
-      notification = ${theme.fonts.notification}:pixelsize=9;3
+
+      [tricks]
+      font-notification = ${theme.fonts.notification}:pixelsize=9;1
+      charging =  %{F${theme.colors.text.primary}}%percentage%%%{F-}
+      muted =  %{F${theme.colors.text.primary}}mute%{F-}
+      disconnected = %{A1:networkmanager_dmenu &:}  %{A}
+      connected = %{A1:networkmanager_dmenu &:}%{F${theme.colors.text.secondary}} <ramp-signal> <label-connected>%{F-}%{A}
+      time = %{A1:${calendarPopup}/bin/${calendarPopupName} &:}%a %H:%M%{A}
+      height = ${height}
+
       ${cfg}
     '';
-
-    script = "PATH=$PATH:${pkgs.i3}/bin:${pkgs.rofi}/bin:${pkgs.alacritty}/bin:${pkgs.htop}/bin:${pkgs.networkmanager_dmenu}/bin:${pkgs.bash}/bin"
-      + " LABEL_CHARGING=\" %{F${theme.colors.text.primary}}%percentage%%%{F-}\""
-      + " LABEL_MUTED=\" %{F${theme.colors.text.primary}}mute%{F-}\""
-      + " LABEL_DISCONNECTED=\"%{A1:networkmanager_dmenu &:} %{F${theme.colors.text.primary}}[not connected]%{F-}%{A}\""
-      + " FORMAT_CONNECTED=\"%{A1:networkmanager_dmenu &:}%{F${theme.colors.text.secondary}}  <ramp-signal> <label-connected>%{F-}%{A}\""
-      + " TIME=\"%{A1:${calendarPopup}/bin/${calendarPopupName} &:}%a %H:%M%{A}\""
-      + " HEIGHT=\"${height}\""
-      + " polybar top &";
   };
 }
