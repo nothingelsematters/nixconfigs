@@ -86,9 +86,10 @@
   fonts = {
     fontconfig = {
       enable = true;
-      
+
       defaultFonts = {
         monospace = [ "Jetbrains Mono" ];
+        emoji = [ "Twitter Color Emoji" "Noto Color Emoji" ];
       };
     };
 
@@ -99,6 +100,7 @@
      noto-fonts
      noto-fonts-cjk
      noto-fonts-emoji
+     twitter-color-emoji
      fira-code
      fira-code-symbols
      material-icons
