@@ -3,19 +3,8 @@
 let
   theme = import ../../theme { inherit pkgs; };
   mkCss = import ../../theme/lib/mkCss.nix;
+  settings = import ./settings.nix;
   withTheme = x: ":root ${mkCss theme.colors}\n" + x;
-
-  lines = with builtins; file: filter isString (split "\n" (readFile file));
-  readSet = with builtins; file:
-    let
-      matcher = match "[[:space:]]*\"(.*)\"[[:space:]]*=[[:space:]]*(.*);.*";
-      settings = filter (x: !(isNull x) && length x == 2) (map matcher (lines file));
-      mkSet = list: {
-        name = elemAt list 0;
-        value = fromJSON (elemAt list 1);
-      };
-    in
-      listToAttrs (map mkSet settings);
 
   materialFox = pkgs.fetchFromGitHub {
     owner = "muckSponge";
@@ -42,7 +31,7 @@ in
         id = 0;
         isDefault = true;
         userChrome = patchedUserChrome;
-        settings = readSet ./settings.conf // {
+        settings = settings // {
           "font.name.monospace.x-western" = theme.fonts.mono;
           "browser.uiCustomization.state" = builtins.readFile ./uiCustomization.json;
           "ui.systemUsesDarkTheme" = if theme.isDark then 1 else 0;
