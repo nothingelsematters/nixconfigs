@@ -16,7 +16,7 @@
       primary        = "#c5ccd2";
       secondary      = "#1fa789";
       disabled       = "#4c566a";
-      urgent         = "#bf616a";
+      urgent         = background.urgent;
       inverted       = background.primary;
       selection      = primary;
     };
