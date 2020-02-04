@@ -110,13 +110,9 @@ in
       connected = %{A1:networkmanager_dmenu &:}%{F${theme.colors.text.secondary}} <ramp-signal> <label-connected>%{F-}%{A}
       time = %{A1:${calendarPopup}/bin/${calendarPopupName} &:}%a %H:%M%{A}
       height = ${height}
+      i3w-exec = ${python}/bin/python3 ${modulePath}
 
       ${cfg}
-
-      [module/i3-windows]
-      type = custom/script
-      exec = ${python}/bin/python3 ${modulePath}
-      tail = true
     '';
   };
 }
