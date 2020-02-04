@@ -3,6 +3,19 @@ import i3ipc
 import re
 import pickle
 
+###########
+# POLYBAR #
+###########
+
+def color(color, str):
+    return '%%{F%s}%s%%{F-}' % (color, str)
+
+def font(f, str):
+    return '%%{T%s}%s%%{T-}' % (f, str)
+
+def action(act, str):
+    return '%%{A1:%s:}%s%%{A-}' % (act, str)
+
 #################
 # ICON RESOLVER #
 #################
@@ -96,11 +109,11 @@ def render_apps(i3):
     for apps in ws:
         out.append([])
         if len(apps) == 0:
-            out[-1].append('%%{F%s}%s%%{F-}' % (focused, empty))
+            out[-1].append(color(focused, empty))
 
         for app in apps:
             wf = any(list(map(lambda x: x.focused, apps)))
-            output = '%%{F%s}%s%%{F-}' % (wfocused if wf else unfocused, format_entry(app))
+            output = color(wfocused if wf else unfocused, format_entry(app))
             out[-1].append(output)
 
     out = '  |  '.join('   '.join(i) for i in out)
@@ -109,24 +122,22 @@ def render_apps(i3):
 
 def format_entry(app):
     title = make_title(app)
-    form = '%%{F' + focused + '}%s%%{F-}' if app.focused else\
-        '%%{F' + urgent + '}%s%%{F-}' if app.urgent else\
-        '%s'
-
-    return form % title
+    c = focused if app.focused else (urgent if app.urgent else None)
+    return color(c, title) if c is not None else title
 
 
 def make_title(app):
-    return '%%{A1:%s %s:}%s%%{A-}' % (COMMAND, app.id, get_prefix(app))
-
-
-def get_prefix(app):
     icon = icon_resolver.resolve({
         'class': app.window_class,
         'name': app.name,
     })
 
-    return ('%%{T%s}%s%%{T-}' % (ICON_FONT, icon))
+    tg = "Telegram ("
+    name = app.name
+    if name[:len(tg)] == tg:
+        icon = color(urgent, "%s%%{T-}%s%%{T%s}" % (icon, font(0, ": %s" % name[len(tg):len(name)-1]), ICON_FONT))
+
+    return action("%s %s" % (COMMAND, app.id), font(ICON_FONT, icon))
 
 
 main()
