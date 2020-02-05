@@ -67,8 +67,7 @@ rec {
         icon="preferences-system-brightness-lock"
         brightness=$(get_brightness)
         bar=$($SEQ -s "─" 0 $((brightness / 180)) | $SED 's/[0-9]//g')
-        nl=$'\n'
-        $DUNSTIFY -t 1000 -i "$icon" -r 5555 -u normal "$nl$((brightness / 60))%  $bar"
+        $DUNSTIFY -t 1000 -i "$icon" -r 5555 -u normal "$((brightness / 60))%" "$bar"
       }
 
       case $1 in
@@ -129,7 +128,7 @@ rec {
             icon="audio-volume-high"
           fi
 
-          $DUNSTIFY -t 1000 -i $icon -r 2593 -u normal "$nl$volume%  $bar"
+          $DUNSTIFY -t 1000 -i $icon -r 2593 -u normal "$volume%" "$bar"
         fi
       }
 
