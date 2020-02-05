@@ -17,7 +17,7 @@ in
         markup = "full";
         transparency = 12;
 
-        geometry = "400x5-5+30";
+        geometry = "380x5-5+30";
         shrink = false;
         indicate_hidden = "yes";
         padding = 10;
