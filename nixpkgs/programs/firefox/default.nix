@@ -4,7 +4,7 @@ let
   theme = import ../../theme { inherit pkgs; };
   mkCss = import ../../theme/lib/mkCss.nix;
   settings = import ./settings.nix;
-  withTheme = x: ":root ${mkCss theme.colors}\n" + x;
+  themeCss = ":root ${mkCss theme.colors}\n";
 
   materialFox = pkgs.fetchFromGitHub {
     owner = "muckSponge";
@@ -16,12 +16,12 @@ let
   patchedUserChrome =
     ''
     @import "${materialFox}";
-    :root ${mkCss theme.colors}
+    ${themeCss}
     ${builtins.readFile ./overrides.css}
     '';
 in
 {
-  home.file.".mozilla/firefox/default/chrome/userContent.css".text = withTheme (builtins.readFile ./userContent.css);
+  home.file.".mozilla/firefox/default/chrome/userContent.css".text = themeCss + builtins.readFile ./userContent.css;
 
   programs.firefox = {
     enable = true;
