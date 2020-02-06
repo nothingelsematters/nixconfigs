@@ -19,7 +19,6 @@ with pkgs; {
       /* haskell */    (ghc.withPackages (ps: with ps; [ tidal happy alex unordered-containers ]))
       /* python */     (python3.withPackages (ps: with ps; [ virtualenv pip ]))
       /* python2 */    (python2.withPackages (ps: with ps; [ pip ]))
-      /* ocaml */      ocaml ocamlPackages.merlin ocamlPackages.ocp-indent
       /* javascript */ nodejs yarn
 
       # docker
