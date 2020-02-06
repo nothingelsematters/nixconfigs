@@ -1,9 +1,9 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   home.packages = [ pkgs.pass ];
   programs.browserpass = {
-    enable = true;
+    enable = config.programs.firefox.enable;
     browsers = [ "firefox" ];
   };
 }
