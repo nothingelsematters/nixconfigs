@@ -3,7 +3,7 @@
 let
   theme = import ../../theme { inherit pkgs; };
   mkCss = import ../../theme/lib/mkCss.nix;
-  settings = import ./settings.nix;
+  settings = import ./settings.nix { inherit config; };
   themeCss = ":root ${mkCss theme.colors}\n";
 
   materialFox = pkgs.fetchFromGitHub {

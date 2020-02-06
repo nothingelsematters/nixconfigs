@@ -1,3 +1,5 @@
+{ config, ... }:
+
 {
   # *** Hardening cherry-picked from https:#github.com/pyllyukko/user.js *** #
 
@@ -186,7 +188,7 @@
   "svg.context-properties.content.enabled" = true;
   "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
   # WARN username dependent
-  "browser.download.dir" = "/home/simon/downloads/firefox";
+  "browser.download.dir" = "${config.home.homeDirectory}/downloads/firefox";
   "browser.uidensity" = 1;
   "browser.tabs.drawInTitlebar" = true;
   "layout.css.devPixelsPerPx" = "0.9";
