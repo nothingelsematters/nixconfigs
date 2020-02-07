@@ -1,3 +1,4 @@
+atom-beautify
 atom-material-ui
 bracket-colorizer
 file-icons
@@ -10,7 +11,6 @@ language-haskell
 language-ini
 language-kotlin
 language-markdown
-language-ocaml
 markdown-preview-enhanced
 material-monokai-syntax
 material-ui
@@ -20,8 +20,5 @@ minimap-git-diff
 minimap-selection
 minimap-split-diff
 nix
-ocaml-indent
-ocaml-merlin
-python-indent
 split-diff
 todo-show

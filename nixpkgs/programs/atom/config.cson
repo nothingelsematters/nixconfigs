@@ -1,63 +1,4 @@
 "*":
-  "atom-ide-ui":
-    hyperclick:
-      linuxTriggerKeys: "altKey"
-    use:
-      "atom-ide-busy-signal": "never"
-      "atom-ide-code-actions": "never"
-      "atom-ide-code-format": "never"
-      "atom-ide-console": "never"
-      "atom-ide-debugger": "never"
-      "atom-ide-diagnostics": "never"
-      "atom-ide-diagnostics-ui": "never"
-      "atom-ide-find-references": "never"
-      "atom-ide-global": "never"
-      "atom-ide-outline-view": "always"
-      "atom-ide-refactor": "never"
-      "atom-ide-signature-help": "never"
-      "atom-ide-terminal": "never"
-      hyperclick: "always"
-  "autocomplete-clang":
-    clangCommand: "clang++"
-    "preCompiledHeaders c++": [
-      "cassert"
-      "cerrno"
-      "cmath"
-      "cstddef"
-      "cstdio"
-      "cstdlib"
-      "cstring"
-      "ctime"
-      "deque"
-      "list"
-      "map"
-      "queue"
-      "set"
-      "stack"
-      "vector"
-      "fstream"
-      "iomanip"
-      "ios"
-      "iostream"
-      "istream"
-      "ostream"
-      "sstream"
-      "algorithm"
-      "bitset"
-      "complex"
-      "exception"
-      "functional"
-      "iterator"
-      "limits"
-      "memory"
-      "new"
-      "numeric"
-      "stdexcept"
-      "string"
-      "typeinfo"
-      "utility"
-    ]
-    "std c++": "c++17"
   core:
     autoHideMenuBar: true
     disabledPackages: [
@@ -78,7 +19,6 @@
       "incompatible-packages"
       "keybinding-resolver"
       "language-clojure"
-      "language-coffee-script"
       "language-csharp"
       "language-go"
       "language-html"
@@ -124,9 +64,14 @@
       "material-monokai-syntax"
     ]
   editor:
-    fontSize: 10
+    fontSize: 11
     showIndentGuide: true
+    softWrap: true
+    softWrapHangingIndent: 4
     tabLength: 4
+"atom-beautify":
+  haskell:
+    default_beautifier: "hindent"
   "markdown-preview-enhanced":
     previewTheme: "github-dark.css"
   minimap:
@@ -142,6 +87,9 @@
   welcome:
     showOnStartup: false
 ".nix":
+  editor:
+    tabLength: 2
+".cson":
   editor:
     tabLength: 2
 ".g4":
