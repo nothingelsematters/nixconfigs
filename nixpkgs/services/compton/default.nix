@@ -11,7 +11,7 @@
     blur = true;
 
     shadow = true;
-    shadowExclude = [ "window_type *= 'menu'" "name ~= 'Telegram'" ];
+    shadowExclude = [ "window_type *= 'menu'" "name ~= 'Telegram'" "name ~= 'Firefox'" ];
     shadowOpacity = "0.9";
     shadowOffsets = [ (-20) (-20) ];
 
