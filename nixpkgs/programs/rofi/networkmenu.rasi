@@ -1,13 +1,20 @@
 @import common.rasi;
 
 * {
-  network-textbox-prompt-colon-padding: 14px 10px 10px 10px;
+  network-textbox-prompt-colon-padding: 14px 10px 6px 20px;
   background-color: @background;
   text-color: @foreground-list;
-  font: @text-font;
+  font: @text-font-mono;
+  background-light: #383851;
+  background-focus: #383851;
+  list-element-padding:                 6px;
 }
 #window {
-  padding: @list-8-window-padding;
+  padding: 0px;
+  margin: 30px 10px 0px 0px;
+  location: northeast;
+  height: 40%;
+  width:  23%;
 }
 inputbar,
 prompt,
@@ -16,13 +23,7 @@ entry {
   background-color: @background-light;
 }
 #inputbar {
-  children: [ prompt, textbox-prompt-colon, entry ];
-  margin: @inputbar-margin;
-}
-#prompt {
-  padding: @prompt-padding;
-  background-color: @accent;
-  text-color: @foreground-list;
+  children: [ textbox-prompt-colon, entry ];
 }
 #textbox-prompt-colon {
   expand: false;
@@ -37,7 +38,6 @@ entry {
 }
 #element {
   padding: @list-element-padding;
-  margin: @list-element-margin;
   border: @list-element-border;
   background-color: @background-light;
   border-color: @background-light;
@@ -45,5 +45,4 @@ entry {
 #element.selected {
   background-color: @background-focus;
   text-color: @accent;
-  border-color: @accent;
 }
