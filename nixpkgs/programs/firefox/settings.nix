@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, theme, ... }:
 
 {
   # *** Hardening cherry-picked from https:#github.com/pyllyukko/user.js *** #
@@ -214,4 +214,8 @@
   "browser.tabs.tabClipWidth" = 83;
   "materialFox.reduceTabOverflow" = true;
   "security.insecure_connection_text.enabled" = true;
+
+  "font.name.monospace.x-western" = theme.fonts.mono;
+  "browser.uiCustomization.state" = builtins.readFile ./uiCustomization.json;
+  "ui.systemUsesDarkTheme" = if theme.isDark then 1 else 0;
 }

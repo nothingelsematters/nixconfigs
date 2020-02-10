@@ -3,7 +3,7 @@
 let
   theme = import ../../theme { inherit pkgs; };
   mkCss = import ../../theme/lib/mkCss.nix;
-  settings = import ./settings.nix { inherit config; };
+  settings = import ./settings.nix { inherit config theme; };
   themeCss = ":root ${mkCss theme.colors}\n";
 
   materialFox = pkgs.fetchFromGitHub {
@@ -31,11 +31,7 @@ in
         id = 0;
         isDefault = true;
         userChrome = patchedUserChrome;
-        settings = settings // {
-          "font.name.monospace.x-western" = theme.fonts.mono;
-          "browser.uiCustomization.state" = builtins.readFile ./uiCustomization.json;
-          "ui.systemUsesDarkTheme" = if theme.isDark then 1 else 0;
-        };
+        settings = settings;
       };
     };
   };
