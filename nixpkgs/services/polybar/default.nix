@@ -68,28 +68,43 @@ let
     '';
 in
 {
-  home.packages = [ pkgs.yad ];
+  home = {
+    packages = [ pkgs.yad ];
 
-  home.file = {
-    "${commandPath}".source = ./i3-windows/command.py;
-    "${modulePath}".text = addVars ./i3-windows/module.py ''
-      focused = '${theme.colors.text.secondary}'
-      wfocused = '${theme.colors.text.primary}'
-      unfocused = '${theme.colors.text.disabled}'
-      urgent = '${theme.colors.text.urgent}'
+    file = {
+      "${commandPath}".source = ./i3-windows/command.py;
+      "${modulePath}".text = addVars ./i3-windows/module.py ''
+        focused = '${theme.colors.text.secondary}'
+        wfocused = '${theme.colors.text.primary}'
+        unfocused = '${theme.colors.text.disabled}'
+        urgent = '${theme.colors.text.urgent}'
 
-      empty = ''
-      ICON_FONT = 3
-      COMMAND = 'python3 ${commandPath}'
-      ICONS = [
-          ('class=Firefox', ''),
-          ('class=Telegram', ''),
-          ('class=Atom', ''),
-          ('class=Alacritty', ''),
-          ('class=libreoffice*', ''),
-          ('*', ''),
-      ]
-      '';
+        empty = ''
+        ICON_FONT = 3
+        COMMAND = 'python3 ${commandPath}'
+        ICONS = [
+            ('class=Firefox', ''),
+            ('class=Telegram', ''),
+            ('class=Atom', ''),
+            ('class=Alacritty', ''),
+            ('class=libreoffice*', ''),
+            ('*', ''),
+        ]
+        '';
+      log.text = let
+    action = cmd: text: "%{A1:${cmd}:}${text}%{A}";
+    color = cl: text: "%{F${cl}}${text}%{F-}";
+
+    hook = x: "polybar-msg hook network-details ${x}";
+    wifi = x: color theme.colors.text.secondary (action (hook x) "");
+    switch = turn: icon: "echo \"${action "(nmcli radio wifi ${turn} && ${hook "2"}) &" icon}\"";
+    on = switch "off" "";
+    off = switch "on" "";
+    toggled = "$(if [[ `nmcli general status | rg disabled` ]]; then ${off}; else ${on}; fi;)";
+    menu = action "(networkmanager_dmenu && ${hook "1"}) &" "";
+    options = color theme.colors.text.disabled "\"${toggled}\" ${menu}";
+  in "${wifi "1"} ${options}";
+    };
   };
 
   services.polybar = {
@@ -98,21 +113,38 @@ in
       i3GapsSupport = true;
       alsaSupport = true;
     };
-    script = with pkgs; "PATH=$PATH:${bin [ i3 rofi alacritty htop networkmanager_dmenu bash python ]} polybar top &";
+    script = with pkgs; "PATH=$PATH:${bin [ i3 rofi alacritty htop networkmanager_dmenu bash python networkmanager ripgrep ]} polybar top &";
 
-    extraConfig = ''
+    extraConfig =
+      let
+        action = cmd: text: "%{A1:${cmd}:}${text}%{A}";
+        color = cl: text: "%{F${cl}}${text}%{F-}";
+
+        hook = x: "polybar-msg hook network-details ${x}";
+        wifi = x: color theme.colors.text.secondary (action (hook x) "");
+        switch = turn: icon: "echo \"${action "(nmcli radio wifi ${turn} && ${hook "2"}) &" icon}\"";
+        on = switch "off" "";
+        off = switch "on" "";
+        toggled = "$(if [[ `nmcli general status | rg disabled` ]]; then ${off}; else ${on}; fi;)";
+        menu = action "(networkmanager_dmenu && ${hook "1"}) &" "";
+        options = color theme.colors.text.disabled "\"${toggled}\" ${menu}";
+      in
+      ''
       ${mkINI theme.colors}
 
       [tricks]
       font-notification = ${theme.fonts.notification}:pixelsize=9;1
-      charging =  %{F${theme.colors.text.primary}}%percentage%%%{F-}
-      muted =  %{F${theme.colors.text.primary}}mute%{F-}
-      connected = %{A1:networkmanager_dmenu &:}%{F${theme.colors.text.secondary}} <ramp-signal> <label-connected>%{F-}%{A}
+      charging =  ${color theme.colors.text.primary "%percentage%%"}
+      muted =  ${color theme.colors.text.primary "mute"}
+      connected = ${action "networkmanager_dmenu &" "<ramp-signal> <label-connected>"}
       time = %{A1:${calendarPopup}/bin/${calendarPopupName} &:}%a %H:%M%{A}
       height = ${height}
       i3w-exec = ${python}/bin/python3 ${modulePath}
 
+      network-details-hook-0 = echo "${wifi "2"}"
+      network-details-hook-1 = echo "${wifi "1"} ${options}"
+
       ${cfg}
-    '';
+      '';
   };
 }
