@@ -24,7 +24,7 @@ let
       * {
         background:       ${theme.colors.background.secondary};
         accent:           ${theme.colors.text.secondary};
-        foreground-list:  ${theme.colors.text.primary};
+        foreground:       ${theme.colors.text.primary};
         text-font:        "${theme.fonts.notification} 10";
         text-font-mono:   "${theme.fonts.mono} 10";
       }
@@ -39,9 +39,9 @@ in
 
   programs.rofi = {
     enable = true;
-    lines = 7;
+    lines = 8;
     cycle = true;
-    fullscreen = true;
+    fullscreen = false;
     scrollbar = false;
     theme = appsmenu;
     terminal = "alacritty";

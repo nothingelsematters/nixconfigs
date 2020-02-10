@@ -1,12 +1,15 @@
-@import common.rasi;
-
 * {
+  /* General */
+  icon-font:                            "Hurmit Nerd Font Mono 30";
+  icon-font-small:                      "Hurmit Nerd Font Mono 12";
+  inputbar-margin:                      4px 4px;
+  entry-padding:                        18px 16px 16px 0px;
+  list-element-border:                  0px 0px 0px 8px;
+
   network-textbox-prompt-colon-padding: 14px 10px 6px 20px;
-  background-color: @background;
-  text-color: @foreground-list;
-  font: @text-font-mono;
-  background-light: #383851;
-  background-focus: #383851;
+  background-color:                     @background;
+  text-color:                           @foreground;
+  font:                                 @text-font-mono;
   list-element-padding:                 6px;
 }
 #window {
@@ -20,7 +23,7 @@ inputbar,
 prompt,
 textbox-prompt-colon,
 entry {
-  background-color: @background-light;
+  background-color: @background-color;
 }
 #inputbar {
   children: [ textbox-prompt-colon, entry ];
@@ -39,8 +42,8 @@ entry {
 #element {
   padding: @list-element-padding;
   border: @list-element-border;
-  background-color: @background-light;
-  border-color: @background-light;
+  background-color: @background-color;
+  border-color: @background-color;
 }
 #element.selected {
   background-color: @background-focus;
