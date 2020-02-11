@@ -89,22 +89,10 @@ in
             ('class=Alacritty', ''),
             ('class=Typora', ''),
             ('class=libreoffice*', ''),
+            ('class=Evince', ''),
             ('*', ''),
         ]
         '';
-      log.text = let
-    action = cmd: text: "%{A1:${cmd}:}${text}%{A}";
-    color = cl: text: "%{F${cl}}${text}%{F-}";
-
-    hook = x: "polybar-msg hook network-details ${x}";
-    wifi = x: color theme.colors.text.secondary (action (hook x) "");
-    switch = turn: icon: "echo \"${action "(nmcli radio wifi ${turn} && ${hook "2"}) &" icon}\"";
-    on = switch "off" "";
-    off = switch "on" "";
-    toggled = "$(if [[ `nmcli general status | rg disabled` ]]; then ${off}; else ${on}; fi;)";
-    menu = action "(networkmanager_dmenu && ${hook "1"}) &" "";
-    options = color theme.colors.text.disabled "\"${toggled}\" ${menu}";
-  in "${wifi "1"} ${options}";
     };
   };
 
