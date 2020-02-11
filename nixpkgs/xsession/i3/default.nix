@@ -162,9 +162,9 @@ rec {
         focus.followMouse = false;
 
         assigns = {
-          "1" = [{ class = "TelegramDesktop"; }];
+          "1" = [{ class = "TelegramDesktop"; } { class = "Slack"; }];
           "2" = [{ class = "Firefox"; }];
-          "3" = [{ class = "Atom"; }];
+          "3" = [{ class = "Atom"; } { class = "Typora"; }];
         };
 
         bars = [];

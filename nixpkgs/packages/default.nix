@@ -45,6 +45,7 @@ with pkgs; {
 
       # messaging
       tdesktop
+      slack-dark
 
       # document related
       libreoffice-unwrapped

@@ -85,6 +85,7 @@ in
         ICONS = [
             ('class=Firefox', ''),
             ('class=Telegram', ''),
+            ('class=Slack', ''),
             ('class=Atom', ''),
             ('class=Alacritty', ''),
             ('class=Typora', ''),
