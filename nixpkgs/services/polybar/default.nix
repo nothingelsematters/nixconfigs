@@ -87,6 +87,7 @@ in
             ('class=Telegram', ''),
             ('class=Atom', ''),
             ('class=Alacritty', ''),
+            ('class=Typora', ''),
             ('class=libreoffice*', ''),
             ('*', ''),
         ]

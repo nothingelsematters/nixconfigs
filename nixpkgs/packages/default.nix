@@ -5,6 +5,9 @@ with pkgs; {
       git
       gitAndTools.diff-so-fancy
 
+      # editor
+      typora
+
       # temp
       jetbrains-mono
 
