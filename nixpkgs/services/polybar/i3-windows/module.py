@@ -127,6 +127,8 @@ def format_entry(app):
 
 
 def make_title(app):
+    if app.name is None:
+        return ""
     icon = icon_resolver.resolve({
         'class': app.window_class,
         'name': app.name,
