@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let
   modifier = "Mod4";
@@ -6,30 +6,35 @@ let
   mkOpaque = import ../../theme/lib/mkOpaque.nix;
   lock     = import ../../services/i3lock-fancy { inherit config; inherit pkgs; };
 
-  graphical_resize = pkgs.writeShellScriptBin "resize.sh" ''
-    SLOP=${pkgs.slop}/bin/slop
-    I3MSG=${pkgs.i3-gaps}/bin/i3-msg
+  getScript = with builtins; name: packs:
+    let
+      fst = x: elemAt x 0;
+      snd = x: elemAt x 1;
+      replacing = replaceStrings [ "-" ] [ "" ];
+      patching = x: "${lib.toUpper (replacing (snd x))}=${fst x}/bin/${snd x}";
+      patchPkgs = file: packs: concatStringsSep "\n" (map patching packs) + "\n" + readFile file;
+    in
+      (pkgs.writeShellScriptBin name (patchPkgs (./scripts + ("/" + name)) packs)) + "/bin/" + name;
 
-    $I3MSG mark __moving
+  resizeScript = with pkgs; getScript "resize.sh" [
+    [ slop "slop" ]
+    [ i3-gaps "i3-msg" ]
+  ];
 
-    read -r X Y W H G ID < <($SLOP -f '%x %y %w %h %g %i')
+  brightnessScript = with pkgs; getScript "brightness.sh" [
+    [ coreutils "cut" ]
+    [ coreutils "seq" ]
+    [ coreutils "cat" ]
+    [ gnused "sed" ]
+    [ notify-desktop "notify-desktop" ]
+  ];
 
-    if [ -z "$X" ]; then
-      $I3MSG unmark __moving
-      exit;
-    fi;
-
-    $I3MSG [con_mark="__moving"] floating enable
-    $I3MSG [con_mark="__moving"] move position $X $Y
-
-    if [ "$W" -eq "0" ]; then
-      $I3MSG unmark __moving
-      exit;
-    fi;
-
-    $I3MSG [con_mark="__moving"] resize set $W $H
-    $I3MSG unmark __moving
-  '';
+  volumeScript = with pkgs; getScript "volume.sh" [
+    [ alsaUtils "amixer" ]
+    [ notify-desktop "notify-desktop" ]
+    [ ripgrep "rg" ]
+    [ coreutils "cut" ]
+  ];
 in
 
 rec {
@@ -40,117 +45,7 @@ rec {
     ../../services/background
   ];
 
-  home.packages = with pkgs; [ maim i3lock acpi ];
-
-  xdg.configFile = {
-    dunst_brightness = {
-      executable = true;
-      target = "i3/scripts/brightness";
-      text = ''
-      #!${pkgs.bash}/bin/bash
-
-      CUT=${pkgs.coreutils}/bin/cut;
-      SED=${pkgs.gnused}/bin/sed;
-      SEQ=${pkgs.coreutils}/bin/seq;
-      CAT=${pkgs.coreutils}/bin/cat;
-      DUNSTIFY=${pkgs.notify-desktop}/bin/notify-desktop;
-
-      # You can call this script like this:
-      # $ ./brightnessControl.sh up
-      # $ ./brightnessControl.sh down
-
-      function get_brightness {
-        $CAT /sys/class/backlight/intel_backlight/brightness
-      }
-
-      function send_notification {
-        icon="preferences-system-brightness-lock"
-        brightness=$(get_brightness)
-        bar=$($SEQ -s "─" 0 $((brightness / 180)) | $SED 's/[0-9]//g')
-        $DUNSTIFY -t 1000 -i "$icon" -r 5555 -u normal "$((brightness / 60))%" "$bar"
-      }
-
-      case $1 in
-        up)
-          echo $(expr $($CAT /sys/class/backlight/intel_backlight/brightness) + 100) > /sys/class/backlight/intel_backlight/brightness
-          send_notification
-          ;;
-        down)
-          echo $(expr $($CAT /sys/class/backlight/intel_backlight/brightness) - 100) > /sys/class/backlight/intel_backlight/brightness
-          send_notification
-          ;;
-      esac
-      '';
-    };
-
-    dunst_volume = {
-      executable = true;
-      target = "i3/scripts/volume";
-      text = ''
-      #!${pkgs.bash}/bin/bash
-
-      AMIXER=${pkgs.alsaUtils}/bin/amixer;
-      DUNSTIFY=${pkgs.notify-desktop}/bin/notify-desktop;
-      GREP=${pkgs.ripgrep}/bin/rg;
-      CUT=${pkgs.coreutils}/bin/cut;
-      HEAD=head;
-
-      # You can call this script like this:
-      # $ ./volumeControl.sh up
-      # $ ./volumeControl.sh down
-      # $ ./volumeControl.sh mute
-
-      function get_volume {
-        $AMIXER get Master | $GREP '%' | $HEAD -n 1 | $CUT -d '[' -f 2 | $CUT -d '%' -f 1
-      }
-
-      function is_mute {
-        $AMIXER get Master | $GREP '%' | $GREP -oe '[^ ]+$' | $GREP off > /dev/null
-      }
-
-      function send_notification {
-        nl=$'\n'
-        if is_mute ; then
-          $DUNSTIFY -t 1000 -i "audio-volume-muted" -r 2593 -u normal "$nl mute"
-        else
-          volume=$(get_volume)
-          bar=$(seq --separator="─" 0 "$((volume / 3))" | sed 's/[0-9]//g')
-
-          if [[ $volume -lt 20 ]] ; then
-            icon="audio-volume-low"
-          fi
-
-          if [[ $volume -ge 20 && $volume -lt 60 ]] ; then
-            icon="audio-volume-medium"
-          fi
-
-          if [[ $volume -ge 60 ]] ; then
-            icon="audio-volume-high"
-          fi
-
-          $DUNSTIFY -t 1000 -i $icon -r 2593 -u normal "$volume%" "$bar"
-        fi
-      }
-
-      case $1 in
-        up)
-          $AMIXER set Master on > /dev/null
-          $AMIXER sset Master 5%+ > /dev/null
-          send_notification
-          ;;
-        down)
-          $AMIXER set Master on > /dev/null
-          $AMIXER sset Master 5%- > /dev/null
-          send_notification
-          ;;
-        mute)
-          $AMIXER set Master 1+ toggle > /dev/null
-          send_notification
-          ;;
-      esac
-      '';
-    };
-  };
+  home.packages = with pkgs; [ maim acpi ];
 
   xsession = {
     pointerCursor = theme.cursor;
@@ -168,6 +63,44 @@ rec {
         };
 
         bars = [];
+
+        modifier = modifier;
+
+        fonts = [ "${theme.fonts.notification} 9" ];
+
+        window.border = 0;
+
+        floating = {
+          modifier = modifier;
+          criteria = [
+            { title = "yad-calendar"; }
+            { class = "Yad"; }
+          ];
+        };
+
+        gaps = {
+          inner = 10;
+          outer = 20;
+          smartBorders = "on";
+        };
+
+        modes = {
+          resize = {
+            h      = "resize shrink width 10 px or 10 ppt";
+            j      = "resize grow height 10 px or 10 ppt";
+            k      = "resize shrink height 10 px or 10 ppt";
+            l      = "resize grow width 10 px or 10 ppt";
+            Return = "mode default";
+            Escape = "mode default";
+          };
+        };
+
+        startup = [
+          { command = "systemctl --user restart polybar"; always = true; notification = false; }
+          { command = "telegram-desktop & disown";        always = true; notification = false; }
+          { command = "libinput-gestures & disown";       always = true; notification = false; }
+          { command = "echo 0";                           always = true; notification = false; }
+        ];
 
         colors = rec {
           focused = {
@@ -200,23 +133,6 @@ rec {
           };
           urgent = placeholder;
         };
-
-        modifier = modifier;
-
-        floating = {
-          modifier = modifier;
-          criteria = [
-            { title = "yad-calendar"; }
-            { class = "Yad"; }
-          ];
-        };
-
-        gaps = {
-          inner = 10;
-          smartBorders = "on";
-        };
-
-        fonts = [ "${theme.fonts.notification} 9" ];
 
         keybindings = {
           "${modifier}+Shift+q" = "kill";
@@ -258,43 +174,21 @@ rec {
           "${modifier}+Return"      = "exec alacritty";
           "Menu"                    = "exec rofi -show";
 
-          "Print"                      = "exec maim ~/Pictures/screenshots/$(date +\"%Y-%m-%d_%H:%M:%S\").png";
-          "Control+Print"              = "exec maim | xclip -selection clipboard -t image/png";
-          "${modifier}+Print"          = "exec maim -s ~/Pictures/screenshots/$(date +\"%Y-%m-%d_%H:%M:%S\").png";
-          "${modifier}+Control+Print"  = "exec maim -s | xclip -selection clipboard -t image/png";
+          "Print"                   = "exec maim -u | xclip -selection clipboard -t image/png";
+          "Control+Print"           = "exec maim -s -u | xclip -selection clipboard -t image/png";
 
-          "XF86AudioRaiseVolume"    = "exec ~/.config/i3/scripts/volume up";
-          "XF86AudioLowerVolume"    = "exec ~/.config/i3/scripts/volume down";
-          "XF86AudioMute"           = "exec ~/.config/i3/scripts/volume mute";
+          "XF86AudioRaiseVolume"    = "exec ${volumeScript} up";
+          "XF86AudioLowerVolume"    = "exec ${volumeScript} down";
+          "XF86AudioMute"           = "exec ${volumeScript} mute";
 
-          "XF86MonBrightnessUp"     = "exec ~/.config/i3/scripts/brightness up";
-          "XF86MonBrightnessDown"   = "exec ~/.config/i3/scripts/brightness down";
+          "XF86MonBrightnessUp"     = "exec ${brightnessScript} up";
+          "XF86MonBrightnessDown"   = "exec ${brightnessScript} down";
 
           "XF86PowerOff"            = "exec ${lock.services.screen-locker.lockCmd}";
 
-          "${modifier}+r"           = "exec ${graphical_resize}/bin/resize.sh";
+          "${modifier}+r"           = "exec ${resizeScript}";
           "${modifier}+F11"         = "fullscreen";
         };
-
-        modes = {
-          resize = {
-            h      = "resize shrink width 10 px or 10 ppt";
-            j      = "resize grow height 10 px or 10 ppt";
-            k      = "resize shrink height 10 px or 10 ppt";
-            l      = "resize grow width 10 px or 10 ppt";
-            Return = "mode default";
-            Escape = "mode default";
-          };
-        };
-
-        window.border = 0;
-
-        startup = [
-          { command = "systemctl --user restart polybar"; always = true; notification = false; }
-          { command = "telegram-desktop & disown";        always = true; notification = false; }
-          { command = "libinput-gestures & disown";       always = true; notification = false; }
-          { command = "echo 0";                           always = true; notification = false; }
-        ];
       };
     };
   };
