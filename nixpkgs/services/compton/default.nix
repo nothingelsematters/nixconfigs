@@ -9,6 +9,7 @@
     menuOpacity = "0.8";
 
     blur = true;
+    blurExclude = [ "class_g = 'slop'" ];
 
     shadow = true;
     shadowExclude = [ "window_type *= 'menu'" "name ~= 'Telegram'" "name ~= 'Firefox'" ];
