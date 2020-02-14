@@ -4,12 +4,11 @@ let
   atomDirectory = ".atom";
   theme = import ../../theme { inherit pkgs; };
   colors = theme.colors;
-  cfg = builtins.replaceStrings
-    [ "editor:" ]
-    [ "editor:\n    fontFamily: \"${theme.fonts.mono}\"" ]
+  cfg = builtins.replaceStrings [ "editor:" ] [''
+    editor:
+            fontFamily: "${theme.fonts.mono}"'']
     (builtins.readFile ./config.cson);
-in
-{
+in {
   home = {
     packages = [ pkgs.atom ];
 
@@ -17,16 +16,17 @@ in
       "${atomDirectory}/config.cson".text = cfg;
       "${atomDirectory}/snippets.cson".source = ./snippets.cson;
       "${atomDirectory}/styles.less".text = ''
-      atom-text-editor {
-        background-color: ${colors.background.primary};
-        color: ${colors.text.primary};
-      }
+        atom-text-editor {
+          background-color: ${colors.background.primary};
+          color: ${colors.text.primary};
+        }
       '';
-      "${atomDirectory}/packages/atom-material-ui/styles/user-settings.less".text = ''
-      @accent-color: ${colors.background.primary};
-      @accent-text-color: ${colors.text.selection};
-      @base-color: ${colors.background.primary};
-      '';
+      "${atomDirectory}/packages/atom-material-ui/styles/user-settings.less".text =
+        ''
+          @accent-color: ${colors.background.primary};
+          @accent-text-color: ${colors.text.selection};
+          @base-color: ${colors.background.primary};
+        '';
     };
   };
 }

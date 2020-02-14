@@ -14,7 +14,16 @@
     oh-my-zsh = {
       enable = true;
       theme = "half-life";
-      plugins = [ "git" "sudo" "python" "pip" "git-extras" "catimg" "colored-man-pages" ];
+      plugins = [
+        "git"
+        "sudo"
+        "python"
+        "pip"
+        "git-extras"
+        "catimg"
+        "colored-man-pages"
+        "stack"
+      ];
     };
 
     plugins = with pkgs; [
@@ -55,9 +64,10 @@
       }
     ];
     shellAliases = {
-      hms = "home-manager switch | tee /dev/tty | rg -A 100 \"Suggested commands:\""
-        + "| tail -n +2 | zsh --xtrace 2>&1 > /dev/null | rg -e \"^\\+zsh\""
-        + "| sed \"s/\\+zsh:[0-9]*>/running:  /\" | rg -i \"running:\"";
+      hms =
+        ''home-manager switch | tee /dev/tty | rg -A 100 "Suggested commands:"''
+        + ''| tail -n +2 | zsh --xtrace 2>&1 > /dev/null | rg -e "^\+zsh"''
+        + ''| sed "s/\+zsh:[0-9]*>/running:  /" | rg -i "running:"'';
       nrs = "sudo nixos-rebuild switch";
       nsp = "nix-shell --run zsh -p";
       npd = "nix-channel --update && hms";
@@ -74,7 +84,8 @@
       zz = "z -I";
       bd = "z -b";
 
-      gl = "git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset)"
+      gl =
+        "git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset)"
         + " - %C(bold yellow)%<|(27)%ar%C(reset) %C(bold green)%<|(70)%s%C(reset) %C(dim white)-"
         + " %an%C(reset)%C(bold red)%d%C(reset)%n' --all --stat";
       gs = "git status -s";
@@ -89,8 +100,7 @@
       paste = "xclip -o -sel clip";
     };
 
-    initExtra =
-      ''
+    initExtra = ''
       setopt numericglobsort   # Sort filenames numerically when it makes sense
       setopt appendhistory     # Immediately append history instead of overwriting
       setopt histignorealldups # If a new command is a duplicate, remove the older one
@@ -112,6 +122,6 @@
       if [ "$NIX_NAME" ]; then
           export PROMPT="[$NIX_NAME] $PROMPT";
       fi
-      '';
+    '';
   };
 }

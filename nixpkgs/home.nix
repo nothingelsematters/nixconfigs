@@ -1,15 +1,8 @@
 { lib, pkgs, ... }:
 
-let
-  theme = import ./theme { inherit pkgs; };
-in
-{
-  imports = [
-    ./packages
-    ./xsession
-    ./services
-    ./programs
-  ];
+let theme = import ./theme { inherit pkgs; };
+in {
+  imports = [ ./packages ./xsession ./services ./programs ];
 
   home = {
     sessionVariables = {
@@ -29,15 +22,13 @@ in
     iconTheme = theme.icons;
     theme = theme.gtk;
     font = theme.fonts.gtk;
-    gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
-    };
+    gtk3.extraConfig = { gtk-application-prefer-dark-theme = true; };
   };
 
   programs = {
     home-manager = {
       enable = true;
-      path = https://github.com/rycee/home-manager/archive/master.tar.gz;
+      path = "https://github.com/rycee/home-manager/archive/master.tar.gz";
     };
   };
 

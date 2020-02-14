@@ -1,25 +1,23 @@
-{ config, pkgs, ...}:
+{ config, pkgs, ... }:
 
 let
   theme = import ../../theme { inherit pkgs; };
   appsmenu = ".config/rofi/appsmenu.rasi";
   networkmenu = ".config/rofi/networkmenu.rasi";
 
-  makeTheme = fileName:
-  ''
-  * {
-    background:       ${theme.colors.background.secondary};
-    accent:           ${theme.colors.text.secondary};
-    foreground:       ${theme.colors.text.primary};
-    text-font:        "${theme.fonts.notification} 10";
-    text-font-mono:   "${theme.fonts.mono} 10";
-  }
+  makeTheme = fileName: ''
+    * {
+      background:       ${theme.colors.background.secondary};
+      accent:           ${theme.colors.text.secondary};
+      foreground:       ${theme.colors.text.primary};
+      text-font:        "${theme.fonts.notification} 10";
+      text-font-mono:   "${theme.fonts.mono} 10";
+    }
 
-  ${builtins.readFile fileName}
+    ${builtins.readFile fileName}
   '';
-in
 
-{
+in {
   home.file."${appsmenu}".text = makeTheme ./appsmenu.rasi;
   home.file."${networkmenu}".text = makeTheme ./networkmenu.rasi;
 
@@ -33,8 +31,7 @@ in
     terminal = "alacritty";
 
     font = "${theme.fonts.notification} 10";
-    extraConfig =
-      ''
+    extraConfig = ''
       rofi.modi:                drun
       rofi.matching:            fuzzy
       rofi.drun-match-fields:   name
@@ -47,6 +44,6 @@ in
       rofi.disable-history:     false
       rofi.display-drun:        apps
       rofi.columns:             2
-      '';
+    '';
   };
 }

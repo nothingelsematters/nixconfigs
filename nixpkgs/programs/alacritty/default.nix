@@ -4,14 +4,12 @@ let
   theme = import ../../theme { inherit pkgs; };
   zeroX = color: "0x" + builtins.substring 1 6 color;
   monoFont = theme.fonts.mono;
-in
-{
+in {
   home.packages = [ pkgs.alacritty ];
 
   xdg.configFile.alacritty_config = {
     target = "alacritty/alacritty.yml";
-    text =
-      ''
+    text = ''
       colors:
         primary:
           background: '${zeroX theme.colors.background.primary}'
@@ -59,6 +57,6 @@ in
         use_thin_strokes: true
 
       ${builtins.readFile ./alacritty.yml}
-      '';
+    '';
   };
 }

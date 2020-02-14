@@ -1,10 +1,7 @@
 { pkgs, ... }:
 
-
-let
-  backgroundPath = ".config/background.jpg";
-in
-{
+let backgroundPath = ".config/background.jpg";
+in {
   home.file."${backgroundPath}".source = ./background.jpg;
 
   systemd.user.services.background = {
@@ -20,8 +17,6 @@ in
       IOSchedulingClass = "idle";
     };
 
-    Install = {
-       WantedBy = [ "graphical-session.target" ];
-    };
+    Install = { WantedBy = [ "graphical-session.target" ]; };
   };
 }

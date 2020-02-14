@@ -1,11 +1,10 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./users.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./users.nix
+  ];
 
   boot = {
     # Use the systemd-boot EFI boot loader.
@@ -49,13 +48,13 @@
           enable = true;
           user = "simon";
           extraConfig = ''
-          [greeter]
-          password-label-text = Slide to unlock:
-          show-input-cursor = false
-          font = "Fira Code Medium"
+            [greeter]
+            password-label-text = Slide to unlock:
+            show-input-cursor = false
+            font = "Fira Code Medium"
 
-          [greeter-theme]
-          background-image = ""
+            [greeter-theme]
+            background-image = ""
           '';
         };
       };
@@ -75,7 +74,7 @@
 
     zerotierone = {
       enable = true;
-      joinNetworks = ["8bd5124fd62082f4"];
+      joinNetworks = [ "8bd5124fd62082f4" ];
     };
     udev.extraRules = ''
       ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chgrp video /sys/class/backlight/%k/brightness"
@@ -94,19 +93,19 @@
     };
 
     fonts = with pkgs; [
-     ubuntu_font_family
-     font-awesome_4
-     font-awesome
-     noto-fonts
-     noto-fonts-cjk
-     noto-fonts-emoji
-     twitter-color-emoji
-     fira-code
-     fira-code-symbols
-     material-icons
-     comfortaa
-   ];
- };
+      ubuntu_font_family
+      font-awesome_4
+      font-awesome
+      noto-fonts
+      noto-fonts-cjk
+      noto-fonts-emoji
+      twitter-color-emoji
+      fira-code
+      fira-code-symbols
+      material-icons
+      comfortaa
+    ];
+  };
 
   virtualisation.docker.enable = true;
   networking.networkmanager.enable = true;

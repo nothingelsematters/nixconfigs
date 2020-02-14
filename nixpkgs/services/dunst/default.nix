@@ -1,9 +1,7 @@
-{ pkgs, ...}:
+{ pkgs, ... }:
 
-let
-  theme = import ../../theme { inherit pkgs; };
-in
-{
+let theme = import ../../theme { inherit pkgs; };
+in {
   services.dunst = {
     enable = true;
     iconTheme = theme.notification-icons;
@@ -28,7 +26,7 @@ in
         frame_color = theme.colors.background.accent;
         separator_color = theme.colors.background.secondary;
         font = theme.fonts.notification + " 10";
-        format = ''%s\n<small>%b</small>'';
+        format = "%s\\n<small>%b</small>";
         word_wrap = "yes";
 
         icon_position = "left";
@@ -54,12 +52,11 @@ in
         foreground = theme.colors.text.urgent;
       };
 
-
       # For functional notifications, such as volume/brightness changes
       # Displays only header to show nice centered progress bars
       func = {
         category = "func";
-        format = ''<big>%b</big>'';
+        format = "<big>%b</big>";
         fullscreen = "show";
       };
     };

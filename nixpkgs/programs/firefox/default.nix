@@ -4,7 +4,9 @@ let
   theme = import ../../theme { inherit pkgs; };
   mkCss = import ../../theme/lib/mkCss.nix;
   settings = import ./settings.nix { inherit config theme; };
-  themeCss = ":root ${mkCss theme.colors}\n";
+  themeCss = ''
+    :root ${mkCss theme.colors}
+  '';
 
   materialFox = pkgs.fetchFromGitHub {
     owner = "muckSponge";
@@ -13,15 +15,14 @@ let
     sha256 = "0cc50c3q7nwcq3kag2rafchqndnnhpl6y4v7m62aiidnl4h5jhjw";
   } + "/chrome/userChrome.css";
 
-  patchedUserChrome =
-    ''
+  patchedUserChrome = ''
     @import "${materialFox}";
     ${themeCss}
     ${builtins.readFile ./overrides.css}
-    '';
-in
-{
-  home.file.".mozilla/firefox/default/chrome/userContent.css".text = themeCss + builtins.readFile ./userContent.css;
+  '';
+in {
+  home.file.".mozilla/firefox/default/chrome/userContent.css".text = themeCss
+    + builtins.readFile ./userContent.css;
 
   programs.firefox = {
     enable = true;

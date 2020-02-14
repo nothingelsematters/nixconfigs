@@ -12,7 +12,8 @@
     blurExclude = [ "class_g = 'slop'" ];
 
     shadow = true;
-    shadowExclude = [ "window_type *= 'menu'" "name ~= 'Telegram'" "name ~= 'Firefox'" ];
+    shadowExclude =
+      [ "window_type *= 'menu'" "name ~= 'Telegram'" "name ~= 'Firefox'" ];
     shadowOpacity = "0.9";
     shadowOffsets = [ (-20) (-20) ];
 
@@ -21,7 +22,7 @@
     fadeSteps = [ "0.034" "0.018" ];
 
     extraOptions = ''
-    detect-rounded-corners = true;
+      detect-rounded-corners = true;
     '';
   };
 }

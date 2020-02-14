@@ -3,8 +3,7 @@
 let
   desktop = x: [ (x + ".desktop") ];
   browser = desktop "firefox";
-in
-{
+in {
   xdg.mimeApps.defaultApplications = {
     # Doc viewer
     "application/pdf" = desktop "evince";

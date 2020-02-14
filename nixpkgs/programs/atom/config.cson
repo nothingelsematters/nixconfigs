@@ -46,7 +46,6 @@
       "open-on-github"
       "styleguide"
       "welcome"
-      "wrap-guide"
       "spell-check"
       "timecop"
       "dev-live-reload"
@@ -64,14 +63,24 @@
       "material-monokai-syntax"
     ]
   editor:
-    fontSize: 11
+    fontSize: 10
+    preferredLineLength: 80
     showIndentGuide: true
     softWrap: true
     softWrapHangingIndent: 4
     tabLength: 4
-"atom-beautify":
-  haskell:
-    default_beautifier: "hindent"
+  minimap:
+    plugins:
+      cursorline: true
+      cursorlineDecorationsZIndex: 0
+      "git-diff": true
+      "git-diffDecorationsZIndex": 0
+      selection: true
+      selectionDecorationsZIndex: 0
+      "split-diff": true
+      "split-diffDecorationsZIndex": 0
+  "wrap-guide":
+    enabled: false
   "markdown-preview-enhanced":
     previewTheme: "github-dark.css"
   minimap:
@@ -86,15 +95,17 @@
       "split-diffDecorationsZIndex": 0
   welcome:
     showOnStartup: false
+"atom-beautify":
+  haskell:
+    default_beautifier: "stylish-haskell"
+".coffee.source":
+  editor:
+    tabLength: 2
+".haskell.source":
+  editor:
+    tabLength: 2
+  "wrap-guide":
+    enabled: true
 ".nix":
   editor:
     tabLength: 2
-".cson":
-  editor:
-    tabLength: 2
-".g4":
-  editor:
-    showIndentGuide: false
-".hs":
-  editor:
-    showIndentGuide: false

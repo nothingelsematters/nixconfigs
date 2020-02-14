@@ -32,16 +32,16 @@
 
   # Disable telemetry and telemetry and telemetry and...
   # How many more of this shit is there?
-  "toolkit.telemetry.unified"= false;
-  "toolkit.telemetry.enabled"= false;
-  "toolkit.telemetry.server"= "data:,";
-  "toolkit.telemetry.archive.enabled"= false;
-  "toolkit.telemetry.newProfilePing.enabled"= false;
-  "toolkit.telemetry.shutdownPingSender.enabled"= false;
-  "toolkit.telemetry.updatePing.enabled"= false;
-  "toolkit.telemetry.bhrPing.enabled"= false;
-  "toolkit.telemetry.firstShutdownPing.enabled"= false;
-  "toolkit.telemetry.hybridContent.enabled"= false;
+  "toolkit.telemetry.unified" = false;
+  "toolkit.telemetry.enabled" = false;
+  "toolkit.telemetry.server" = "data:,";
+  "toolkit.telemetry.archive.enabled" = false;
+  "toolkit.telemetry.newProfilePing.enabled" = false;
+  "toolkit.telemetry.shutdownPingSender.enabled" = false;
+  "toolkit.telemetry.updatePing.enabled" = false;
+  "toolkit.telemetry.bhrPing.enabled" = false;
+  "toolkit.telemetry.firstShutdownPing.enabled" = false;
+  "toolkit.telemetry.hybridContent.enabled" = false;
   "experiments.supported" = false;
   "experiments.enabled" = false;
   "experiments.manifest.uri" = "";
@@ -55,19 +55,19 @@
   "browser.discovery.enabled" = false;
   "browser.selfsupport.url" = "";
   "loop.logDomains" = false;
-  "browser.newtabpage.activity-stream.feeds.telemetry"= false;
-  "browser.newtabpage.activity-stream.telemetry"= false;
-  "browser.newtabpage.activity-stream.telemetry.ping.endpoint"= "";
-  "browser.aboutHomeSnippets.updateUrl"= "";
-  "browser.newtabpage.activity-stream.asrouter.providers.snippets"= "";
-  "browser.newtabpage.activity-stream.disableSnippets"= true;
-  "browser.newtabpage.activity-stream.feeds.snippets"= false;
+  "browser.newtabpage.activity-stream.feeds.telemetry" = false;
+  "browser.newtabpage.activity-stream.telemetry" = false;
+  "browser.newtabpage.activity-stream.telemetry.ping.endpoint" = "";
+  "browser.aboutHomeSnippets.updateUrl" = "";
+  "browser.newtabpage.activity-stream.asrouter.providers.snippets" = "";
+  "browser.newtabpage.activity-stream.disableSnippets" = true;
+  "browser.newtabpage.activity-stream.feeds.snippets" = false;
   "browser.newtabpage.activity-stream.feeds.topsites" = false;
-  "browser.newtabpage.activity-stream.feeds.section.topstories"= false;
+  "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
   "browser.newtabpage.activity-stream.feeds.section.highlights" = false;
-  "browser.newtabpage.activity-stream.section.highlights.includePocket"= false;
-  "browser.newtabpage.activity-stream.showSponsored"= false;
-  "browser.newtabpage.activity-stream.feeds.discoverystreamfeed"= false;
+  "browser.newtabpage.activity-stream.section.highlights.includePocket" = false;
+  "browser.newtabpage.activity-stream.showSponsored" = false;
+  "browser.newtabpage.activity-stream.feeds.discoverystreamfeed" = false;
   "browser.newtabpage.activity-stream.showSearch" = true;
   "extensions.shield-recipe-client.enabled" = false;
   "app.shield.optoutstudies.enabled" = false;
@@ -98,7 +98,8 @@
 
   # Stop communicating with Google
   # I mean, I don't use Chrome for a reason
-  "geo.wifi.uri" = "https:#location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%";
+  "geo.wifi.uri" =
+    "https:#location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%";
   "browser.safebrowsing.downloads.remote.enabled" = false;
 
   # Disable auto-update
@@ -128,7 +129,6 @@
   "lightweightThemes.selectedThemeID" = "firefox-compact-dark@mozilla.org";
   # Resume session automatically
   "browser.sessionstore.resume_session_once" = true;
-
 
   # *** end of hardening *** #
 
@@ -181,7 +181,6 @@
   "font.name.serif.x-western" = "Liberation Sans";
   "font.size.fixed.x-western" = 11;
   "font.size.variable.x-western" = 11;
-
 
   # custom
   # theme related
