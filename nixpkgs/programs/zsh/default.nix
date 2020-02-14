@@ -54,9 +54,10 @@
         };
       }
     ];
-
     shellAliases = {
-      hms = "home-manager switch";
+      hms = "home-manager switch | tee /dev/tty | rg -A 100 \"Suggested commands:\""
+        + "| tail -n +2 | zsh --xtrace 2>&1 > /dev/null | rg -e \"^\\+zsh\""
+        + "| sed \"s/\\+zsh:[0-9]*>/running:  /\" | rg -i \"running:\"";
       nrs = "sudo nixos-rebuild switch";
       nsp = "nix-shell --run zsh -p";
       npd = "nix-channel --update && hms";
