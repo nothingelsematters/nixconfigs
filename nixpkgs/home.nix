@@ -1,6 +1,6 @@
 { lib, pkgs, ... }:
 
-let theme = import ./theme { inherit pkgs; };
+let theme = import ./theme { inherit pkgs lib; };
 in {
   imports = [ ./packages ./xsession ./services ./programs ];
 
@@ -22,7 +22,7 @@ in {
     iconTheme = theme.icons;
     theme = theme.gtk;
     font = theme.fonts.gtk;
-    gtk3.extraConfig = { gtk-application-prefer-dark-theme = true; };
+    gtk3.extraConfig.gtk-application-prefer-dark-theme = theme.isDark;
   };
 
   programs = {

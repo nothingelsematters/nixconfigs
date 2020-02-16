@@ -1,6 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
-let theme = import ../../theme { inherit pkgs; };
+let theme = import ../../theme { inherit pkgs lib; };
 in {
   services.dunst = {
     enable = true;

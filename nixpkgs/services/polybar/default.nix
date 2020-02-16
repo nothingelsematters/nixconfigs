@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 let
-  theme = import ../../theme { inherit pkgs; };
+  theme = import ../../theme { inherit pkgs lib; };
   mkINI = import ../../theme/lib/mkINI.nix;
   getScript = import ../../lib/getScript.nix { inherit pkgs lib; };
   cfg = builtins.readFile ./config.ini;

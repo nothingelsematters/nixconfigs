@@ -3,6 +3,7 @@
 {
   services.compton = {
     enable = true;
+    package = pkgs.picom;
 
     inactiveDim = "0.1";
     inactiveOpacity = "0.87";

@@ -1,8 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 let
   atomDirectory = ".atom";
-  theme = import ../../theme { inherit pkgs; };
+  theme = import ../../theme { inherit pkgs lib; };
   colors = theme.colors;
   cfg = builtins.replaceStrings [ "editor:" ] [''
     editor:

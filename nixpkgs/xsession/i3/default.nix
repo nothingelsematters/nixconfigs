@@ -2,7 +2,7 @@
 
 let
   modifier = "Mod4";
-  theme = import ../../theme { inherit pkgs; };
+  theme = import ../../theme { inherit pkgs lib; };
   mkOpaque = import ../../theme/lib/mkOpaque.nix;
   lock = import ../../services/i3lock-fancy {
     inherit config;

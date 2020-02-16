@@ -1,7 +1,7 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let
-  theme = import ../../theme { inherit pkgs; };
+  theme = import ../../theme { inherit pkgs lib; };
   mkCss = import ../../theme/lib/mkCss.nix;
   settings = import ./settings.nix { inherit config theme; };
   themeCss = ''

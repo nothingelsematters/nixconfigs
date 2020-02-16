@@ -1,7 +1,7 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let
-  theme = import ../../theme { inherit pkgs; };
+  theme = import ../../theme { inherit pkgs lib; };
   appsmenu = ".config/rofi/appsmenu.rasi";
   networkmenu = ".config/rofi/networkmenu.rasi";
 
