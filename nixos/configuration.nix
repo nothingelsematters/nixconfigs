@@ -71,15 +71,6 @@
       enable = true;
       drivers = [ pkgs.brlaser ];
     };
-
-    zerotierone = {
-      enable = true;
-      joinNetworks = [ "8bd5124fd62082f4" ];
-    };
-    udev.extraRules = ''
-      ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chgrp video /sys/class/backlight/%k/brightness"
-      ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chmod g+w /sys/class/backlight/%k/brightness"
-    '';
   };
 
   fonts = {
