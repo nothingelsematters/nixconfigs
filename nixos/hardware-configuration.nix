@@ -27,10 +27,9 @@
   boot.cleanTmpDir = true;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.extraConfig = ''
-
-    	[General]
-    	Enable=Source,Sink,Media,Socket
-      '';
+    [General]
+    Enable=Source,Sink,Media,Socket
+  '';
   hardware.opengl.enable = true;
   hardware.cpu.intel.updateMicrocode = true;
   networking.hostName = "simyon";
