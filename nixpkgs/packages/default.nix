@@ -16,9 +16,9 @@ with pkgs; {
     wget    # download
 
     # utility packages
-    gnumake # control the generation of non-source files from sources
+    gnumake  # control the generation of non-source files from sources
     binutils # tools for manipulating binaries (linker, assembler, etc.)
-    xclip # clipboard manipulations
+    xclip    # clipboard manipulations
 
     # editor
     typora
@@ -30,7 +30,7 @@ with pkgs; {
     /* c++ */        gcc gdb cmake valgrind
     /* kotlin */     kotlin
     /* java */       jdk12 maven antlr4
-    /* haskell */    (ghc.withPackages (ps: with ps; [ stack unordered-containers ]))
+    /* haskell */    (ghc.withPackages (ps: with ps; [ unordered-containers /* stylish-haskell */ ]))
     /* python */     (python3.withPackages (ps: with ps; [ virtualenv pip ]))
     /* python2 */    (python2.withPackages (ps: with ps; [ pip ]))
     /* javascript */ nodejs yarn
@@ -76,12 +76,13 @@ with pkgs; {
     # NixOS house keeping
     nox    # tools to make nix nicer to use
     vulnix # NixOS vulnerability scanner
+    nixfmt # nix formatter
 
     # other
-    blueman                 # bluetooth
-    shared-mime-info        # a database of common MIME types
-    gnutls                  # the GNU Transport Layer Security Library
-    gnupg                   # the GNU Privacy Guard suite of programs
-    gnome3.dconf            # FIXING bugs, wtf, idk
+    blueman          # bluetooth
+    shared-mime-info # a database of common MIME types
+    gnutls           # the GNU Transport Layer Security Library
+    gnupg            # the GNU Privacy Guard suite of programs
+    gnome3.dconf     # FIXING bugs, wtf, idk
   ];
 }

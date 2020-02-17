@@ -1,13 +1,9 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-    ./users.nix
-  ];
+  imports = [ ./hardware-configuration.nix ./users.nix ];
 
   boot = {
-    # Use the systemd-boot EFI boot loader.
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
@@ -44,6 +40,8 @@
 
       displayManager.lightdm = {
         enable = true;
+        background = "${pkgs.nixos-artwork.wallpapers.mosaic-blue}"
+          + "/share/artwork/gnome/nix-wallpaper-mosaic-blue.png";
         greeters.mini = {
           enable = true;
           user = "simon";

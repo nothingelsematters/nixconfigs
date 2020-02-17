@@ -66,6 +66,7 @@ in rec {
 
         gaps = {
           inner = 10;
+          outer = 8;
           smartBorders = "on";
         };
 
