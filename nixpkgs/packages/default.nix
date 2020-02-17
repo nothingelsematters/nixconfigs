@@ -30,7 +30,7 @@ with pkgs; {
     /* c++ */        gcc gdb cmake valgrind
     /* kotlin */     kotlin
     /* java */       jdk12 maven antlr4
-    /* haskell */    (ghc.withPackages (ps: with ps; [ unordered-containers /* stylish-haskell */ ]))
+    /* haskell */    (ghc.withPackages (ps: with ps; [ stack unordered-containers /* stylish-haskell */ ]))
     /* python */     (python3.withPackages (ps: with ps; [ virtualenv pip ]))
     /* python2 */    (python2.withPackages (ps: with ps; [ pip ]))
     /* javascript */ nodejs yarn

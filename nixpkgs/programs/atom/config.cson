@@ -64,8 +64,11 @@
     ]
   editor:
     fontSize: 10
+    preferredLineLength: 80
     showIndentGuide: true
-  fontSize: 10
+    softWrap: true
+    softWrapHangingIndent: 4
+    tabLength: 4
   "markdown-preview-enhanced":
     previewTheme: "github-dark.css"
   minimap:
@@ -78,23 +81,21 @@
       selectionDecorationsZIndex: 0
       "split-diff": true
       "split-diffDecorationsZIndex": 0
-  preferredLineLength: 80
-  showIndentGuide: true
-  softWrap: true
-  softWrapHangingIndent: 4
-  tabLength: 4
   welcome:
     showOnStartup: false
   "wrap-guide":
     enabled: false
 ".coffee.source":
-  tabLength: 2
+  editor:
+    tabLength: 2
 ".haskell.source":
-  tabLength: 2
+  editor:
+    tabLength: 2
   "wrap-guide":
     enabled: true
-".nix":
-  tabLength: 2
+".nix.source":
+  editor:
+    tabLength: 2
 "atom-beautify":
   haskell:
     default_beautifier: "stylish-haskell"

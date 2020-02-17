@@ -61,6 +61,7 @@ in rec {
 
         floating = {
           modifier = modifier;
+          border = 0;
           criteria = [ { title = "yad-calendar"; } { class = "Yad"; } ];
         };
 
