@@ -13,8 +13,6 @@
 
   hardware = {
     enableAllFirmware = true;
-
-    # Enable sound
     pulseaudio = {
       enable = true;
       package = pkgs.pulseaudioFull;
@@ -29,51 +27,14 @@
     autoUpgrade.enable = true;
   };
 
-  services = {
-    xserver = {
-      enable = true;
+  sound.enable = true;
+  virtualisation.docker.enable = true;
+  networking.networkmanager.enable = true;
 
-      libinput = {
-        enable = true;
-        naturalScrolling = true;
-      };
+  nixpkgs.config.allowUnfree = true;
+  nix.autoOptimiseStore = true;
 
-      displayManager.lightdm = {
-        enable = true;
-        background = "${pkgs.nixos-artwork.wallpapers.mosaic-blue}"
-          + "/share/artwork/gnome/nix-wallpaper-mosaic-blue.png";
-        greeters.mini = {
-          enable = true;
-          user = "simon";
-          extraConfig = ''
-            [greeter]
-            password-label-text = Slide to unlock:
-            show-input-cursor = false
-            font = "Fira Code Medium"
-
-            [greeter-theme]
-            background-image = ""
-          '';
-        };
-      };
-
-      layout = "us,ru";
-
-      windowManager.i3 = {
-        enable = true;
-        package = pkgs.i3-gaps;
-      };
-    };
-
-    printing = {
-      enable = true;
-      drivers = [ pkgs.brlaser ];
-    };
-    udev.extraRules = ''
-      ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chgrp video /sys/class/backlight/%k/brightness"
-      ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chmod g+w /sys/class/backlight/%k/brightness"
-    '';
-  };
+  time.timeZone = "Europe/Moscow";
 
   fonts = {
     fontconfig = {
@@ -100,13 +61,41 @@
     ];
   };
 
-  virtualisation.docker.enable = true;
-  networking.networkmanager.enable = true;
-  nixpkgs.config.allowUnfree = true;
+  services = {
+    xserver = {
+      enable = true;
 
-  # Set your time zone.
-  time.timeZone = "Europe/Moscow";
+      libinput = {
+        enable = true;
+        naturalScrolling = true;
+      };
 
-  # Enable sound.
-  sound.enable = true;
+      layout = "us,ru";
+
+      displayManager.slim = {
+        enable = true;
+        defaultUser = "simon";
+        theme = pkgs.fetchFromGitHub {
+          owner = "adi1090x";
+          repo = "slim_themes";
+          rev = "8435cec00f5407a001813af2202dde9109186666";
+          sha256 = "0i745r45rlgg84vl0b1s5klj9vy9phfy5wnklcmnrndxhw2jqjc0";
+        } + "/themes/darky_pink";
+      };
+
+      windowManager.i3 = {
+        enable = true;
+        package = pkgs.i3-gaps;
+      };
+    };
+
+    printing = {
+      enable = true;
+      drivers = [ pkgs.brlaser ];
+    };
+    udev.extraRules = ''
+      ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chgrp video /sys/class/backlight/%k/brightness"
+      ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chmod g+w /sys/class/backlight/%k/brightness"
+    '';
+  };
 }
