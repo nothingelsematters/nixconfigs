@@ -13,7 +13,7 @@
       inverted = text.primary;
     };
     text = rec {
-      primary = "#c5ccd2";
+      primary = "#ced5db";
       secondary = "#1fa789";
       disabled = "#4c566a";
       urgent = background.urgent;
