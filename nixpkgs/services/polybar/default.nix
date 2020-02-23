@@ -86,6 +86,7 @@ in {
           python
           networkmanager
           ripgrep
+          rofi
         ]
       } polybar top &";
 
@@ -97,8 +98,8 @@ in {
       wifi = x: color theme.colors.text.secondary (action (hook x) "");
       switch = turn: icon:
         ''echo "${action "(nmcli radio wifi ${turn} && ${hook "2"}) &" icon}"'';
-      on = switch "off" "";
-      off = switch "on" "";
+      on = switch "off" "";
+      off = switch "on" "";
       toggled =
         "$(if [[ `nmcli general status | rg disabled` ]]; then ${off}; else ${on}; fi;)";
       menu = action "(networkmanager_dmenu && ${hook "1"}) &" "";
@@ -113,9 +114,12 @@ in {
       connected = ${
         action "networkmanager_dmenu &" "<ramp-signal> <label-connected>"
       }
-      time = %{A1:${calendarPopup} ${height} &:}%a %H:%M%{A}
+      time = ${action "${calendarPopup} ${height} &" "%a %H:%M"}
       height = ${height}
       i3w-exec = ${python}/bin/python3 ${modulePath}
+      apps = ${color theme.colors.text.secondary (action "rofi -show &" "")} ${
+        color theme.colors.text.primary " │"
+      }
 
       network-details-hook-0 = echo "${wifi "2"}"
       network-details-hook-1 = echo "${wifi "1"} ${options}"
