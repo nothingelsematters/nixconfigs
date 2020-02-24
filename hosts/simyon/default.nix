@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ./users.nix ];
+  imports = [ ./hardware.nix ./simon.nix ];
 
   boot = {
     loader = {
@@ -30,8 +30,6 @@
   sound.enable = true;
   virtualisation.docker.enable = true;
   networking.networkmanager.enable = true;
-
-  nixpkgs.config.allowUnfree = true;
   nix.autoOptimiseStore = true;
 
   time.timeZone = "Europe/Moscow";
@@ -58,6 +56,7 @@
       fira-code-symbols
       material-icons
       comfortaa
+      # TODO jetbrains-mono
     ];
   };
 
@@ -93,6 +92,7 @@
       enable = true;
       drivers = [ pkgs.brlaser ];
     };
+
     udev.extraRules = ''
       ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chgrp video /sys/class/backlight/%k/brightness"
       ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chmod g+w /sys/class/backlight/%k/brightness"
