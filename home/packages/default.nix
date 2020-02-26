@@ -2,12 +2,6 @@
 
 with pkgs; {
   home.packages = [
-    # TEMP
-    jetbrains-mono
-
-    git
-    gitAndTools.diff-so-fancy
-
     ## filesystem utility packages
     exa     # rip ls
     ripgrep # rip grep

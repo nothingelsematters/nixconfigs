@@ -59,6 +59,7 @@ in {
             ('class=Slack', ''),
             ('class=Atom', ''),
             ('class=Alacritty', ''),
+            ('class=kitty', ''),
             ('class=Typora', ''),
             ('class=libreoffice*', ''),
             ('class=Evince', ''),
@@ -118,7 +119,7 @@ in {
       height = ${height}
       i3w-exec = ${python}/bin/python3 ${modulePath}
       apps = ${color theme.colors.text.secondary (action "rofi -show &" "")} ${
-        color theme.colors.text.primary " │"
+        color theme.colors.text.primary " │ "
       }
 
       network-details-hook-0 = echo "${wifi "2"}"

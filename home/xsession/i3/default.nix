@@ -152,7 +152,7 @@ in rec {
             "${modifier}+Shift+r" = "restart";
             "${modifier}+Shift+e" =
               "exec i3-nagbar -t warning -m 'Do you want to exit i3?' -b 'Yes' 'i3-msg exit'";
-            "${modifier}+Return" = "exec alacritty";
+            "${modifier}+Return" = "exec kitty";
             "Menu" = "exec rofi -show";
 
             "Print" = screenshot "";
