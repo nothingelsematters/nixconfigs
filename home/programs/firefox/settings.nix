@@ -214,7 +214,7 @@
   "materialFox.reduceTabOverflow" = true;
   "security.insecure_connection_text.enabled" = true;
 
-  "font.name.monospace.x-western" = theme.fonts.mono;
+  "font.name.monospace.x-western" = theme.fonts.mono.name;
   "browser.uiCustomization.state" = builtins.readFile ./uiCustomization.json;
   "ui.systemUsesDarkTheme" = if theme.isDark then 1 else 0;
 }

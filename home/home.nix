@@ -11,6 +11,7 @@ in {
       PAGER = "most";
       USE_NIX2_COMMAND = 1;
     };
+
     keyboard = {
       layout = "us,ru";
       options = [ "grp:caps_toggle" ];
@@ -25,12 +26,8 @@ in {
     gtk3.extraConfig.gtk-application-prefer-dark-theme = theme.isDark;
   };
 
-  programs = {
-    home-manager = {
-      enable = true;
-      path = "https://github.com/rycee/home-manager/archive/master.tar.gz";
-    };
+  programs.home-manager = {
+    enable = true;
+    path = "https://github.com/rycee/home-manager/archive/master.tar.gz";
   };
-
-  fonts.fontconfig.enable = true;
 }

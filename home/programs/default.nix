@@ -2,16 +2,18 @@
 
 {
   imports = [
+    ./alacritty
     ./atom
     ./bat
     ./browserpass
-    ./most
-    ./fzf
-    ./zsh
     ./firefox
-    ./rofi
-    ./alacritty
-    ./networkmanager-dmenu
+    ./fzf
+    ./git
     ./htop
+    ./kitty
+    ./most
+    ./networkmanager-dmenu
+    ./rofi
+    ./zsh
   ];
 }

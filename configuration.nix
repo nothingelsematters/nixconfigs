@@ -1,10 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    # <home-manager/nixos>
-    ./hosts/simyon
-  ];
+  imports = [ ./hosts/simyon ];
 
   nixpkgs.config.allowUnfree = true;
 

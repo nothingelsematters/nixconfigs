@@ -2,14 +2,14 @@
 
 {
   imports = [
-    ./udiskie
-    ./unclutter
-    ./polybar
-    ./compton
-    ./libinput-gestures
-    ./dunst
     ./background
     ./check-battery
+    ./compton
+    ./dunst
     ./i3lock-fancy
+    ./libinput-gestures
+    ./polybar
+    ./udiskie
+    ./unclutter
   ];
 }

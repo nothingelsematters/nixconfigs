@@ -56,7 +56,7 @@
       fira-code-symbols
       material-icons
       comfortaa
-      # TODO jetbrains-mono
+      jetbrains-mono
     ];
   };
 
@@ -71,16 +71,7 @@
 
       layout = "us,ru";
 
-      displayManager.slim = {
-        enable = true;
-        defaultUser = "simon";
-        theme = pkgs.fetchFromGitHub {
-          owner = "adi1090x";
-          repo = "slim_themes";
-          rev = "8435cec00f5407a001813af2202dde9109186666";
-          sha256 = "0i745r45rlgg84vl0b1s5klj9vy9phfy5wnklcmnrndxhw2jqjc0";
-        } + "/themes/darky_pink";
-      };
+      displayManager.sddm.enable = true; # TODO oh shit, here we go again
 
       windowManager.i3 = {
         enable = true;

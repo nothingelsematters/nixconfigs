@@ -11,7 +11,7 @@ let
       accent:           ${theme.colors.text.secondary};
       foreground:       ${theme.colors.text.primary};
       text-font:        "${theme.fonts.notification} 10";
-      text-font-mono:   "${theme.fonts.mono} 10";
+      text-font-mono:   "${theme.fonts.mono.name} 10";
     }
 
     ${builtins.readFile fileName}
