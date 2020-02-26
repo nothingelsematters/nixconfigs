@@ -40,7 +40,7 @@
 
       defaultFonts = {
         monospace = [ "Jetbrains Mono" ];
-        emoji = [ "Twitter Color Emoji" "Noto Color Emoji" ];
+        emoji = [ "Twitter Color Emoji" ];
       };
     };
 

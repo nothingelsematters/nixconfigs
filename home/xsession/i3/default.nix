@@ -77,8 +77,10 @@ in rec {
           notification = false;
         }) [
           "systemctl --user restart polybar"
-          "telegram-desktop & disown"
           "libinput-gestures & disown"
+          "telegram-desktop & disown"
+          "kitty & disown"
+          "firefox & disown"
           "echo 0"
         ];
 
