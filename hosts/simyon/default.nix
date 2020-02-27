@@ -60,6 +60,9 @@
     ];
   };
 
+  # needed by sddm display manager themes
+  environment.systemPackages = [ pkgs.qt5.qtgraphicaleffects ];
+
   services = {
     xserver = {
       enable = true;
@@ -71,7 +74,24 @@
 
       layout = "us,ru";
 
-      displayManager.sddm.enable = true; # TODO oh shit, here we go again
+      displayManager.sddm = let
+        fetchedTheme = pkgs.fetchFromGitHub {
+          owner = "eayus";
+          repo = "sddm-theme-clairvoyance";
+          rev = "dfc5984ff8f4a0049190da8c6173ba5667904487";
+          sha256 = "13z78i6si799k3pdf2cvmplhv7n1wbpwlsp708nl6gmhdsj51i81";
+        };
+      in {
+        enable = true;
+        theme = with builtins;
+          let folders = split "/" (toString fetchedTheme);
+          in elemAt folders (length folders - 1);
+
+        extraConfig = ''
+          [Theme]
+          ThemeDir=${fetchedTheme}/..
+        '';
+      };
 
       windowManager.i3 = {
         enable = true;
