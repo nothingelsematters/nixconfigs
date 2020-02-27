@@ -17,7 +17,7 @@ in {
       options = [ "grp:caps_toggle" ];
     };
   };
-  
+
   fonts.fontconfig.enable = true;
 
   gtk = {

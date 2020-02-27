@@ -6,7 +6,8 @@ let
   colors = theme.colors;
   cfg = builtins.replaceStrings [ "editor:" ] [''
     editor:
-        fontFamily: "${theme.fonts.mono.name}"''] (builtins.readFile ./config.cson);
+        fontFamily: "${theme.fonts.mono.name}"'']
+    (builtins.readFile ./config.cson);
 in {
   home = {
     packages = [ pkgs.atom ];
