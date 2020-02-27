@@ -2,8 +2,6 @@
 
 let nixconfigs = "/etc/nixos";
 in {
-  home.packages = [ pkgs.z-lua ];
-
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;
@@ -112,9 +110,6 @@ in {
       zstyle ':completion:*' cache-path ~/.zsh/cache
 
       eval "$(dircolors ~/.dir_colors)";
-
-      eval "$(z --init zsh enhanced once fzf)"
-      export _ZL_ECHO=1
 
       if [ -n "$name" ]; then
         PROMPT="[$name] $PROMPT";

@@ -14,6 +14,7 @@
     ./most
     ./networkmanager-dmenu
     ./rofi
+    ./z-lua
     ./zsh
   ];
 }
