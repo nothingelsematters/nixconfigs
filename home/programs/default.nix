@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./alacritty
     ./atom
     ./bat
     ./browserpass
@@ -13,7 +12,6 @@
     ./kitty
     ./most
     ./networkmanager-dmenu
-    ./rofi
     ./z-lua
     ./zsh
   ];

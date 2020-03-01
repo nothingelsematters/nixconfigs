@@ -2,72 +2,17 @@
 
 let
   theme = import ../../theme { inherit pkgs lib; };
-  mkINI = import ../../theme/lib/mkINI.nix;
+  vars = import ../../lib/variables.nix { inherit pkgs; };
+  i3-windows = import ./i3-windows { inherit pkgs lib; };
   getScript = import ../../lib/getScript.nix { inherit pkgs lib; };
-  cfg = builtins.readFile ./config.ini;
-  height = "22";
+  height = builtins.toString vars.bar-height;
 
   bin = x: builtins.concatStringsSep ":" (builtins.map (y: y + "/bin") x);
-  i3w-folder = ".config/polybar/i3-windows";
-  modulePath = i3w-folder + "/module.py";
-  commandPath = i3w-folder + "/command.py";
-  python = pkgs.python3.withPackages (ps: with ps; [ i3ipc ]);
-
-  addVars = with builtins;
-    file: vars:
-    let
-      lines = filter isString (split "\n" (readFile file));
-      isPrefix = prefix: str:
-        stringLength prefix <= stringLength str
-        && substring 0 (stringLength prefix) str == prefix;
-      snd = x: elemAt x 1;
-      folder = x: y:
-        if head x then [
-          true
-          (snd x ++ [ y ])
-        ] else
-          (if (y == "" || isPrefix "import " y || isPrefix "from " y) then [
-            false
-            (snd x ++ [ y ])
-          ] else [
-            true
-            (snd x ++ [ vars y ])
-          ]);
-      patched = foldl' folder [ false [ ] ] lines;
-    in concatStringsSep "\n" (snd patched);
 
   calendarPopup = with pkgs;
     getScript ./. "calendar-popup.sh" [ [ yad "yad" ] [ xdotool "xdotool" ] ];
 in {
-  home = {
-    packages = [ pkgs.yad ];
-
-    file = {
-      "${commandPath}".source = ./i3-windows/command.py;
-      "${modulePath}".text = addVars ./i3-windows/module.py ''
-        focused = '${theme.colors.text.secondary}'
-        wfocused = '${theme.colors.text.primary}'
-        unfocused = '${theme.colors.text.disabled}'
-        urgent = '${theme.colors.text.urgent}'
-
-        empty = ''
-        ICON_FONT = 3
-        COMMAND = 'python3 ${commandPath}'
-        ICONS = [
-            ('class=Firefox', ''),
-            ('class=Telegram', ''),
-            ('class=Slack', ''),
-            ('class=Atom', ''),
-            ('class=Alacritty', ''),
-            ('class=kitty', ''),
-            ('class=Typora', ''),
-            ('class=libreoffice*', ''),
-            ('class=Evince', ''),
-            ('*', ''),
-        ]
-      '';
-    };
-  };
+  home = i3-windows.home // { packages = [ pkgs.yad ]; };
 
   services.polybar = {
     enable = true;
@@ -80,7 +25,7 @@ in {
         bin [
           i3
           rofi
-          alacritty
+          vars.terminal.package
           htop
           networkmanager_dmenu
           bash
@@ -91,41 +36,250 @@ in {
         ]
       } polybar top &";
 
-    extraConfig = let
+    config = let
+      colors = theme.colors // {
+        trans = "#00000000";
+        red = "#EC7875";
+        green = "#1FA789";
+        yellow = "#EBD369";
+
+        icons = theme.colors.text.secondary;
+        textColor = theme.colors.text.primary;
+        pale = theme.colors.text.disabled;
+      };
+
       action = cmd: text: "%{A1:${cmd}:}${text}%{A}";
-      color = cl: text: "%{F${cl}}${text}%{F-}";
+      colorize = cl: text: "%{F${cl}}${text}%{F-}";
 
       hook = x: "polybar-msg hook network-details ${x}";
-      wifi = x: color theme.colors.text.secondary (action (hook x) "");
-      switch = turn: icon:
-        ''echo "${action "(nmcli radio wifi ${turn} && ${hook "2"}) &" icon}"'';
-      on = switch "off" "";
-      off = switch "on" "";
-      toggled =
-        "$(if [[ `nmcli general status | rg disabled` ]]; then ${off}; else ${on}; fi;)";
-      menu = action "(networkmanager_dmenu && ${hook "1"}) &" "";
-      options = color theme.colors.text.disabled ''"${toggled}" ${menu}'';
-    in ''
-      ${mkINI theme.colors}
+    in {
+      "bar/top" = {
+        monitor = "eDP-1";
+        bottom = false;
+        width = "100%";
+        height = height;
+        radius = 3;
+        fixed-center = true;
+        enable-ipc = true;
 
-      [tricks]
-      font-notification = ${theme.fonts.notification}:pixelsize=9;1
-      charging =  ${color theme.colors.text.primary "%percentage%%"}
-      muted =  ${color theme.colors.text.primary "mute"}
-      connected = ${
-        action "networkmanager_dmenu &" "<ramp-signal> <label-connected>"
-      }
-      time = ${action "${calendarPopup} ${height} &" "%a %H:%M"}
-      height = ${height}
-      i3w-exec = ${python}/bin/python3 ${modulePath}
-      apps = ${color theme.colors.text.secondary (action "rofi -show &" "")} ${
-        color theme.colors.text.primary " │ "
-      }
+        background = colors.trans;
+        foreground = colors.text.primary;
 
-      network-details-hook-0 = echo "${wifi "2"}"
-      network-details-hook-1 = echo "${wifi "1"} ${options}"
+        line-size = 1;
+        line-color = colors.text.primary;
 
-      ${cfg}
-    '';
+        border-top-size = 4;
+        border-bottom-size = 0;
+        border-left-size = 10;
+        border-right-size = 10;
+        border-color = colors.trans;
+
+        padding-right = 1;
+
+        module-margin-left = 0;
+        module-margin-right = 1;
+
+        font-0 = "${theme.fonts.notification}:pixelsize=9;1";
+        font-1 = "Font Awesome 5 Brands:pixelsize=9;1";
+        font-2 = "Font Awesome 5 Free:pixelsize=9;1";
+        font-3 = "Font Awesome 5 Free Solid:pixelsize=9;1";
+        font-4 = "Fira code medium:pixelsize=8;0";
+        font-5 = "noto-fonts-emoji:pixelsize=4;1"; # TODO emoji font
+
+        modules-left = "apps i3-windows window-title";
+        modules-center = "date";
+        modules-right = "xkeyboard volume battery network-details network cpu";
+
+        tray-position = "none";
+      };
+
+      settings.screenchange-reload = true;
+
+      "global/wm".margin-bottom = 0;
+
+      "module/apps" = {
+        type = "custom/text";
+        content =
+          "${colorize colors.text.secondary (action "rofi -show &" "")} ${
+            colorize colors.text.primary " │ "
+          }";
+      };
+
+      "module/i3-windows" = i3-windows.module;
+
+      "module/window-title" = {
+        type = "internal/xwindow";
+
+        label = " │  %title%";
+        label-maxlen = 70;
+
+        format-foreground = colors.textColor;
+      };
+
+      "module/date" = {
+        type = "internal/date";
+
+        interval = "1.0";
+        date = "";
+        time = action "${calendarPopup} ${height} &" "%a %H:%M";
+
+        label = "%time%";
+        label-foreground = colors.textColor;
+        format = "<label>";
+        format-foreground = colors.icons;
+        format-padding = 2;
+      };
+
+      "module/xkeyboard" = {
+        type = "internal/xkeyboard";
+        blacklist-0 = "num lock";
+
+        format-prefix = "  ";
+        format-prefix-foreground = colors.icons;
+        format-prefix-underline-size = 0;
+        label-layout = "%layout%";
+        label-layout-foreground = colors.textColor;
+        label-layout-underline-size = 0;
+      };
+
+      "module/volume" = {
+        type = "internal/alsa";
+
+        format-volume = "<ramp-volume>  <label-volume>";
+        format-muted = "<label-muted>";
+        label-volume = "%percentage%%";
+        label-volume-foreground = colors.textColor;
+        label-muted = " ${colorize colors.text.primary "mute"}";
+        label-muted-foreground = colors.icons;
+        format-volume-padding = 1;
+        format-muted-padding = 1;
+
+        ramp-volume-0 = "";
+        ramp-volume-1 = "";
+        ramp-volume-2 = "";
+        ramp-volume-foreground = colors.icons;
+        ramp-headphones-0 = "";
+      };
+
+      "module/battery" = {
+        type = "internal/battery";
+
+        full-at = 99;
+
+        battery = "BAT0";
+        adapter = "AC0";
+
+        poll-interval = 5;
+
+        format-charging = "<label-charging>";
+        format-discharging = "<ramp-capacity>  <label-discharging>";
+        format-full = "<ramp-capacity>  <label-full>";
+
+        label-charging = " ${colorize colors.text.primary "%percentage%%"}";
+        label-charging-foreground = colors.green;
+        label-discharging = "%percentage%%";
+        label-discharging-foreground = colors.textColor;
+
+        label-full = "%percentage%%";
+        format-charging-padding = 1;
+        format-discharging-padding = 1;
+        format-full-padding = 1;
+
+        ramp-capacity-0 = "";
+        ramp-capacity-0-foreground = colors.red;
+        ramp-capacity-1 = "";
+        ramp-capacity-1-foreground = colors.yellow;
+        ramp-capacity-2 = "";
+        ramp-capacity-2-foreground = colors.green;
+        ramp-capacity-3 = "";
+        ramp-capacity-3-foreground = colors.green;
+        ramp-capacity-4 = "";
+        ramp-capacity-4-foreground = colors.green;
+        ramp-capacity-5 = "";
+        ramp-capacity-5-foreground = colors.green;
+        ramp-capacity-6 = "";
+        ramp-capacity-6-foreground = colors.green;
+        ramp-capacity-7 = "";
+        ramp-capacity-7-foreground = colors.green;
+        ramp-capacity-8 = "";
+        ramp-capacity-8-foreground = colors.green;
+        ramp-capacity-9 = "";
+        ramp-capacity-9-foreground = colors.green;
+      };
+
+      "module/network-details" = let
+        wifi = x: colorize colors.text.secondary (action (hook x) "");
+        switch = turn: icon:
+          ''
+            echo "${
+              action "(nmcli radio wifi ${turn} && ${hook "2"}) &" icon
+            }"'';
+
+        toggled = "$(if [[ `nmcli general status | rg disabled` ]]; then ${
+            switch "on" ""
+          }; else ${switch "off" ""}; fi;)";
+        menu = action "(networkmanager_dmenu && ${hook "1"}) &" "";
+        options = colorize colors.text.disabled ''"${toggled}" ${menu}'';
+      in {
+        type = "custom/ipc";
+        hook-0 = ''echo "${wifi "2"}"'';
+        hook-1 = ''echo "${wifi "1"} ${options}"'';
+        initial = 1;
+      };
+
+      "module/network" = {
+        type = "internal/network";
+        interface = "wlp3s0";
+        interval = "2.0";
+
+        format-connected =
+          action "networkmanager_dmenu &" "<ramp-signal> <label-connected>";
+        format-disconnected = "<label-disconnected>";
+        format-packetloss = "<label-connected>";
+
+        ramp-signal-0 = "";
+        ramp-signal-1 = "";
+        ramp-signal-2 = "";
+        ramp-signal-3 = "";
+        ramp-signal-4 = "";
+        ramp-signal-5 = "";
+
+        label-connected = "%essid%";
+        label-disconnected = "%{A1:networkmanager_dmenu &:} %{A}";
+
+        label-connected-foreground = colors.textColor;
+        label-disconnected-foreground = colors.pale;
+        ramp-signal-foreground = colors.pale;
+      };
+
+      "module/cpu" = {
+        type = "internal/cpu";
+        interval = 1;
+
+        format =
+          "%{A1:${vars.terminal.name} -e htop &:}   <ramp-coreload>%{A}";
+        format-foreground = colors.icons;
+        format-padding = 1;
+        label-foreground = colors.icons;
+
+        ramp-coreload-spacing = 1;
+        ramp-coreload-0 = "▁";
+        ramp-coreload-1 = "▂";
+        ramp-coreload-2 = "▃";
+        ramp-coreload-3 = "▄";
+        ramp-coreload-4 = "▅";
+        ramp-coreload-5 = "▆";
+        ramp-coreload-6 = "▇";
+        ramp-coreload-7 = "█";
+        ramp-coreload-0-foreground = colors.green;
+        ramp-coreload-1-foreground = colors.green;
+        ramp-coreload-2-foreground = colors.green;
+        ramp-coreload-3-foreground = colors.green;
+        ramp-coreload-4-foreground = colors.yellow;
+        ramp-coreload-5-foreground = colors.yellow;
+        ramp-coreload-6-foreground = colors.red;
+        ramp-coreload-7-foreground = colors.red;
+      };
+    };
   };
 }

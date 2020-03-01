@@ -2,6 +2,7 @@
 
 let
   theme = import ../../theme { inherit pkgs lib; };
+  vars = import ../../lib/variables.nix { inherit pkgs; };
   appsmenu = ".config/rofi/appsmenu.rasi";
   networkmenu = ".config/rofi/networkmenu.rasi";
 
@@ -28,7 +29,7 @@ in {
     fullscreen = false;
     scrollbar = false;
     theme = appsmenu;
-    terminal = "alacritty";
+    terminal = vars.terminal.name;
 
     font = "${theme.fonts.notification} 10";
     extraConfig = ''

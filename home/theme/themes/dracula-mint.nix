@@ -3,19 +3,18 @@
 {
   colors = rec {
     background = rec {
-      primary = "#222433";
-      secondary = "#383851";
-      disabled = "#2d2e42";
-      accent = "#eceff4";
-      strong = "#88c0d0";
-      urgent = "#bf616a";
+      primary = "#292d3e";
+      secondary = "#353a51";
+      disabled = "#5b5d67";
+      accent = "#717790";
+      urgent = "#f44d4d";
       selection = secondary;
       inverted = text.primary;
     };
     text = rec {
-      primary = "#ced5db";
-      secondary = "#1fa789";
-      disabled = "#4c566a";
+      primary = "#e2e2e4";
+      secondary = "#25a487";
+      disabled = "#5b5d67";
       urgent = background.urgent;
       inverted = background.primary;
       selection = primary;

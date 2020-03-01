@@ -4,10 +4,7 @@ let
   modifier = "Mod4";
   theme = import ../../theme { inherit pkgs lib; };
   mkOpaque = import ../../theme/lib/mkOpaque.nix;
-  lock = import ../../services/i3lock-fancy {
-    inherit config;
-    inherit pkgs;
-  };
+  lock = import ../../services/i3lock-fancy { inherit config pkgs lib; };
   getScript = import ../../lib/getScript.nix { inherit pkgs lib; };
   getScript' = x: y: "exec " + getScript ./scripts x y;
 
@@ -33,9 +30,11 @@ let
 in rec {
   imports = [
     ../../programs/rofi
-    ../../services/polybar
-    ../../services/dunst
     ../../services/background
+    ../../services/compton
+    ../../services/dunst
+    ../../services/i3lock-fancy
+    ../../services/polybar
   ];
 
   home.packages = with pkgs; [ maim acpi ];

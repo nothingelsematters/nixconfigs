@@ -85,6 +85,8 @@
     showOnStartup: false
   "wrap-guide":
     enabled: false
+  "tree-view":
+    squashDirectoryNames: true
 ".coffee.source":
   editor:
     tabLength: 2

@@ -90,6 +90,7 @@
         extraConfig = ''
           [Theme]
           ThemeDir=${fetchedTheme}/..
+          CursorTheme=Paper
         '';
       };
 
