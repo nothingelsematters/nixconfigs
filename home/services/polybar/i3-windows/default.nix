@@ -2,11 +2,9 @@
 
 let
   theme = (import ../../../theme { inherit pkgs lib; }).colors;
-  i3w-folder = ".config/polybar/i3-windows";
-  modulePath = i3w-folder + "/module.py";
-  commandPath = i3w-folder + "/command.py";
-  python = pkgs.python3.withPackages (ps: with ps; [ i3ipc ]);
+  python = pkgs.python3.withPackages (ps: with ps; [ i3ipc ]) + /bin/python3;
 
+  # TODO simplify
   addVars = with builtins;
     file: vars:
     let
@@ -29,10 +27,10 @@ let
           ]);
       patched = foldl' folder [ false [ ] ] lines;
     in concatStringsSep "\n" (snd patched);
-in {
-  home.file = {
-    "${commandPath}".source = ./command.py;
-    "${modulePath}".text = addVars ./module.py ''
+
+  module = pkgs.writeTextFile {
+    name = "module.py";
+    text = addVars ./module.py ''
       focused = '${theme.text.secondary}'
       wfocused = '${theme.text.primary}'
       unfocused = '${theme.text.disabled}'
@@ -40,7 +38,7 @@ in {
 
       empty = ''
       ICON_FONT = 3
-      COMMAND = 'python3 ${commandPath}'
+      COMMAND = '${python} ${./command.py}'
       ICONS = [
           ('class=Firefox', ''),
           ('class=Telegram', ''),
@@ -55,10 +53,10 @@ in {
       ]
     '';
   };
-
+in {
   module = {
     type = "custom/script";
-    exec = "${python}/bin/python3 ${modulePath}";
+    exec = "${python} ${module}";
     tail = true;
   };
 }

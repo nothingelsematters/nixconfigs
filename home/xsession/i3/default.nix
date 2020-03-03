@@ -1,39 +1,18 @@
 { config, pkgs, lib, ... }:
 
 let
-  modifier = "Mod4";
   theme = import ../../theme { inherit pkgs lib; };
   mkOpaque = import ../../theme/lib/mkOpaque.nix;
-  lock = import ../../services/i3lock-fancy { inherit config pkgs lib; };
-  getScript = import ../../lib/getScript.nix { inherit pkgs lib; };
-  getScript' = x: y: "exec " + getScript ./scripts x y;
-
-  resizeScript = with pkgs;
-    getScript' "resize.sh" [ [ slop "slop" ] [ i3-gaps "i3-msg" ] ];
-
-  brightnessScript = with pkgs;
-    getScript' "brightness.sh" [
-      [ coreutils "cut" ]
-      [ coreutils "seq" ]
-      [ coreutils "cat" ]
-      [ gnused "sed" ]
-      [ notify-desktop "notify-desktop" ]
-    ];
-
-  volumeScript = with pkgs;
-    getScript' "volume.sh" [
-      [ alsaUtils "amixer" ]
-      [ notify-desktop "notify-desktop" ]
-      [ ripgrep "rg" ]
-      [ coreutils "cut" ]
-    ];
+  lock = import ../../services/screen-locker { inherit config pkgs lib; };
+  scripts = import ./scripts { inherit pkgs; };
+  modifier = "Mod4";
 in rec {
   imports = [
     ../../programs/rofi
     ../../services/background
     ../../services/compton
     ../../services/dunst
-    ../../services/i3lock-fancy
+    ../../services/screen-locker
     ../../services/polybar
   ];
 
@@ -75,6 +54,9 @@ in rec {
           always = true;
           notification = false;
         }) [
+          "betterlockscreen -u ${
+            ../../services/background/background.jpg
+          } --blur 1" # TODO
           "systemctl --user restart polybar"
           "libinput-gestures & disown"
           "telegram-desktop & disown"
@@ -159,16 +141,16 @@ in rec {
             "Print" = screenshot "";
             "Control+Print" = screenshot "-s";
 
-            "XF86AudioRaiseVolume" = volumeScript + " up";
-            "XF86AudioLowerVolume" = volumeScript + " down";
-            "XF86AudioMute" = volumeScript + " mute";
+            "XF86AudioRaiseVolume" = scripts.volume + " up";
+            "XF86AudioLowerVolume" = scripts.volume + " down";
+            "XF86AudioMute" = scripts.volume + " mute";
 
-            "XF86MonBrightnessUp" = brightnessScript + " up";
-            "XF86MonBrightnessDown" = brightnessScript + " down";
+            "XF86MonBrightnessUp" = scripts.brightness + " up";
+            "XF86MonBrightnessDown" = scripts.brightness + " down";
 
             "XF86PowerOff" = "exec ${lock.services.screen-locker.lockCmd}";
 
-            "${modifier}+r" = resizeScript;
+            "${modifier}+r" = scripts.resize;
             "${modifier}+F11" = "fullscreen";
           };
       };

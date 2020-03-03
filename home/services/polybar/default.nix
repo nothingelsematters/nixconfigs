@@ -4,15 +4,12 @@ let
   theme = import ../../theme { inherit pkgs lib; };
   vars = import ../../lib/variables.nix { inherit pkgs; };
   i3-windows = import ./i3-windows { inherit pkgs lib; };
-  getScript = import ../../lib/getScript.nix { inherit pkgs lib; };
+  getScript = import ../../lib/getScript.nix { inherit pkgs; };
   height = builtins.toString vars.bar-height;
 
-  bin = x: builtins.concatStringsSep ":" (builtins.map (y: y + "/bin") x);
-
-  calendarPopup = with pkgs;
-    getScript ./. "calendar-popup.sh" [ [ yad "yad" ] [ xdotool "xdotool" ] ];
+  calendarPopup = with pkgs; getScript ./calendar-popup.sh [ yad xdotool ];
 in {
-  home = i3-windows.home // { packages = [ pkgs.yad ]; };
+  home.packages = [ pkgs.yad ];
 
   services.polybar = {
     enable = true;
@@ -20,9 +17,9 @@ in {
       i3GapsSupport = true;
       alsaSupport = true;
     };
-    script = with pkgs;
-      "PATH=$PATH:${
-        bin [
+    script = let
+      PATH = with pkgs;
+        stdenv.lib.makeBinPath [
           i3
           rofi
           vars.terminal.package
@@ -33,8 +30,8 @@ in {
           networkmanager
           ripgrep
           rofi
-        ]
-      } polybar top &";
+        ];
+    in "PATH=$PATH:${PATH} polybar top &";
 
     config = let
       colors = theme.colors // {

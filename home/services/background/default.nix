@@ -1,9 +1,6 @@
 { pkgs, ... }:
 
-let backgroundPath = ".config/background.jpg";
-in {
-  home.file."${backgroundPath}".source = ./background.jpg;
-
+{
   systemd.user.services.background = {
     Unit = {
       Description = "Set desktop background using feh";
@@ -13,10 +10,10 @@ in {
 
     Service = {
       Type = "oneshot";
-      ExecStart = "${pkgs.feh}/bin/feh ${backgroundPath} --bg-fill";
+      ExecStart = "${pkgs.feh}/bin/feh ${./background.jpg} --bg-fill";
       IOSchedulingClass = "idle";
     };
 
-    Install = { WantedBy = [ "graphical-session.target" ]; };
+    Install.WantedBy = [ "graphical-session.target" ];
   };
 }

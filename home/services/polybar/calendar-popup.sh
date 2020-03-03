@@ -3,12 +3,12 @@ BORDER_SIZE=0
 YAD_WIDTH=222
 YAD_HEIGHT=150
 
-if [ "$($XDOTOOL getwindowfocus getwindowname)" = "yad-calendar" ]; then
+if [ "$(xdotool getwindowfocus getwindowname)" = "yad-calendar" ]; then
     exit 0
 fi
 
-eval "$($XDOTOOL getmouselocation --shell)"
-eval "$($XDOTOOL getdisplaygeometry --shell)"
+eval "$(xdotool getmouselocation --shell)"
+eval "$(xdotool getdisplaygeometry --shell)"
 
 # X
 if [ "$((X + YAD_WIDTH / 2 + BORDER_SIZE))" -gt "$WIDTH" ]; then #Right side
@@ -26,6 +26,6 @@ else #Top
     : $((pos_y = BAR_HEIGHT + BORDER_SIZE))
 fi
 
-$YAD --calendar --undecorated --fixed --close-on-unfocus --no-buttons \
+yad --calendar --undecorated --fixed --close-on-unfocus --no-buttons \
     --width=$YAD_WIDTH --height=$YAD_HEIGHT --posx=$pos_x --posy=$pos_y \
     --title="yad-calendar" --borders=0 >/dev/null &

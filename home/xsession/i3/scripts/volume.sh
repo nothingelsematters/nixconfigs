@@ -1,15 +1,15 @@
 function get_volume {
-    $AMIXER get Master | $RG '%' | head -n 1 | $CUT -d '[' -f 2 | $CUT -d '%' -f 1
+    amixer get Master | rg '%' | head -n 1 | cut -d '[' -f 2 | cut -d '%' -f 1
 }
 
 function is_mute {
-    $AMIXER get Master | $RG '%' | $RG -oe '[^ ]+$' | $RG off > /dev/null
+    amixer get Master | rg '%' | rg -oe '[^ ]+$' | rg off > /dev/null
 }
 
 function send_notification {
     nl=$'\n'
     if is_mute ; then
-        $NOTIFYDESKTOP -t 1000 -i "audio-volume-muted" -r 2593 -u normal "$nl mute"
+        notify-desktop -t 1000 -i "audio-volume-muted" -r 2593 -u normal "$nl mute"
     else
         volume=$(get_volume)
         bar=$(seq --separator="─" 0 "$((volume / 3))" | sed 's/[0-9]//g')
@@ -26,23 +26,23 @@ function send_notification {
             icon="audio-volume-high"
         fi
 
-        $NOTIFYDESKTOP -t 1000 -i $icon -r 2593 -u normal "$volume%" "$bar"
+        notify-desktop -t 1000 -i $icon -r 2593 -u normal "$volume%" "$bar"
     fi
 }
 
 case $1 in
     up)
-        $AMIXER set Master on > /dev/null
-        $AMIXER sset Master 5%+ > /dev/null
+        amixer set Master on > /dev/null
+        amixer sset Master 5%+ > /dev/null
         send_notification
         ;;
     down)
-        $AMIXER set Master on > /dev/null
-        $AMIXER sset Master 5%- > /dev/null
+        amixer set Master on > /dev/null
+        amixer sset Master 5%- > /dev/null
         send_notification
         ;;
     mute)
-        $AMIXER set Master 1+ toggle > /dev/null
+        amixer set Master 1+ toggle > /dev/null
         send_notification
         ;;
 esac

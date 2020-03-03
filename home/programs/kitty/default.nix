@@ -33,31 +33,31 @@ in rec {
 
       # red
       color1 = "#FF5C57";
-      color9 = "#FF5C57";
+      color9 = programs.kitty.settings.color1;
 
       # green
       color2 = "#5AF78E";
-      color10 = "#5AF78E";
+      color10 = programs.kitty.settings.color2;
 
       # yellow
       color3 = "#F3F99D";
-      color11 = "#F3F99D";
+      color11 = programs.kitty.settings.color3;
 
       # blue
       color4 = "#57C7FF";
-      color12 = "#57C7FF";
+      color12 = programs.kitty.settings.color4;
 
       # magenta
       color5 = "#FF6AC1";
-      color13 = "#FF6AC1";
+      color13 = programs.kitty.settings.color5;
 
       # cyan
       color6 = "#9AEDFE";
-      color14 = "#9AEDFE";
+      color14 = programs.kitty.settings.color6;
 
       # white
-      color7 = "#F1F1F0";
-      color15 = "#EFF0EB";
+      color7 = theme.colors.text.primary;
+      color15 = programs.kitty.settings.color7;
     };
   };
 }

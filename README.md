@@ -1,6 +1,6 @@
 ## custom nixOS configuration
 
-#### 91 global generations <br /> 1203 home-manager generations <br /> 207 commits <br /> later
+#### 91 global generations <br /> 1217 home-manager generations <br /> 208 commits <br /> later
 
 > `$HOME/.config/nixpkgs` must lead to `home`
 >

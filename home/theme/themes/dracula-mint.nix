@@ -5,7 +5,7 @@
     background = rec {
       primary = "#292d3e";
       secondary = "#353a51";
-      disabled = "#5b5d67";
+      disabled = "#353a51";
       accent = "#717790";
       urgent = "#f44d4d";
       selection = secondary;
