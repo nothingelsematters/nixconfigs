@@ -3,11 +3,11 @@
 let
   theme = import ../../theme { inherit pkgs lib; };
   vars = import ../../lib/variables.nix { inherit pkgs; };
-  i3-windows = import ./i3-windows { inherit pkgs lib; };
-  getScript = import ../../lib/getScript.nix { inherit pkgs; };
-  height = builtins.toString vars.bar-height;
 
-  calendarPopup = with pkgs; getScript ./calendar-popup.sh [ yad xdotool ];
+  i3-windows = import ./i3-windows { inherit pkgs lib; };
+  calendarPopup = import ./calendar-popup { inherit pkgs; };
+
+  height = builtins.toString vars.bar-height;
 in {
   home.packages = [ pkgs.yad ];
 

@@ -4,29 +4,19 @@ let
   theme = (import ../../../theme { inherit pkgs lib; }).colors;
   python = pkgs.python3.withPackages (ps: with ps; [ i3ipc ]) + /bin/python3;
 
-  # TODO simplify
   addVars = with builtins;
+    with lib;
     file: vars:
     let
-      lines = filter isString (split "\n" (readFile file));
-      isPrefix = prefix: str:
-        stringLength prefix <= stringLength str
-        && substring 0 (stringLength prefix) str == prefix;
-      snd = x: elemAt x 1;
-      folder = x: y:
-        if head x then [
-          true
-          (snd x ++ [ y ])
-        ] else
-          (if (y == "" || isPrefix "import " y || isPrefix "from " y) then [
-            false
-            (snd x ++ [ y ])
-          ] else [
-            true
-            (snd x ++ [ vars y ])
-          ]);
-      patched = foldl' folder [ false [ ] ] lines;
-    in concatStringsSep "\n" (snd patched);
+      lines = strings.splitString "\n" (readFile file);
+      size = length lines;
+      notImport = x:
+        !(strings.hasPrefix "import" x.fst || strings.hasPrefix "from " x.fst);
+      center = (lists.findFirst notImport 0
+        (lists.zipLists lines (lists.range 0 (size - 1)))).snd;
+      patched = lists.sublist 0 center lines ++ [ vars ]
+        ++ lists.sublist center size lines;
+    in concatStringsSep "\n" patched;
 
   module = pkgs.writeTextFile {
     name = "module.py";
@@ -56,7 +46,7 @@ let
 in {
   module = {
     type = "custom/script";
-    exec = "${python} ${module}";
+    exec = "${python} ${module} ";
     tail = true;
   };
 }

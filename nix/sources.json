@@ -1,0 +1,110 @@
+{
+    "NUR": {
+        "branch": "master",
+        "description": "Nix User Repository: User contributed nix packages [maintainer=@Mic92]",
+        "homepage": "",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "54aa02050baecb11f743288f7dc3648cc1f7ad3c",
+        "sha256": "09kwnrk7dycv1h441wkmlcn8chsnpmnqfzwcivvlh1ydkas46c9c",
+        "type": "tarball",
+        "url": "https://github.com/nix-community/NUR/archive/54aa02050baecb11f743288f7dc3648cc1f7ad3c.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "fast-syntax-highlighting": {
+        "branch": "master",
+        "description": "(Short name F-Sy-H or FSH). Syntax-highlighting for Zshell – fine granularity, number of features, 40 work hours themes",
+        "homepage": "http://zdharma.org",
+        "owner": "zdharma",
+        "repo": "fast-syntax-highlighting",
+        "rev": "4c0e992f16c3d91adecc42ac5c36356480781e6f",
+        "sha256": "0wv5hk4lqk2rp28m6h0pmzwikyzjvljdxnrsjmmgxz5pbww8v4sl",
+        "type": "tarball",
+        "url": "https://github.com/zdharma/fast-syntax-highlighting/archive/4c0e992f16c3d91adecc42ac5c36356480781e6f.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "forgit": {
+        "branch": "master",
+        "description": ":zzz: A utility tool powered by fzf for using git interactively.",
+        "homepage": "",
+        "owner": "wfxr",
+        "repo": "forgit",
+        "rev": "4eb0832e535082c36a1e07de2570d3385fb4f6fb",
+        "sha256": "1s1m2cggnmwhsapxdv2wg94vrhbdiwlril3r2v9nx2z6q20gpp5b",
+        "type": "tarball",
+        "url": "https://github.com/wfxr/forgit/archive/4eb0832e535082c36a1e07de2570d3385fb4f6fb.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "home-manager": {
+        "branch": "master",
+        "description": "Manage a user environment using Nix",
+        "homepage": "",
+        "owner": "rycee",
+        "repo": "home-manager",
+        "rev": "6fc6c736f921fe42eb45efc8e82540c9eea4a1a8",
+        "sha256": "1740n03hns1w7yr82gfmhxm3b68b5xn26dx1zbwy0829ljplydj9",
+        "type": "tarball",
+        "url": "https://github.com/rycee/home-manager/archive/6fc6c736f921fe42eb45efc8e82540c9eea4a1a8.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "materialFox": {
+        "branch": "72",
+        "description": "A Material Design-inspired userChrome.css theme for Firefox",
+        "homepage": null,
+        "owner": "muckSponge",
+        "repo": "materialFox",
+        "rev": "220675cc5ab0c28e91381e03bc96b4324bdc19ef",
+        "sha256": "0q99b62knwkj9yqkjiasg4mhh076fzhwlvm5lsmdm876pz9cng12",
+        "type": "tarball",
+        "url": "https://github.com/muckSponge/materialFox/archive/220675cc5ab0c28e91381e03bc96b4324bdc19ef.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "niv": {
+        "branch": "master",
+        "description": "Easy dependency management for Nix projects",
+        "homepage": "https://github.com/nmattia/niv",
+        "owner": "nmattia",
+        "repo": "niv",
+        "rev": "98c74a80934123cb4c3bf3314567f67311eb711a",
+        "sha256": "1w8n54hapd4x9f1am33icvngkqns7m3hl9yair38yqq08ffwg0kn",
+        "type": "tarball",
+        "url": "https://github.com/nmattia/niv/archive/98c74a80934123cb4c3bf3314567f67311eb711a.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nixpkgs": {
+        "branch": "master",
+        "description": "Nix Packages collection",
+        "homepage": null,
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "bf83a7cc66f6e4157fd6514e22096495e1a3b5e0",
+        "sha256": "0rixfr1fvbs1qs0rlp946r3yz3pxy6v6lv00z2x48qba0m85bl4g",
+        "type": "tarball",
+        "url": "https://github.com/nixos/nixpkgs/archive/bf83a7cc66f6e4157fd6514e22096495e1a3b5e0.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nord-dircolors": {
+        "branch": "develop",
+        "description": "An arctic, north-bluish clean and elegant dircolors theme.",
+        "homepage": "https://www.nordtheme.com/ports/dircolors",
+        "owner": "arcticicestudio",
+        "repo": "nord-dircolors",
+        "rev": "c181c7bd35b099b91fe19ee5c57c15b65fc7c54d",
+        "sha256": "1c9fa6dip266z6hfqd5nan5v6qjp6dg074lvk4rxisirm26djlzz",
+        "type": "tarball",
+        "url": "https://github.com/arcticicestudio/nord-dircolors/archive/c181c7bd35b099b91fe19ee5c57c15b65fc7c54d.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "sddm-theme-clairvoyance": {
+        "branch": "master",
+        "description": "An SDDM theme",
+        "homepage": "",
+        "owner": "eayus",
+        "repo": "sddm-theme-clairvoyance",
+        "rev": "dfc5984ff8f4a0049190da8c6173ba5667904487",
+        "sha256": "13z78i6si799k3pdf2cvmplhv7n1wbpwlsp708nl6gmhdsj51i81",
+        "type": "tarball",
+        "url": "https://github.com/eayus/sddm-theme-clairvoyance/archive/dfc5984ff8f4a0049190da8c6173ba5667904487.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    }
+}

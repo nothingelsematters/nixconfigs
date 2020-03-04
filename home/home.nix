@@ -1,6 +1,8 @@
 { lib, pkgs, ... }:
 
-let theme = import ./theme { inherit pkgs lib; };
+let
+  theme = import ./theme { inherit pkgs lib; };
+  sources = import ../nix/sources.nix;
 in {
   imports = [ ./packages ./xsession ./services ./programs ];
 
@@ -18,7 +20,12 @@ in {
     };
   };
 
-  fonts.fontconfig.enable = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    android_sdk.accept_license = true;
+
+    packageOverrides = pkgs: { nur = import sources.NUR { inherit pkgs; }; };
+  };
 
   gtk = {
     enable = true;

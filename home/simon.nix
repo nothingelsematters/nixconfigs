@@ -9,4 +9,7 @@
     extraGroups = [ "wheel" "networkmanager" "audio" "video" "docker" "input" ];
     description = "Simyon Empire";
   };
+
+  home-manager.users.simon = args:
+    import ./home.nix (args // { inherit pkgs; });
 }

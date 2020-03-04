@@ -1,13 +1,8 @@
 { config, lib, pkgs, ... }:
 
-let nixconfigs = "/etc/nixos";
+let sources = import ../../../nix/sources.nix;
 in {
-  home.file.".dir_colors".source = pkgs.fetchFromGitHub {
-    owner = "arcticicestudio";
-    repo = "nord-dircolors";
-    rev = "v0.2.0";
-    sha256 = "1c9fa6dip266z6hfqd5nan5v6qjp6dg074lvk4rxisirm26djlzz";
-  } + /src/dir_colors;
+  home.file.".dir_colors".source = sources.nord-dircolors + /src/dir_colors;
 
   programs.zsh = {
     enable = true;
@@ -35,50 +30,25 @@ in {
     plugins = with pkgs; [
       {
         name = "nix-zsh-completions";
-        src = nix-zsh-completions + "/share/zsh/plugins/nix";
+        src = nix-zsh-completions + /share/zsh/plugins/nix;
       }
       {
         name = "you-should-use";
-        src = zsh-you-should-use + "/share/zsh/plugins/you-should-use";
-      }
-      {
-        name = "fzf-git";
-        src = fetchFromGitHub {
-          owner = "hschne";
-          repo = "fzf-git";
-          rev = "bb1febcac3af711e09150849157e0726056acef9";
-          sha256 = "0rva5n58pa5awnz21vmrvdjar7va9jz2802y8wd553m0fa2nv4xf";
-        };
+        src = zsh-you-should-use + /share/zsh/plugins/you-should-use;
       }
       {
         name = "forgit";
-        src = fetchFromGitHub {
-          owner = "wfxr";
-          repo = "forgit";
-          rev = "1.1.0";
-          sha256 = "0vv03y5gz944ri56z6j775ngp5gc5ikav2k6q4vbhs83k0zpnpsr";
-        };
+        src = sources.forgit;
       }
       {
         name = "fast-syntax-highlighting";
-        src = fetchFromGitHub {
-          owner = "zdharma";
-          repo = "fast-syntax-highlighting";
-          rev = "v1.55";
-          sha256 = "0h7f27gz586xxw7cc0wyiv3bx0x3qih2wwh05ad85bh2h834ar8d";
-        };
+        src = sources.fast-syntax-highlighting;
       }
     ];
     shellAliases = {
-      hms =
-        "(for i in `find ${nixconfigs} -name '*.nix' | rg -v packages`; do nixfmt $i; done) && "
-        + "(home-manager switch | tee /dev/tty | "
-        + ''rg -A 100 "Suggested commands:" | ''
-        + ''tail -n +2 | zsh --xtrace 2>&1 > /dev/null | rg -e "^\+zsh" | ''
-        + ''sed "s/\+zsh:[0-9]*>/running:  /" | rg -i "running:")'';
-      nrs = "sudo nixos-rebuild switch";
+      nixx = "/etc/nixos/make.sh";
+      nixxs = "nixx switch";
       nsp = "nix-shell --run zsh -p";
-      npd = "nix-channel --update && hms";
 
       confs = "z conf; atom .";
 

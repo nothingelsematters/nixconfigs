@@ -1,7 +1,8 @@
 { config, pkgs, ... }:
 
-{
-  imports = [ ./hosts/simyon ];
+let sources = import ./nix/sources.nix;
+in {
+  imports = [ ./hosts/simyon "${sources.home-manager}/nixos" ];
 
   nixpkgs.config.allowUnfree = true;
 

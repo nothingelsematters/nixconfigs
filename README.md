@@ -1,7 +1,16 @@
-## custom nixOS configuration
+## nixconfigs
 
-#### 91 global generations <br /> 1217 home-manager generations <br /> 208 commits <br /> later
+my custom nixOS configuration
+
+#### 91 global generations <br /> 209 commits <br /> later
 
 > `$HOME/.config/nixpkgs` must lead to `home`
 >
 > `/etc/nixos` must lead to `.`
+
+### Usage
+
+```
+$ sudo ./make.sh link
+sudo ./make.sh build
+```

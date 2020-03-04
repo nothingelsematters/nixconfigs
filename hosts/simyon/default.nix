@@ -1,7 +1,8 @@
 { config, pkgs, ... }:
 
-{
-  imports = [ ./hardware.nix ./simon.nix ];
+let sources = import ../../nix/sources.nix;
+in {
+  imports = [ ./hardware.nix ../../home/simon.nix ];
 
   boot = {
     loader = {
@@ -30,7 +31,11 @@
   sound.enable = true;
   virtualisation.docker.enable = true;
   networking.networkmanager.enable = true;
-  nix.autoOptimiseStore = true;
+
+  nix = {
+    autoOptimiseStore = true;
+    optimise.automatic = true;
+  };
 
   time.timeZone = "Europe/Moscow";
 
@@ -74,23 +79,14 @@
 
       layout = "us,ru";
 
-      displayManager.sddm = let
-        fetchedTheme = pkgs.fetchFromGitHub {
-          owner = "eayus";
-          repo = "sddm-theme-clairvoyance";
-          rev = "dfc5984ff8f4a0049190da8c6173ba5667904487";
-          sha256 = "13z78i6si799k3pdf2cvmplhv7n1wbpwlsp708nl6gmhdsj51i81";
-        };
+      displayManager.sddm = let fetchedTheme = sources.sddm-theme-clairvoyance;
       in {
         enable = true;
-        theme = with builtins;
-          let folders = split "/" (toString fetchedTheme);
-          in elemAt folders (length folders - 1);
-
+        theme = with pkgs.lib;
+          lists.last (strings.splitString "/" (builtins.toString fetchedTheme));
         extraConfig = ''
           [Theme]
           ThemeDir=${fetchedTheme}/..
-          CursorTheme=Paper
         '';
       };
 

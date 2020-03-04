@@ -54,9 +54,6 @@ in rec {
           always = true;
           notification = false;
         }) [
-          "betterlockscreen -u ${
-            ../../services/background/background.jpg
-          } --blur 1" # TODO
           "systemctl --user restart polybar"
           "libinput-gestures & disown"
           "telegram-desktop & disown"

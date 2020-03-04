@@ -21,8 +21,8 @@ let
   '';
 
 in {
-  home.file."${appsmenu}".text = makeTheme ./appsmenu.rasi;
-  home.file."${networkmenu}".text = makeTheme ./networkmenu.rasi;
+  home.file.${appsmenu}.text = makeTheme ./appsmenu.rasi;
+  home.file.${networkmenu}.text = makeTheme ./networkmenu.rasi;
 
   programs.rofi = {
     enable = true;
