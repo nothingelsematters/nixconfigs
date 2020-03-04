@@ -3,7 +3,7 @@
 {
   programs.fzf = {
     enable = true;
-    defaultOptions = [ "-m" ];
+    defaultOptions = [ "-m" "--reverse" ];
     defaultCommand = "rg --files";
   };
 }

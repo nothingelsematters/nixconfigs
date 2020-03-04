@@ -45,7 +45,7 @@ in {
 
       defaultFonts = {
         monospace = [ "Jetbrains Mono" ];
-        emoji = [ "Twitter Color Emoji" ];
+        emoji = [ "Joypixels" ];
       };
     };
 
@@ -56,7 +56,7 @@ in {
       noto-fonts
       noto-fonts-cjk
       noto-fonts-emoji
-      twitter-color-emoji
+      joypixels
       fira-code
       fira-code-symbols
       material-icons
@@ -87,6 +87,7 @@ in {
         extraConfig = ''
           [Theme]
           ThemeDir=${fetchedTheme}/..
+          EnableAvatars=true
         '';
       };
 
