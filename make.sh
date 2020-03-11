@@ -7,11 +7,19 @@ set -o nounset
 set -o pipefail
 
 function trace() {
-    echo "> $@" >&2; "$@"
+    output $@; "$@"
+}
+
+function output() {
+    echo "> $@" >&2
 }
 
 function trace2() {
     echo ">> $@" >&2; "$@"
+}
+
+function output2() {
+    echo ">> $@" >&2
 }
 
 function usage() {
@@ -46,7 +54,18 @@ shift
 
 case "$mode" in
     "build")
-        trace2 nix-shell -p nixfmt fd --run "fd --full-path $NIXCONFIGS -e nix -E 'packages' -x nixfmt"
+        pwd=$PWD
+        cd $NIXCONFIGS
+        output2 "formatting"
+        for i in $(git status -s | gawk '{ print $2 }' | rg -v packages | rg '\\*.nix'); do
+            sha="$(sha256sum $i)"
+            nixfmt $i
+            if [ "$(sha256sum $i)" != "$sha" ]; then
+                output2 "+ $i"
+            fi
+        done
+        cd $pwd
+
         tmp="$(mktemp -u)"
         trace2 nix build --no-link -f "$NIXCONFIGS/default.nix" system -o "$tmp/result" --keep-going $* >&2
         trap "rm '$tmp/result'" EXIT
@@ -54,11 +73,13 @@ case "$mode" in
         diff
         echo "$drv"
         ;;
+
     "switch")
         drv="$(trace $NIXCONFIGS/make.sh build)"
         trace2 sudo nix-env -p /nix/var/nix/profiles/system --set "$drv"
         NIXOS_INSTALL_BOOTLOADER=1 trace sudo --preserve-env=NIXOS_INSTALL_BOOTLOADER "$drv/bin/switch-to-configuration" switch
         ;;
+
     "update")
         ADDONS=$NIXCONFIGS/home/programs/firefox/addons
         trace nixpkgs-firefox-addons $ADDONS/addons.json $ADDONS/default.nix || true
@@ -67,18 +88,19 @@ case "$mode" in
         drv="$(trace $NIXCONFIGS/make.sh build)"
         diff
         ;;
+
     "info")
         drv="$(trace $NIXCONFIGS/make.sh build)"
 
-        trace2 echo "Derivation:"
-        echo "$drv"
+        echo ">> derivation:"
+        echo ">>> $drv"
         echo
 
-        trace2 echo "Biggest dependencies:"
+        trace2 echo "biggest dependencies:"
         du -shc $(nix-store -qR "$drv") | sort -hr | head -n 21 || true
         echo
 
-        trace2 echo "Auto GC roots:"
+        echo ">> auto GC roots:"
         roots=""
         for i in /nix/var/nix/gcroots/auto/*; do
           p="$(readlink "$i")"
@@ -87,22 +109,28 @@ case "$mode" in
             roots="$roots$s $p\n"
           fi
         done
-        if [[ -n "$roots" ]];
-        then echo -e "$roots" | sort -hr
-        else echo "None."
+
+        if [[ -n "$roots" ]]; then
+            echo -e "$roots" | sort -hr
+        else
+            echo "none"
         fi
         ;;
+
     "cleanup")
-        trace sudo nix-collect-garbage --delete-older-than 7d
+        trace sudo nix-collect-garbage -d
         trace sudo nix optimise-store
         ;;
+
     "link")
         ln -srf /etс/nixos .
         ;;
+
     "help")
         [[ $# -gt 0 ]] && invalid_syntax
         usage
         ;;
+
     *)
         invalid_syntax
 esac

@@ -28,36 +28,36 @@ in rec {
       cursor_text_color = "#282A36";
 
       # black
-      color0 = "#282a36";
-      color8 = "#686868";
+      color0 = "#21222c";
+      color8 = "#6272a4";
 
       # red
-      color1 = "#FF5C57";
-      color9 = programs.kitty.settings.color1;
+      color1 = "#ff5555";
+      color9 = "#ff6e6e";
 
       # green
-      color2 = "#5AF78E";
-      color10 = programs.kitty.settings.color2;
+      color2 = "#50fa7b";
+      color10 = "#69ff94";
 
       # yellow
-      color3 = "#F3F99D";
-      color11 = programs.kitty.settings.color3;
+      color3 = "#f1fa8c";
+      color11 = "#ffffa5";
 
       # blue
-      color4 = "#57C7FF";
-      color12 = programs.kitty.settings.color4;
+      color4 = "#bd93f9";
+      color12 = "#d6acff";
 
       # magenta
-      color5 = "#FF6AC1";
-      color13 = programs.kitty.settings.color5;
+      color5 = "#ff79c6";
+      color13 = "#ff92df";
 
       # cyan
-      color6 = "#9AEDFE";
-      color14 = programs.kitty.settings.color6;
+      color6 = "#8be9fd";
+      color14 = "#a4ffff";
 
       # white
-      color7 = theme.colors.text.primary;
-      color15 = programs.kitty.settings.color7;
+      color7 = "#f8f8f2";
+      color15 = "#ffffff";
     };
   };
 }

@@ -38,11 +38,12 @@ with pkgs; {
     # haskell
     (ghc.withPackages (ps:
       with ps; [
+        unordered-containers
         stack
         cabal2nix
-        unordered-containers
         # TODO my heart is marked as broken, refusing to evaluate:
         # stylish-haskell
+        # stack2nix
       ]))
 
     # python

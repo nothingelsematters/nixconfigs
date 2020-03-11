@@ -44,11 +44,11 @@
   };
   "github-dark-theme" = buildFirefoxXpiAddon {
     pname = "github-dark-theme";
-    version = "1.0.43";
+    version = "1.0.44";
     addonId = "{1dbe3fd3-f191-4a3b-a5d7-a6f95ed2aea1}";
     url =
-      "https://addons.mozilla.org/firefox/downloads/file/3502350/github_dark_theme-1.0.43-an+fx.xpi?src=";
-    sha256 = "349ac662ab99d7a0801b5742f108ec11005e774bd7ac3250c9d27f9c66f16a4a";
+      "https://addons.mozilla.org/firefox/downloads/file/3520947/github_dark_theme-1.0.44-an+fx.xpi?src=";
+    sha256 = "61f432d5e2eb25b4c66de09e99c31ae5d6cf17fa70cd13a56f808af0394c91e8";
     meta = with stdenv.lib; {
       homepage =
         "https://poychang.github.io/github-dark-theme/?utm_source=firefoxaddon";

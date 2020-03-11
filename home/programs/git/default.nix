@@ -1,7 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
-{
-  home.packages = with pkgs; [ git gitAndTools.diff-so-fancy ];
+let theme = import ../../theme { inherit pkgs lib; };
+in {
+  home.packages = with pkgs.gitAndTools; [ delta hub ];
 
   programs.git = {
     enable = true;
@@ -10,7 +11,9 @@
 
     extraConfig = {
       core = {
-        pager = "diff-so-fancy | less --tabs=4 -RFX";
+        pager = "delta --theme OneHalf${
+            if theme.isDark then "Dark" else "Light"
+          } | less --tabs=4 -RFX";
         editor = "atom --wait";
       };
 
