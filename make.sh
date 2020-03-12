@@ -67,7 +67,7 @@ case "$mode" in
         cd $pwd
 
         tmp="$(mktemp -u)"
-        trace2 nix build --no-link -f "$NIXCONFIGS/default.nix" system -o "$tmp/result" --keep-going $* >&2
+        trace2 nix build --no-link -f "$NIXCONFIGS/default.nix" system -o "$tmp/result" --keep-going --show-trace $* >&2
         trap "rm '$tmp/result'" EXIT
         drv="$(readlink "$tmp/result")"
         diff
