@@ -81,7 +81,7 @@ in {
         font-2 = "Font Awesome 5 Free:pixelsize=9;1";
         font-3 = "Font Awesome 5 Free Solid:pixelsize=9;1";
         font-4 = "Fira code medium:pixelsize=8;0";
-        font-5 = "noto-fonts-emoji:pixelsize=4;1"; # TODO emoji font
+        font-5 = "noto-fonts-emoji:pixelsize=4;1";
 
         modules-left = "apps i3-windows window-title";
         modules-center = "date";

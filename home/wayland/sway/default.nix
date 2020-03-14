@@ -15,25 +15,20 @@ let
 in rec {
   imports = [ ../../programs/rofi ../../services/sway ];
 
-  home = {
-    packages = with pkgs; [
-      waybar
-      sway
-      # TODO swaylock-fancy
-      grim
-      slurp
-      wl-clipboard
-      pamixer
-      wob
-      light
-    ];
-
-    # TODO fix
-    sessionVariables.XCURSOR_PATH = theme.cursor.package;
-  };
+  home.packages = with pkgs; [
+    waybar
+    sway
+    grim
+    slurp
+    wl-clipboard
+    pamixer
+    wob
+    light
+  ];
 
   # TODO volume and brightness bars
   # TODO shadows
+  # TODO cursor theme
 
   systemd.user.services.inactive-transparency = {
     Install = { WantedBy = [ "graphical-session.target" ]; };
@@ -70,7 +65,7 @@ in rec {
         modifier = modifier;
         border = 0;
         criteria =
-          [{ title = "Choose files"; }]; # telegram shitty file-piker fix
+          [{ title = "Choose files"; }];
       };
 
       gaps = {
@@ -162,7 +157,7 @@ in rec {
 
           Print = "exec grim - | wl-copy -o -t image/png";
           "Control+Print" = ''
-            exec grim -g "$(slurp -b '#ffffff00' -c '${theme.colors.background.accent}ff')" - | wl-copy -o -t image/png'';
+            exec grim -g "$(slurp -b '#ffffff33' -c '${theme.colors.background.accent}ff')" - | wl-copy -o -t image/png'';
 
           "${modifier}+F11" = "fullscreen";
 

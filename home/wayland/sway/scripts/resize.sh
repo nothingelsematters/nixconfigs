@@ -1,6 +1,6 @@
 swaymsg mark __moving
 
-read -r X Y W H G ID < <(slurp -b '#ffffff00' -c '#717790ff' -f '%x %y %w %h %g %i')
+read -r X Y W H G ID < <(slurp -b '#ffffff33' -c '#717790ff' -f '%x %y %w %h %g %i')
 
 if [ -z "$X" ]; then
 swaymsg unmark __moving

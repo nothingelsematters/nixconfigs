@@ -59,6 +59,7 @@ let
       format-icons = [ "" "" "" "" "" "" "" "" "" "" ];
     };
 
+    # TODO works very bad
     network = {
       interface = "wlp3s0";
       format = "{ifname}";
