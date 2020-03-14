@@ -9,13 +9,11 @@ let
   scripts = import ./scripts { inherit pkgs; };
   waybar = (pkgs.waybar.override { pulseSupport = true; });
 
-  codeBind = keybindings: builtins.concatStringsSep "\n" (pkgs.lib.attrsets.mapAttrsToList
-    (bind: cmd: "bindsym --to-code ${bind} ${cmd}") keybindings);
+  codeBind = keybindings:
+    builtins.concatStringsSep "\n" (pkgs.lib.attrsets.mapAttrsToList
+      (bind: cmd: "bindsym --to-code ${bind} ${cmd}") keybindings);
 in rec {
-  imports = [
-    ../../programs/rofi
-    ../../services/sway
-  ];
+  imports = [ ../../programs/rofi ../../services/sway ];
 
   home = {
     packages = with pkgs; [
@@ -61,7 +59,8 @@ in rec {
         position = "top";
       }];
 
-      startup = map (val: { command = val; }) [ "kitty" "firefox" ];
+      startup =
+        map (val: { command = val; }) [ "libinput-gestures" "kitty" "firefox" ];
 
       modifier = modifier;
       fonts = [ "${theme.fonts.notification} 9" ];
@@ -145,8 +144,8 @@ in rec {
             (map (dircGenerator butt cmd) [ "left" "down" "up" "right" ]);
 
           kbdBrightness = flag:
-            "exec ${pkgs.light}/bin/light -s sysfs/leds/asus::kbd_backlight ${flag} 1 && " +
-            "${pkgs.light}/bin/light -s sysfs/leds/asus::kbd_backlight -G | cut -d'.' -f1 > $SWAYSOCK.wob";
+            "exec ${pkgs.light}/bin/light -s sysfs/leds/asus::kbd_backlight ${flag} 1 && "
+            + "${pkgs.light}/bin/light -s sysfs/leds/asus::kbd_backlight -G | cut -d'.' -f1 > $SWAYSOCK.wob";
           volume = flag:
             "exec ${pkgs.pamixer}/bin/pamixer ${flag} 2 && ${pkgs.pamixer}/bin/pamixer --get-volume > $SWAYSOCK.wob";
           monBrightness = flag:
@@ -154,18 +153,16 @@ in rec {
 
         in withNumbers "" "workspace "
         // withNumbers "Shift+" "move container to workspace "
-        // withDirections "" "focus"
-        // withDirections "Shift+" "move"
-        // {
-          "${modifier}+Tab" = "focus next"; # TODO MAKE CYCLE!!!
-          "${modifier}+Shift+Tab" = "focus prev";
+        // withDirections "" "focus" // withDirections "Shift+" "move" // {
+          "${modifier}+Tab" = "focus left";
+          "${modifier}+Shift+Tab" = "focus right";
           "${modifier}+Shift+space" = "floating toggle";
           "${modifier}+Return" = "exec kitty";
           Menu = "exec rofi -show";
 
           Print = "exec grim - | wl-copy -o -t image/png";
-          "Control+Print" =
-            ''exec grim -g "$(slurp -b '#ffffff00' -c '${theme.colors.background.accent}ff')" - | wl-copy -o -t image/png'';
+          "Control+Print" = ''
+            exec grim -g "$(slurp -b '#ffffff00' -c '${theme.colors.background.accent}ff')" - | wl-copy -o -t image/png'';
 
           "${modifier}+F11" = "fullscreen";
 
@@ -203,8 +200,10 @@ in rec {
         "Control+Shift+Space" = "exec ${pkgs.mako}/bin/makoctl dismiss -a";
       };
     in ''
+      focus_wrapping workspace
+      for_window [title="Choose files"] resize width 900 height 550
+      for_window [title="Choose files"] move center
       exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | ${pkgs.wob}/bin/wob -a bottom -M 40 -t 500
-      seat seat0 xcursor_theme ${theme.cursor.name} ${builtins.toString theme.cursor.size}
       ${codeBind codeKeybindings}
     '';
   };

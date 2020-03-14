@@ -3,7 +3,6 @@
 {
   home.packages = [ pkgs.libinput-gestures ];
 
-  # TODO wayland support partly?
   xdg.configFile."libinput-gestures.conf".text = ''
     ############################################
     # SWIPE GESTURES:
@@ -20,9 +19,5 @@
 
     # Jump to previous open browser tab
     gesture swipe down  xdotool key control+shift+Tab
-
-    #############################################
-    # PINCH GESTURES:
-    #############################################
   '';
 }

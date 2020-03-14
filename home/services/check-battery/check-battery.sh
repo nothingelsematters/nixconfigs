@@ -8,12 +8,12 @@ do
     PROCENT=`acpi -b | cut -f 4 -d " " | cut -f 1 -d "%"`
     INFO=`acpi -b | cut -f 3- -d " "`
 
-    if [[ $NOT_ALARMED -lt 2 && $DISCHARGING && $PROCENT -lt 10 ]] ; then
+    if [[ $NOT_ALARMED -lt 2 && $DISCHARGING && $PROCENT -lt 11 ]] ; then
         DISPLAY=:0 notify-desktop -u critical -i battery-caution "critically low battery" "$INFO"
         NOT_ALARMED=2
     fi
 
-    if [[ $NOT_ALARMED -lt 1 && $DISCHARGING && $PROCENT -lt 20 ]] ; then
+    if [[ $NOT_ALARMED -lt 1 && $DISCHARGING && $PROCENT -lt 21 ]] ; then
         DISPLAY=:0 notify-desktop -u normal -i battery-low "low battery" "$INFO"
         NOT_ALARMED=1
     fi

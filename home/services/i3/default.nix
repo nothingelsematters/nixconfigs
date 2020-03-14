@@ -1,5 +1,12 @@
 { config, ... }:
 
 {
-  imports = [ ./background ./compton ./dunst ./polybar ./screen-locker ];
+  imports = [
+    ./background
+    ./compton
+    ./dunst
+    ./libinput-gestures
+    ./polybar
+    ./screen-locker
+  ];
 }

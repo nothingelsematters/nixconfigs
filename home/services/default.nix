@@ -1,5 +1,5 @@
 { config, ... }:
 
 {
-  imports = [ ./check-battery ./libinput-gestures ./udiskie ./unclutter ];
+  imports = [ ./check-battery ./udiskie ./unclutter ];
 }

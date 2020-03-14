@@ -1,5 +1,5 @@
 { config, ... }:
 
 {
-  imports = [ ./mako ./screen-locker ./swaybg ./waybar ];
+  imports = [ ./mako ./screen-locker ./swaybg ./waybar ./libinput-gestures ];
 }

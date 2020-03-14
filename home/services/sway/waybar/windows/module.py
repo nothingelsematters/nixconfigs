@@ -3,7 +3,7 @@ import i3ipc
 import re
 import pickle
 
-
+delimiter = '│'
 empty = ''
 ICONS = [
     ('class=Firefox', ''),
@@ -135,8 +135,8 @@ def render_apps(i3):
             else:
                 out[-1].append(output)
 
-    out = ' │'.join('   '.join(i) for i in out)
-    print("│%s │" % out, flush=True)
+    out = (' %s' % delimiter).join('   '.join(i) for i in out)
+    print("%s%s %s" % (delimiter, out, delimiter), flush=True)
 
 
 def format_entry(app):
