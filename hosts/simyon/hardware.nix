@@ -3,8 +3,10 @@
 # to /etc/nixos/configuration.nix instead.
 { config, lib, pkgs, ... }:
 
-{
-  imports = [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix> ];
+let sources = import ../../nix/sources.nix;
+in {
+  imports =
+    [ "${sources.nixpkgs}/nixos/modules/installer/scan/not-detected.nix" ];
 
   boot = {
     initrd.availableKernelModules =

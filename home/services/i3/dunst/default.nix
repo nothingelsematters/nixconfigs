@@ -1,8 +1,8 @@
 { pkgs, lib, ... }:
 
 let
-  theme = import ../../theme { inherit pkgs lib; };
-  vars = import ../../lib/variables.nix { inherit pkgs; };
+  theme = import ../../../theme { inherit pkgs lib; };
+  vars = import ../../../lib { inherit pkgs; };
 in {
   services.dunst = {
     enable = true;
@@ -17,7 +17,7 @@ in {
         markup = "full";
         transparency = 12;
 
-        geometry = "380x5-5+${builtins.toString (vars.bar-height + 8)}";
+        geometry = "380x5-5+${builtins.toString (vars.barHeight + 8)}";
         shrink = false;
         indicate_hidden = "yes";
         padding = 10;

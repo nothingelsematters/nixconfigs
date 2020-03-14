@@ -2,19 +2,12 @@
 
 let
   theme = import ../../theme { inherit pkgs lib; };
-  mkOpaque = import ../../theme/lib/mkOpaque.nix;
+  mkOpaque = import ../../lib/theme/mkOpaque.nix;
   lock = import ../../services/screen-locker { inherit config pkgs lib; };
   scripts = import ./scripts { inherit pkgs; };
   modifier = "Mod4";
 in rec {
-  imports = [
-    ../../programs/rofi
-    ../../services/background
-    ../../services/compton
-    ../../services/dunst
-    ../../services/screen-locker
-    ../../services/polybar
-  ];
+  imports = [ ../../programs/rofi ../../services/i3 ];
 
   home.packages = with pkgs; [ maim acpi ];
 

@@ -4,7 +4,7 @@ let
   theme = import ./theme { inherit pkgs lib; };
   sources = import ../nix/sources.nix;
 in {
-  imports = [ ./packages ./xsession ./services ./programs ];
+  imports = [ ./packages ./wayland ./services ./programs ];
 
   home = {
     sessionVariables = {
@@ -12,6 +12,7 @@ in {
       EDITOR = "atom";
       PAGER = "most";
       USE_NIX2_COMMAND = 1;
+      XDG_CURRENT_DESKTOP = "Gnome"; # telegram shitty file-piker fix
     };
 
     keyboard = {

@@ -1,13 +1,13 @@
 { config, pkgs, lib, ... }:
 
 let
-  theme = import ../../theme { inherit pkgs lib; };
-  vars = import ../../lib/variables.nix { inherit pkgs; };
+  theme = import ../../../theme { inherit pkgs lib; };
+  vars = import ../../../lib { inherit pkgs; };
 
   i3-windows = import ./i3-windows { inherit pkgs lib; };
   calendarPopup = import ./calendar-popup { inherit pkgs; };
 
-  height = builtins.toString vars.bar-height;
+  height = builtins.toString vars.barHeight;
 in {
   home.packages = [ pkgs.yad ];
 

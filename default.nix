@@ -1,3 +1,4 @@
-import "${(import ./nix/sources.nix).nixpkgs}/nixos" {
-  configuration = ./configuration.nix;
+let sources = import nix/sources.nix;
+in import "${sources.nixpkgs}/nixos" {
+  configuration = import ./configuration.nix;
 }

@@ -4,7 +4,7 @@
 
 let
   theme = import ../../theme { inherit pkgs lib; };
-  vars = import ../../lib/variables.nix { inherit pkgs; };
+  vars = import ../../lib { inherit pkgs; };
   appsmenu = ".config/rofi/appsmenu.rasi";
   networkmenu = ".config/rofi/networkmenu.rasi";
 

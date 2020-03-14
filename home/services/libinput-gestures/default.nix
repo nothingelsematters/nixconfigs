@@ -3,6 +3,7 @@
 {
   home.packages = [ pkgs.libinput-gestures ];
 
+  # TODO wayland support partly?
   xdg.configFile."libinput-gestures.conf".text = ''
     ############################################
     # SWIPE GESTURES:

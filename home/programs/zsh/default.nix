@@ -71,6 +71,7 @@ in {
 
       ktr = "kotlin";
       ktc = "kotlinc";
+      py = "python3";
 
       copy = "xclip -sel clip";
       paste = "xclip -o -sel clip";

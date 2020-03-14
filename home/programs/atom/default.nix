@@ -3,11 +3,8 @@
 let
   atomDirectory = ".atom";
   theme = import ../../theme { inherit pkgs lib; };
+  cfg = import ./config.nix { inherit pkgs lib; };
   colors = theme.colors;
-  cfg = builtins.replaceStrings [ "editor:" ] [''
-    editor:
-        fontFamily: "${theme.fonts.mono.name}"'']
-    (builtins.readFile ./config.cson);
 in {
   home = {
     packages = [ pkgs.atom ];

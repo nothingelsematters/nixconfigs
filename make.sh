@@ -54,10 +54,11 @@ shift
 
 case "$mode" in
     "build")
+        export NIX_PATH=nixpkgs="$(nix eval --raw '(import nix/sources.nix).nixpkgs.outPath')"
         pwd=$PWD
         cd $NIXCONFIGS
         output2 "formatting"
-        for i in $(git status -s | gawk '{ print $2 }' | rg -v packages | rg '\\*.nix'); do
+        for i in $(git status -s | rg -v "D " | gawk '{ print $2 }' | rg -v packages | rg '\\*.nix'); do
             sha="$(sha256sum $i)"
             nixfmt $i
             if [ "$(sha256sum $i)" != "$sha" ]; then
@@ -67,7 +68,7 @@ case "$mode" in
         cd $pwd
 
         tmp="$(mktemp -u)"
-        trace2 nix build --no-link -f "$NIXCONFIGS/default.nix" system -o "$tmp/result" --keep-going --show-trace $* >&2
+        trace2 nix build --no-link -f "$NIXCONFIGS/default.nix" -o "$tmp/result" --keep-going --show-trace $* >&2
         trap "rm '$tmp/result'" EXIT
         drv="$(readlink "$tmp/result")"
         diff

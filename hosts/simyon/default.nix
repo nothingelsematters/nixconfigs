@@ -65,8 +65,18 @@ in {
     ];
   };
 
+  programs.sway = {
+    enable = true;
+    extraSessionCommands = ''
+      export SDL_VIDEODRIVER=wayland
+      export QT_QPA_PLATFORM=wayland
+      export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+      export MOZ_ENABLE_WAYLAND="1"
+    '';
+  };
+
   # needed by sddm display manager themes
-  environment.systemPackages = [ pkgs.qt5.qtgraphicaleffects ];
+  environment.systemPackages = with pkgs.qt5; [ qtwayland qtgraphicaleffects ];
 
   services = {
     xserver = {
@@ -79,22 +89,22 @@ in {
 
       layout = "us,ru";
 
-      displayManager.sddm = let fetchedTheme = sources.sddm-theme-clairvoyance;
-      in {
-        enable = true;
-        theme = with pkgs.lib;
-          lists.last (strings.splitString "/" (builtins.toString fetchedTheme));
-        extraConfig = ''
-          [Theme]
-          ThemeDir=${fetchedTheme}/..
-          EnableAvatars=true
-        '';
+      displayManager = {
+        sessionPackages = [ pkgs.sway ];
+        sddm = let fetchedTheme = sources.sddm-theme-clairvoyance;
+        in {
+          enable = true;
+          theme = with pkgs.lib;
+            lists.last
+            (strings.splitString "/" (builtins.toString fetchedTheme));
+          extraConfig = ''
+            [Theme]
+            ThemeDir=${fetchedTheme}/..
+            EnableAvatars=true
+          '';
+        };
       };
 
-      windowManager.i3 = {
-        enable = true;
-        package = pkgs.i3-gaps;
-      };
     };
 
     printing = {

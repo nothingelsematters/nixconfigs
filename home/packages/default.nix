@@ -41,8 +41,8 @@ with pkgs; {
         unordered-containers
         stack
         cabal2nix
+        stylish-haskell
         # TODO my heart is marked as broken, refusing to evaluate:
-        # stylish-haskell
         # stack2nix
       ]))
 

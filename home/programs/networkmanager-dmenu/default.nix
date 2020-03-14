@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 
-let vars = import ../../lib/variables.nix { inherit pkgs; };
+let vars = import ../../lib { inherit pkgs; };
 in {
   home.packages = [ pkgs.networkmanager_dmenu ];
   xdg.configFile."networkmanager-dmenu/config.ini".text = ''

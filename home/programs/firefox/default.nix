@@ -2,7 +2,7 @@
 
 let
   theme = import ../../theme { inherit pkgs lib; };
-  mkCss = import ../../theme/lib/mkCss.nix;
+  mkCss = import ../../lib/theme/mkCss.nix;
   sources = import ../../../nix/sources.nix;
   settings = import ./settings.nix { inherit config theme; };
   addons = import ./addons/default.nix {
