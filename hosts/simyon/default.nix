@@ -89,6 +89,7 @@ in {
 
       layout = "us,ru";
 
+      # TODO login logo
       displayManager = {
         sessionPackages = [ pkgs.sway ];
         sddm = let fetchedTheme = sources.sddm-theme-clairvoyance;

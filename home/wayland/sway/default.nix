@@ -54,8 +54,7 @@ in rec {
         position = "top";
       }];
 
-      startup =
-        map (val: { command = val; }) [ "libinput-gestures" "kitty" "firefox" ];
+      startup = map (val: { command = val; }) [ "kitty" "firefox" ];
 
       modifier = modifier;
       fonts = [ "${theme.fonts.notification} 9" ];
@@ -64,8 +63,7 @@ in rec {
       floating = {
         modifier = modifier;
         border = 0;
-        criteria =
-          [{ title = "Choose files"; }];
+        criteria = [{ title = "Choose files"; }];
       };
 
       gaps = {
@@ -195,8 +193,9 @@ in rec {
         "Control+Shift+Space" = "exec ${pkgs.mako}/bin/makoctl dismiss -a";
       };
     in ''
+      seat seat0 xcursor_theme "Paper"
       focus_wrapping workspace
-      for_window [title="Choose files"] resize width 900 height 550
+      for_window [title="Choose files"] resize width 700 height 550
       for_window [title="Choose files"] move center
       exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | ${pkgs.wob}/bin/wob -a bottom -M 40 -t 500
       ${codeBind codeKeybindings}

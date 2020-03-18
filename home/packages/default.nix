@@ -38,12 +38,22 @@ with pkgs; {
     # haskell
     (ghc.withPackages (ps:
       with ps; [
+        # usefull
         unordered-containers
+
+        # building
         stack
         cabal2nix
         stylish-haskell
         # TODO my heart is marked as broken, refusing to evaluate:
         # stack2nix
+
+        # testing
+        hspec
+        hedgehog
+        tasty
+        tasty-hedgehog
+        tasty-hspec
       ]))
 
     # python
@@ -63,6 +73,7 @@ with pkgs; {
     man    # on-line reference manuals
 
     ## messaging
+    # TODO shitty fonts, ui horrible af
     tdesktop
     slack-dark
 

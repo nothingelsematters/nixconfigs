@@ -12,5 +12,19 @@ in {
 
     # Move to prev workspace
     gesture swipe right  ${focus} prev
+
+    # Focus next window
+    gesture swipe up swaymsg focus right
+
+    # Focus prev window
+    gesture swipe down swaymsg focus left
   '';
+
+  systemd.user.services.libinput-gestures = {
+    Install = { WantedBy = [ "graphical-session.target" ]; };
+    Service = {
+      ExecStart = "${pkgs.libinput-gestures}/bin/libinput-gestures";
+      Restart = "on-abort";
+    };
+  };
 }

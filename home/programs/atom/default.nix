@@ -9,6 +9,8 @@ in {
   home = {
     packages = [ pkgs.atom ];
 
+    # TODO extensions manager
+
     file = {
       "${atomDirectory}/config.cson".text = cfg;
       "${atomDirectory}/snippets.cson".source = ./snippets.cson;
@@ -23,6 +25,8 @@ in {
           @accent-color: ${colors.background.primary};
           @accent-text-color: ${colors.text.selection};
           @base-color: ${colors.background.primary};
+          @background-color-selected: ${colors.background.selection};
+          @syntax-background-color: ${colors.background.primary};
         '';
     };
   };

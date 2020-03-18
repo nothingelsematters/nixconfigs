@@ -2,7 +2,7 @@ grim /tmp/lock_screenshot.jpg
 
 date=$(date '+%A %W %B %Y %R')
 
-convert /tmp/lock_screenshot.jpg -filter point -blur 5 \
+convert /tmp/lock_screenshot.jpg -filter point -blur 0x3 \
     -fill "#333333" -draw "rectangle 50,600,420,700" \
     -font Comfortaa-Regular -family Comfortaa-Regular  \
     -fill "#e2e2e4" -pointsize 15 -draw "text 150,630 '$date'" \
