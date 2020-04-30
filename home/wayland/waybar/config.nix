@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 
 let
-  vars = import ../../../lib { inherit pkgs; };
+  vars = import ../../lib { inherit pkgs; };
   windows = import ./windows { inherit pkgs lib; };
   layout = import ./layout { inherit pkgs; };
 
@@ -13,7 +13,7 @@ let
 
     modules-left = [ "custom/apps" "custom/windows" "sway/window" ];
     modules-center = [ "clock" ];
-    modules-right = [ "custom/layout" "pulseaudio" "battery" "network" ];
+    modules-right = [ "custom/layout" "pulseaudio" "battery" "cpu" "network" ];
 
     "custom/apps" = {
       format = "";
@@ -57,6 +57,18 @@ let
         critical = 10;
       };
       format-icons = [ "" "" "" "" "" "" "" "" "" "" ];
+    };
+
+    cpu = {
+      interval = 3;
+      format = " {}%";
+      max-length = 10;
+      tooltip = false;
+      states = {
+        warning = 90; # TODO tf?
+        critical = 70;
+      };
+      on-click = "kitty htop &";
     };
 
     # TODO works very bad

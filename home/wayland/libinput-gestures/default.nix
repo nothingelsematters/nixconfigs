@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  getScript = import ../../../lib/getScript.nix { inherit pkgs; };
+  getScript = import ../../lib/getScript.nix { inherit pkgs; };
   focus = with pkgs; getScript ./focus.sh [ sway ripgrep gawk coreutils ];
 in {
   home.packages = [ pkgs.libinput-gestures ];

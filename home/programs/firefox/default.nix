@@ -5,12 +5,13 @@ let
   mkCss = import ../../lib/theme/mkCss.nix;
   sources = import ../../../nix/sources.nix;
   settings = import ./settings.nix { inherit config theme; };
-  addons = import ./addons/default.nix {
-    buildFirefoxXpiAddon =
-      pkgs.nur.repos.rycee.firefox-addons.buildFirefoxXpiAddon;
-    fetchurl = pkgs.fetchurl;
-    stdenv = pkgs.stdenv;
-  };
+  /* addons = import ./addons/default.nix {
+       buildFirefoxXpiAddon =
+         pkgs.nur.repos.rycee.firefox-addons.buildFirefoxXpiAddon;
+       fetchurl = pkgs.fetchurl;
+       stdenv = pkgs.stdenv;
+     };
+  */
 
   themeCss = ''
     :root ${mkCss theme.colors}
@@ -24,14 +25,14 @@ let
   '';
 in {
   home = {
-    packages = [ pkgs.nur.repos.rycee.firefox-addons-generator ];
+    # packages = [ pkgs.nur.repos.rycee.firefox-addons-generator ];
     file.".mozilla/firefox/default/chrome/userContent.css".text = themeCss
       + builtins.readFile ./userContent.css;
   };
 
   programs.firefox = {
     enable = true;
-    extensions = builtins.attrValues addons;
+    # extensions = builtins.attrValues addons;
     profiles = {
 
       default = {

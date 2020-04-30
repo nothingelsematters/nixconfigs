@@ -24,12 +24,12 @@ in {
   };
 
   system = {
-    stateVersion = "19.09";
+    stateVersion = "20.03";
     autoUpgrade.enable = true;
   };
 
   sound.enable = true;
-  virtualisation.docker.enable = true;
+  # virtualisation.docker.enable = true;
   networking.networkmanager.enable = true;
 
   nix = {

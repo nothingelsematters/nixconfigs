@@ -87,8 +87,6 @@ in {
       zstyle ':completion:*' use-cache on
       zstyle ':completion:*' cache-path ~/.zsh/cache
 
-      source ${./forgit.plugin.zsh}
-
       eval "$(dircolors ~/.dir_colors)";
 
       if [ -n "$name" ]; then

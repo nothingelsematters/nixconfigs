@@ -13,7 +13,7 @@ let
     builtins.concatStringsSep "\n" (pkgs.lib.attrsets.mapAttrsToList
       (bind: cmd: "bindsym --to-code ${bind} ${cmd}") keybindings);
 in rec {
-  imports = [ ../../programs/rofi ../../services/sway ];
+  imports = [ ../../programs/rofi ];
 
   home.packages = with pkgs; [
     waybar
@@ -26,12 +26,12 @@ in rec {
     light
   ];
 
-  # TODO volume and brightness bars
   # TODO shadows
   # TODO cursor theme
+  # TODO telegram from rofi: filepicker BUG and notification BUG
 
   systemd.user.services.inactive-transparency = {
-    Install = { WantedBy = [ "graphical-session.target" ]; };
+    Install.WantedBy = [ "graphical-session.target" ];
     Service = {
       ExecStart = scripts.inactive-transparency;
       Restart = "on-abort";
@@ -54,7 +54,10 @@ in rec {
         position = "top";
       }];
 
-      startup = map (val: { command = val; }) [ "kitty" "firefox" ];
+      startup = [
+        { command = "kitty"; workspace = "3"; }
+        { command = "firefox"; }
+      ];
 
       modifier = modifier;
       fonts = [ "${theme.fonts.notification} 9" ];
@@ -147,8 +150,8 @@ in rec {
         in withNumbers "" "workspace "
         // withNumbers "Shift+" "move container to workspace "
         // withDirections "" "focus" // withDirections "Shift+" "move" // {
-          "${modifier}+Tab" = "focus left";
-          "${modifier}+Shift+Tab" = "focus right";
+          "${modifier}+Tab" = "focus right";
+          "${modifier}+Shift+Tab" = "focus left";
           "${modifier}+Shift+space" = "floating toggle";
           "${modifier}+Return" = "exec kitty";
           Menu = "exec rofi -show";
@@ -194,10 +197,12 @@ in rec {
       };
     in ''
       seat seat0 xcursor_theme "Paper"
+      seat * hide_cursor 1000
       focus_wrapping workspace
+      default_border none
       for_window [title="Choose files"] resize width 700 height 550
       for_window [title="Choose files"] move center
-      exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | ${pkgs.wob}/bin/wob -a bottom -M 40 -t 500
+      exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | ${pkgs.wob}/bin/wob -W 300 -H 25 -b 1 -o 1 -p 1 -a top -a right -M 20 -t 500
       ${codeBind codeKeybindings}
     '';
   };

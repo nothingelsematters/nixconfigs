@@ -18,6 +18,9 @@
   location: northeast;
   height: 40%;
   width:  23%;
+  border: 2;
+  border-color: @accent;
+  border-radius: 5px;
 }
 inputbar,
 prompt,

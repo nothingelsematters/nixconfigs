@@ -4,7 +4,7 @@ let
   theme = import ./theme { inherit pkgs lib; };
   sources = import ../nix/sources.nix;
 in {
-  imports = [ ./packages ./wayland ./services ./programs ];
+  imports = [ ./development ./packages ./wayland ./services ./programs ];
 
   home = {
     sessionVariables = {

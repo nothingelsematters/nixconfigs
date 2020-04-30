@@ -5,10 +5,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "d6ce35f0ca4f67e077def213573c1e9d77c0de65",
-        "sha256": "07h9xcv511hi0mykja7bfw26frqvqsngkl66bw6hy4nx86nxn001",
+        "rev": "2cad6c1ba4ecf2f9fb4410ac92a1865ba886b978",
+        "sha256": "1dfx0sql259p5v9y71j4g9j56q1qp6jczsxfvdpidlm8w31rn74a",
         "type": "tarball",
-        "url": "https://github.com/nix-community/NUR/archive/d6ce35f0ca4f67e077def213573c1e9d77c0de65.tar.gz",
+        "url": "https://github.com/nix-community/NUR/archive/2cad6c1ba4ecf2f9fb4410ac92a1865ba886b978.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "fast-syntax-highlighting": {
@@ -17,10 +17,10 @@
         "homepage": "http://zdharma.org",
         "owner": "zdharma",
         "repo": "fast-syntax-highlighting",
-        "rev": "303eeee81859094385605f7c978801748d71056c",
-        "sha256": "0y0jgkj9va8ns479x3dhzk8bwd58a1kcvm4s2mk6x3n19w7ynmnv",
+        "rev": "a58aa4ef2452640cc61afa1d31bce0ef3717046c",
+        "sha256": "169y8y32q593y6g9zrcbaxncdzxk3p19rw81q5q6allziwxv81kg",
         "type": "tarball",
-        "url": "https://github.com/zdharma/fast-syntax-highlighting/archive/303eeee81859094385605f7c978801748d71056c.tar.gz",
+        "url": "https://github.com/zdharma/fast-syntax-highlighting/archive/a58aa4ef2452640cc61afa1d31bce0ef3717046c.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "forgit": {
@@ -29,10 +29,10 @@
         "homepage": "",
         "owner": "wfxr",
         "repo": "forgit",
-        "rev": "4eb0832e535082c36a1e07de2570d3385fb4f6fb",
-        "sha256": "1s1m2cggnmwhsapxdv2wg94vrhbdiwlril3r2v9nx2z6q20gpp5b",
+        "rev": "35c61e6873f197ae92db61889a83b2d17d032452",
+        "sha256": "0ppj79a71r0x7k7bapwnw7c6a7rf37aawg2n4b77jg749z0a10nx",
         "type": "tarball",
-        "url": "https://github.com/wfxr/forgit/archive/4eb0832e535082c36a1e07de2570d3385fb4f6fb.tar.gz",
+        "url": "https://github.com/wfxr/forgit/archive/35c61e6873f197ae92db61889a83b2d17d032452.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "home-manager": {
@@ -41,10 +41,10 @@
         "homepage": "",
         "owner": "rycee",
         "repo": "home-manager",
-        "rev": "5c1e7349bbd9b51fe41ea96b67c380feef996b90",
-        "sha256": "03lw5pq878zbkkwm5abr01p77radn2zgfyvwlra7fhywbl76l83x",
+        "rev": "a7cdfaa32585fce404cf8890bae099348e53e0ad",
+        "sha256": "0z3pmzdw6hwr72b00bn5j6l3xhwwd8jadwmz4cjb6af9x8jgdxpq",
         "type": "tarball",
-        "url": "https://github.com/rycee/home-manager/archive/5c1e7349bbd9b51fe41ea96b67c380feef996b90.tar.gz",
+        "url": "https://github.com/rycee/home-manager/archive/a7cdfaa32585fce404cf8890bae099348e53e0ad.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "materialFox": {
@@ -65,22 +65,22 @@
         "homepage": "https://github.com/nmattia/niv",
         "owner": "nmattia",
         "repo": "niv",
-        "rev": "98c74a80934123cb4c3bf3314567f67311eb711a",
-        "sha256": "1w8n54hapd4x9f1am33icvngkqns7m3hl9yair38yqq08ffwg0kn",
+        "rev": "f73bf8d584148677b01859677a63191c31911eae",
+        "sha256": "0jlmrx633jvqrqlyhlzpvdrnim128gc81q5psz2lpp2af8p8q9qs",
         "type": "tarball",
-        "url": "https://github.com/nmattia/niv/archive/98c74a80934123cb4c3bf3314567f67311eb711a.tar.gz",
+        "url": "https://github.com/nmattia/niv/archive/f73bf8d584148677b01859677a63191c31911eae.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
-        "branch": "master",
+        "branch": "nixpkgs-unstable",
         "description": "Nix Packages collection",
         "homepage": null,
-        "owner": "nixos",
+        "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "93f690d64a5b5ba9150ec50de34456924597ba06",
-        "sha256": "13mr0z9j22q7p0f8ns98xrkjag5yi5scj5wz1c5k1v6l2dqmxb7j",
+        "rev": "10100a97c8964e82b30f180fda41ade8e6f69e41",
+        "sha256": "011f36kr3c1ria7rag7px26bh73d1b0xpqadd149bysf4hg17rln",
         "type": "tarball",
-        "url": "https://github.com/nixos/nixpkgs/archive/93f690d64a5b5ba9150ec50de34456924597ba06.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/10100a97c8964e82b30f180fda41ade8e6f69e41.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nord-dircolors": {
@@ -89,10 +89,10 @@
         "homepage": "https://www.nordtheme.com/ports/dircolors",
         "owner": "arcticicestudio",
         "repo": "nord-dircolors",
-        "rev": "c181c7bd35b099b91fe19ee5c57c15b65fc7c54d",
-        "sha256": "1c9fa6dip266z6hfqd5nan5v6qjp6dg074lvk4rxisirm26djlzz",
+        "rev": "5a2763c87860a480c15f45a31d9ac7f0c04efc4c",
+        "sha256": "1g3klhlmd5d4ywbnxkv0f6kv4pfr3hbaz3fryd9mbzdbp7zp32sm",
         "type": "tarball",
-        "url": "https://github.com/arcticicestudio/nord-dircolors/archive/c181c7bd35b099b91fe19ee5c57c15b65fc7c54d.tar.gz",
+        "url": "https://github.com/arcticicestudio/nord-dircolors/archive/5a2763c87860a480c15f45a31d9ac7f0c04efc4c.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "sddm-theme-clairvoyance": {

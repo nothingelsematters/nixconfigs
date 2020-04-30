@@ -1,17 +1,17 @@
 { pkgs, lib, ... }:
 
 let
-  theme = import ../../../theme { inherit pkgs lib; };
-  toCss = import ../../../lib/toCss.nix { inherit pkgs; };
+  theme = import ../../theme { inherit pkgs lib; };
+  toCss = import ../../lib/toCss.nix { inherit pkgs; };
 
   # TODO explore possibilities
   style = {
     "*" = {
       border = "none";
       border-radius = 0;
-      font-family =
-        ''${theme.fonts.notification}, "Font Awesome 5 Brands", "Font Awesome 5 Free", "Font Awesome 5 Free Solid", '' +
-        "Fira code medium, noto-fonts-emoji";
+      font-family = ''
+        ${theme.fonts.notification}, "Font Awesome 5 Brands", "Font Awesome 5 Free", "Font Awesome 5 Free Solid", ''
+        + "Fira code medium, noto-fonts-emoji";
       font-size = "12px";
       min-height = 0;
       margin = "0 5px 0 5px";
@@ -30,6 +30,9 @@ let
     "#battery.charging".color = theme.colors.text.secondary;
     "#battery.warning:not(.charging)".color = "yellow";
     "#battery.critical:not(.charging)".color = theme.colors.text.urgent;
+
+    "#cpu.warning".color = "yellow";
+    "#cpu.critical".color = theme.colors.text.urgent;
 
     "#pulseaudio.muted".color = theme.colors.text.disabled;
 

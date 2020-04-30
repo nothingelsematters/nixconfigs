@@ -17,56 +17,6 @@ with pkgs; {
     binutils # tools for manipulating binaries (linker, assembler, etc)
     xclip    # clipboard manipulations
 
-    ## editor
-    typora
-
-    ## languages related
-    # c++
-    gcc
-    gdb
-    cmake
-    valgrind
-
-    # kotlin
-    kotlin
-
-    # java
-    jdk12
-    maven
-    antlr4
-
-    # haskell
-    (ghc.withPackages (ps:
-      with ps; [
-        # usefull
-        unordered-containers
-
-        # building
-        stack
-        cabal2nix
-        stylish-haskell
-        # TODO my heart is marked as broken, refusing to evaluate:
-        # stack2nix
-
-        # testing
-        hspec
-        hedgehog
-        tasty
-        tasty-hedgehog
-        tasty-hspec
-      ]))
-
-    # python
-    (python3.withPackages (ps: with ps; [ virtualenv pip ]))
-
-    # python2
-    (python2.withPackages (ps: with ps; [ pip ]))
-
-    # javascript
-    nodejs
-    yarn
-
-
     ## terminal helpful
     tldr   # simplified man pages
     psmisc # fuser, killall and pstree...
@@ -78,7 +28,7 @@ with pkgs; {
     slack-dark
 
     ## document related
-    libreoffice-unwrapped
+    libreoffice
     evince
     feh
 

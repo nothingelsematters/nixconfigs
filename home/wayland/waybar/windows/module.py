@@ -15,9 +15,9 @@ ICONS = [
     ('class=Typora', ''),
     ('class=libreoffice*', ''),
     ('class=Evince', ''),
-    ('name=Telegra*', ''),
     ('app_id=telegramdesktop', ''),
-    ('app_id=kitty', '')
+    ('app_id=kitty', ''),
+    ('app_id=evince', '')
 ]
 
 def color(color, str):
@@ -157,7 +157,7 @@ def make_title(app):
     tg = "Telegram ("
     name = app.name
     if name[:len(tg)] == tg:
-        icon = color(urgent, "%s: %s" % (icon, name[len(tg):len(name)-1]))
+        icon = color(urgent, "%s<sub> %s</sub>" % (icon, name[len(tg):len(name)-1]))
 
     return icon
 

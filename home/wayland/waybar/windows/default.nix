@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 
 let
-  theme = (import ../../../../theme { inherit pkgs lib; }).colors;
+  theme = (import ../../../theme { inherit pkgs lib; }).colors;
   python = pkgs.python3.withPackages (ps: with ps; [ i3ipc ]) + /bin/python3;
 
   addVars = with builtins;

@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  getScript = import ../../../../lib/getScript.nix { inherit pkgs; };
+  getScript = import ../../../lib/getScript.nix { inherit pkgs; };
   path = with pkgs; pkgs.stdenv.lib.makeBinPath [ sway ripgrep gawk coreutils ];
 in {
   format = " {}";

@@ -7,7 +7,7 @@ let
   scripts = import ./scripts { inherit pkgs; };
   modifier = "Mod4";
 in rec {
-  imports = [ ../../programs/rofi ../../services/i3 ];
+  imports = [ ../../programs/rofi ];
 
   home.packages = with pkgs; [ maim acpi ];
 
