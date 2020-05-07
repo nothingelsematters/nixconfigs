@@ -29,6 +29,8 @@ in rec {
   # TODO shadows
   # TODO cursor theme
   # TODO telegram from rofi: filepicker BUG and notification BUG
+  # TODO custom (mako) telegram notifications?
+  # TODO remove title in a tabbed mode
 
   systemd.user.services.inactive-transparency = {
     Install.WantedBy = [ "graphical-session.target" ];
@@ -54,10 +56,7 @@ in rec {
         position = "top";
       }];
 
-      startup = [
-        { command = "kitty"; workspace = "3"; }
-        { command = "firefox"; }
-      ];
+      startup = map (val: { command = val; }) [ "kitty" "firefox" ];
 
       modifier = modifier;
       fonts = [ "${theme.fonts.notification} 9" ];
@@ -199,7 +198,6 @@ in rec {
       seat seat0 xcursor_theme "Paper"
       seat * hide_cursor 1000
       focus_wrapping workspace
-      default_border none
       for_window [title="Choose files"] resize width 700 height 550
       for_window [title="Choose files"] move center
       exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | ${pkgs.wob}/bin/wob -W 300 -H 25 -b 1 -o 1 -p 1 -a top -a right -M 20 -t 500

@@ -27,6 +27,7 @@
         unordered-containers
         directory
         optparse-applicative
+        Diff
 
         # building
         stack
