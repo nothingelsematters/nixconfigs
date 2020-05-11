@@ -1,6 +1,6 @@
 name: Automated niv-managed dependency updates
 on:
-  shedule:
+  schedule:
     - cron: '0 0 * * 4'
 jobs:
   niv-updater:
