@@ -172,8 +172,7 @@ in rec {
           "${modifier}+F5" = "opacity minus 0.05";
           "${modifier}+F6" = "opacity plus  0.05";
 
-          # TODO does that shit even work?
-          XF86PowerOff = "exec ${config.services.screen-locker.lockCmd}";
+          # TODO XF86PowerOff
         };
     };
 

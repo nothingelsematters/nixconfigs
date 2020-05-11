@@ -45,6 +45,7 @@ in {
         src = sources.fast-syntax-highlighting;
       }
     ];
+
     shellAliases = {
       nixx = "/etc/nixos/make.sh";
       nixxs = "nixx switch";
@@ -78,6 +79,7 @@ in {
     };
 
     initExtra = ''
+      ${pkgs.any-nix-shell}/bin/any-nix-shell zsh --info-right | source /dev/stdin
       setopt numericglobsort   # Sort filenames numerically when it makes sense
       setopt appendhistory     # Immediately append history instead of overwriting
       setopt histignorealldups # If a new command is a duplicate, remove the older one

@@ -2,10 +2,9 @@
 
 {
   home.packages = with pkgs; [
-    ## editor
+    # markdown
     typora
 
-    ## languages related
     # c++
     gcc
     gdb
@@ -23,16 +22,19 @@
     # haskell
     (ghc.withPackages (ps:
       with ps; [
-        # usefull
+        # building
+        stack
+        cabal2nix
+
+        # coding
+        hlint
+        stylish-haskell
+
+        # sources
         unordered-containers
         directory
         optparse-applicative
         Diff
-
-        # building
-        stack
-        cabal2nix
-        stylish-haskell
 
         # testing
         hspec
@@ -52,5 +54,9 @@
     # javascript
     nodejs
     yarn
+
+    # nix
+    niv
+    nixfmt
   ];
 }

@@ -4,7 +4,6 @@ let
   theme = import ../../theme { inherit pkgs lib; };
   toCss = import ../../lib/toCss.nix { inherit pkgs; };
 
-  # TODO explore possibilities
   style = {
     "*" = {
       border = "none";

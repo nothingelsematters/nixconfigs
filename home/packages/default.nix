@@ -48,8 +48,6 @@ with pkgs; {
     ## NixOS house keeping
     nox    # tools to make nix nicer to use
     vulnix # NixOS vulnerability scanner
-    nixfmt # nix formatter
-    niv    # nix dependencies handler
 
     ## spell checkers
     hunspell

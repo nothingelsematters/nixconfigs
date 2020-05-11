@@ -21,12 +21,15 @@ in {
     };
   };
 
+  manual.manpages.enable = true;
+
   nixpkgs.config = {
     allowUnfree = true;
     android_sdk.accept_license = true;
 
     packageOverrides = pkgs: { nur = import sources.NUR { inherit pkgs; }; };
   };
+  _module.args.pkgs = pkgs.lib.mkForce pkgs;
 
   gtk = {
     enable = true;
