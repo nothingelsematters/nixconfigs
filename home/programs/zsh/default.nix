@@ -51,7 +51,7 @@ in {
       nixxs = "nixx switch";
       nsp = "nix-shell --run zsh -p";
 
-      confs = "z conf; atom .";
+      confs = "z conf; $EDITOR .";
 
       l = "exa -lh --git";
       ll = "exa -lhT --git -L 2";

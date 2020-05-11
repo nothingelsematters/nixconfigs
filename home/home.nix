@@ -9,7 +9,7 @@ in {
   home = {
     sessionVariables = {
       PATH = "$HOME/.yarn/bin/:$PATH";
-      EDITOR = "atom";
+      EDITOR = "code";
       PAGER = "most";
       USE_NIX2_COMMAND = 1;
       XDG_CURRENT_DESKTOP = "Gnome"; # telegram shitty file-piker fix

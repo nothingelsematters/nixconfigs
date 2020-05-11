@@ -48,7 +48,7 @@ in rec {
       assigns = {
         "1" = [ { app_id = "telegramdesktop"; } { class = "Slack"; } ];
         "2" = [{ class = "Firefox"; }];
-        "3" = [ { class = "Atom"; } { class = "Typora"; } ];
+        "3" = [{ class = "Typora"; }];
       };
 
       bars = [{

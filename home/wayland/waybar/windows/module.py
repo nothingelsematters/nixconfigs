@@ -17,7 +17,8 @@ ICONS = [
     ('class=Evince', ''),
     ('app_id=telegramdesktop', ''),
     ('app_id=kitty', ''),
-    ('app_id=evince', '')
+    ('app_id=evince', ''),
+    ('class=Code', '')
 ]
 
 def color(color, str):
