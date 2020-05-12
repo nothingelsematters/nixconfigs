@@ -1,7 +1,5 @@
 { config, pkgs, lib, ... }:
 
-# TODO wait for release...
-
 let
   theme = import ../../theme { inherit pkgs lib; };
   vars = import ../../lib { inherit pkgs; };

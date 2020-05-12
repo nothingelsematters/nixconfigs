@@ -40,6 +40,26 @@ in {
           sha256 = "0636sjcdhpiwmqrj13py97j0svn7pq5c9kjmarrjv7ivzk8q8f9k";
         }
         {
+          name = "vscode-diff";
+          publisher = "fabiospampinato";
+          version = "1.4.0";
+          sha256 = "10ayc6677clpnid4lm6h22v5635k1aidp7pr2iwkiblbqq6ri5s0";
+        }
+        {
+          name = "git-graph";
+          publisher = "mhutchie";
+          version = "1.22.0";
+          sha256 = "06j49pxz9vp6z4hax60jsn4fa2iig76d8p9cjhdhbvmyil0dgggx";
+        }
+        {
+          name = "vsc-community-material-theme";
+          publisher = "equinusocio";
+          version = "1.4.1";
+          sha256 = "0841aaf58c69x1r33xnflrh6kdw8xxhbbavfwsbl8lbn48r70wsb";
+        }
+
+        # haskell
+        {
           name = "haskell-linter";
           publisher = "hoovercj";
           version = "0.0.6";
@@ -51,27 +71,17 @@ in {
           version = "0.0.10";
           sha256 = "1zkvcan7zmgkg3cbzw6qfrs3772i0dwhnywx1cgwhy39g1l62r0q";
         }
+
+        # nix
         {
-          name = "vsc-community-material-theme";
-          publisher = "equinusocio";
-          version = "1.4.1";
-          sha256 = "0841aaf58c69x1r33xnflrh6kdw8xxhbbavfwsbl8lbn48r70wsb";
+          name = "nixfmt-vscode";
+          publisher = "brettm12345";
+          version = "0.0.1";
+          sha256 = "07w35c69vk1l6vipnq3qfack36qcszqxn8j3v332bl0w6m02aa7k";
         }
       ];
 
     userSettings = {
-      "[haskell]"."editor.defaultFormatter" = "vigoo.stylish-haskell";
-      "haskell.hlint.executablePath" = pkgs.hlint + /bin/hlint;
-      "stylishHaskell.commandLine" =
-        "${pkgs.stylish-haskell} -c $HOME/university/functional-programming"
-        + "/functional-programming-course/.stylish-haskell.yaml";
-
-      "[nix]" = {
-        "editor.defaultFormatter" = "brettm12345.nixfmt-vscode";
-        "editor.tabSize" = 2;
-      };
-      "nixfmt.path" = pkgs.nixfmt + /bin/nixfmt;
-
       "breadcrumbs.enabled" = true;
 
       "editor.cursorBlinking" = "solid";
@@ -91,6 +101,7 @@ in {
       "editor.find.autoFindInSelection" = "always";
       "editor.fontSize" = 10;
       "editor.scrollBeyondLastLine" = false;
+      "editor.multiCursorModifier" = "ctrlCmd";
 
       "explorer.autoReveal" = true;
       "explorer.openEditors.visible" = 0;
@@ -114,6 +125,8 @@ in {
       "terminal.integrated.cursorBlinking" = false;
       "terminal.integrated.cursorStyle" = "underline";
       "terminal.integrated.fontFamily" = theme.fonts.mono.name;
+      "terminal.explorerKind" = "external";
+      "terminal.external.linuxExec" = "kitty";
 
       "update.mode" = "none";
 
@@ -128,6 +141,10 @@ in {
       "workbench.iconTheme" = "file-icons";
       "workbench.settings.enableNaturalLanguageSearch" = false;
       "workbench.startupEditor" = "none";
+      "workbench.activityBar.visible" = true;
+      "workbench.statusBar.visible" = true;
+      "workbench.tips.enabled" = false;
+      "workbench.tree.indent" = 18;
 
       "zenMode.centerLayout" = false;
       "zenMode.fullScreen" = false;
@@ -136,18 +153,21 @@ in {
 
       "files.maxMemoryForLargeFilesMB" = 1024;
 
-      "workbench.activityBar.visible" = false;
-      "workbench.statusBar.visible" = false;
-      "workbench.tips.enabled" = false;
-      "workbench.tree.indent" = 18;
-
-      "terminal.explorerKind" = "external";
-      "terminal.external.linuxExec" = "kitty";
-
       "todo-tree.tree.showScanModeButton" = false;
 
       "languageServerHaskell.hlintOn" = true;
       "languageServerHaskell.maxNumberOfProblems" = 100;
+      "[haskell]"."editor.defaultFormatter" = "vigoo.stylish-haskell";
+      "haskell.hlint.executablePath" = pkgs.hlint + /bin/hlint;
+      "stylishHaskell.commandLine" =
+        "${pkgs.stylish-haskell} -c $HOME/university/functional-programming"
+        + "/functional-programming-course/.stylish-haskell.yaml";
+
+      "[nix]" = {
+        "editor.defaultFormatter" = "brettm12345.nixfmt-vscode";
+        "editor.tabSize" = 2;
+      };
+      "nixfmt.path" = pkgs.nixfmt + /bin/nixfmt;
     };
   };
 }

@@ -30,9 +30,6 @@ let
     "#battery.warning:not(.charging)".color = "yellow";
     "#battery.critical:not(.charging)".color = theme.colors.text.urgent;
 
-    "#cpu.warning".color = "yellow";
-    "#cpu.critical".color = theme.colors.text.urgent;
-
     "#pulseaudio.muted".color = theme.colors.text.disabled;
 
     "#custom-apps"."margin-left" = "9px";

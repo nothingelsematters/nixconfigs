@@ -7,7 +7,7 @@ let
   mkOpaque = import ../../lib/theme/mkOpaque.nix;
 
   scripts = import ./scripts { inherit pkgs; };
-  waybar = (pkgs.waybar.override { pulseSupport = true; });
+  waybar = pkgs.waybar.override { pulseSupport = true; };
 
   codeBind = keybindings:
     builtins.concatStringsSep "\n" (pkgs.lib.attrsets.mapAttrsToList
@@ -26,11 +26,8 @@ in rec {
     light
   ];
 
-  # TODO shadows
   # TODO cursor theme
-  # TODO telegram from rofi: filepicker BUG and notification BUG
-  # TODO custom (mako) telegram notifications?
-  # TODO remove title in a tabbed mode
+  # BUG telegram from rofi (!): filepicker and notification
 
   systemd.user.services.inactive-transparency = {
     Install.WantedBy = [ "graphical-session.target" ];

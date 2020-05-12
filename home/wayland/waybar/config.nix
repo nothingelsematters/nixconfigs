@@ -64,22 +64,16 @@ let
       format = " {}%";
       max-length = 10;
       tooltip = false;
-      states = {
-        warning = 90; # TODO tf?
-        critical = 70;
-      };
       on-click = "kitty htop &";
     };
 
-    # TODO works very bad
     network = {
       interface = "wlp3s0";
       format = "{ifname}";
       format-wifi = " {essid} ({signalStrength}%)";
       format-ethernet = "{ifname} ";
-      format-disconnected = "";
+      format-disconnected = "";
       max-length = 50;
-      # TODO probably adequate wifi menu
       on-click = "networkmanager_dmenu &";
       tooltip = false;
     };

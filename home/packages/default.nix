@@ -23,7 +23,6 @@ with pkgs; {
     man    # on-line reference manuals
 
     ## messaging
-    # TODO shitty fonts, ui horrible af
     tdesktop
     slack-dark
 
@@ -46,8 +45,9 @@ with pkgs; {
     (speechd.override { withPulse = true; })
 
     ## NixOS house keeping
-    nox    # tools to make nix nicer to use
-    vulnix # NixOS vulnerability scanner
+    nox       # tools to make nix nicer to use
+    vulnix    # NixOS vulnerability scanner
+    nix-index # files database for nixpkgs
 
     ## spell checkers
     hunspell
