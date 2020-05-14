@@ -1,9 +1,13 @@
 { config, pkgs, lib, ... }:
 
-let
-  theme = import ../../theme { inherit pkgs lib; };
-  mono = theme.fonts.mono;
+with config.lib;
+let mono = theme.fonts.mono;
 in rec {
+  lib.terminal = {
+    name = "kitty";
+    package = pkgs.kitty;
+  };
+
   programs.kitty = {
     enable = true;
     font = {

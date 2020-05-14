@@ -1,21 +1,24 @@
 { config, pkgs, lib, ... }:
 
-let theme = import ../../theme { inherit pkgs lib; };
-in {
-  home.packages = with pkgs.gitAndTools; [ delta hub ];
+{
+  home.packages = with pkgs.gitAndTools; [ hub ];
 
   programs.git = {
     enable = true;
     userName = "Simon Naumov";
     userEmail = "daretoodefy@gmail.com";
 
+    delta = {
+      enable = true;
+      options = [
+        "--theme OneHalf${
+          if config.lib.theme.isDark then "Dark" else "Light"
+        } | less --tabs=4 -RFX"
+      ];
+    };
+
     extraConfig = {
-      core = {
-        pager = "delta --theme OneHalf${
-            if theme.isDark then "Dark" else "Light"
-          } | less --tabs=4 -RFX";
-        editor = "atom --wait";
-      };
+      core.editor = "$EDITOR --wait";
 
       color.ui = true;
 

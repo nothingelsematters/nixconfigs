@@ -1,10 +1,8 @@
-{ config, pkgs, lib, ... }:
+arg@{ config, pkgs, lib, ... }:
 
+with config.lib;
 let
-  theme = import ../../theme { inherit pkgs lib; };
-  mkCss = import ../../lib/theme/mkCss.nix;
-  sources = import ../../../nix/sources.nix;
-  settings = import ./settings.nix { inherit config theme; };
+  settings = import ./settings.nix arg;
   /* addons = import ./addons/default.nix {
        buildFirefoxXpiAddon =
          pkgs.nur.repos.rycee.firefox-addons.buildFirefoxXpiAddon;
@@ -14,7 +12,7 @@ let
   */
 
   themeCss = ''
-    :root ${mkCss theme.colors}
+    :root ${theme.utils.mkCss theme.colors}
   '';
 
   materialFox = sources.materialFox + /chrome/userChrome.css;

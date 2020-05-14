@@ -1,5 +1,6 @@
-{ pkgs, lib, colors, ... }:
+{ config, pkgs, lib, ... }:
 
+with config.lib.theme;
 let stripHash = builtins.substring 1 (-1);
 in {
   cursor = {
@@ -10,6 +11,7 @@ in {
 
   gtk = rec {
     name = "Materia-Custom";
+    # FIXME
     package = pkgs.materia-theme;
     # (pkgs.materia-theme.overrideAttrs (base: {
     #   buildInputs = with pkgs; base.buildInputs ++ [ sassc librsvg optipng ];

@@ -1,13 +1,10 @@
-{ config, pkgs, lib, ... }:
+arg@{ config, pkgs, lib, ... }:
 
+with config.lib;
 let
-  theme = import ../../../theme { inherit pkgs lib; };
-  vars = import ../../../lib { inherit pkgs; };
-
-  i3-windows = import ./i3-windows { inherit pkgs lib; };
-  calendarPopup = import ./calendar-popup { inherit pkgs; };
-
-  height = builtins.toString vars.barHeight;
+  i3-windows = import ./i3-windows arg;
+  calendarPopup = import ./calendar-popup arg;
+  height = builtins.toString constants.barHeight;
 in {
   home.packages = [ pkgs.yad ];
 
@@ -22,7 +19,7 @@ in {
         stdenv.lib.makeBinPath [
           i3
           rofi
-          vars.terminal.package
+          constants.terminal.package
           htop
           networkmanager_dmenu
           bash
@@ -254,7 +251,7 @@ in {
         interval = 1;
 
         format =
-          "%{A1:${vars.terminal.name} -e htop &:}   <ramp-coreload>%{A}";
+          "%{A1:${constants.terminal.name} -e htop &:}   <ramp-coreload>%{A}";
         format-foreground = colors.icons;
         format-padding = 1;
         label-foreground = colors.icons;

@@ -1,10 +1,8 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, config, ... }:
 
-let
-  theme = import ./theme { inherit pkgs lib; };
-  sources = import ../nix/sources.nix;
-in {
-  imports = [ ./development ./packages ./wayland ./services ./programs ];
+with config.lib; {
+  imports =
+    [ ./development ./lib ./packages ./programs ./services ./theme ./wayland ];
 
   home = {
     sessionVariables = {
@@ -29,6 +27,7 @@ in {
 
     packageOverrides = pkgs: { nur = import sources.NUR { inherit pkgs; }; };
   };
+  targets.genericLinux.enable = true;
   _module.args.pkgs = pkgs.lib.mkForce pkgs;
 
   gtk = {

@@ -1,7 +1,6 @@
 { config, pkgs, lib, ... }:
 
-let theme = import ../theme { inherit pkgs lib; };
-in {
+{
   imports = [
     ./background
     ./compton
@@ -14,5 +13,5 @@ in {
     ./mime.nix
   ];
   xsession.enable = true;
-  xresources.extraConfig = theme.xresources;
+  xresources.extraConfig = config.lib.theme.xresources;
 }

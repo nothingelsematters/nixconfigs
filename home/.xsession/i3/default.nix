@@ -1,10 +1,10 @@
-{ config, pkgs, lib, ... }:
+arg@{ config, pkgs, lib, ... }:
 
+with config.lib;
+with config.lib.theme.utils;
 let
-  theme = import ../../theme { inherit pkgs lib; };
-  mkOpaque = import ../../lib/theme/mkOpaque.nix;
-  lock = import ../../services/screen-locker { inherit config pkgs lib; };
-  scripts = import ./scripts { inherit pkgs; };
+  lock = import ../../services/screen-locker arg;
+  scripts = import ./scripts arg;
   modifier = "Mod4";
 in rec {
   imports = [ ../../programs/rofi ];

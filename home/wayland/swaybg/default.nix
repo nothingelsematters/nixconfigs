@@ -3,7 +3,7 @@
 {
   systemd.user.services.background = {
     Unit = {
-      Description = "Set desktop background using feh";
+      Description = "Set desktop background";
       After = [ "graphical-session-pre.target" ];
       PartOf = [ "graphical-session.target" ];
     };

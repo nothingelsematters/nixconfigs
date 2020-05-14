@@ -1,13 +1,11 @@
 { pkgs, ... }:
 
-let
-  getScript = import ../../../lib/getScript.nix { inherit pkgs; };
-  path = with pkgs; pkgs.stdenv.lib.makeBinPath [ sway ripgrep gawk coreutils ];
+let path = with pkgs; stdenv.lib.makeBinPath [ sway jq gawk ];
 in {
   format = " {}";
-  exec =
-    "PATH=PATH:${path} swaymsg -t get_inputs | rg -i active_layout_name | " +
-    "head -n 1 |  awk -F'[:\"(]' '{ print tolower($5) }' | cut -b 1-2";
+  exec = "PATH=PATH:${path} swaymsg -t get_inputs"
+    + " | jq -r '[.[].xkb_active_layout_name | select(length > 0)][0][0:2]'"
+    + " | awk '{ print tolower($1) }'";
   interval = 1;
   tooltip = false;
 }

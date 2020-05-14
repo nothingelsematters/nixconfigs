@@ -1,11 +1,11 @@
-{ pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 
+with config.lib;
 let
   hie =
     import (fetchTarball "https://github.com/infinisil/all-hies/tarball/master")
     { };
   selection = { selector = p: { inherit (p) ghc882; }; };
-  theme = import ../../theme { inherit pkgs lib; };
 in {
   programs.vscode = {
     enable = true;

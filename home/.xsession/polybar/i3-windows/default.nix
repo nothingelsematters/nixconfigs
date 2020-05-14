@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 
+with config.lib.theme;
 let
-  theme = (import ../../../../theme { inherit pkgs lib; }).colors;
   python = pkgs.python3.withPackages (ps: with ps; [ i3ipc ]) + /bin/python3;
 
   addVars = with builtins;
@@ -21,10 +21,10 @@ let
   module = pkgs.writeTextFile {
     name = "module.py";
     text = addVars ./module.py ''
-      focused = '${theme.text.secondary}'
-      wfocused = '${theme.text.primary}'
-      unfocused = '${theme.text.disabled}'
-      urgent = '${theme.text.urgent}'
+      focused = '${colors.text.secondary}'
+      wfocused = '${colors.text.primary}'
+      unfocused = '${colors.text.disabled}'
+      urgent = '${colors.text.urgent}'
 
       empty = ''
       ICON_FONT = 3

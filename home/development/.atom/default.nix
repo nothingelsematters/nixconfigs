@@ -1,18 +1,14 @@
-{ pkgs, lib, ... }:
+arg@{ config, pkgs, lib, ... }:
 
-let
-  atomDirectory = ".atom";
-  theme = import ../../theme { inherit pkgs lib; };
-  cfg = import ./config.nix { inherit pkgs lib; };
-  colors = theme.colors;
+with config.lib;
+with config.lib.theme;
+let atomDirectory = ".atom";
 in {
   home = {
     packages = [ pkgs.atom ];
 
-    # TODO extensions manager
-
     file = {
-      "${atomDirectory}/config.cson".text = cfg;
+      "${atomDirectory}/config.cson".text = import ./config.nix arg;
       "${atomDirectory}/snippets.cson".source = ./snippets.cson;
       "${atomDirectory}/styles.less".text = ''
         atom-text-editor {

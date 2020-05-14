@@ -16,6 +16,7 @@ with pkgs; {
     gnumake  # control the generation of non-source files from sources
     binutils # tools for manipulating binaries (linker, assembler, etc)
     xclip    # clipboard manipulations
+    jq       # processing JSON inputs
 
     ## terminal helpful
     tldr   # simplified man pages
@@ -45,9 +46,8 @@ with pkgs; {
     (speechd.override { withPulse = true; })
 
     ## NixOS house keeping
-    nox       # tools to make nix nicer to use
-    vulnix    # NixOS vulnerability scanner
-    nix-index # files database for nixpkgs
+    nox    # tools to make nix nicer to use
+    vulnix # NixOS vulnerability scanner
 
     ## spell checkers
     hunspell

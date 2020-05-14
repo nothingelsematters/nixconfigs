@@ -1,8 +1,6 @@
 { pkgs, ... }:
 
-let
-  getScript = import ../../../lib/getScript.nix { inherit pkgs; };
-  getScript' = x: y: "exec " + getScript x y;
+let getScript' = x: y: "exec " + config.lib.functions.getScript x y;
 in {
   resize = with pkgs; getScript' ./resize.sh [ slop i3-gaps ];
 

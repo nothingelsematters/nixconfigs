@@ -1,6 +1,6 @@
-{ config, theme, ... }:
+{ config, ... }:
 
-{
+with config.lib; {
   # *** Hardening cherry-picked from https:#github.com/pyllyukko/user.js *** #
 
   # Disable all Web 2.0 shit

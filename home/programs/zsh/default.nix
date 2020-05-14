@@ -1,9 +1,6 @@
 { config, lib, pkgs, ... }:
 
-let sources = import ../../../nix/sources.nix;
-in {
-  home.file.".dir_colors".source = sources.nord-dircolors + /src/dir_colors;
-
+{
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;
@@ -37,12 +34,16 @@ in {
         src = zsh-you-should-use + /share/zsh/plugins/you-should-use;
       }
       {
-        name = "forgit";
-        src = sources.forgit;
+        name = "fast-syntax-highlighting";
+        src = zsh-fast-syntax-highlighting + /share/zsh/site-functions;
       }
       {
-        name = "fast-syntax-highlighting";
-        src = sources.fast-syntax-highlighting;
+        name = "command-time";
+        src = zsh-command-time + /share/zsh/plugins/command-time;
+      }
+      {
+        name = "forgit";
+        src = config.lib.sources.forgit;
       }
     ];
 
@@ -57,7 +58,6 @@ in {
       ll = "exa -lhT --git -L 2";
       lll = "exa -lhT --git -L 3";
       tree = "exa --tree";
-      fzf = "fzf --preview 'bat --color always {}'";
       zz = "z -I";
       bd = "z -b";
 
@@ -87,8 +87,6 @@ in {
       zstyle ':completion:*' accept-exact '*(N)'
       zstyle ':completion:*' use-cache on
       zstyle ':completion:*' cache-path ~/.zsh/cache
-
-      eval "$(dircolors ~/.dir_colors)";
 
       if [ -n "$name" ]; then
         PROMPT="[$name] $PROMPT";

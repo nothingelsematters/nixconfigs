@@ -1,5 +1,5 @@
 { config, ... }:
 
 {
-  imports = [ ./check-battery ./udiskie ];
+  imports = [ ./battery-notification ./udiskie ];
 }

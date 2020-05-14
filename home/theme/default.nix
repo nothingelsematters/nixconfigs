@@ -1,11 +1,11 @@
 args@{ pkgs, lib, ... }:
 
 let
-  theme = import ./colors/dracula-mint.nix { inherit args; };
-  fonts = import ./fonts.nix { inherit pkgs args; };
-  icons = import ./icons.nix { inherit pkgs args; };
-  gtk = import ./gtk.nix {
-    inherit pkgs lib;
-    inherit (theme) colors;
-  };
-in theme // fonts // icons // gtk
+  theme = import ./colors/dracula-mint.nix args;
+  fonts = import ./fonts.nix args;
+  icons = import ./icons.nix args;
+  gtk = import ./gtk.nix args;
+in {
+  imports = [ ./utils ];
+  lib.theme = theme // fonts // icons // gtk;
+}

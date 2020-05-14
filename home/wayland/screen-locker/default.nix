@@ -1,15 +1,16 @@
 { config, pkgs, lib, ... }:
 
-let
-  getScript = import ../../lib/getScript.nix { inherit pkgs; };
-  lockCmd = with pkgs;
-    getScript ./lock.sh [ imagemagick swaylock-effects grim ];
-in {
-  systemd.user.services.screen-locker = {
-    Install.WantedBy = [ "graphical-session.target" ];
-    Service = {
-      ExecStart = "swayidle -w timeout 600 '${lockCmd}'";
-      Restart = "on-abort";
-    };
+{
+  services.screen-locker = {
+    enable = true;
+    inactiveInterval = 10;
+    lockCmd = with pkgs;
+      config.lib.functions.toScript "lock.sh" [ swaylock-effects grim ] ''
+        grim /tmp/lock_screenshot.jpg
+
+        swaylock --clock --font Comfortaa --font-size 20 -e -f -K \
+          --indicator-idle-visible --indicator-radius 100 \
+          --indicator-thickness 5 -i /tmp/lock_screenshot.jpg --effect-blur 4x10
+      '';
   };
 }

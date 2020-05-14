@@ -1,9 +1,6 @@
 { pkgs, lib, ... }:
 
-let
-  theme = import ../../../theme { inherit pkgs lib; };
-  vars = import ../../../lib { inherit pkgs; };
-in {
+with config.lib; {
   services.dunst = {
     enable = true;
     iconTheme = theme.notification-icons;
@@ -17,7 +14,8 @@ in {
         markup = "full";
         transparency = 12;
 
-        geometry = "380x5-5+${builtins.toString (vars.barHeight + 8)}";
+        geometry =
+          "380x5-5+${builtins.toString (config.lib.constants.barHeight + 8)}";
         shrink = false;
         indicate_hidden = "yes";
         padding = 10;

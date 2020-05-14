@@ -1,8 +1,7 @@
 { config, pkgs, lib, ... }:
 
+with config.lib;
 let
-  theme = import ../../theme { inherit pkgs lib; };
-  vars = import ../../lib { inherit pkgs; };
   appsmenu = ".config/rofi/appsmenu.rasi";
   networkmenu = ".config/rofi/networkmenu.rasi";
 
@@ -29,7 +28,7 @@ in {
     fullscreen = false;
     scrollbar = false;
     theme = appsmenu;
-    terminal = vars.terminal.name;
+    terminal = config.lib.terminal.name;
 
     font = "${theme.fonts.notification} 10";
     extraConfig = ''
