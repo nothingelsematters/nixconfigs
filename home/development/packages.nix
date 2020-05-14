@@ -15,7 +15,7 @@
     kotlin
 
     # java
-    jdk13
+    jdk14
     maven
     antlr4
 
