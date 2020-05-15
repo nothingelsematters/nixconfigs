@@ -4,8 +4,7 @@ let
   desktop = x: [ (x + ".desktop") ];
   browser = desktop "firefox";
 in {
-  imports =
-    [ ./sway ./mako ./screen-locker ./swaybg ./waybar ./libinput-gestures ];
+  imports = [ ./sway ./mako ./swaybg ./waybar ./libinput-gestures ];
 
   xdg.mimeApps.defaultApplications = {
     # Doc viewer

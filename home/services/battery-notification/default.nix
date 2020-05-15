@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  systemd.user.services.check-battery = {
+  systemd.user.services.battery-notification = {
     Unit = {
       Description = "Sends a notification on low battery";
       PartOf = [ "graphical-session.target" ];
@@ -14,9 +14,9 @@
       ExecStart = with pkgs;
         config.lib.functions.getScript ./battery-notification.sh [
           acpi
-          ripgrep
-          notify-desktop
           coreutils
+          jq
+          notify-desktop
         ];
     };
   };

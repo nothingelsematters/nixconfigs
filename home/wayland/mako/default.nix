@@ -18,9 +18,7 @@ with config.lib; {
 
     defaultTimeout = 10000;
     font = "${theme.fonts.notification} 9";
-    format = ''
-      %s
-      <small>%b</small>'';
+    format = "%s\\n<small>%b</small>";
 
     iconPath = "${theme.notification-icons.package}/share/icons/Paper";
     icons = true;

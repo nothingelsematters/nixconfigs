@@ -66,7 +66,11 @@ in rec {
     config = {
       focus.followMouse = false;
       assigns = {
-        "1" = [ { app_id = "telegramdesktop"; } { class = "Slack"; } ];
+        "1" = [
+          { app_id = "telegramdesktop"; }
+          { class = "TelegramDesktop"; }
+          { class = "Slack"; }
+        ];
         "2" = [{ class = "Firefox"; }];
         "3" = [{ class = "Typora"; }];
       };
@@ -76,7 +80,15 @@ in rec {
         position = "top";
       }];
 
-      startup = map (val: { command = val; }) [ "kitty" "firefox" ];
+      startup = map (val: { command = val; }) [
+        "kitty"
+        "firefox"
+        ''
+          swayidle -w timeout 600 '${scripts.screen-lock}' \
+            timeout 800 'swaymsg "output * dpms off"' \
+            resume 'swaymsg "output * dpms on"' \
+            before-sleep '${scripts.screen-lock}' ''
+      ];
 
       modifier = modifier;
       fonts = [ "${theme.fonts.notification} 9" ];
@@ -107,19 +119,19 @@ in rec {
       };
 
       colors = rec {
-        focused = {
+        focused = rec {
           background = theme.colors.background.primary;
-          border = theme.colors.background.primary;
+          border = background;
           childBorder = theme.colors.background.accent;
           indicator = theme.colors.text.secondary;
           text = theme.colors.text.primary;
         };
-        focusedInactive = {
-          background = mkOpaque theme.colors.background.primary;
-          border = mkOpaque theme.colors.background.primary;
-          childBorder = mkOpaque theme.colors.background.primary;
+        focusedInactive = rec {
+          background = mkOpaque focused.background;
+          border = background;
+          childBorder = border;
           indicator = "#484e50";
-          text = theme.colors.text.primary;
+          text = focused.text;
         };
         placeholder = {
           background = "#ff00005a";
@@ -128,12 +140,9 @@ in rec {
           indicator = "#ff000000";
           text = "#ffffff";
         };
-        unfocused = {
-          background = mkOpaque theme.colors.background.primary;
-          border = mkOpaque theme.colors.background.primary;
+        unfocused = focusedInactive // {
           childBorder = theme.colors.background.primary;
           indicator = "#484e50";
-          text = theme.colors.text.primary;
         };
         urgent = placeholder;
       };
@@ -179,8 +188,6 @@ in rec {
           XF86AudioRaiseVolume = volume "-ui";
           XF86AudioLowerVolume = volume "-d";
           XF86AudioMute = functions.toggleMute;
-
-          # TODO XF86PowerOff
         };
     };
 
