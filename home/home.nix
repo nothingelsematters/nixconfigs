@@ -27,7 +27,6 @@ with config.lib; {
 
     packageOverrides = pkgs: { nur = import sources.NUR { inherit pkgs; }; };
   };
-  targets.genericLinux.enable = true;
   _module.args.pkgs = pkgs.lib.mkForce pkgs;
 
   gtk = {
