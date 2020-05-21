@@ -1,17 +1,5 @@
-{ config, pkgs, ... }:
+{ lib, ... }:
 
 {
-  imports = [
-    ./bat
-    ./browserpass
-    ./dircolors
-    ./firefox
-    ./fzf
-    ./htop
-    ./kitty
-    ./most
-    ./networkmanager-dmenu
-    ./z-lua
-    ./zsh
-  ];
+  imports = import ../lib/imports.nix lib ./.;
 }

@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 with config.lib;
-functions.toCss {
+functions.toCSS {
   "*" = {
     border = "none";
     border-radius = 0;

@@ -1,8 +1,15 @@
 { lib, pkgs, config, ... }:
 
-with config.lib; {
-  imports =
-    [ ./development ./lib ./packages ./programs ./services ./theme ./wayland ];
+let
+  getName = drv:
+    if builtins.hasAttr "pname" drv then
+      drv.pname
+    else if builtins.hasAttr "name" drv then
+      (builtins.parseDrvName drv.name).name
+    else
+      throw "Cannot figure out name of: ${drv}";
+in with config.lib; {
+  imports = import lib/imports.nix lib ./.;
 
   home = {
     sessionVariables = {
@@ -10,7 +17,7 @@ with config.lib; {
       EDITOR = "code";
       PAGER = "most";
       USE_NIX2_COMMAND = 1;
-      XDG_CURRENT_DESKTOP = "Gnome"; # telegram shitty file-piker fix
+      XDG_CURRENT_DESKTOP = "Gnome";
     };
 
     keyboard = {
@@ -22,12 +29,11 @@ with config.lib; {
   manual.manpages.enable = true;
 
   nixpkgs.config = {
-    allowUnfree = true;
-    android_sdk.accept_license = true;
-
     packageOverrides = pkgs: { nur = import sources.NUR { inherit pkgs; }; };
+    allowUnfreePredicate = with pkgs;
+      pkg:
+      builtins.elem (getName pkg) [ "typora" "slack" "vscode" "unrar" ];
   };
-  _module.args.pkgs = pkgs.lib.mkForce pkgs;
 
   gtk = {
     enable = true;

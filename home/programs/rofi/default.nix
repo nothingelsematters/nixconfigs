@@ -28,7 +28,7 @@ in {
     fullscreen = false;
     scrollbar = false;
     theme = appsmenu;
-    terminal = config.lib.terminal.name;
+    terminal = config.lib.packages.terminal.name;
 
     font = "${theme.fonts.notification} 10";
     extraConfig = ''
