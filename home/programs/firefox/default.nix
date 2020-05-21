@@ -22,6 +22,11 @@ let
     ${builtins.readFile ./overrides.css}
   '';
 in {
+  lib.packages.browser = {
+    name = "firefox";
+    package = pkgs.firefox;
+  };
+
   home = {
     # packages = [ pkgs.nur.repos.rycee.firefox-addons-generator ];
     file.".mozilla/firefox/default/chrome/userContent.css".text = themeCss

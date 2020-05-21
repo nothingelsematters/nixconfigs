@@ -43,7 +43,7 @@ in builtins.toJSON {
       default = [ "" "" ];
     };
     scroll-step = 1;
-    on-click = config.lib.functions.toggleMute;
+    on-click = config.lib.constants.toggleMute;
     tooltip = false;
   };
 

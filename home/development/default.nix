@@ -1,5 +1,5 @@
-{ config, pkgs, ... }:
+{ lib, ... }:
 
 {
-  imports = [ ./git ./vscode ./packages.nix ];
+  imports = import ../lib/imports.nix lib ./. ++ [ ./packages.nix ];
 }

@@ -1,17 +1,7 @@
-{ config, pkgs, lib, ... }:
+{ config, lib, ... }:
 
 {
-  imports = [
-    ./background
-    ./compton
-    ./dunst
-    ./i3
-    ./libinput-gestures
-    ./polybar
-    ./screen-locker
-    ./unclutter
-    ./mime.nix
-  ];
+  imports = import ../lib/imports.nix lib ./.;
   xsession.enable = true;
   xresources.extraConfig = config.lib.theme.xresources;
 }

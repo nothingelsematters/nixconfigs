@@ -7,7 +7,7 @@
     dmenu_command = rofi -dmenu -no-show-icons -no-fullscreen -columns 1 -theme .config/rofi/networkmenu.rasi
 
     [editor]
-    terminal = ${config.lib.terminal.name}
+    terminal = ${config.lib.packages.terminal.name}
     gui_if_available = True
   '';
 }

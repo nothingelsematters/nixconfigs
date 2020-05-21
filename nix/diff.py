@@ -45,4 +45,4 @@ for i in diff:
     print("{name}: {old} -> {new}".format(**i))
 
 if not diff:
-    print("No difference.")
+    print("no difference")

@@ -1,5 +1,5 @@
-{ config, ... }:
+{ lib, ... }:
 
 {
-  imports = [ ./battery-notification ./udiskie ];
+  imports = import ../lib/imports.nix lib ./.;
 }

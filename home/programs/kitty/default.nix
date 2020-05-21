@@ -3,7 +3,7 @@
 with config.lib;
 let mono = theme.fonts.mono;
 in rec {
-  lib.terminal = {
+  lib.packages.terminal = {
     name = "kitty";
     package = pkgs.kitty;
   };

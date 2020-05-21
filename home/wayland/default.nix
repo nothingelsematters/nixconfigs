@@ -1,10 +1,10 @@
-{ config, ... }:
+{ config, lib, ... }:
 
 let
   desktop = x: [ (x + ".desktop") ];
   browser = desktop "firefox";
 in {
-  imports = [ ./sway ./mako ./swaybg ./waybar ./libinput-gestures ];
+  imports = import ../lib/imports.nix lib ./.;
 
   xdg.mimeApps.defaultApplications = {
     # Doc viewer
@@ -23,6 +23,6 @@ in {
     "image/png" = desktop "feh";
     "image/jpeg" = desktop "feh";
     # Text viewer
-    "text/plain" = desktop "atom";
+    "text/plain" = desktop "code";
   };
 }

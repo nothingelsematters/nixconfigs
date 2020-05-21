@@ -80,14 +80,18 @@ in rec {
         position = "top";
       }];
 
-      startup = map (val: { command = val; }) [
-        "kitty"
-        "firefox"
-        ''
-          swayidle -w timeout 600 '${scripts.screen-lock}' \
-            timeout 800 'swaymsg "output * dpms off"' \
-            resume 'swaymsg "output * dpms on"' \
-            before-sleep '${scripts.screen-lock}' ''
+      startup = [
+        { command = "kitty"; }
+        { command = "firefox"; }
+        {
+          command = ''
+            swayidle -w timeout 600 '${scripts.screen-lock}' \
+              timeout 800 'swaymsg "output * dpms off"' \
+              resume 'swaymsg "output * dpms on"' \
+              before-sleep '${scripts.screen-lock}'
+          '';
+          always = true;
+        }
       ];
 
       modifier = modifier;
@@ -187,7 +191,7 @@ in rec {
           XF86MonBrightnessDown = monBrightness "-U";
           XF86AudioRaiseVolume = volume "-ui";
           XF86AudioLowerVolume = volume "-d";
-          XF86AudioMute = functions.toggleMute;
+          XF86AudioMute = constants.toggleMute;
         };
     };
 

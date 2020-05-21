@@ -3,7 +3,7 @@
 {
   home.packages = [ pkgs.pass ];
   programs.browserpass = {
-    enable = config.programs.firefox.enable;
-    browsers = [ "firefox" ];
+    enable = true;
+    browsers = [ config.lib.packages.browser.name ];
   };
 }
