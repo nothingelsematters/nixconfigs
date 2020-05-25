@@ -1,10 +1,11 @@
 arg@{ config, pkgs, lib, ... }:
 
+with config.lib;
 let
   windows = import ./windows arg;
   layout = import ./layout arg;
 in builtins.toJSON {
-  height = config.lib.constants.barHeight;
+  height = constants.barHeight;
 
   layer = "bottom";
   position = "top";
@@ -15,7 +16,7 @@ in builtins.toJSON {
 
   "custom/apps" = {
     format = "";
-    on-click = "rofi -show &";
+    on-click = "${packages.launcher.cmd}";
     tooltip = false;
   };
 
@@ -43,7 +44,7 @@ in builtins.toJSON {
       default = [ "" "" ];
     };
     scroll-step = 1;
-    on-click = config.lib.constants.toggleMute;
+    on-click = constants.toggleMute;
     tooltip = false;
   };
 

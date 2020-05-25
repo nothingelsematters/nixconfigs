@@ -4,6 +4,8 @@ with builtins; {
   lib = {
     sources = import ../../nix/sources.nix;
 
+    theme.utils = import ./theme.nix;
+
     constants = {
       barHeight = 22;
       toggleMute = "exec ${pkgs.pamixer}/bin/pamixer --toggle-mute && "

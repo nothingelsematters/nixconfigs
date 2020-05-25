@@ -29,7 +29,6 @@ in {
   };
 
   sound.enable = true;
-  # virtualisation.docker.enable = true;
   networking.networkmanager.enable = true;
 
   nix = {

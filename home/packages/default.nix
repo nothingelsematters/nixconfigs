@@ -28,15 +28,14 @@ with pkgs; {
     slack-dark
 
     ## document related
-    libreoffice
-    evince
-    feh
+    libreoffice # doc, excel, presentation
+    evince      # pdf
+    feh         # images
 
     ## archive management
     atool # archive command line helper
     zip   # package and compress archive files
     unzip # zip format extraction
-    unrar # utility for rar archives
 
     ## media
     mpv          # a media player

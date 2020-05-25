@@ -1,5 +1,9 @@
 { lib, ... }:
 
 {
-  imports = import ../lib/imports.nix lib ./. ++ [ ./packages.nix ];
+  imports = import ../lib/imports.nix {
+    inherit lib;
+    dir = ./.;
+    includeFiles = true;
+  };
 }

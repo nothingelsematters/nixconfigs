@@ -2,8 +2,8 @@
 
 with config.lib;
 let
-  appsmenu = ".config/rofi/appsmenu.rasi";
-  networkmenu = ".config/rofi/networkmenu.rasi";
+  appsmenu = "rofi/appsmenu.rasi";
+  networkmenu = "rofi/networkmenu.rasi";
 
   makeTheme = fileName: ''
     * {
@@ -18,8 +18,14 @@ let
   '';
 
 in {
-  home.file.${appsmenu}.text = makeTheme ./appsmenu.rasi;
-  home.file.${networkmenu}.text = makeTheme ./networkmenu.rasi;
+  xdg.configFile.${appsmenu}.text = makeTheme ./appsmenu.rasi;
+  xdg.configFile.${networkmenu}.text = makeTheme ./networkmenu.rasi;
+
+  lib.packages.launcher = {
+    name = "rofi";
+    cmd = "rofi -show";
+    package = pkgs.rofi;
+  };
 
   programs.rofi = {
     enable = true;
@@ -27,7 +33,7 @@ in {
     cycle = true;
     fullscreen = false;
     scrollbar = false;
-    theme = appsmenu;
+    theme = config.xdg.configHome + ("/" + appsmenu);
     terminal = config.lib.packages.terminal.name;
 
     font = "${theme.fonts.notification} 10";
