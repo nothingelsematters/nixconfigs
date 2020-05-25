@@ -179,7 +179,7 @@ in rec {
           "Control+Space" = "exec ${pkgs.mako}/bin/makoctl dismiss";
           "Control+Shift+Space" = "exec ${pkgs.mako}/bin/makoctl dismiss -a";
 
-          Menu = "exec rofi -show";
+          Menu = "exec ${packages.launcher.cmd}";
 
           Print = "exec grim - | wl-copy -o -t image/png";
           "Control+Print" = ''

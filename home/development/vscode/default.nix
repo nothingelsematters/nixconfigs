@@ -7,6 +7,11 @@ let
     { };
   selection = { selector = p: { inherit (p) ghc882; }; };
 in {
+  lib.packages.editor = {
+    name = "code";
+    package = pkgs.vscode;
+  };
+
   programs.vscode = {
     enable = true;
 
@@ -71,6 +76,12 @@ in {
           version = "0.0.10";
           sha256 = "1zkvcan7zmgkg3cbzw6qfrs3772i0dwhnywx1cgwhy39g1l62r0q";
         }
+        {
+          name = "vscode-ghc-simple";
+          publisher = "dramforever";
+          version = "0.1.22";
+          sha256 = "0x3csdn3pz5rhl9mhplpm8kxb40l1dw5rnwhh3zsif3rz0nqhk2a";
+        }
 
         # nix
         {
@@ -78,6 +89,20 @@ in {
           publisher = "brettm12345";
           version = "0.0.1";
           sha256 = "07w35c69vk1l6vipnq3qfack36qcszqxn8j3v332bl0w6m02aa7k";
+        }
+
+        # kotlin
+        {
+          name = "kotlin";
+          publisher = "fwcd";
+          version = "0.2.11";
+          sha256 = "1zk5qdppcgsal9fppmpyxn58fbpan405pvv70c5cj6kqwp5crw4s";
+        }
+        {
+          name = "kotlin-formatter";
+          publisher = "esafirm";
+          version = "0.0.6";
+          sha256 = "00w7d0iyr3nf5jqzwy7kk7awyh3fnljzrjbkknxmpjyjyvaa7n0z";
         }
       ];
 

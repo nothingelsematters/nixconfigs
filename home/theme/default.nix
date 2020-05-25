@@ -1,11 +1,11 @@
 args@{ pkgs, lib, ... }:
 
-let
-  theme = import ./colors/dracula-mint.nix args;
-  fonts = import ./fonts.nix args;
-  icons = import ./icons.nix args;
-  gtk = import ./gtk.nix args;
-in {
-  imports = [ ./utils ];
-  lib.theme = theme // fonts // icons // gtk;
+{
+  lib.theme = lib.trivial.pipe (import ../lib/imports.nix {
+    inherit lib;
+    dir = ./.;
+    includeDirectories = false;
+    includeFiles = true;
+    additional = [ ./colors/dracula-mint.nix ];
+  }) [ (builtins.map (x: import x args)) (builtins.foldl' (x: y: x // y) { }) ];
 }

@@ -1,43 +1,37 @@
 #!/usr/bin/env bash
 
-NIXCONFIGS=/etc/nixos
-
 set -o errexit
 set -o nounset
 set -o pipefail
 
-function usage() {
-cat << EOF
-Usage:
-  make.sh build
-  make.sh switch
-  make.sh update
-  make.sh clean
-  make.sh link
-EOF
+declare -a usage=("build" "switch" "update" "clean" "link" "help")
+
+function help() {
+    echo "Usage:"
+    for i in ${usage[@]}; do
+        echo "  make.sh" $i
+    done
+}
+
+function info() {
+    echo -e "\e[1;34m> $*\e[0m" >&2
 }
 
 function trace() {
-    echo -e "\e[1;34m> $*\e[0m" >&2
-    "$@" || exit
-}
-
-function diff() {
-    trace nix-shell -p python3 --run "$NIXCONFIGS/nix/diff.py /var/run/current-system '$drv'" >&2
+    info $*; $@
 }
 
 function build() {
-    export NIX_PATH=nixpkgs="$(nix eval --raw '(import nix/sources.nix).nixpkgs.outPath')"
     tmp=$(mktemp -u)
     trace nix build --no-link -f "$NIXCONFIGS/default.nix" -o "$tmp/result" --keep-going --show-trace $* >&2
     trap "rm -f '$tmp/result'" EXIT
     drv=$(readlink "$tmp/result")
-    diff
-    echo "$drv"
+    info built "$drv"
+    trace generation-diff /var/run/current-system "$drv" >&2
 }
 
 function switch() {
-    drv=$(build)
+    build
     trace sudo nix-env -p /nix/var/nix/profiles/system --set "$drv"
     NIXOS_INSTALL_BOOTLOADER=1 trace sudo --preserve-env=NIXOS_INSTALL_BOOTLOADER "$drv/bin/switch-to-configuration" switch
 }
@@ -56,12 +50,15 @@ function clean() {
 }
 
 function link() {
-    ln -srf /etc/nixos .
+    sudo ln -srf /etc/nixos $NIXCONFIGS
 }
 
-cd "$( dirname "${BASH_SOURCE[0]}" )"
+NIXCONFIGS="$( cd "$( dirname "${BASH_SOURCE[0]}" )" > /dev/null 2>&1 && pwd )"
 
-[[ $# -lt 1 ]] && usage && exit
+[[ $# -lt 1 ]] && help && exit
 mode="$1"
 shift
-eval $mode || usage
+if [[ ${usage[*]} =~ $mode ]]
+then $mode $*
+else help
+fi

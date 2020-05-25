@@ -1,8 +1,14 @@
-lib: dir:
+{ lib, dir, includeDirectories ? true, includeFiles ? false, skipDotted ? true
+, additional ? [ ] }:
 
-with lib.attrsets;
-lib.trivial.pipe dir [
+with lib;
+additional ++ trivial.pipe dir [
   builtins.readDir
-  (filterAttrs (k: v: v == "directory" && !(lib.strings.hasPrefix "." k)))
-  (mapAttrsToList (k: v: dir + ("/" + k)))
+
+  (attrsets.filterAttrs (k: v:
+    ((includeDirectories && v == "directory")
+      || (includeFiles && v == "regular" && k != "default.nix"))
+    && !(strings.hasPrefix "." k && skipDotted)))
+
+  (attrsets.mapAttrsToList (k: v: dir + ("/" + k)))
 ]

@@ -70,8 +70,9 @@
 
       cal = "cal -3m";
 
-      ktr = "kotlin";
+      kt = "kotlin";
       ktc = "kotlinc";
+      kts = "kotlinc -script";
       py = "python3";
 
       copy = "wl-copy";
