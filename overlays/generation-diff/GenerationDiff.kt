@@ -4,9 +4,9 @@ fun getVersions(path: String): Map<String, String> = Runtime
         arrayOf(
             "bash",
             "-c",
-            "nix eval --json \"( builtins.map builtins.parseDrvName [ "
-            + "$(nix-store -qR $path | jq -R '.[44:] | select(test(\"\\\\d\"))') ])\" "
-            + "| jq -r '.[] | select(.version | test(\".+\")) | .name, .version'"
+            "nix eval --json \"( builtins.map builtins.parseDrvName [ " +
+            "$(nix-store -qR $path | jq -R '.[44:] | select(test(\"\\\\d\"))') ])\" " +
+            "| jq -r '.[] | select(.version | test(\".+\")) | .name, .version'"
         )
     )
     .getInputStream()
@@ -26,7 +26,7 @@ fun main(args: Array<String>) {
     val old = getVersions(args[0])
     val new = getVersions(args[1])
 
-    for (key in HashSet(old.keys + new.keys)) {
+    for (key in old.keys.plus(new.keys).sorted()) {
         val oldVer = old[key]
         val newVer = new[key]
         if (old[key] != new[key]) {
