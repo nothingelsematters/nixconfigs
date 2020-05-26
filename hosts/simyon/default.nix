@@ -89,18 +89,14 @@ in {
 
       layout = "us,ru";
 
-      # TODO login logo
       displayManager = {
         sessionPackages = [ pkgs.sway ];
-        sddm = let fetchedTheme = sources.sddm-theme-clairvoyance;
-        in {
+        sddm = {
           enable = true;
-          theme = with pkgs.lib;
-            lists.last
-            (strings.splitString "/" (builtins.toString fetchedTheme));
+          theme = "clairvoyance";
           extraConfig = ''
             [Theme]
-            ThemeDir=${fetchedTheme}/..
+            ThemeDir=${pkgs.sddm-theme-clairvoyance}/share
             EnableAvatars=true
           '';
         };
