@@ -2,13 +2,17 @@
 , additional ? [ ] }:
 
 with lib;
-additional ++ trivial.pipe dir [
+let
+  isFile = type: type == "regular";
+  isNix = name: strings.hasSuffix ".nix" name;
+  isDefaultNix = name: name == "default.nix";
+  includeFile = name: type:
+    includeFiles && isFile type && isNix name && !(isDefaultNix name);
+  includeDir = type: includeDirectories && type == "directory";
+  includeHidden = name: !(strings.hasPrefix "." name && skipDotted);
+in additional ++ trivial.pipe dir [
   builtins.readDir
-
-  (attrsets.filterAttrs (k: v:
-    ((includeDirectories && v == "directory")
-      || (includeFiles && v == "regular" && k != "default.nix"))
-    && !(strings.hasPrefix "." k && skipDotted)))
-
-  (attrsets.mapAttrsToList (k: v: dir + ("/" + k)))
+  (attrsets.filterAttrs (name: type:
+    (includeDir type || includeFile name type) && includeHidden name))
+  (attrsets.mapAttrsToList (name: type: dir + ("/" + name)))
 ]

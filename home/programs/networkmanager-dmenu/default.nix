@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 {
+  # TODO get rid of rofi
   home.packages = [ pkgs.networkmanager_dmenu ];
   xdg.configFile."networkmanager-dmenu/config.ini".text = ''
     [dmenu]

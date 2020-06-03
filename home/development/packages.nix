@@ -4,6 +4,7 @@
   home.packages = with pkgs; [
     # markdown
     typora
+    mdcat
 
     # c++
     gcc
@@ -18,32 +19,6 @@
     jdk14
     maven
     antlr4
-
-    # haskell
-    (ghc.withPackages (ps:
-      with ps; [
-        # building
-        stack
-        cabal2nix
-
-        # coding
-        hlint
-        stylish-haskell
-
-        # sources
-        unordered-containers
-        directory
-        optparse-applicative
-        Diff
-
-        # testing
-        hspec
-        hedgehog
-        hedgehog-fn
-        tasty
-        tasty-hedgehog
-        tasty-hspec
-      ]))
 
     # python
     (python3.withPackages (ps: with ps; [ virtualenv pip ]))
