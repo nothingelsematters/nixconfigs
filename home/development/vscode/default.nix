@@ -2,10 +2,9 @@
 
 with config.lib;
 let
-  hie =
-    import (fetchTarball "https://github.com/infinisil/all-hies/tarball/master")
-    { };
+  allHies = fetchTarball "https://github.com/infinisil/all-hies/tarball/master";
   selection = { selector = p: { inherit (p) ghc882; }; };
+  hie = (import allHies { }).unstable.selection selection;
 in {
   lib.packages.editor = {
     name = "code";
@@ -19,7 +18,7 @@ in {
       enable = true;
       hie = {
         enable = true;
-        executablePath = hie.unstable.selection selection + /bin/hie-wrapper;
+        executablePath = hie + /bin/hie;
       };
     };
 
@@ -150,6 +149,7 @@ in {
       "terminal.integrated.cursorBlinking" = false;
       "terminal.integrated.cursorStyle" = "underline";
       "terminal.integrated.fontFamily" = theme.fonts.mono.name;
+      "terminal.integrated.fontSize" = 10;
       "terminal.explorerKind" = "external";
       "terminal.external.linuxExec" = "kitty";
 
@@ -160,8 +160,7 @@ in {
         "\${dirty} \${activeEditorMedium}\${separator}\${rootName}";
       "window.titleBarStyle" = "native";
 
-      "workbench.colorTheme" =
-        "Community Material Theme Palenight High Contrast";
+      "workbench.colorTheme" = "Material Theme Palenight High Contrast";
       "workbench.editor.enablePreviewFromQuickOpen" = false;
       "workbench.iconTheme" = "file-icons";
       "workbench.settings.enableNaturalLanguageSearch" = false;
@@ -180,14 +179,27 @@ in {
 
       "todo-tree.tree.showScanModeButton" = false;
 
+      # haskell
       "languageServerHaskell.hlintOn" = true;
       "languageServerHaskell.maxNumberOfProblems" = 100;
-      "[haskell]"."editor.defaultFormatter" = "vigoo.stylish-haskell";
+      "languageServerHaskell.formattingProvider" = "none";
+      "[haskell]" = {
+        "editor.defaultFormatter" = "vigoo.stylish-haskell";
+        "editor.tabSize" = 2;
+      };
       "haskell.hlint.executablePath" = pkgs.hlint + /bin/hlint;
+      "haskell.hlint.run" = "onType";
+      "ghcSimple.startupCommands.all" = [
+        "System.IO.hSetBuffering System.IO.stderr System.IO.NoBuffering"
+        "System.IO.hSetBuffering System.IO.stdout System.IO.NoBuffering"
+        ":set -haddock"
+      ];
       "stylishHaskell.commandLine" =
-        "${pkgs.stylish-haskell} -c $HOME/university/functional-programming"
+        "${pkgs.stylish-haskell}/bin/stylish-haskell"
+        + " -c $HOME/university/functional-programming"
         + "/functional-programming-course/.stylish-haskell.yaml";
 
+      # nix
       "[nix]" = {
         "editor.defaultFormatter" = "brettm12345.nixfmt-vscode";
         "editor.tabSize" = 2;

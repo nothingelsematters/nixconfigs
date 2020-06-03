@@ -15,7 +15,6 @@ with pkgs; {
     ## utility packages
     gnumake  # control the generation of non-source files from sources
     binutils # tools for manipulating binaries (linker, assembler, etc)
-    xclip    # clipboard manipulations
     jq       # processing JSON inputs
 
     ## terminal helpful

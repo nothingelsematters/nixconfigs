@@ -60,7 +60,7 @@ in builtins.toJSON {
 
   cpu = {
     interval = 3;
-    format = " {}%";
+    format = " {usage}%";
     max-length = 10;
     tooltip = false;
     on-click = "kitty htop &";
