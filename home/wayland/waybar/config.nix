@@ -4,6 +4,8 @@ with config.lib;
 let
   windows = import ./windows arg;
   layout = import ./layout arg;
+  monospaced = text:
+    ''<span font_family="${theme.fonts.mono.name}">'' + text + "</span>";
 in builtins.toJSON {
   height = constants.barHeight;
 
@@ -12,7 +14,7 @@ in builtins.toJSON {
 
   modules-left = [ "custom/apps" "custom/windows" "sway/window" ];
   modules-center = [ "clock" ];
-  modules-right = [ "custom/layout" "pulseaudio" "battery" "cpu" "network" ];
+  modules-right = [ "custom/layout" "pulseaudio" "cpu" "network" "battery" ];
 
   "custom/apps" = {
     format = "";
@@ -24,7 +26,7 @@ in builtins.toJSON {
 
   "sway/window" = {
     format = "{}";
-    max-length = 50;
+    max-length = 70;
     tooltip = false;
   };
 
@@ -49,7 +51,7 @@ in builtins.toJSON {
   };
 
   battery = {
-    format = "{icon} {capacity}%";
+    format = "{icon} ${monospaced "{capacity}"}%";
     interval = 5;
     states = {
       warning = 20;
@@ -60,7 +62,7 @@ in builtins.toJSON {
 
   cpu = {
     interval = 3;
-    format = " {usage}%";
+    format = " ${monospaced "{usage}"}%";
     max-length = 10;
     tooltip = false;
     on-click = "kitty htop &";
@@ -68,9 +70,9 @@ in builtins.toJSON {
 
   network = {
     interface = "wlp3s0";
-    format = "{ifname}";
-    format-wifi = " {essid} ({signalStrength}%)";
-    format-ethernet = "{ifname} ";
+    format = "";
+    format-wifi = " {essid}";
+    format-ethernet = "";
     format-disconnected = "";
     max-length = 50;
     on-click = "networkmanager_dmenu &";

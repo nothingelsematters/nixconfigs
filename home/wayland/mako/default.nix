@@ -5,7 +5,7 @@ with config.lib; {
     enable = true;
 
     anchor = "top-right";
-    layer = "top";
+    layer = "overlay";
     margin = "3,5";
     height = 100;
     width = 320;

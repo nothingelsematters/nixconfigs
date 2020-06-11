@@ -95,7 +95,7 @@ in rec {
       ];
 
       modifier = modifier;
-      fonts = [ "${theme.fonts.notification} 9" ];
+      fonts = [ "${theme.fonts.notification} 8" ];
 
       window.border = 0;
       floating = {

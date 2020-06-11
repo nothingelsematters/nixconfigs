@@ -8,9 +8,9 @@ functions.toCSS {
     font-family = ''
       ${theme.fonts.notification}, "Font Awesome 5 Brands", "Font Awesome 5 Free", "Font Awesome 5 Free Solid", ''
       + "Fira code medium, noto-fonts-emoji";
-    font-size = "12px";
+    font-size = "11px";
     min-height = 0;
-    margin = "0 5px 0 5px";
+    margin = "1px 5px 0 5px";
   };
 
   "window#waybar" = {
@@ -23,12 +23,13 @@ functions.toCSS {
 
   "window#waybar.hidden".opacity = 0.2;
 
+  "#battery".margin-right = "9px";
   "#battery.charging".color = theme.colors.text.secondary;
   "#battery.warning:not(.charging)".color = "yellow";
   "#battery.critical:not(.charging)".color = theme.colors.text.urgent;
 
   "#pulseaudio.muted".color = theme.colors.text.disabled;
 
-  "#custom-apps"."margin-left" = "9px";
-  "#network"."margin-right" = "9px";
+  "#custom-apps".margin-left = "9px";
+  "#network:not(.wifi)".color = theme.colors.text.disabled;
 }

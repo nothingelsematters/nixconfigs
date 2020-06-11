@@ -7,7 +7,7 @@ with builtins; {
     theme.utils = import ./theme.nix;
 
     constants = {
-      barHeight = 22;
+      barHeight = 12;
       toggleMute = "exec ${pkgs.pamixer}/bin/pamixer --toggle-mute && "
         + "( ${pkgs.pamixer}/bin/pamixer --get-mute && echo 0 > $SWAYSOCK.wob ) || "
         + "${pkgs.pamixer}/bin/pamixer --get-volume > $SWAYSOCK.wob";
