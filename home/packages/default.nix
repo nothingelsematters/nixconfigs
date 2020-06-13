@@ -27,9 +27,9 @@ with pkgs; {
     slack-dark
 
     ## document related
-    libreoffice # doc, excel, presentation
-    evince      # pdf
-    feh         # images
+    libreoffice-fresh # doc, excel, presentation
+    evince            # pdf
+    feh               # images
 
     ## archive management
     atool # archive command line helper

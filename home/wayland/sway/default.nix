@@ -151,6 +151,8 @@ in rec {
         urgent = placeholder;
       };
 
+      bindkeysToCode = true;
+
       keybindings = withDirections "Shift+" "move"
         // withNumbers "" "workspace "
         // withNumbers "Shift+" "move container to workspace "

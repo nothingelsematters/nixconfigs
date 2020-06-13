@@ -3,7 +3,7 @@
 {
   home.packages = with pkgs;
     [
-      (ghc.withPackages (ps:
+      (ghc.withHoogle (ps:
         with ps; [
           # building
           stack
@@ -19,23 +19,20 @@
           # ghci
           pretty-simple
 
-          # sources
+          # libraries
           unordered-containers
           directory
           optparse-applicative
           Diff
           microlens
-          ListZipper
           ncurses
 
           # testing
           criterion
-          hspec
           hedgehog
           hedgehog-fn
           tasty
           tasty-hedgehog
-          tasty-hspec
         ]))
     ];
 
@@ -49,5 +46,7 @@
     :set -Wno-type-defaults
     :set -package pretty-simple
     :set -interactive-print Text.Pretty.Simple.pPrint
+    :def hoogle \s -> return $ ":! hoogle search -l --colour --count=15 \"" ++ s ++ "\""
+    :def doc \s -> return $ ":! hoogle search -l --colour --info \"" ++ s ++ "\""
   '';
 }
