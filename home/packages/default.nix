@@ -18,9 +18,9 @@ with pkgs; {
     jq       # processing JSON inputs
 
     ## terminal helpful
+    man    # on-line reference manuals
     tldr   # simplified man pages
     psmisc # fuser, killall and pstree...
-    man    # on-line reference manuals
 
     ## messaging
     tdesktop
@@ -42,10 +42,6 @@ with pkgs; {
     playerctl    # controlling media players
     pavucontrol  # PulseAudio Volume Control
     (speechd.override { withPulse = true; })
-
-    ## NixOS house keeping
-    nox    # tools to make nix nicer to use
-    vulnix # NixOS vulnerability scanner
 
     ## spell checkers
     hunspell

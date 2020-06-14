@@ -36,8 +36,6 @@ let
     "exec ${pkgs.light}/bin/light ${flag} 3 &&"
     + " ${pkgs.light}/bin/light -G | cut -d'.' -f1 > $SWAYSOCK.wob";
 in rec {
-  imports = [ ../../programs/rofi ];
-
   home.packages = with pkgs; [
     waybar
     sway

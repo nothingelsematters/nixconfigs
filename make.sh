@@ -24,8 +24,7 @@ function trace() {
 function build() {
     tmp=$(mktemp -u)
     nixpkgs_path="$(nix eval --raw "(import ${NIXCONFIGS}/nix/sources.nix).nixpkgs.outPath")"
-    imports_path="$NIXCONFIGS/home/lib/imports.nix"
-    export NIX_PATH=nixpkgs="${nixpkgs_path}":imports="${imports_path}"
+    export NIX_PATH=nixpkgs="${nixpkgs_path}"
     trace nix build --no-link -f "$NIXCONFIGS/default.nix" -o "$tmp/result" --keep-going --show-trace $* >&2
     trap "rm -f '$tmp/result'" EXIT
     drv=$(readlink "$tmp/result")
@@ -40,9 +39,9 @@ function switch() {
 }
 
 function update() {
-    ADDONS=$NIXCONFIGS/home/programs/firefox/addons
-    trace nixpkgs-firefox-addons $ADDONS/addons.json $ADDONS/default.nix || true
-    nixfmt $ADDONS/default.nix
+    # ADDONS=$NIXCONFIGS/home/programs/browser/firefox/addons
+    # trace nixpkgs-firefox-addons $ADDONS/addons.json $ADDONS/default.nix || true
+    # nixfmt $ADDONS/default.nix
     cd $NIXCONFIGS
     trace niv update
     build

@@ -1,5 +1,5 @@
 lib:
-builtins.map import (import <imports> {
+builtins.map import (import ../home/lib/imports.nix {
   inherit lib;
   dir = ./.;
   includeFiles = true;

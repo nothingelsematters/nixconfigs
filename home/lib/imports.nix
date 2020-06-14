@@ -1,18 +1,33 @@
 { lib, dir, includeDirectories ? true, includeFiles ? false, skipDotted ? true
-, additional ? [ ] }:
+, additional ? [ ], recursive ? false }:
 
-with lib;
+with lib.attrsets;
+with lib.lists;
+with lib.trivial;
+with lib.strings;
+with builtins;
 let
   isFile = type: type == "regular";
-  isNix = name: strings.hasSuffix ".nix" name;
+  isNix = name: hasSuffix ".nix" name;
   isDefaultNix = name: name == "default.nix";
   includeFile = name: type:
     includeFiles && isFile type && isNix name && !(isDefaultNix name);
   includeDir = type: includeDirectories && type == "directory";
-  includeHidden = name: !(strings.hasPrefix "." name && skipDotted);
-in additional ++ trivial.pipe dir [
-  builtins.readDir
-  (attrsets.filterAttrs (name: type:
-    (includeDir type || includeFile name type) && includeHidden name))
-  (attrsets.mapAttrsToList (name: type: dir + ("/" + name)))
-]
+  includeHidden = name: !(hasPrefix "." name && skipDotted);
+
+  hasDefault = directory:
+    any isDefaultNix (mapAttrsToList const (readDir directory));
+
+  filter = filterAttrs (name: type:
+    (includeDir type || includeFile name type) && includeHidden name);
+  merge = directory:
+    mapAttrsToList (name: type:
+      let child = directory + ("/" + name);
+      in (if type == "directory" && recursive && !hasDefault child then
+        exploreDir
+      else
+        singleton) child);
+
+  exploreDir = directory:
+    pipe directory [ readDir filter (merge directory) concatLists ];
+in additional ++ exploreDir dir

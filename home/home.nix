@@ -1,9 +1,10 @@
 { lib, pkgs, config, options, ... }:
 
 with config.lib; {
-  imports = import <imports> {
+  imports = import lib/imports.nix {
     inherit lib;
     dir = ./.;
+    recursive = true;
   };
 
   home = {
