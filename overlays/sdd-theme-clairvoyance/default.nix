@@ -1,11 +1,9 @@
 self: super:
 
-let
-  sources = import ../../nix/sources.nix;
-  clairvoyance = sources.sddm-theme-clairvoyance;
+let clairvoyance = super.sddm-theme-clairvoyance;
 in {
   sddm-theme-clairvoyance = super.stdenv.mkDerivation {
-    pname = "sddm-theme-clairvoyance";
+    pname = "sddm-clairvoyance";
     version = clairvoyance.rev;
     src = clairvoyance;
 

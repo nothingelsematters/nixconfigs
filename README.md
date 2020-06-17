@@ -2,7 +2,7 @@
 
 <p align="center">
     <img src="https://img.shields.io/github/commit-activity/y/nothingelsematters/nixconfigs?style=flat-square&logo=github">
-    <img src="https://img.shields.io/badge/generations-201-green?style=flat-square&logo=nixos">
+    <img src="https://img.shields.io/badge/generations-205-green?style=flat-square&logo=nixos">
     <img src="https://img.shields.io/badge/build-passing-green?style=flat-square">
 </p>
 

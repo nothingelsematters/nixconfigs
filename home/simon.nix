@@ -12,7 +12,10 @@ in {
   };
 
   home-manager.users."${username}" = args:
-    import ./home.nix (args // { inherit pkgs; });
+    import ./home.nix (args // {
+      inherit pkgs;
+      overlays = config.nixpkgs.overlays;
+    });
 
   systemd.services."home-manager-${username}".preStart = ''
     ${pkgs.nix}/bin/nix-env -i -E

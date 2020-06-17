@@ -15,9 +15,8 @@ let
     :root ${theme.utils.mkCss theme.colors}
   '';
 
-  materialFox = sources.materialFox + /chrome/userChrome.css;
   patchedUserChrome = ''
-    @import "${materialFox}";
+    @import "${pkgs.materialFox + /chrome/userChrome.css}";
     ${themeCss}
     ${builtins.readFile ./overrides.css}
   '';

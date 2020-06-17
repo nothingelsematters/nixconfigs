@@ -2,8 +2,6 @@ arg@{ pkgs, lib, ... }:
 
 with builtins; {
   lib = {
-    sources = import ../../nix/sources.nix;
-
     theme.utils = import ./theme.nix;
 
     constants = {

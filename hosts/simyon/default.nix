@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 
-let sources = import ../../nix/sources.nix;
-in {
+{
   imports = [ ./hardware.nix ../../home/simon.nix ];
 
   boot = {

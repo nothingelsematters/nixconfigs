@@ -3,7 +3,6 @@
 {
   programs.dircolors = {
     enable = true;
-    extraConfig =
-      builtins.readFile (config.lib.sources.nord-dircolors + /src/dir_colors);
+    extraConfig = builtins.readFile (pkgs.nord-dircolors + /src/dir_colors);
   };
 }

@@ -1,4 +1,4 @@
-{ lib, pkgs, config, options, ... }:
+{ lib, pkgs, config, options, overlays, ... }:
 
 with config.lib; {
   imports = import lib/imports.nix {
@@ -8,7 +8,7 @@ with config.lib; {
   };
 
   home = {
-    packages = [ pkgs.generation-diff ];
+    packages = [ pkgs.generation-diff pkgs.materialFox ];
 
     sessionVariables = {
       PATH = "$HOME/.yarn/bin/:$PATH";
@@ -16,8 +16,7 @@ with config.lib; {
       PAGER = "most";
       USE_NIX2_COMMAND = 1;
       XDG_CURRENT_DESKTOP = "Gnome";
-      NIX_PATH = ''
-        nixpkgs="$(nix eval --raw '(import /etc/nixos/nix/sources.nix).nixpkgs.outPath')"'';
+      NIX_PATH = "nixpkgs=${pkgs.nixpkgs.outPath}";
     };
 
     keyboard = {
@@ -28,20 +27,10 @@ with config.lib; {
 
   manual.manpages.enable = true;
 
-  nixpkgs.config = {
-    packageOverrides = lib.attrsets.optionalAttrs
-      (builtins.length (config.programs.firefox.extensions) != 0)
-      (pkgs: { nur = import sources.NUR { inherit pkgs; }; });
-
-    allowUnfreePredicate = pkg:
-      let
-        name = if pkg ? "pname" then
-          pkg.pname
-        else if pkg ? "name" then
-          (builtins.parseDrvName pkg.name).name
-        else
-          throw "Cannot figure out name of: ${pkg}";
-      in builtins.elem name [ "typora" "slack" "vscode" ];
+  nixpkgs = {
+    inherit overlays;
+    config.allowUnfreePredicate = pkg:
+      builtins.elem (lib.strings.getName pkg) [ "typora" "slack" "vscode" ];
   };
 
   gtk = {

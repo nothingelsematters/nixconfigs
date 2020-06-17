@@ -43,7 +43,7 @@
       }
       {
         name = "forgit";
-        src = config.lib.sources.forgit;
+        src = forgit;
       }
     ];
 
