@@ -1,5 +1,8 @@
 lib:
 
+with builtins;
+with lib;
+with attrsets;
 let
   imports = import ../home/lib/imports.nix {
     inherit lib;
@@ -7,10 +10,9 @@ let
     includeFiles = true;
   };
 
-  sources = self: super:
-    lib.trivial.pipe ../nix/sources.nix [
-      import
-      (lib.attrsets.filterAttrs (name: _: name != "__functor"))
-    ];
-
-in [ sources ] ++ builtins.map import imports
+  sources = import ../nix/sources.nix;
+in map import imports ++ trivial.pipe ../nix/sources.nix [
+  import
+  (filterAttrs (name: _: name != "__functor"))
+  (mapAttrsToList (name: value: _: _: { "${name}" = value; }))
+]

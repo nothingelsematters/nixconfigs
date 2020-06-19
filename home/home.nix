@@ -8,7 +8,7 @@ with config.lib; {
   };
 
   home = {
-    packages = [ pkgs.generation-diff pkgs.materialFox ];
+    packages = [ pkgs.generation-diff ];
 
     sessionVariables = {
       PATH = "$HOME/.yarn/bin/:$PATH";
