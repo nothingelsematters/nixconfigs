@@ -36,15 +36,15 @@
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "materialFox": {
-        "branch": "72",
+        "branch": "master",
         "description": "A Material Design-inspired userChrome.css theme for Firefox",
         "homepage": null,
         "owner": "muckSponge",
         "repo": "materialFox",
-        "rev": "220675cc5ab0c28e91381e03bc96b4324bdc19ef",
-        "sha256": "0q99b62knwkj9yqkjiasg4mhh076fzhwlvm5lsmdm876pz9cng12",
+        "rev": "d0c6c75070f6738235316ab039e79b73ae1deb49",
+        "sha256": "1715igk8cwas78p29kk5m8kv5ifk6b0yj2j24hyb05dp30a8r9y5",
         "type": "tarball",
-        "url": "https://github.com/muckSponge/materialFox/archive/220675cc5ab0c28e91381e03bc96b4324bdc19ef.tar.gz",
+        "url": "https://github.com/muckSponge/materialFox/archive/d0c6c75070f6738235316ab039e79b73ae1deb49.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "niv": {
