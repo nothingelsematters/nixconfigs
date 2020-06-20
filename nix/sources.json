@@ -1,16 +1,4 @@
 {
-    "NUR": {
-        "branch": "master",
-        "description": "Nix User Repository: User contributed nix packages [maintainer=@Mic92]",
-        "homepage": "",
-        "owner": "nix-community",
-        "repo": "NUR",
-        "rev": "63cfa80bdd6daffcf52536cf1318267dba8ed184",
-        "sha256": "06x08fm0naldi66pgzn2idk5vgp0f3302x3nkd84v9dvwjs9hz8p",
-        "type": "tarball",
-        "url": "https://github.com/nix-community/NUR/archive/63cfa80bdd6daffcf52536cf1318267dba8ed184.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
     "forgit": {
         "branch": "master",
         "description": ":zzz: A utility tool powered by fzf for using git interactively.",
@@ -81,6 +69,18 @@
         "sha256": "0s7bd38269z4b9j6f90nscjkbdbh23z3mlg89fnk7ndyrpf5dqlj",
         "type": "tarball",
         "url": "https://github.com/arcticicestudio/nord-dircolors/archive/addb3b427e008d23affc721450fde86f27566f1d.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nur": {
+        "branch": "master",
+        "description": "Nix User Repository: User contributed nix packages [maintainer=@Mic92]",
+        "homepage": "",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "63cfa80bdd6daffcf52536cf1318267dba8ed184",
+        "sha256": "06x08fm0naldi66pgzn2idk5vgp0f3302x3nkd84v9dvwjs9hz8p",
+        "type": "tarball",
+        "url": "https://github.com/nix-community/NUR/archive/63cfa80bdd6daffcf52536cf1318267dba8ed184.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "sddm-theme-clairvoyance": {
