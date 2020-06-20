@@ -63,6 +63,7 @@ with config.lib; {
   "workbench.statusBar.visible" = true;
   "workbench.tips.enabled" = false;
   "workbench.tree.indent" = 18;
+  "workbench.panel.defaultLocation" = "right";
 
   "zenMode.centerLayout" = false;
   "zenMode.fullScreen" = false;
@@ -74,9 +75,6 @@ with config.lib; {
   "todo-tree.tree.showScanModeButton" = false;
 
   # haskell
-  "languageServerHaskell.hlintOn" = true;
-  "languageServerHaskell.maxNumberOfProblems" = 100;
-  "languageServerHaskell.formattingProvider" = "none";
   "[haskell]" = {
     "editor.defaultFormatter" = "vigoo.stylish-haskell";
     "editor.tabSize" = 2;

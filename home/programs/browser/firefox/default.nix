@@ -2,23 +2,15 @@ arg@{ config, pkgs, lib, ... }:
 
 with config.lib;
 let
-  settings = import ./settings.nix arg;
-  /* addons = import ./addons/default.nix {
-       buildFirefoxXpiAddon =
-         pkgs.nur.repos.rycee.firefox-addons.buildFirefoxXpiAddon;
-       fetchurl = pkgs.fetchurl;
-       stdenv = pkgs.stdenv;
-     };
-  */
+  # addons = import ./addons/default.nix {
+  #   buildFirefoxXpiAddon =
+  #     pkgs.nur.repos.rycee.firefox-addons.buildFirefoxXpiAddon;
+  #   fetchurl = pkgs.fetchurl;
+  #   stdenv = pkgs.stdenv;
+  # };
 
   themeCss = ''
     :root ${theme.utils.mkCss theme.colors}
-  '';
-
-  patchedUserChrome = ''
-    @import "${pkgs.materialFox + /chrome/userChrome.css}";
-    ${themeCss}
-    ${builtins.readFile ./overrides.css}
   '';
 in {
   lib.packages.browser = {
@@ -40,8 +32,12 @@ in {
       default = {
         id = 0;
         isDefault = true;
-        userChrome = patchedUserChrome;
-        settings = settings;
+        settings = import ./settings.nix arg;
+        userChrome = ''
+          @import "${pkgs.materialFox + /chrome/userChrome.css}";
+          ${themeCss}
+          ${builtins.readFile ./overrides.css}
+        '';
       };
     };
   };
