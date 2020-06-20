@@ -4,10 +4,10 @@ with pkgs;
 [ vscode-extensions.bbenoist.Nix ]
 ++ vscode-utils.extensionsFromVscodeMarketplace [
   {
-    name = "bracket-pair-colorizer-2";
-    publisher = "coenraads";
-    version = "0.1.2";
-    sha256 = "1n34m3i5cjd0x2qcvvk5ipp5ippxmsrq6218xw40ag0n39lsknri";
+    name = "vsc-community-material-theme";
+    publisher = "equinusocio";
+    version = "1.4.1";
+    sha256 = "0841aaf58c69x1r33xnflrh6kdw8xxhbbavfwsbl8lbn48r70wsb";
   }
   {
     name = "file-icons";
@@ -16,10 +16,10 @@ with pkgs;
     sha256 = "0mcaz4lv7zb0gw0i9zbd0cmxc41dnw344ggwj1wy9y40d627wdcx";
   }
   {
-    name = "todo-tree";
-    publisher = "gruntfuggly";
-    version = "0.0.174";
-    sha256 = "0636sjcdhpiwmqrj13py97j0svn7pq5c9kjmarrjv7ivzk8q8f9k";
+    name = "bracket-pair-colorizer-2";
+    publisher = "coenraads";
+    version = "0.1.2";
+    sha256 = "1n34m3i5cjd0x2qcvvk5ipp5ippxmsrq6218xw40ag0n39lsknri";
   }
   {
     name = "vscode-diff";
@@ -28,16 +28,30 @@ with pkgs;
     sha256 = "10ayc6677clpnid4lm6h22v5635k1aidp7pr2iwkiblbqq6ri5s0";
   }
   {
+    name = "todo-tree";
+    publisher = "gruntfuggly";
+    version = "0.0.174";
+    sha256 = "0636sjcdhpiwmqrj13py97j0svn7pq5c9kjmarrjv7ivzk8q8f9k";
+  }
+  {
+    name = "vscode-todo-highlight";
+    publisher = "wayou";
+    version = "1.0.4";
+    sha256 = "0s925rb668spv602x6g7sld2cs5ayiq7273963v9prvgsr0drlrr";
+  }
+
+  # git
+  {
     name = "git-graph";
     publisher = "mhutchie";
     version = "1.22.0";
     sha256 = "06j49pxz9vp6z4hax60jsn4fa2iig76d8p9cjhdhbvmyil0dgggx";
   }
   {
-    name = "vsc-community-material-theme";
-    publisher = "equinusocio";
-    version = "1.4.1";
-    sha256 = "0841aaf58c69x1r33xnflrh6kdw8xxhbbavfwsbl8lbn48r70wsb";
+    name = "gitmoji-vscode";
+    publisher = "Vtrois";
+    version = "0.1.9";
+    sha256 = "0mhgl7sdqdzj5gsrajrfq4g6wqikk19fa59rrr2dhq6hrin7a9mb";
   }
 
   # haskell

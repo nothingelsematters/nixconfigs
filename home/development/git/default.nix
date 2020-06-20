@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
-  home.packages = with pkgs.gitAndTools; [ delta hub ];
+  home.packages = with pkgs; with gitAndTools; [ delta hub gh lazygit ];
 
   programs.git = {
     enable = true;

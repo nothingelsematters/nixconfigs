@@ -50,7 +50,7 @@
     shellAliases = {
       nixx = "/etc/nixos/make.sh";
       nixxs = "nixx switch";
-      nsp = "nix-shell --run zsh -p";
+      nsp = "cached-nix-shell --run zsh -p";
 
       confs = "z conf; $EDITOR .";
 

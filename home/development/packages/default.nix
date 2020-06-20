@@ -14,6 +14,7 @@
 
     # kotlin
     kotlin
+    ktlint
 
     # java
     jdk14
@@ -33,5 +34,6 @@
     # nix
     niv
     nixfmt
+    cached-nix-shell
   ];
 }
