@@ -1,4 +1,4 @@
-<p align="center"><img src="https://raw.githubusercontent.com/jglovier/dotfiles-logo/master/dotfiles-logo.svg" width=512></p>
+<p align="center"><img src="https://raw.githubusercontent.com/jglovier/dotfiles-logo/main/dotfiles-logo.svg" width=512></p>
 
 <p align="center">
     <img src="https://img.shields.io/github/commit-activity/y/nothingelsematters/nixconfigs?style=flat-square&logo=github">
