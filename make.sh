@@ -52,10 +52,6 @@ function clean() {
     trace sudo nix optimise-store
 }
 
-function link() {
-    sudo ln -srf /etc/nixos $NIXCONFIGS
-}
-
 NIXCONFIGS="$( cd "$( dirname "${BASH_SOURCE[0]}" )" > /dev/null 2>&1 && pwd )"
 
 [[ $# -lt 1 ]] && help && exit

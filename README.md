@@ -11,6 +11,5 @@
 ### Usage
 
 ```
-$ ./make.sh link
-$ ./make.sh switch
+./make.sh switch
 ```
