@@ -11,8 +11,8 @@ let
   };
 
   sources = import ../nix/sources.nix;
-in map import imports ++ trivial.pipe ../nix/sources.nix [
+in trivial.pipe ../nix/sources.nix [
   import
   (filterAttrs (name: _: name != "__functor"))
   (mapAttrsToList (name: value: _: _: { "${name}" = value; }))
-]
+] ++ map import imports
