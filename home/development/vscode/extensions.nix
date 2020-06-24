@@ -1,7 +1,8 @@
 { pkgs, ... }:
 
 with pkgs;
-[ vscode-extensions.bbenoist.Nix ]
+with vscode-extensions;
+[ bbenoist.Nix justusadam.language-haskell ]
 ++ vscode-utils.extensionsFromVscodeMarketplace [
   {
     name = "vsc-community-material-theme";
@@ -30,14 +31,8 @@ with pkgs;
   {
     name = "todo-tree";
     publisher = "gruntfuggly";
-    version = "0.0.174";
-    sha256 = "0636sjcdhpiwmqrj13py97j0svn7pq5c9kjmarrjv7ivzk8q8f9k";
-  }
-  {
-    name = "vscode-todo-highlight";
-    publisher = "wayou";
-    version = "1.0.4";
-    sha256 = "0s925rb668spv602x6g7sld2cs5ayiq7273963v9prvgsr0drlrr";
+    version = "0.0.177";
+    sha256 = "1j3vgyimc4gamp3dnym9wfk445q5hipjq3cimvpqqa22pk4g0224";
   }
 
   # git
@@ -52,6 +47,20 @@ with pkgs;
     publisher = "Vtrois";
     version = "0.1.9";
     sha256 = "0mhgl7sdqdzj5gsrajrfq4g6wqikk19fa59rrr2dhq6hrin7a9mb";
+  }
+
+  # markdown
+  {
+    name = "markdown-all-in-one";
+    publisher = "yzhang";
+    version = "3.1.0";
+    sha256 = "0b5fqwaxbdqpqx53gxjjfawghwrpbj9zmbvsw5wamn1jx3djgflk";
+  }
+  {
+    name = "markdown-mermaid";
+    publisher = "bierner";
+    version = "1.5.1";
+    sha256 = "1nym9b2wfhclm3s8fq2ks13z3yzkbjbkbpbgsqq698f9hss2qvmm";
   }
 
   # haskell

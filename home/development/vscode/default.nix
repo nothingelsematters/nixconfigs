@@ -6,6 +6,9 @@ args@{ config, pkgs, ... }:
     package = config.programs.vscode.package;
   };
 
+  xdg.configFile."Code/User/keybindings.json".text =
+    builtins.toJSON (import ./keybindings.nix);
+
   programs.vscode = {
     enable = true;
     haskell = {

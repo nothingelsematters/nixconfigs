@@ -3,7 +3,6 @@
 {
   home.packages = with pkgs; [
     # markdown
-    # typora
     mdcat
 
     # c++

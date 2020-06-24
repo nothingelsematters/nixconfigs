@@ -24,6 +24,7 @@ with config.lib; {
 
   "explorer.autoReveal" = true;
   "explorer.openEditors.visible" = 0;
+  "explorer.confirmDelete" = false;
 
   "extensions.ignoreRecommendations" = true;
   "extensions.showRecommendationsOnlyOnDemand" = true;
@@ -73,6 +74,8 @@ with config.lib; {
   "files.maxMemoryForLargeFilesMB" = 1024;
 
   "todo-tree.tree.showScanModeButton" = false;
+
+  "gitmoji.outputType" = "code";
 
   # haskell
   "[haskell]" = {
