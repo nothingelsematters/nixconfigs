@@ -46,7 +46,8 @@ in builtins.toJSON {
       default = [ "" "" ];
     };
     scroll-step = 1;
-    on-click = constants.toggleMute;
+    on-click =
+      config.wayland.windowManager.sway.config.keybindings.XF86AudioMute;
     tooltip = false;
   };
 

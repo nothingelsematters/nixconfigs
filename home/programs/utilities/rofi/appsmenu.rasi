@@ -1,103 +1,58 @@
 * {
-  backgroundcolor: @background;
-  bg1: @background;
-  backgroundcoloralternate: @background;
-  scrollbarcolor: #3b4252;
-  foregroundcolor: @foreground;
-  foregroundcolorinverse: @background;
-  selectioncolor: @accent;
-
-  font-size: 1px;
-  border-color: @separatorcolor;
-  background-color: @backgroundcolor;
-  text-color: @foregroundcolor;
-  margin: 0;
-  margin-bottom: 0;
-  margin-top: 0;
-  spacing: 0;
+  bg: #00000099;
+  find: #00000099;
+  txt: #e5e5e5;
+  border: #e5e5e5;
+  bg-sel: #00000099;
+  fg: #ffffff;
+  background-color: #00000000;
+  font: "FantasqueSansMono 25";
 }
 
-#listview {
-  spacing: 0;
-  scrollbar: false;
-  margin: 0;
-  dynamic: true;
+window {
+  transparency: "real";
 }
 
-#window {
-  background-color: @backgroundcolor;
-  border-color: @accent;
-  border: 2;
-  border-radius: 5px;
+mainbox {
+  children: [ inputbar, listview ];
+  padding: 0% 5% 5% 5%;
+  background-color: @bg;
+  padding: 50 150 200 150;
+  border-radius: 0;
+  border-color: @border;
 }
 
-#mainbox {
+listview {
+  columns: 7;
+  padding: 1%;
+  spacing: 2%;
+}
+
+element {
   border: 0;
-  padding: 10;
-  background-color: @backgroundcoloralternate;
+  border-radius: 8;
+  text-color: @fg;
+  orientation: vertical;
+  padding: 1% 1% 1% 1%;
+  margin: 0 123 0 0;
 }
 
-#element {
-  padding: 12;
-  border: 0 0 1 0;
-  border-color: @separatorcolor;
-  background-color: @backgroundcoloralternate;
+element selected {
+  background-color: @bg-sel;
+  border-radius: 8;
+  text-color: @fg;
 }
 
-#element.selected.normal {
-  background-color: @selectioncolor;
-  text-color: @foregroundcolorinverse;
-  border-radius: 5px;
-  border: 0 0 2 0;
-  border-colo5: @separatorcolor;
+inputbar {
+  children: [entry];
+  padding: 4 4 4 4;
+  margin: 8% 30%;
+  background-color: @find;
+  border-radius: 8;
 }
 
-#element.alternate.normal {
-  background-color: @backgroundcoloralternate;
-}
-
-#element.normal.active {
-  background-color: #434c5e;
-}
-
-#element.alternate.active {
-  background-color: #434c5e;
-}
-
-#element.selected.active {
-  background-color: @selectioncolor;
-  text-color: @foregroundcolorinverse;
-  border-radius: 0px;
-  border: 0 0 1 0;
-  border-color: @separatorcolor;
-}
-
-#inputbar {
-  border: 0 solid 0 solid 1 solid 0 solid;
-  margin: 0;
-  spacing: 0;
-  border-color: @separatorcolor;
-}
-
-#prompt {
-  padding: 12;
-  background-color: @backgroundcoloralternate;
-  border: 0 1 0 0;
-}
-
-#entry {
-  padding: 12;
-}
-
-#scrollbar {
-  border: 0;
-  width: 0px;
-  handle-color: @scrollbarcolor;
-  handle-width: 8px;
-  background-color: @backgroundcoloralternate;
-}
-
-#scrollbar handle {
-  border: 0px;
-  border-color: #ff0000;
+entry {
+  font: "Comfortaa 10";
+  text-color: @txt;
+  padding: 8 12 8 12;
 }

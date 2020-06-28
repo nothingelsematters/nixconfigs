@@ -27,4 +27,8 @@
     command = "workbench.panel.terminal.focus";
     key = "ctrl+shift+t";
   }
+  {
+    command = "workbench.action.closeSidebar";
+    key = "ctrl+shift+q";
+  }
 ]

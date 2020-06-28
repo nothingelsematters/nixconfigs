@@ -31,17 +31,18 @@ in {
     enable = true;
     lines = 8;
     cycle = true;
-    fullscreen = false;
+    fullscreen = true;
     scrollbar = false;
     theme = config.xdg.configHome + ("/" + appsmenu);
     terminal = config.lib.packages.terminal.name;
 
     font = "${theme.fonts.notification} 10";
+
     extraConfig = ''
       rofi.modi:                drun
       rofi.matching:            fuzzy
       rofi.drun-match-fields:   name
-      rofi.drun-display-format: {name}
+      rofi.drun-display-format: {icon}
       rofi.kb-row-select:       ctrl+shift+space
       rofi.kb-cancel:           Menu,Escape,alt+r
       rofi.show-icons:          true

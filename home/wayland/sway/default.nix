@@ -48,6 +48,7 @@ in rec {
   ];
 
   # TODO cursor theme
+  # TODO dock
   # BUG telegram from rofi (!): filepicker and notification
 
   systemd.user.services.inactive-transparency = {
@@ -169,8 +170,6 @@ in rec {
 
           "${modifier}+Shift+c" = "reload";
           "${modifier}+Shift+r" = "restart";
-          "${modifier}+Shift+e" =
-            "exec sway-nagbar -t warning -m 'Do you want to exit sway?' -b 'Yes' 'sway-msg exit'";
 
           "${modifier}+F5" = "opacity minus 0.05";
           "${modifier}+F6" = "opacity plus  0.05";
@@ -182,8 +181,9 @@ in rec {
           Menu = "exec ${packages.launcher.cmd}";
 
           Print = "exec grim - | wl-copy -o -t image/png";
-          "Control+Print" = ''
-            exec grim -g "$(slurp -b '#ffffff33' -c '${theme.colors.background.accent}ff')" - | wl-copy -o -t image/png'';
+          "Control+Print" = ''exec grim -g "$(slurp -b '#ffffff33' -c ''
+            + '''${theme.colors.background.accent}ff')"''
+            + "- | wl-copy -o -t image/png";
 
           XF86KbdBrightnessUp = kbdBrightness "-A";
           XF86KbdBrightnessDown = kbdBrightness "-U";
@@ -191,7 +191,10 @@ in rec {
           XF86MonBrightnessDown = monBrightness "-U";
           XF86AudioRaiseVolume = volume "-ui";
           XF86AudioLowerVolume = volume "-d";
-          XF86AudioMute = constants.toggleMute;
+          XF86AudioMute = "exec ${pkgs.pamixer}/bin/pamixer --toggle-mute && "
+            + "( ${pkgs.pamixer}/bin/pamixer --get-mute "
+            + "&& echo 0 > $SWAYSOCK.wob ) || "
+            + "${pkgs.pamixer}/bin/pamixer --get-volume > $SWAYSOCK.wob";
         };
     };
 
