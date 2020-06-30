@@ -34,5 +34,6 @@
     niv
     nixfmt
     cached-nix-shell
+    generation-diff
   ];
 }

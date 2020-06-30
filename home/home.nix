@@ -8,14 +8,13 @@ with config.lib; {
   };
 
   home = {
-    packages = [ pkgs.generation-diff ];
-
     sessionVariables = {
       PATH = "$HOME/.yarn/bin/:$PATH";
       EDITOR = packages.editor.name;
       PAGER = "most";
       USE_NIX2_COMMAND = 1;
       XDG_CURRENT_DESKTOP = "Gnome";
+      QT_QPA_PLATFORM = "wayland";
       NIX_PATH = "nixpkgs=${pkgs.nixpkgs.outPath}";
     };
 
