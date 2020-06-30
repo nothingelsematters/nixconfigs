@@ -3,7 +3,7 @@ self: super:
 {
   generation-diff = super.stdenv.mkDerivation {
     pname = "generation-diff";
-    version = "0.0.1";
+    version = "0.0.2";
     src = ./.;
 
     buildInputs = with self; [ bash jq nix ];
