@@ -6,7 +6,7 @@ in {
 
   nixpkgs = {
     config.allowUnfree = true;
-    overlays = import ./overlays lib;
+    overlays = import ./nix lib;
   };
 
   i18n.defaultLocale = "en_US.UTF-8";
