@@ -11,10 +11,9 @@ with config.lib; {
     width = 320;
     textColor = theme.colors.text.primary;
 
-    backgroundColor = theme.colors.background.secondary;
-    borderColor = theme.colors.text.secondary;
-    borderRadius = 4;
-    borderSize = 2;
+    backgroundColor = theme.colors.background.secondary + "dd";
+    borderRadius = 3;
+    borderSize = 0;
 
     defaultTimeout = 10000;
     font = "${theme.fonts.notification} 9";

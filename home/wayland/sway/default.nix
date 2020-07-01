@@ -48,7 +48,6 @@ in rec {
   ];
 
   # TODO cursor theme
-  # TODO dock
   # BUG telegram from rofi (!): filepicker and notification
 
   systemd.user.services.inactive-transparency = {
@@ -104,8 +103,8 @@ in rec {
       };
 
       gaps = {
-        inner = 10;
-        outer = 8;
+        inner = 6;
+        outer = 2;
         smartBorders = "on";
       };
 
@@ -182,7 +181,7 @@ in rec {
 
           Print = "exec grim - | wl-copy -o -t image/png";
           "Control+Print" = ''exec grim -g "$(slurp -b '#ffffff33' -c ''
-            + '''${theme.colors.background.accent}ff')"''
+            + '''${theme.colors.background.accent}ff')" ''
             + "- | wl-copy -o -t image/png";
 
           XF86KbdBrightnessUp = kbdBrightness "-A";

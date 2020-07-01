@@ -19,7 +19,6 @@ let
 
 in {
   xdg.configFile.${appsmenu}.text = makeTheme ./appsmenu.rasi;
-  xdg.configFile.${networkmenu}.text = makeTheme ./networkmenu.rasi;
 
   lib.packages.launcher = {
     name = "rofi";

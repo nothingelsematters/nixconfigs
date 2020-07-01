@@ -4,7 +4,7 @@ with builtins;
 with pkgs;
 with lib.attrsets; {
   lib = {
-    constants.barHeight = 12;
+    constants.barHeight = 16;
 
     functions = rec {
       toScript = name: packs: str:

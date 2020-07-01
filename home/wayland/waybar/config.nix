@@ -9,12 +9,12 @@ let
 in builtins.toJSON {
   height = constants.barHeight;
 
-  layer = "bottom";
+  layer = "top";
   position = "top";
 
   modules-left = [ "custom/apps" "custom/windows" "sway/window" ];
   modules-center = [ "clock" ];
-  modules-right = [ "custom/layout" "pulseaudio" "cpu" "network" "battery" ];
+  modules-right = [ "custom/layout" "pulseaudio" "cpu" "battery" "tray" ];
 
   "custom/apps" = {
     format = "";
@@ -33,8 +33,8 @@ in builtins.toJSON {
   "custom/layout" = layout;
 
   pulseaudio = {
-    format = "{icon} {volume}%";
-    format-bluetooth = "{icon} [{desc}] {volume}%";
+    format = "{icon} ${monospaced "{volume}"}%";
+    format-bluetooth = "{icon} [{desc}] ${monospaced "{volume}"}%";
     format-muted = " mute";
     format-icons = {
       headphone = "";
@@ -51,6 +51,14 @@ in builtins.toJSON {
     tooltip = false;
   };
 
+  cpu = {
+    interval = 3;
+    format = " ${monospaced "{usage}"}%";
+    max-length = 10;
+    tooltip = false;
+    on-click = "kitty htop &";
+  };
+
   battery = {
     format = "{icon} ${monospaced "{capacity}"}%";
     interval = 5;
@@ -61,22 +69,8 @@ in builtins.toJSON {
     format-icons = [ "" "" "" "" "" "" "" "" "" "" ];
   };
 
-  cpu = {
-    interval = 3;
-    format = " ${monospaced "{usage}"}%";
-    max-length = 10;
-    tooltip = false;
-    on-click = "kitty htop &";
-  };
-
-  network = {
-    interface = "wlp3s0";
-    format = "";
-    format-wifi = " {essid}";
-    format-ethernet = "";
-    format-disconnected = "";
-    max-length = 50;
-    on-click = "networkmanager_dmenu &";
-    tooltip = false;
+  tray = {
+    icon-size = 16;
+    spacing = 0;
   };
 }

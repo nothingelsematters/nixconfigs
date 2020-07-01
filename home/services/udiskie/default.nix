@@ -2,6 +2,6 @@
   services.udiskie = {
     enable = true;
     automount = true;
-    tray = "auto";
+    tray = "never";
   };
 }

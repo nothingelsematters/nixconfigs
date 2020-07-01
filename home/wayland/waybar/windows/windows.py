@@ -4,7 +4,7 @@ import i3ipc
 import re
 import pickle
 
-delimiter = '│'
+delimiter = ' '
 empty = ''
 undefined = ''
 
@@ -97,7 +97,7 @@ def render_apps(i3):
     tree = i3.get_tree()
     out = []
     for w in sorted(tree.workspaces(), key=lambda w: w.workspace().name):
-        apps = w.leaves()
+        apps = w.leaves() + w.floating_nodes
         flag = True
         out.append(["<sup> %s</sup> " % w.name])
 

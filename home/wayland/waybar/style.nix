@@ -5,8 +5,8 @@ functions.toCSS {
   "*" = {
     border = "none";
     border-radius = 0;
-    font-family = ''
-      ${theme.fonts.notification}, "Font Awesome 5 Brands", "Font Awesome 5 Free", "Font Awesome 5 Free Solid", ''
+    font-family = ''${theme.fonts.notification}, "Font Awesome 5 Brands", ''
+      + ''"Font Awesome 5 Free", "Font Awesome 5 Free Solid", ''
       + "Fira code medium, noto-fonts-emoji";
     font-size = "11px";
     min-height = 0;
@@ -23,13 +23,24 @@ functions.toCSS {
 
   "window#waybar.hidden".opacity = 0.2;
 
-  "#battery".margin-right = "9px";
+  "#custom-apps" = {
+    margin-left = "9px";
+    margin-right = "1px";
+  };
+
+  "#custom-windows" = {
+    margin-left = "3px";
+    margin-right = 0;
+  };
+
+  "#sway-window".margin-left = "3px";
+
+  "#battery".margin-right = 0;
   "#battery.charging".color = theme.colors.text.secondary;
   "#battery.warning:not(.charging)".color = "yellow";
   "#battery.critical:not(.charging)".color = theme.colors.text.urgent;
 
   "#pulseaudio.muted".color = theme.colors.text.disabled;
 
-  "#custom-apps".margin-left = "9px";
-  "#network:not(.wifi)".color = theme.colors.text.disabled;
+  "#tray".margin = "0 0 2px 0";
 }
