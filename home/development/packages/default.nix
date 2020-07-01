@@ -33,6 +33,7 @@
     # nix
     niv
     nixfmt
+    cachix
     cached-nix-shell
     generation-diff
   ];

@@ -31,6 +31,11 @@
   networking.networkmanager.enable = true;
 
   nix = {
+    binaryCaches = [ "https://nothingelsematters.cachix.org" ];
+    binaryCachePublicKeys = [
+      "nothingelsematters.cachix.org-1:zRZaHQgixucyZdxxClIKICy1QHtTFGeGng//uxspSPQ="
+    ];
+
     autoOptimiseStore = true;
     gc.automatic = true;
     optimise.automatic = true;
