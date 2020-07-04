@@ -1,9 +1,16 @@
 <p align="center"><img src="https://raw.githubusercontent.com/jglovier/dotfiles-logo/main/dotfiles-logo.svg" width=512></p>
 
 <p align="center">
-    <img src="https://img.shields.io/github/commit-activity/y/nothingelsematters/nixconfigs?style=flat-square&logo=github">
-    <img src="https://img.shields.io/badge/generations-225-green?style=flat-square&logo=nixos">
+    <a href="https://github.com/nothingelsematters">
+        <img src="https://img.shields.io/github/commit-activity/y/nothingelsematters/nixconfigs?style=flat-square&logo=github">
+    </a>
+    <a href="https://nixos.org">
+        <img src="https://img.shields.io/badge/generations-227-green?style=flat-square&logo=nixos">
+    </a>
     <img src="https://img.shields.io/badge/build-passing-green?style=flat-square">
+    <a href="https://www.codefactor.io/repository/github/nothingelsematters/nixconfigs">
+        <img src="https://img.shields.io/codefactor/grade/github/nothingelsematters/nixconfigs?style=flat-square">
+    </a>
 </p>
 
 <p align="center"> custom nixOS configuration </p>

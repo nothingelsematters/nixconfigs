@@ -7,14 +7,14 @@ import pickle
 # POLYBAR #
 ###########
 
-def color(color, str):
-    return '%%{F%s}%s%%{F-}' % (color, str)
+def color(color, string):
+    return '%%{F%s}%s%%{F-}' % (color, string)
 
-def font(f, str):
-    return '%%{T%s}%s%%{T-}' % (f, str)
+def font(f, string):
+    return '%%{T%s}%s%%{T-}' % (f, string)
 
-def action(act, str):
-    return '%%{A1:%s:}%s%%{A-}' % (act, str)
+def action(act, string):
+    return '%%{A1:%s:}%s%%{A-}' % (act, string)
 
 #################
 # ICON RESOLVER #
@@ -32,7 +32,7 @@ class Rule:
 
 
     def match(self, data: dict) -> bool:
-        return re.match(self.expression, data[self.prop]) != None
+        return re.match(self.expression, data[self.prop]) is not None
 
 
 class IconResolver:
@@ -45,17 +45,17 @@ class IconResolver:
 
 
     def resolve(self, app):
-        id = pickle.dumps(app)
+        appId = pickle.dumps(app)
 
-        if id in self._cache:
-            return self._cache[id]
+        if appId in self._cache:
+            return self._cache[appId]
 
         for rule in self._rules:
             if rule.match(app):
                 out = rule.value
                 break
 
-        self._cache[id] = out
+        self._cache[appId] = out
 
         return out
 

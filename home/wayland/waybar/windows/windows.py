@@ -38,8 +38,8 @@ EXTRA = [
     ('name=^Telegram \((.+)\)$', lambda matched, str: color(args.urgent, "%s<sub> %s</sub>" % (str, matched.group(1))))
 ]
 
-def color(color, str):
-    return '<span foreground="%s">%s</span>' % (color, str)
+def color(color, string):
+    return '<span foreground="%s">%s</span>' % (color, string)
 
 #################
 # ICON RESOLVER #
@@ -57,8 +57,8 @@ class Rule:
 
     def match(self, data: dict) -> bool:
         return self.prop in data \
-            and data[self.prop] != None \
-            and self.expression.match(data[self.prop]) != None
+            and data[self.prop] is not None \
+            and self.expression.match(data[self.prop]) is not None
 
 
 class Resolver:
@@ -67,12 +67,12 @@ class Resolver:
         self._cache = {}
 
     def resolve_rules(self, app):
-        id = pickle.dumps(app)
-        if id in self._cache:
-            return self._cache[id]
+        appId = pickle.dumps(app)
+        if appId in self._cache:
+            return self._cache[appId]
 
         result = [rule for rule in self._rules if rule.match(app)]
-        self._cache[id] = result
+        self._cache[appId] = result
         return result
 
     def resolve(self, app):
@@ -162,7 +162,6 @@ parser.add_argument(
 )
 
 if __name__ == "__main__":
-    global args
     args = parser.parse_args()
     i3 = i3ipc.Connection()
 

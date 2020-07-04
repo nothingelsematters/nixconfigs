@@ -2,10 +2,10 @@ NOT_ALARMED=0
 
 while :
 do
-    BATTERY=`acpi -b | jq -R 'capture(".*: (?<status>.*), (?<percent>\\\\d+)%, (?<info>.*)")'`
-    STATUS=`echo $BATTERY | jq -r '.status'`
-    PERCENT=`echo $BATTERY | jq -r '.percent'`
-    INFO=`echo $BATTERY | jq -r '.info'`
+    BATTERY=$(acpi -b | jq -R 'capture(".*: (?<status>.*), (?<percent>\\\\d+)%, (?<info>.*)")')
+    STATUS=$(echo $BATTERY | jq -r '.status')
+    PERCENT=$(echo $BATTERY | jq -r '.percent')
+    INFO=$(echo $BATTERY | jq -r '.info')
 
     if [[ $NOT_ALARMED -lt 2 && $STATUS == "Discharging" && $PERCENT -lt 11 ]] ; then
         DISPLAY=:0 notify-desktop -u critical -i battery-caution "critically low battery" "$INFO"

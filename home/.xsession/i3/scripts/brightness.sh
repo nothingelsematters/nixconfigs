@@ -13,11 +13,11 @@ function send_notification {
 
 case $1 in
     up)
-        echo $(expr $(cat $BFILE) + 100) > $BFILE
+        echo $(($(cat $BFILE) + 100)) > $BFILE
         send_notification
         ;;
     down)
-        echo $(expr $(cat $BFILE) - 100) > $BFILE
+        echo $(($(cat $BFILE) - 100)) > $BFILE
         send_notification
         ;;
 esac
