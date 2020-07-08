@@ -4,6 +4,9 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
+QUIET=false
+RETURN=""
+
 declare -a usage=("build" "switch" "update" "clean" "link" "help")
 
 function help() {
@@ -18,22 +21,32 @@ function info() {
 }
 
 function trace() {
-    info $*; $@
+    if ! $QUIET
+    then
+        info $*
+        "$@"
+    fi
 }
 
 function build() {
     tmp=$(mktemp -u)
     nixpkgs_path="$(nix eval --raw "(import ${NIXCONFIGS}/nix/sources.nix).nixpkgs.outPath")"
     export NIX_PATH=nixpkgs="${nixpkgs_path}"
-    trace nix build --no-link -f "$NIXCONFIGS/default.nix" -o "$tmp/result" --keep-going --show-trace $* >&2
+    trace nix build --no-link -f "$NIXCONFIGS/default.nix" -o "$tmp/result" --keep-going --show-trace "$@" >&2
     trap "rm -f '$tmp/result'" EXIT
     drv=$(readlink "$tmp/result")
     info built "$drv"
-    trace generation-diff /var/run/current-system "$drv" >&2
+
+    if ! $QUIET
+    then
+        trace generation-diff /var/run/current-system "$drv" >&2
+    fi
+    RETURN="$drv"
 }
 
 function switch() {
     build
+    drv=$RETURN
     trace sudo nix-env -p /nix/var/nix/profiles/system --set "$drv"
     NIXOS_INSTALL_BOOTLOADER=1 trace sudo --preserve-env=NIXOS_INSTALL_BOOTLOADER "$drv/bin/switch-to-configuration" switch
 }
@@ -57,6 +70,26 @@ NIXCONFIGS="$( cd "$( dirname "${BASH_SOURCE[0]}" )" > /dev/null 2>&1 && pwd )"
 [[ $# -lt 1 ]] && help && exit
 mode="$1"
 shift
+
+while ! [ -z ${1+x} ]
+do
+    case "$1" in
+        "--")
+            shift
+            break
+            ;;
+        "-Q" | "--quiet")
+            echo "Building quietly"
+            QUIET=true
+            ;;
+        *)
+            echo "Unknown argument: $1"
+            exit 1
+            ;;
+    esac
+    shift
+done
+
 if [[ ${usage[*]} =~ $mode ]]
 then $mode $*
 else help

@@ -1,5 +1,5 @@
 language: nix
-script: travis_wait 240 bash -c "./make.sh build | tail -n 1 | cachix push nothingelsematters"
+script: travis_wait 240 bash -c "./make.sh build --quiet | tail -n 1 | cachix push nothingelsematters"
 env:
   global:
        - secure: "omUcwf1NKFnSG960ZESNzk3LCMbJx0vXJD6RqSBHsYv5kNbcNTQlDtBbOsHrCQNnPU2RQrVoJu1l+CnlsyNRJwd9bELCne+P5QUz5fNw7XjdiSokUAWTy1Qy2mtxTFjmJcLUTkRiFb9NN6JrAKtaKLtZmUpgcyYiLQc5XBNWBoAkiLoTm2yuBHJMc4NptBWaYjo80ZsrtvQlFq1IQ/f0ys753DLai/NJng1zZ8iYexPghz7Vtd3beFvJAOkUxtsad58VIjiFginL0JB7IpETb84neCe7NDyJ6h1q7rPraMT2eKtXUu1rq86CA6j9uw6WbDEa9qCDXcQPpCyymNOa0b1ahUksr+XHqTdyqnrGti9b/xOX7q4yw4fLI3EbC9qv31BXXN5SxMbi5Xhy+awbeRfonAsKXNQBSoUFtP1gagG5jQIIwuh430QwsvgyWIVS6bP2A/hye+8wXDn1uiZ6YpoygrM3EtB2/tComrewUNOFEt2G+g1UsuofsBGMBJYVwOW4VwdeCo/ytMI91VvPnFUESXkidkD7qWTA69jJ0ysJHsSnKesXmrA65eP02zSpWtVE6l5Kp2v/2tLfYAFK4pEOz8BRcnhSvfOd+BvZbuE6glWbamQIxohpnIW0xcGgvywI78SdimPI0G0Z259np7kGqFGrWjAVJbVqqNQ2crw="
@@ -15,6 +15,7 @@ before_script:
   - echo 'require-sigs = false' | sudo tee -a /etc/nix/nix.conf > /dev/null
   - echo 'sandbox = true' | sudo tee -a /etc/nix/nix.conf
   - echo "trusted-users = root travis" | sudo tee -a /etc/nix/nix.conf
+  - sudo pkill nix-daemon || echo "Nix daemon isn't running"
   - nix-env -iA cachix -f https://cachix.org/api/v1/install
   - cachix authtoken $CACHIX_TOKEN
   - cachix use nothingelsematters
