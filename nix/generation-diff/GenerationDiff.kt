@@ -1,4 +1,4 @@
-fun getVersions(path: String): Map<String, String> = Runtime
+fun getVersions(path: String): Map<String, List<String>> = Runtime
     .getRuntime()
     .exec(
         arrayOf(
@@ -14,8 +14,7 @@ fun getVersions(path: String): Map<String, String> = Runtime
     .lineSequence()
     .chunked(2)
     .filter { it.size == 2 }
-    .map { (a, b) -> a to b }
-    .toMap()
+    .groupBy(List<String>::component1, List<String>::component2)
 
 fun main(args: Array<String>) {
 
@@ -29,22 +28,42 @@ fun main(args: Array<String>) {
     val (old, new) = args.map(::getVersions)
 
     val dropped = mutableListOf<String>()
+    val expanded = mutableListOf<String>()
+    val shrinked = mutableListOf<String>()
 
-    old.forEach forEach@{ (key, oldVersion) ->
-        val newVersion = new[key]
+    old.forEach { (key, oldVersions) ->
+        val newVersions = new[key]
 
-        if (oldVersion == newVersion) return@forEach
+        if (oldVersions == newVersions) return@forEach
 
-        if (newVersion == null) {
+        if (newVersions == null) {
             dropped.add(key)
             return@forEach
         }
 
-        val lcp = newVersion.commonPrefixWith(oldVersion)
+        if (newVersions.size > oldVersions.size) {
+            expanded.add(key)
+            return@forEach
+        }
 
-        println("$key " + ("$lcp: ${oldVersion.substring(lcp.length)} -> " +
-            newVersion.substring(lcp.length)).colorized("0;36"))
+        if (newVersions.size < oldVersions.size) {
+            shrinked.add(key)
+            return@forEach
+        }
+
+        oldVersions
+            .asSequence()
+            .sorted()
+            .zip(newVersions.asSequence().sorted())
+            .forEach { (oldVersion, newVersion) ->
+                val lcp = newVersion.commonPrefixWith(oldVersion)
+
+                println("$key " + ("$lcp: ${oldVersion.substring(lcp.length)} -> " +
+                    newVersion.substring(lcp.length)).colorized("0;36"))
+            }
     }
     dropped.forEach { println("☠️ $it".colorized("0;31")) }
+    expanded.forEach { println("📈 $it".colorized("0;31")) }
+    shrinked.forEach { println("📉 $it".colorized("0;31")) }
     new.keys.minus(old.keys).forEach { println("🆕 $it".colorized("0;32")) }
 }
