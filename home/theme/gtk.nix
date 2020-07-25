@@ -11,7 +11,7 @@ in {
 
   gtk = rec {
     name = "Materia-Custom";
-    # FIXME
+    # FIXME w/ travis & cachix
     package = pkgs.materia-theme;
     # (pkgs.materia-theme.overrideAttrs (base: {
     #   buildInputs = with pkgs; base.buildInputs ++ [ sassc librsvg optipng ];

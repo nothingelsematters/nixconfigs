@@ -4,6 +4,7 @@ with config.lib;
 let
   windows = import ./windows arg;
   layout = import ./layout arg;
+  spotify = import ./spotify arg;
   monospaced = text:
     ''<span font_family="${theme.fonts.mono.name}">'' + text + "</span>";
 in builtins.toJSON {
@@ -12,7 +13,7 @@ in builtins.toJSON {
   layer = "top";
   position = "top";
 
-  modules-left = [ "custom/apps" "custom/windows" "sway/window" ];
+  modules-left = [ "custom/apps" "custom/windows" "custom/spotify" ];
   modules-center = [ "clock" ];
   modules-right = [ "custom/layout" "pulseaudio" "cpu" "battery" "tray" ];
 
@@ -24,11 +25,7 @@ in builtins.toJSON {
 
   "custom/windows" = windows;
 
-  "sway/window" = {
-    format = "{}";
-    max-length = 70;
-    tooltip = false;
-  };
+  "custom/spotify" = spotify;
 
   "custom/layout" = layout;
 

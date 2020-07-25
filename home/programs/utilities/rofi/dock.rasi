@@ -1,0 +1,44 @@
+configuration {
+  drun-display-format: "{icon}";
+  display-drun: "Apps";
+  show-icons: true;
+  icon-theme: "Papirus";
+  location: 0;
+  yoffset: 368;
+  xoffset: 0;
+  fake-transparency: false;
+  hide-scrollbar: true;
+  bw: 0;
+  fullscreen: false;
+  terminal: "kitty";
+}
+
+* {
+  background-color: #00000000;
+  font: "FantasqueSansMono 25";
+}
+
+window {
+  height: 60;
+  width: 30%;
+}
+
+mainbox {
+  children: [ listview ];
+  background-color: @bg;
+  border-radius: 0;
+}
+
+listview {
+  columns: 8;
+}
+
+element {
+  margin: 0 6 0 0;
+  orientation: vertical;
+}
+
+element selected {
+  background-color: @bg-sel;
+  font: "Comfortaa 10";
+}

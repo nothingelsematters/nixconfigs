@@ -68,6 +68,7 @@ in rec {
           { app_id = "telegramdesktop"; }
           { class = "TelegramDesktop"; }
           { class = "Slack"; }
+          { class = "Spotify"; }
         ];
         "2" = [{ class = "Firefox"; }];
         "3" = [{ class = "Typora"; }];
@@ -151,6 +152,8 @@ in rec {
 
       bindkeysToCode = true;
 
+      # TODO  win+tab floating support?
+      # FIXME resize shortcut's broken
       keybindings = withDirections "Shift+" "move"
         // withNumbers "" "workspace "
         // withNumbers "Shift+" "move container to workspace "

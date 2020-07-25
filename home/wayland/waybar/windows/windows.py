@@ -15,20 +15,36 @@ OPTIONS = {
 }
 
 ICONS = [
-    ('class=Firefox', ''),
     ('class=Telegram', ''),
     ('app_id=telegramdesktop', ''),
+
     ('class=Slack', ''),
     ('class=Atom', ''),
-    ('class=Alacritty', ''),
     ('class=kitty', ''),
     ('class=Typora', ''),
     ('class=libreoffice.*', ''),
+    ('class=Spotify', ''),
     ('class=Evince', ''),
-    ('app_id=kitty', ''),
     ('app_id=evince', ''),
     ('class=Code', ''),
 
+    # browser
+    ('name=.*(Private Browsing)', ''),
+    ('name=.*YouTube.*', ''),
+    ('name=.*Twitter.*', ''),
+    ('name=.*Stack Overflow.*', ''),
+    ('name=.*Twitch.*', ''),
+    ('class=Firefox', ''),
+
+    # terminal
+    ('name=htop', ''),
+    ('name=python', ''),
+    ('name=.*/etc/nixos/make.sh .*', ''),
+    ('name=.*@.*:.*', ''),
+    ('app_id=kitty', ''),
+    ('class=Alacritty', ''),
+
+    # undefined
     ('class=.*', undefined),
     ('app_id=.*', undefined),
     ('name=.*', undefined)
