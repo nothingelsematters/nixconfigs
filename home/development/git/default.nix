@@ -20,6 +20,8 @@
     extraConfig = {
       core.editor = "$EDITOR --wait";
 
+      credential.helper = "store";
+
       color.ui = true;
 
       "color \"diff-highlight\"" = {

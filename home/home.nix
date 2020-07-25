@@ -29,7 +29,7 @@ with config.lib; {
   nixpkgs = {
     inherit overlays;
     config.allowUnfreePredicate = pkg:
-      builtins.elem (lib.strings.getName pkg) [ "typora" "slack" "vscode" ];
+      builtins.elem (lib.strings.getName pkg) [ "typora" "slack" "vscode" "spotify" ];
   };
 
   gtk = {

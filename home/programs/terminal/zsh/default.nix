@@ -47,9 +47,9 @@
       }
     ];
 
-    shellAliases = {
-      nixx = "/etc/nixos/make.sh";
-      nixxs = "nixx switch";
+    shellAliases = rec {
+      nixx = "sudo /etc/nixos/make.sh";
+      nixxs = "${nixx} switch";
       nsp = "cached-nix-shell --run zsh -p";
 
       confs = "z conf; $EDITOR .";

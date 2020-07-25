@@ -15,4 +15,4 @@ jobs:
           branch_prefix: 'update/'
           message_prefix: |
             dependencies updates.
-          title_prefix: ':package:'
+          title_prefix: ':arrow_up:'

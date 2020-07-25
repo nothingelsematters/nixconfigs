@@ -10,7 +10,7 @@ in functions.toCSS {
       + ''"Font Awesome 5 Free", "Font Awesome 5 Free Solid", ''
       + "Fira code medium, noto-fonts-emoji";
     font-size = "11px";
-    margin = "1px ${margin}px 0 ${margin}px";
+    margin = "0 ${margin}px 0 ${margin}px";
   };
 
   "window#waybar" = {
@@ -22,11 +22,13 @@ in functions.toCSS {
 
   "#custom-windows".margin-right = 0;
 
+  "#custom-spotify".margin-top = "4px";
+
   "#pulseaudio.muted".color = theme.colors.text.disabled;
 
   "#battery.charging".color = theme.colors.text.secondary;
   "#battery.warning:not(.charging)".color = "yellow";
   "#battery.critical:not(.charging)".color = theme.colors.text.urgent;
 
-  "#tray".margin = "0 0 2px 0";
+  "#tray".margin = "0 0 3px 0";
 }

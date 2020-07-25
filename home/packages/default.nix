@@ -37,6 +37,7 @@ with pkgs; {
     unzip # zip format extraction
 
     # media
+    spotify
     mpv          # a media player
     pulseeffects # limiter, compressor, reverberation, equalizer and auto volume effects
     playerctl    # controlling media players
