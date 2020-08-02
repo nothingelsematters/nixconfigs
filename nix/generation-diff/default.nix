@@ -1,6 +1,5 @@
 self: super:
 
-# TODO multiversion packages?
 {
   generation-diff = super.stdenv.mkDerivation {
     pname = "generation-diff";

@@ -1,13 +1,10 @@
 language: nix
-script: travis_wait 240 bash -c "./make.sh build --quiet | tail -n 1 | cachix push nothingelsematters"
-env:
-  global:
-       - secure: "omUcwf1NKFnSG960ZESNzk3LCMbJx0vXJD6RqSBHsYv5kNbcNTQlDtBbOsHrCQNnPU2RQrVoJu1l+CnlsyNRJwd9bELCne+P5QUz5fNw7XjdiSokUAWTy1Qy2mtxTFjmJcLUTkRiFb9NN6JrAKtaKLtZmUpgcyYiLQc5XBNWBoAkiLoTm2yuBHJMc4NptBWaYjo80ZsrtvQlFq1IQ/f0ys753DLai/NJng1zZ8iYexPghz7Vtd3beFvJAOkUxtsad58VIjiFginL0JB7IpETb84neCe7NDyJ6h1q7rPraMT2eKtXUu1rq86CA6j9uw6WbDEa9qCDXcQPpCyymNOa0b1ahUksr+XHqTdyqnrGti9b/xOX7q4yw4fLI3EbC9qv31BXXN5SxMbi5Xhy+awbeRfonAsKXNQBSoUFtP1gagG5jQIIwuh430QwsvgyWIVS6bP2A/hye+8wXDn1uiZ6YpoygrM3EtB2/tComrewUNOFEt2G+g1UsuofsBGMBJYVwOW4VwdeCo/ytMI91VvPnFUESXkidkD7qWTA69jJ0ysJHsSnKesXmrA65eP02zSpWtVE6l5Kp2v/2tLfYAFK4pEOz8BRcnhSvfOd+BvZbuE6glWbamQIxohpnIW0xcGgvywI78SdimPI0G0Z259np7kGqFGrWjAVJbVqqNQ2crw="
-       - secure: "Kj6ri+v7XUOelRsf+28MQVBHD94jEpWWMNxKoE/Yz0tNBXlrBo0q52tJ5TYbMplEEPu735ZoP2M16nkn0f4b5PRqk+LSIL1qBGqolwXZIXROBAqFlM4MJpYxiwgbrVd1SH1l6tU3bCG3wlpHL9c8sCQsnfC9k3q9J4yP39o6ZZ3IeRcZBg0b0V4RvnP4fQPkegRp9psqI+brOstcP0bC3r4hKaj1W8dRQS0WlonL7eyfuVTdIMmgbTuHuxFdTe4+D6wHYAq0OhGD9Sp1+QfTHnycILFgybUEyzljH+CkqzgDcQp5ejkOY5aV5WGLLiCZbrhlxDU/UFtwCwm0kXGNUfxoEu9CK7/h+9C7lVkN3w1P5QRQSa2t3ViAqFX4p8M9zQ8vmFyxR3AABdu6ITcIxKWTHRpQs5vVQGcHZls+dzEws3SHlb1HyakWLu0RRNirBWmQNLu6e0Cn7mUFO7C8FThK71tXS6pg9F/WekOrW+oK8HsV9u+WTyW3XVdP7p6BDiLims2IaCUfxO1vda7YiX3QYRQjen3ZqircB/Hb33QciHZap/WXJYATdPARXkMVfx+f+jvoi4Ig6PmvhQc3WvRVJkSOFtM741ipii91lFb+QEPLIGn/rMa0IYFzdGGOCvCXKsJHIb4Vp3DLzPq+E6z7Tz2eFGD7uuXN3GSdkag="
+
+script: travis_wait 240 bash -c "nix build --no-link -f ./vm.nix -o \"$(mktemp -u)/result\" --keep-going --show-trace | cachix push nothingelsematters"
 
 before_cache:
-- mkdir -p $HOME/nix.store
-- travis_wait 30 bash -c "nix copy --no-check-sigs --to file://$HOME/nix.store $(./make.sh build | tail -n 1)"
+  - mkdir -p $HOME/nix.store
+  - travis_wait 30 bash -c "nix copy --no-check-sigs --to file://$HOME/nix.store $(nix build --no-link -f ./vm.nix -o \"$(mktemp -u)/result\" --keep-going --show-trace | tail -n 1)"
 
 before_script:
   - sudo mkdir -p /etc/nix
@@ -22,4 +19,4 @@ before_script:
 
 cache:
   directories:
-  - $HOME/nix.store
+    - $HOME/nix.store

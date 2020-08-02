@@ -1,5 +1,6 @@
 { config, pkgs, lib, ... }:
 
+# TODO fix w/ Travis
 with config.lib.theme;
 let stripHash = builtins.substring 1 (-1);
 in {
@@ -11,10 +12,16 @@ in {
 
   gtk = rec {
     name = "Materia-Custom";
-    # FIXME w/ travis & cachix
     package = pkgs.materia-theme;
-    # (pkgs.materia-theme.overrideAttrs (base: {
-    #   buildInputs = with pkgs; base.buildInputs ++ [ sassc librsvg optipng ];
+    # package = (pkgs.materia-theme.overrideAttrs (base: rec {
+    #   version = "20200320";
+
+    #   src = pkgs.fetchFromGitHub {
+    #     owner = "nana-4";
+    #     repo = base.pname;
+    #     rev = "v${version}";
+    #     sha256 = "0g4b7363hzs7z9xghldlz9aakmzzp18hhx32frb6qxy04lna2lwk";
+    #   };
 
     #   installPhase = ''
     #     patchShebangs *.sh scripts/*.sh src/*/*.sh
@@ -38,8 +45,6 @@ in {
     #     MATERIA_STYLE_COMPACT=True")
     #     rm $out/share/themes/*/COPYING
     #   '';
-
     # }));
-
   };
 }

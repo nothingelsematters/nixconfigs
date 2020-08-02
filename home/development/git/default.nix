@@ -10,11 +10,12 @@
 
     delta = {
       enable = true;
-      options = [
-        "--theme OneHalf${
-          if config.lib.theme.isDark then "Dark" else "Light"
-        } | less --tabs=4 -RFX"
-      ];
+      options = {
+        line-numbers = true;
+        decorations = true;
+        theme = "OneHalf${if config.lib.theme.isDark then "Dark" else "Light"}";
+      };
+      # less --tabs=4 -RFX"
     };
 
     extraConfig = {
