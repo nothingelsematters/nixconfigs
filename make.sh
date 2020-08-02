@@ -5,9 +5,10 @@ set -o nounset
 set -o pipefail
 
 QUIET=false
+NODIFF=false
 RETURN=""
 
-declare -a usage=("build" "switch" "update" "clean" "link" "help")
+declare -a usage=("build" "switch" "update" "clean" "link" "vm" "help")
 
 function help() {
     echo "Usage:"
@@ -24,24 +25,35 @@ function trace() {
     if ! $QUIET
     then
         info $*
-        "$@"
     fi
+    "$@"
 }
 
-function build() {
+function _build() {
     tmp=$(mktemp -u)
     nixpkgs_path="$(nix eval --raw "(import ${NIXCONFIGS}/nix/sources.nix).nixpkgs.outPath")"
     export NIX_PATH=nixpkgs="${nixpkgs_path}"
-    trace nix build --no-link -f "$NIXCONFIGS/default.nix" -o "$tmp/result" --keep-going --show-trace "$@" >&2
+    trace nix build --no-link -f "$NIXCONFIGS/$buildfile" -o "$tmp/result" --keep-going --show-trace "$@" >&2
     trap "rm -f '$tmp/result'" EXIT
     drv=$(readlink "$tmp/result")
     info built "$drv"
 
-    if ! $QUIET
+    if ! $QUIET && ! $NODIFF
     then
         trace generation-diff /var/run/current-system "$drv" >&2
     fi
     RETURN="$drv"
+}
+
+function build() {
+    buildfile=default.nix
+    _build
+}
+
+function vm() {
+    NODIFF=true
+    buildfile=vm.nix
+    _build
 }
 
 function switch() {
@@ -81,6 +93,9 @@ do
         "-Q" | "--quiet")
             echo "Building quietly"
             QUIET=true
+            ;;
+        "--no-diff")
+            NODIFF=true
             ;;
         *)
             echo "Unknown argument: $1"
