@@ -29,10 +29,10 @@
         "homepage": null,
         "owner": "muckSponge",
         "repo": "materialFox",
-        "rev": "d0c6c75070f6738235316ab039e79b73ae1deb49",
-        "sha256": "1715igk8cwas78p29kk5m8kv5ifk6b0yj2j24hyb05dp30a8r9y5",
+        "rev": "1e8d886b91e1eae582fa11c8c781a7ca8ad720af",
+        "sha256": "16mvjiqs8mbfhq5yikd6pck0zkrzbprqgpbk7krdc46kwldxsdf7",
         "type": "tarball",
-        "url": "https://github.com/muckSponge/materialFox/archive/d0c6c75070f6738235316ab039e79b73ae1deb49.tar.gz",
+        "url": "https://github.com/muckSponge/materialFox/archive/1e8d886b91e1eae582fa11c8c781a7ca8ad720af.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "niv": {
