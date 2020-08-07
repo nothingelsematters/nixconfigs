@@ -3,37 +3,8 @@
 {
   home.packages = with pkgs;
     [
-      (ghc.withHoogle (ps:
-        with ps; [
-          # building
-          stack
-          cabal2nix
-
-          # coding
-          hlint
-          stylish-haskell
-
-          # analyzing
-          threadscope
-
-          # ghci
-          pretty-simple
-
-          # libraries
-          unordered-containers
-          directory
-          optparse-applicative
-          Diff
-          microlens
-          ncurses
-
-          # testing
-          criterion
-          hedgehog
-          hedgehog-fn
-          tasty
-          tasty-hedgehog
-        ]))
+      (ghc.withHoogle
+        (ps: with ps; [ pretty-simple unordered-containers microlens ]))
     ];
 
   home.file.".ghci".text = ''
