@@ -89,6 +89,8 @@
       zstyle ':completion:*' use-cache on
       zstyle ':completion:*' cache-path ~/.zsh/cache
 
+      eval ''${${pkgs.thefuck} --alias}
+
       if [ -n "$name" ]; then
         PROMPT="[$name] $PROMPT";
       fi
