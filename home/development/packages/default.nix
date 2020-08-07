@@ -16,7 +16,7 @@
     ktlint
 
     # java
-    # jdk14
+    jdk14
     maven
     antlr4
 
