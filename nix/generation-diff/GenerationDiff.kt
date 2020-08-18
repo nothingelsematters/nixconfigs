@@ -55,6 +55,7 @@ fun main(args: Array<String>) {
             .asSequence()
             .sorted()
             .zip(newVersions.asSequence().sorted())
+            .filter { (oldVersion, newVersion) -> oldVersion != newVersion }
             .forEach { (oldVersion, newVersion) ->
                 val lcp = newVersion.commonPrefixWith(oldVersion)
 
