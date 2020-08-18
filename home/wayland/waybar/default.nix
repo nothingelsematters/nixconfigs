@@ -1,11 +1,13 @@
 arg@{ config, pkgs, lib, ... }:
 
 {
+  imports = [ ./config.nix ./style.nix ];
+
   home.packages = [ pkgs.libappindicator ];
   xsession.preferStatusNotifierItems = true;
 
-  xdg.configFile = {
-    "waybar/config".text = import ./config.nix arg;
-    "waybar/style.css".text = import ./style.nix arg;
+  programs.waybar = {
+    enable = true;
+    package = pkgs.waybar.override { pulseSupport = true; };
   };
 }

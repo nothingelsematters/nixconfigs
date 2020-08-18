@@ -5,7 +5,6 @@ with config.lib.theme.utils;
 with builtins;
 let
   modifier = "Mod4";
-  waybar = pkgs.waybar.override { pulseSupport = true; };
   scripts = import ./scripts arg;
 
   toKeybinding = buttons: cmd: {
@@ -36,16 +35,7 @@ let
     "exec ${pkgs.light}/bin/light ${flag} 3 &&"
     + " ${pkgs.light}/bin/light -G | cut -d'.' -f1 > $SWAYSOCK.wob";
 in rec {
-  home.packages = with pkgs; [
-    waybar
-    sway
-    grim
-    slurp
-    wl-clipboard
-    pamixer
-    wob
-    light
-  ];
+  home.packages = with pkgs; [ sway grim slurp wl-clipboard pamixer wob light ];
 
   # TODO cursor theme
   # BUG telegram from rofi (!): filepicker and notification
@@ -75,7 +65,7 @@ in rec {
       };
 
       bars = [{
-        command = "${waybar}/bin/waybar";
+        command = "${config.programs.waybar.package}/bin/waybar";
         position = "top";
       }];
 
