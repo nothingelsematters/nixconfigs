@@ -36,5 +36,8 @@
     cachix
     cached-nix-shell
     generation-diff
+
+    # databases
+    postgresql_12
   ];
 }

@@ -99,4 +99,7 @@ with config.lib; {
     "editor.tabSize" = 2;
   };
   "nixfmt.path" = pkgs.nixfmt + /bin/nixfmt;
+
+  # sql
+  "[sql]" = { "editor.tabSize" = 2; };
 }
