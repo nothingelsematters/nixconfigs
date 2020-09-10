@@ -2,7 +2,7 @@ NOT_ALARMED=0
 
 while :
 do
-    BATTERY=$(acpi -b | jq -R 'capture(".*: (?<status>.*), (?<percent>\\\\d+)%, (?<info>.*)")')
+    BATTERY=$(acpi -b | jq -R 'capture(".*: (?<status>.*), (?<percent>\\d+)%, (?<info>.*)")')
     STATUS=$(echo $BATTERY | jq -r '.status')
     PERCENT=$(echo $BATTERY | jq -r '.percent')
     INFO=$(echo $BATTERY | jq -r '.info')
