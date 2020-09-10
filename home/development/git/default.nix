@@ -20,6 +20,8 @@
     extraConfig = {
       core.editor = "$EDITOR --wait";
 
+      pull.rebase = true;
+
       credential.helper = "store";
 
       color.ui = true;
