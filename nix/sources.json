@@ -84,18 +84,6 @@
         "url": "https://github.com/arcticicestudio/nord-dircolors/archive/addb3b427e008d23affc721450fde86f27566f1d.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
-    "nur": {
-        "branch": "master",
-        "description": "Nix User Repository: User contributed nix packages [maintainer=@Mic92]",
-        "homepage": "",
-        "owner": "nix-community",
-        "repo": "NUR",
-        "rev": "15594949c1b467ff0847995f56f63f04afb437f2",
-        "sha256": "1v0rnhdk4mf3sps0i53r0nb5rs485kn568z5rw9j0fy6xg3v4ch9",
-        "type": "tarball",
-        "url": "https://github.com/nix-community/NUR/archive/15594949c1b467ff0847995f56f63f04afb437f2.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
     "sddm-theme-clairvoyance": {
         "branch": "master",
         "description": "An SDDM theme",
