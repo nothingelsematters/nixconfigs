@@ -60,18 +60,6 @@
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz",
         "version": "8ba41a1e14961fe43523f29b8b39acb569b70e72"
     },
-    "nixpkgs-release": {
-        "branch": "nixos-20.03",
-        "description": "A read-only mirror of NixOS/nixpkgs tracking the released channels. Send issues and PRs to",
-        "homepage": "https://github.com/NixOS/nixpkgs",
-        "owner": "NixOS",
-        "repo": "nixpkgs-channels",
-        "rev": "4bd1938e03e1caa49a6da1ec8cff802348458f05",
-        "sha256": "0529npmibafjr80i2bhqg22pjr3d5qz1swjcq2jkdla1njagkq2k",
-        "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs-channels/archive/4bd1938e03e1caa49a6da1ec8cff802348458f05.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
     "nord-dircolors": {
         "branch": "develop",
         "description": "An arctic, north-bluish clean and elegant dircolors theme.",
@@ -84,6 +72,18 @@
         "url": "https://github.com/arcticicestudio/nord-dircolors/archive/addb3b427e008d23affc721450fde86f27566f1d.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "reliable-nixpkgs": {
+        "branch": "nixos-20.03",
+        "description": "A read-only mirror of NixOS/nixpkgs tracking the released channels. Send issues and PRs to",
+        "homepage": "https://github.com/NixOS/nixpkgs",
+        "owner": "NixOS",
+        "repo": "nixpkgs-channels",
+        "rev": "4bd1938e03e1caa49a6da1ec8cff802348458f05",
+        "sha256": "0529npmibafjr80i2bhqg22pjr3d5qz1swjcq2jkdla1njagkq2k",
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs-channels/archive/4bd1938e03e1caa49a6da1ec8cff802348458f05.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "sddm-theme-clairvoyance": {
         "branch": "master",
         "description": "An SDDM theme",
@@ -94,6 +94,18 @@
         "sha256": "13z78i6si799k3pdf2cvmplhv7n1wbpwlsp708nl6gmhdsj51i81",
         "type": "tarball",
         "url": "https://github.com/eayus/sddm-theme-clairvoyance/archive/dfc5984ff8f4a0049190da8c6173ba5667904487.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "turbo-nixpkgs": {
+        "branch": "master",
+        "description": "Nix Packages collection",
+        "homepage": null,
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "00bf6abad17bd07c29576f382d77797a973f3be1",
+        "sha256": "09rwr5bs7dxqb0j2d3skjgrab3b2mb1fnb591wwsp9lif4asn252",
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs/archive/00bf6abad17bd07c29576f382d77797a973f3be1.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
