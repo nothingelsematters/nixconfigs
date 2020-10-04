@@ -17,10 +17,10 @@
         "homepage": "",
         "owner": "rycee",
         "repo": "home-manager",
-        "rev": "8a160f01abe97e86a89f0312ef4046ca7656f207",
-        "sha256": "046az1fl2nsb4c1sllfrjf0kml5j7jyilz3i2w8rvn5g17jhcv10",
+        "rev": "da6077a89971235dc839ae4b69df031dc2b2bb16",
+        "sha256": "04f1qcpbva9qhx6qc96w3pczhg1vlxhk3vrh4qhb0r8www8j779h",
         "type": "tarball",
-        "url": "https://github.com/rycee/home-manager/archive/8a160f01abe97e86a89f0312ef4046ca7656f207.tar.gz",
+        "url": "https://github.com/rycee/home-manager/archive/da6077a89971235dc839ae4b69df031dc2b2bb16.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "materialFox": {
