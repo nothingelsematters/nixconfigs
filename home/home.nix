@@ -34,6 +34,7 @@ with config.lib; {
         "slack"
         "vscode"
         "spotify"
+        "spotify-unwrapped"
       ];
   };
 
