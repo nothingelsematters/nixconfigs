@@ -6,21 +6,19 @@ with config.lib; {
   "editor.cursorBlinking" = "solid";
   "editor.cursorSmoothCaretAnimation" = false;
   "editor.cursorStyle" = "underline";
+
   "editor.fontFamily" = "'${theme.fonts.mono.name}'";
   "editor.fontLigatures" = true;
+  "editor.fontSize" = 9.26;
+
   "editor.minimap.enabled" = false;
-  "editor.minimap.maxColumn" = 200;
-  "editor.minimap.renderCharacters" = false;
-  "editor.minimap.showSlider" = "always";
-  "editor.minimap.size" = "fit";
   "editor.renderWhitespace" = "none";
   "editor.formatOnSave" = true;
-  "editor.rulers" = [ 80 ];
+  "editor.rulers" = [ 120 ];
   "editor.smoothScrolling" = true;
-  "editor.find.autoFindInSelection" = "always";
-  "editor.fontSize" = 10;
   "editor.scrollBeyondLastLine" = false;
   "editor.multiCursorModifier" = "ctrlCmd";
+  "editor.find.autoFindInSelection" = "always";
 
   "explorer.autoReveal" = true;
   "explorer.openEditors.visible" = 0;
@@ -77,29 +75,31 @@ with config.lib; {
 
   "gitmoji.outputType" = "code";
 
-  # haskell
-  "[haskell]" = {
-    "editor.defaultFormatter" = "vigoo.stylish-haskell";
-    "editor.tabSize" = 2;
-  };
-  "haskell.hlint.executablePath" = pkgs.hlint + /bin/hlint;
-  "haskell.hlint.run" = "onType";
-  "ghcSimple.startupCommands.all" = [
-    "System.IO.hSetBuffering System.IO.stderr System.IO.NoBuffering"
-    "System.IO.hSetBuffering System.IO.stdout System.IO.NoBuffering"
-    ":set -haddock"
-  ];
-  "stylishHaskell.commandLine" = "${pkgs.stylish-haskell}/bin/stylish-haskell"
-    + " -c $HOME/university/functional-programming"
-    + "/functional-programming-course/.stylish-haskell.yaml";
-
   # nix
   "[nix]" = {
     "editor.defaultFormatter" = "brettm12345.nixfmt-vscode";
     "editor.tabSize" = 2;
+    "editor.rulers" = [ 80 ];
   };
   "nixfmt.path" = pkgs.nixfmt + /bin/nixfmt;
 
   # sql
-  "[sql]" = { "editor.tabSize" = 2; };
+  "[sql]" = {
+    "editor.tabSize" = 2;
+    "editor.rulers" = [ 80 ];
+  };
+
+  # haskell
+  "[haskell]" = {
+    "editor.defaultFormatter" = "vigoo.stylish-haskell";
+    "editor.tabSize" = 2;
+    "editor.rulers" = [ 80 ];
+  };
+  # "haskell.hlint.executablePath" = pkgs.hlint + /bin/hlint;
+  # "haskell.hlint.run" = "onType";
+  # "ghcSimple.startupCommands.all" = [
+  #   "System.IO.hSetBuffering System.IO.stderr System.IO.NoBuffering"
+  #   "System.IO.hSetBuffering System.IO.stdout System.IO.NoBuffering"
+  #   ":set -haddock"
+  # ];
 }
