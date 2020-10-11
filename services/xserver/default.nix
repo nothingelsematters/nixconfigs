@@ -34,6 +34,9 @@
             [Theme]
             ThemeDir=${pkgs.sddm-theme-clairvoyance}/share
             EnableAvatars=true
+
+            [Users]
+            HideUsers=jupyter
           '';
         };
       };
