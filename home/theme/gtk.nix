@@ -1,9 +1,9 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
 # TODO fix w/ Travis
 with config.lib.theme;
-let stripHash = builtins.substring 1 (-1);
-in {
+# let stripHash = builtins.substring 1 (-1); in
+{
   cursor = {
     size = 15;
     name = "Paper";

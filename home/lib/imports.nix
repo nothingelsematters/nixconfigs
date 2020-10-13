@@ -8,7 +8,7 @@ with lib.strings;
 with builtins;
 let
   isFile = type: type == "regular";
-  isNix = name: hasSuffix ".nix" name;
+  isNix = hasSuffix ".nix";
   isDefaultNix = name: name == "default.nix";
   includeFile = name: type:
     includeFiles && isFile type && isNix name && !(isDefaultNix name);
@@ -21,9 +21,10 @@ let
   filter = filterAttrs (name: type:
     (includeDir type || includeFile name type) && includeHidden name);
   merge = directory:
-    mapAttrsToList (name: type:
+    mapAttrsToList (name:
       let child = directory + ("/" + name);
-      in (if type == "directory" && recursive && !hasDefault child then
+      in type:
+      (if type == "directory" && recursive && !hasDefault child then
         exploreDir
       else
         singleton) child);

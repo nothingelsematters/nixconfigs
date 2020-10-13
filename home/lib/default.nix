@@ -1,4 +1,4 @@
-arg@{ pkgs, lib, ... }:
+{ pkgs, lib, ... }:
 
 with builtins;
 with pkgs;
@@ -30,9 +30,10 @@ with lib.attrsets; {
       toCSON = let
         indent = map (str: "  ${str}");
         processSet = set: concatLists (mapAttrsToList valueToCSON set);
-        valueToCSON = name: value:
+        valueToCSON = name:
           let left = ''"${name}": '';
-          in if isAttrs value then
+          in value:
+          if isAttrs value then
             [ left ] ++ indent (processSet value)
           else if isList value then
             [ (left + "[") ] ++ indent (map (str: ''"${str}"'') value)
@@ -48,19 +49,19 @@ with lib.attrsets; {
 
     theme.utils = let
       mkCommon = { prefix, postfix, valuef }:
-        attrs:
+
         let
-          recurse = func: path: set:
+          recurse = func: path:
             mapAttrs (name: value:
               (if isAttrs value then (recurse func) else valuef)
-              (path ++ [ name ]) value) set;
+              (path ++ [ name ]) value);
 
           collect = attrs:
             if isAttrs attrs then
               concatMap collect (attrValues attrs)
             else
               [ attrs ];
-        in ''
+        in attrs: ''
           ${prefix}
           ${concatStringsSep "\n" (collect (recurse valuef [ ] attrs))}
           ${postfix}

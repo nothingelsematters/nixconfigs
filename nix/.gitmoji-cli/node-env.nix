@@ -52,7 +52,7 @@ let
       '') dependencies);
 
   # Recursively composes the dependencies of a package
-  composePackage = { name, packageName, src, dependencies ? [ ], ... }@args:
+  composePackage = { packageName, src, dependencies ? [ ], ... }:
     builtins.addErrorContext "while evaluating node package '${packageName}'" ''
       DIR=$(pwd)
       cd $TMPDIR
@@ -164,8 +164,7 @@ let
         then
             cd node_modules
             ${
-              stdenv.lib.concatMapStrings
-              (dependency: pinpointDependenciesOfPackage dependency)
+              stdenv.lib.concatMapStrings pinpointDependenciesOfPackage
               dependencies
             }
             cd ..
@@ -178,7 +177,7 @@ let
   # being used.
 
   pinpointDependenciesOfPackage =
-    { packageName, dependencies ? [ ], production ? true, ... }@args: ''
+    { packageName, dependencies ? [ ], production ? true, ... }: ''
       if [ -d "${packageName}" ]
       then
           cd "${packageName}"
@@ -384,11 +383,10 @@ let
     '';
 
   # Builds and composes an NPM package including all its dependencies
-  buildNodePackage = { name, packageName, version, dependencies ? [ ]
-    , buildInputs ? [ ], production ? true, npmFlags ? ""
-    , dontNpmInstall ? false, bypassCache ? false, reconstructLock ? false
-    , preRebuild ? "", dontStrip ? true, unpackPhase ? "true"
-    , buildPhase ? "true", ... }@args:
+  buildNodePackage = { name, packageName, version ? [ ], buildInputs ? [ ]
+    , production ? true, npmFlags ? "", dontNpmInstall ? false
+    , bypassCache ? false, reconstructLock ? false, preRebuild ? ""
+    , dontStrip ? true, unpackPhase ? "true", buildPhase ? "true", ... }@args:
 
     let
       extraArgs = removeAttrs args [

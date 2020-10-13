@@ -1,4 +1,4 @@
-{ buildFirefoxXpiAddon, fetchurl, stdenv }: {
+{ buildFirefoxXpiAddon, stdenv }: {
   "adblocker-ultimate" = buildFirefoxXpiAddon {
     pname = "adblocker-ultimate";
     version = "2.43";

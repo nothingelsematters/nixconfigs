@@ -1,5 +1,3 @@
-{ pkgs, lib, ... }:
-
 with config.lib; {
   services.dunst = {
     enable = true;

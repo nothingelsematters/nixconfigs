@@ -1,4 +1,4 @@
-arg@{ config, pkgs, lib, ... }:
+arg@{ config, pkgs, ... }:
 
 with config.lib;
 let
@@ -18,7 +18,7 @@ in {
     modules = {
       "custom/apps" = {
         format = "";
-        on-click = "${packages.launcher.cmd}";
+        on-click = packages.launcher.cmd;
         tooltip = false;
       };
 

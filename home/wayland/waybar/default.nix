@@ -1,4 +1,4 @@
-arg@{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   imports = [ ./config.nix ./style.nix ];

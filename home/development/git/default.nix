@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
 {
   home.packages = with pkgs; with gitAndTools; [ delta hub gh lazygit ];

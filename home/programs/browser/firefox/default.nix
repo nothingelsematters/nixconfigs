@@ -1,4 +1,4 @@
-arg@{ config, pkgs, lib, ... }:
+arg@{ config, pkgs, ... }:
 
 with config.lib;
 let

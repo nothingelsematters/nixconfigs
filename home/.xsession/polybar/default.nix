@@ -1,4 +1,4 @@
-arg@{ config, pkgs, lib, ... }:
+arg@{ config, pkgs, ... }:
 
 with config.lib;
 let
@@ -51,7 +51,7 @@ in {
         monitor = "eDP-1";
         bottom = false;
         width = "100%";
-        height = height;
+        inherit height;
         radius = 3;
         fixed-center = true;
         enable-ipc = true;

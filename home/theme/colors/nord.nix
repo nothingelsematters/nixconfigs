@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  colors = rec {
+  colors = {
     background = rec {
       primary = "#2e3440"; # nord0
       secondary = "#3b4252"; # nord1

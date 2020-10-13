@@ -1,4 +1,4 @@
-args@{ pkgs, lib, ... }:
+args@{ lib, pkgs, ... }:
 
 {
   lib.theme = lib.trivial.pipe (import ../lib/imports.nix {

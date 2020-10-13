@@ -7,9 +7,9 @@ let
   modifier = "Mod4";
   scripts = import ./scripts arg;
 
-  toKeybinding = buttons: cmd: {
+  toKeybinding = buttons: value: {
+    inherit value;
     name = "${modifier}+${buttons}";
-    value = cmd;
   };
 
   numbersGenerator = sc: cmd: x:
@@ -34,7 +34,7 @@ let
   monBrightness = flag:
     "exec ${pkgs.light}/bin/light ${flag} 3 &&"
     + " ${pkgs.light}/bin/light -G | cut -d'.' -f1 > $SWAYSOCK.wob";
-in rec {
+in {
   home.packages = with pkgs; [ sway grim slurp wl-clipboard pamixer wob light ];
 
   # TODO cursor theme
@@ -83,12 +83,12 @@ in rec {
         }
       ];
 
-      modifier = modifier;
+      inherit modifier;
       fonts = [ "${theme.fonts.notification} 8" ];
 
       window.border = 0;
       floating = {
-        modifier = modifier;
+        inherit modifier;
         border = 0;
         criteria = [{ title = "Choose files"; }];
       };

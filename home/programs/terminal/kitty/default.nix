@@ -1,8 +1,8 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
 with config.lib;
 with theme;
-with fonts; rec {
+with fonts; {
   lib.packages.terminal = {
     name = "kitty";
     package = pkgs.kitty;

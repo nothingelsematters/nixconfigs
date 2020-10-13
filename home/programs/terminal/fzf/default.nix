@@ -1,5 +1,3 @@
-{ config, pkgs, ... }:
-
 let
   files = "rg --files";
   preview = [ "--preview 'bat --color always {}'" ];

@@ -26,12 +26,12 @@ in rec {
         };
 
         bars = [ ];
-        modifier = modifier;
+        inherit modifier;
         fonts = [ "${theme.fonts.notification} 9" ];
         window.border = 0;
 
         floating = {
-          modifier = modifier;
+          inherit modifier;
           border = 0;
           criteria = [ { title = "yad-calendar"; } { class = "Yad"; } ];
         };
@@ -42,8 +42,8 @@ in rec {
           smartBorders = "on";
         };
 
-        startup = map (x: {
-          command = x;
+        startup = map (command: {
+          inherit command;
           always = true;
           notification = false;
         }) [
@@ -89,9 +89,9 @@ in rec {
 
         keybindings = with builtins;
           let
-            attr = buttons: cmd: {
+            attr = buttons: value: {
+              inherit value;
               name = "${modifier}+${buttons}";
-              value = cmd;
             };
 
             numbersGenerator = sc: cmd: x:

@@ -138,7 +138,7 @@ in {
       @define-color item_shortcut_color_sel ${theme.colors.text.secondary};
       @define-color item_shortcut_shadow darker(@bg_color);
       @define-color item_shortcut_shadow_sel darker(@item_box_selected);
-    '' + functions.toCSS rec {
+    '' + functions.toCSS {
       ".app" = {
         background-color = "@window_bg";
         border-color = "@window_border_color";

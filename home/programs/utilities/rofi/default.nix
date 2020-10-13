@@ -1,9 +1,8 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
 with config.lib;
 let
   appsmenu = "rofi/appsmenu.rasi";
-  networkmenu = "rofi/networkmenu.rasi";
 
   makeTheme = fileName: ''
     * {

@@ -1,5 +1,3 @@
-{ ... }:
-
 let
   desktop = x: [ (x + ".desktop") ];
   browser = desktop "firefox";
