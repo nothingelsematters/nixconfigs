@@ -34,6 +34,7 @@
     niv
     nixfmt
     cachix
+    manix
     cached-nix-shell
     generation-diff
 
