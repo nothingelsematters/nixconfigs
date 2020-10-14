@@ -2,7 +2,7 @@
 
 let sources = import ./nix/sources.nix;
 in {
-  imports = [ ./hosts/simyon "${sources.home-manager}/nixos" ];
+  imports = [ ./hosts/simyon "${sources.home-manager}/nixos" ./cachix ];
 
   nixpkgs = {
     config.allowUnfree = true;
@@ -14,12 +14,5 @@ in {
   users = {
     defaultUserShell = pkgs.zsh;
     mutableUsers = false;
-  };
-
-  nix = {
-    binaryCaches = [ "https://nothingelsematters.cachix.org" ];
-    binaryCachePublicKeys = [
-      "nothingelsematters.cachix.org-1:zRZaHQgixucyZdxxClIKICy1QHtTFGeGng//uxspSPQ="
-    ];
   };
 }
