@@ -60,6 +60,18 @@
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz",
         "version": "8ba41a1e14961fe43523f29b8b39acb569b70e72"
     },
+    "nixpkgs-wayland-sources": {
+        "branch": "master",
+        "description": "Automated, pre-built packages for Wayland (sway/wlroots) tools for NixOS.",
+        "homepage": "",
+        "owner": "colemickens",
+        "repo": "nixpkgs-wayland",
+        "rev": "f974d13f6ff7e4badd89f2232694d932b7b0cc3a",
+        "sha256": "0zr644rdc6d3bv4h652mbnmzr6rp424g2f5l2aagv2m18s8gn7nm",
+        "type": "tarball",
+        "url": "https://github.com/colemickens/nixpkgs-wayland/archive/f974d13f6ff7e4badd89f2232694d932b7b0cc3a.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "nord-dircolors": {
         "branch": "develop",
         "description": "An arctic, north-bluish clean and elegant dircolors theme.",
