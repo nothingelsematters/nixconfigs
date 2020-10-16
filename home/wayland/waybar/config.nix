@@ -24,6 +24,9 @@ in {
 
       "custom/windows" = import ./windows arg;
       "custom/spotify" = import ./spotify arg;
+
+      clock.on-click = packages.launcher.cmd;
+
       "custom/layout" = import ./layout arg;
 
       pulseaudio = {

@@ -3,6 +3,12 @@
 {
   home.packages = [ pkgs.nixpkgs-wayland.wldash ];
 
+  lib.packages.launcher = rec {
+    name = "wldash";
+    cmd = name;
+    package = pkgs.nixpkgs-wayland.wldash;
+  };
+
   xdg.configFile."wldash/config.json".text = builtins.toJSON {
     outputMode = "active";
     scale = 2;
