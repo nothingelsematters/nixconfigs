@@ -21,7 +21,7 @@
     antlr4
 
     # python
-    (python3.withPackages (ps: with ps; [ virtualenv pip ]))
+    (python3.withPackages (ps: with ps; [ notebook ipykernel numpy ]))
 
     # python2
     (python2.withPackages (ps: with ps; [ pip ]))
