@@ -1,5 +1,6 @@
 { config, pkgs, ... }:
 
+# TODO get rid of rofi + move htop to terminal => get rid of utilities
 with config.lib;
 let
   appsmenu = "rofi/appsmenu.rasi";
