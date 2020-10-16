@@ -55,5 +55,5 @@ in {
 
   networking.hostName = "simyon";
   nix.maxJobs = lib.mkDefault 4;
-  powerManagement.cpuFreqGovernor = lib.mkDefault "performance"; # TODO test
+  powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
 }
