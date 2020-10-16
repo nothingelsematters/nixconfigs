@@ -1,3 +1,4 @@
+
 import argparse
 import asyncio
 import i3ipc
@@ -42,6 +43,8 @@ ICONS = [
     ('name=python', ''),
     ('name=.*/etc/nixos/make.sh .*', ''),
     ('name=.*psql.*', ''),
+    ('name=man .*', ''),
+    ('name=nano .*', ''),
     ('name=.*@.*:.*', ''),
     ('app_id=kitty', ''),
     ('class=Alacritty', ''),
