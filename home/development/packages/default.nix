@@ -21,7 +21,16 @@
     antlr4
 
     # python
-    (python3.withPackages (ps: with ps; [ notebook ipykernel numpy ]))
+    (python3.withPackages (ps:
+      with ps; [
+        notebook
+        ipykernel
+        numpy
+        matplotlib
+        sklearn-deap
+        tqdm
+        ipywidgets
+      ]))
 
     # python2
     (python2.withPackages (ps: with ps; [ pip ]))

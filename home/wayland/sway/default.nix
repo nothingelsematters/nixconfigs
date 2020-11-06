@@ -144,50 +144,51 @@ in {
 
       # TODO  win+tab floating support?
       # FIXME resize shortcut's broken
-      keybindings = withDirections "Shift+" "move"
-        // withNumbers "" "workspace "
-        // withNumbers "Shift+" "move container to workspace "
-        // withDirections "" "focus" // {
-          "${modifier}+Tab" = "focus right";
-          "${modifier}+Shift+Tab" = "focus left";
-          "${modifier}+Shift+space" = "floating toggle";
-          "${modifier}+Return" = "exec kitty";
+      keybindings = let
+        copyScreenshot = ''
+          wl-copy -o -t image/png && notify-desktop "Screenshot has been captured" -i gnome-screenshot'';
+      in withDirections "Shift+" "move" // withNumbers "" "workspace "
+      // withNumbers "Shift+" "move container to workspace "
+      // withDirections "" "focus" // {
+        "${modifier}+Tab" = "focus right";
+        "${modifier}+Shift+Tab" = "focus left";
+        "${modifier}+Shift+space" = "floating toggle";
+        "${modifier}+Return" = "exec kitty";
 
-          "${modifier}+Shift+q" = "kill";
-          "${modifier}+r" = scripts.resize;
+        "${modifier}+Shift+q" = "kill";
+        "${modifier}+r" = scripts.resize;
 
-          "${modifier}+w" = "layout tabbed";
-          "${modifier}+e" = "layout toggle split";
-          "${modifier}+s" = "sticky toggle";
+        "${modifier}+w" = "layout tabbed";
+        "${modifier}+e" = "layout toggle split";
+        "${modifier}+s" = "sticky toggle";
 
-          "${modifier}+Shift+c" = "reload";
-          "${modifier}+Shift+r" = "restart";
+        "${modifier}+Shift+c" = "reload";
+        "${modifier}+Shift+r" = "restart";
 
-          "${modifier}+F5" = "opacity minus 0.05";
-          "${modifier}+F6" = "opacity plus  0.05";
-          "${modifier}+F11" = "fullscreen";
+        "${modifier}+F5" = "opacity minus 0.05";
+        "${modifier}+F6" = "opacity plus  0.05";
+        "${modifier}+F11" = "fullscreen";
 
-          "Control+Space" = "exec ${pkgs.mako}/bin/makoctl dismiss";
-          "Control+Shift+Space" = "exec ${pkgs.mako}/bin/makoctl dismiss -a";
+        "Control+Space" = "exec ${pkgs.mako}/bin/makoctl dismiss";
+        "Control+Shift+Space" = "exec ${pkgs.mako}/bin/makoctl dismiss -a";
 
-          Menu = "exec ${packages.launcher.cmd}";
+        Menu = "exec ${packages.launcher.cmd}";
 
-          Print = "exec grim - | wl-copy -o -t image/png";
-          "Control+Print" = ''exec grim -g "$(slurp -b '#ffffff33' -c ''
-            + '''${theme.colors.background.accent}ff')" ''
-            + "- | wl-copy -o -t image/png";
+        Print = "exec grim - | ${copyScreenshot}";
+        "Control+Print" = ''exec grim -g "$(slurp -b '#ffffff33' -c ''
+          + '''${theme.colors.background.accent}ff')" - | ${copyScreenshot}'';
 
-          XF86KbdBrightnessUp = kbdBrightness "-A";
-          XF86KbdBrightnessDown = kbdBrightness "-U";
-          XF86MonBrightnessUp = monBrightness "-A";
-          XF86MonBrightnessDown = monBrightness "-U";
-          XF86AudioRaiseVolume = volume "-ui";
-          XF86AudioLowerVolume = volume "-d";
-          XF86AudioMute = "exec ${pkgs.pamixer}/bin/pamixer --toggle-mute && "
-            + "( ${pkgs.pamixer}/bin/pamixer --get-mute "
-            + "&& echo 0 > $SWAYSOCK.wob ) || "
-            + "${pkgs.pamixer}/bin/pamixer --get-volume > $SWAYSOCK.wob";
-        };
+        XF86KbdBrightnessUp = kbdBrightness "-A";
+        XF86KbdBrightnessDown = kbdBrightness "-U";
+        XF86MonBrightnessUp = monBrightness "-A";
+        XF86MonBrightnessDown = monBrightness "-U";
+        XF86AudioRaiseVolume = volume "-ui";
+        XF86AudioLowerVolume = volume "-d";
+        XF86AudioMute = "exec ${pkgs.pamixer}/bin/pamixer --toggle-mute && "
+          + "( ${pkgs.pamixer}/bin/pamixer --get-mute "
+          + "&& echo 0 > $SWAYSOCK.wob ) || "
+          + "${pkgs.pamixer}/bin/pamixer --get-volume > $SWAYSOCK.wob";
+      };
     };
 
     extraConfig = ''

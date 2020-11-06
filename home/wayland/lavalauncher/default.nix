@@ -16,16 +16,14 @@ in {
 
     Service = {
       Restart = "on-abort";
-      ExecStart = with config;
-      # TODO replace $PATH hardcode
+      ExecStart = with pkgs; with config;
+        # TODO replace $PATH hardcode
         lib.functions.toScript "lavalauncher.sh" [ ]
-        ("export PATH=/home/simon/.yarn/bin/"
-          + ":/nix/store/r06lylxjyav7pc2if6qvls91d9c9x25v-kitty-0.18.3/bin"
-          + ":/nix/store/cdy8ib4zn70x81p8n8j9da7qwby33b9n-imagemagick-6.9.11-14/bin"
+        ("export PATH=/home/simon/.yarn/bin/" + ":${kitty}/bin"
+          + ":${imagemagick}/bin"
           + ":/nix/store/h0d22zybfmklxmalv0g9ccbncsmwn8ml-xsel-unstable-2019-08-21/bin"
           + ":/nix/store/ncgqkpqj9gjaz6abxlwv15jpdn2nc818-ncurses-6.2-dev/bin"
-          + ":/nix/store/cbh69vrnybyfvx4phhjmjqyn0y8vwfd7-swaybg-1.0/bin"
-          + ":/run/wrappers/bin" + ":/home/simon/.nix-profile/bin"
+          + ":${swaybg}/bin:/run/wrappers/bin:/home/simon/.nix-profile/bin"
           + ":/etc/profiles/per-user/simon/bin:/nix/var/nix/profiles/default/bin"
           + ":/run/current-system/sw/bin"
           + ":/home/simon/.zsh/plugins/nix-zsh-completions"
@@ -49,11 +47,6 @@ in {
     '';
     appButton' = name: appButton name name;
   in with config.lib.theme.colors; ''
-    global-settings
-    {
-      watch-config-file true;
-    }
-
     bar
     {
       output eDP-1;
@@ -73,6 +66,8 @@ in {
       ${appButton "telegram" "telegram-desktop"}
       ${appButton' "spotify"}
       ${appButton "visual-studio-code" "code"}
+      ${appButton' "slack"}
+      ${appButton "libreoffice6.4-writer" "libreoffice"}
       ${appButton "utilities-x-terminal" config.lib.packages.terminal.name}
       ${appButton "htop" "kitty htop"}
     }
