@@ -40,7 +40,12 @@
           '';
         };
       };
-
     };
+  };
+
+  boot.plymouth = {
+    enable = true;
+    theme = "red_loader";
+    themePackages = [ pkgs.plymouth-theme-red-loader ];
   };
 }
