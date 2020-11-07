@@ -5,10 +5,10 @@ with vscode-extensions;
 [ bbenoist.Nix justusadam.language-haskell ]
 ++ vscode-utils.extensionsFromVscodeMarketplace [
   {
-    name = "vsc-community-material-theme";
-    publisher = "equinusocio";
-    version = "1.4.1";
-    sha256 = "0841aaf58c69x1r33xnflrh6kdw8xxhbbavfwsbl8lbn48r70wsb";
+    name = "github-vscode-theme";
+    publisher = "github";
+    version = "1.1.5";
+    sha256 = "1llyrm4iwdp79ylnw4kn5g6qlp8blrpaddszhl61yv82rs60kw0h";
   }
   {
     name = "file-icons";

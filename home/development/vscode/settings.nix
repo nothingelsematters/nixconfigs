@@ -53,7 +53,7 @@ with config.lib; {
   "window.title" = "\${dirty} \${activeEditorMedium}\${separator}\${rootName}";
   "window.titleBarStyle" = "native";
 
-  "workbench.colorTheme" = "Material Theme Palenight High Contrast";
+  "workbench.colorTheme" = "Github Dark";
   "workbench.editor.enablePreviewFromQuickOpen" = false;
   "workbench.iconTheme" = "file-icons";
   "workbench.settings.enableNaturalLanguageSearch" = false;

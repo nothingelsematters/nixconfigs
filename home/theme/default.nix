@@ -6,6 +6,6 @@ args@{ lib, pkgs, ... }:
     dir = ./.;
     includeDirectories = false;
     includeFiles = true;
-    additional = [ ./colors/dracula-mint.nix ];
+    additional = [ ./colors/github-dark.nix ];
   }) [ (builtins.map (x: import x args)) (builtins.foldl' (x: y: x // y) { }) ];
 }
