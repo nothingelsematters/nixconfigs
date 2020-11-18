@@ -102,4 +102,8 @@ with config.lib; {
   #   "System.IO.hSetBuffering System.IO.stdout System.IO.NoBuffering"
   #   ":set -haddock"
   # ];
+
+  # python
+  "python.dataScience.alwaysTrustNotebooks" = true;
+  "python.dataScience.askForKernelRestart" = false;
 }
