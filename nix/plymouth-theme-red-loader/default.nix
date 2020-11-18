@@ -14,6 +14,6 @@ self: super:
       ${self.gnused}/bin/sed -i "s/\/usr\/share\/plymouth\/themes\/red_loader/$(sed 's/\//\\\//g' tmp)/g" $result/red_loader.plymouth
       rm tmp
     '';
-    meta.description = "plymouth theme theme";
+    meta.description = "plymouth theme red loader";
   };
 }

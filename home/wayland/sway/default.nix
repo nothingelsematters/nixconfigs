@@ -38,8 +38,6 @@ in {
   home.packages = with pkgs; [ sway grim slurp wl-clipboard pamixer wob light ];
 
   # TODO cursor theme
-  # BUG telegram from rofi (!): filepicker and notification
-
   systemd.user.services.inactive-transparency = {
     Install.WantedBy = [ "graphical-session.target" ];
     Service = {

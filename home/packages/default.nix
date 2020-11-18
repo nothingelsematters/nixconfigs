@@ -8,7 +8,6 @@ with pkgs; {
     fd      # rip find
     lf      # terminal file manager
     file    # determine file type
-    most    # page text file
     jmtpfs  # a FUSE filesystem for MTP devices like Android phones
     wget    # download
 
