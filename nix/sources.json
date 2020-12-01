@@ -78,10 +78,10 @@
         "homepage": "https://www.nordtheme.com/ports/dircolors",
         "owner": "arcticicestudio",
         "repo": "nord-dircolors",
-        "rev": "addb3b427e008d23affc721450fde86f27566f1d",
-        "sha256": "0s7bd38269z4b9j6f90nscjkbdbh23z3mlg89fnk7ndyrpf5dqlj",
+        "rev": "35166d328992213194d7d02cd034e39da962f19e",
+        "sha256": "1kg0xabg1wz61z1f23i4b5yzfhm5s4dv554bqb19d4by3pay23g8",
         "type": "tarball",
-        "url": "https://github.com/arcticicestudio/nord-dircolors/archive/addb3b427e008d23affc721450fde86f27566f1d.tar.gz",
+        "url": "https://github.com/arcticicestudio/nord-dircolors/archive/35166d328992213194d7d02cd034e39da962f19e.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "reliable-nixpkgs": {
