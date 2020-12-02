@@ -1,6 +1,8 @@
+{ pkgs, ... }:
+
 {
   home = {
-    packages = [ most ];
+    packages = [ pkgs.most ];
     file.".mostrc".text = ''
       % Keybindings
       unsetkey "^K"
