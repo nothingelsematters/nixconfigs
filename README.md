@@ -5,7 +5,7 @@
         <img src="https://img.shields.io/github/commit-activity/y/nothingelsematters/nixconfigs?style=flat-square&logo=github">
     </a>
     <a href="https://nixos.org">
-        <img src="https://img.shields.io/badge/generations-300-green?style=flat-square&logo=nixos">
+        <img src="https://img.shields.io/badge/generations-302-green?style=flat-square&logo=nixos">
     </a>
     <a href="https://travis-ci.com/github/nothingelsematters/nixconfigs/builds">
         <img alt="Travis (.com)" src="https://img.shields.io/travis/com/nothingelsematters/nixconfigs?style=flat-square&logo=travis">

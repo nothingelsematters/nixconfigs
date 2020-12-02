@@ -46,6 +46,7 @@ ICONS = [
     ('name=man .*', ''),
     ('name=nano .*', ''),
     ('name=.*@.*:.*', ''),
+    ('name=zsh', ''),
     ('app_id=kitty', ''),
     ('class=Alacritty', ''),
 

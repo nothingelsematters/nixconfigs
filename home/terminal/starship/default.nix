@@ -4,7 +4,6 @@
     enableZshIntegration = true;
     settings = {
       add_newline = false;
-      prompt_order = [ "line_break" "package" "line_break" "character" ];
       scan_timeout = 10;
 
       character = {
@@ -17,10 +16,9 @@
         show_milliseconds = true;
       };
 
-      nix_shell = {
-        use_name = true;
-        symbol = "[❄️](bold blue)";
-      };
+      nix_shell = { use_name = true; };
+
+      memory_usage = { disabled = false; };
     };
   };
 }
