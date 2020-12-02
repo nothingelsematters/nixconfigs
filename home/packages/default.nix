@@ -23,7 +23,6 @@ with pkgs; {
 
     # messaging
     tdesktop
-    slack-dark
 
     # document related
     libreoffice-fresh # doc, excel, presentation
