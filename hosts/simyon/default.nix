@@ -31,8 +31,6 @@
       noto-fonts-cjk
       noto-fonts-emoji
       joypixels
-      fira-code
-      fira-code-symbols
       material-icons
       comfortaa
       jetbrains-mono
