@@ -16,7 +16,8 @@ in {
 
     Service = {
       Restart = "on-abort";
-      ExecStart = with pkgs; with config;
+      ExecStart = with pkgs;
+        with config;
         # TODO replace $PATH hardcode
         lib.functions.toScript "lavalauncher.sh" [ ]
         ("export PATH=/home/simon/.yarn/bin/" + ":${kitty}/bin"
@@ -41,26 +42,26 @@ in {
     appButton = name: cmd: ''
       button
       {
-        image-path "${pkgs.papirus-icon-theme}/share/icons/Papirus-Dark/16x16/apps/${name}.svg";
-        command "${cmd}";
+        image-path = "${pkgs.papirus-icon-theme}/share/icons/Papirus-Dark/16x16/apps/${name}.svg";
+        command = "${cmd}";
       }
     '';
     appButton' = name: appButton name name;
   in with config.lib.theme.colors; ''
     bar
     {
-      output eDP-1;
-      position bottom;
-      background-colour "#00000000";
-      hidden-size 1;
-      border 0 0 2 0;
-      radius 0;
-      size 45;
-      icon-padding 5;
-      exclusive-zone false;
-      layer top;
-      indicator-hover-colour "${background.secondary}BA";
-      indicator-active-colour "${text.secondary}D0";
+      output = eDP-1;
+      position = bottom;
+      background-colour = "#00000000";
+      hidden-size = 1;
+      border = 0 0 2 0;
+      radius = 0;
+      size = 45;
+      icon-padding = 5;
+      exclusive-zone = false;
+      layer = top;
+      indicator-hover-colour = "${background.secondary}BA";
+      indicator-active-colour = "${text.secondary}D0";
 
       ${appButton' "firefox"}
       ${appButton "telegram" "telegram-desktop"}
