@@ -56,9 +56,10 @@
 
       confs = "z conf; $EDITOR .";
 
-      l = "exa -lh --git";
-      ll = "exa -lhT --git -L 2";
-      lll = "exa -lhT --git -L 3";
+      l = "exa -lh --git --group-directories-first";
+      la = "l -a";
+      ll = "l -L 2";
+      lll = "l -L 3";
       tree = "exa --tree";
       zz = "z -I";
       bd = "z -b";
