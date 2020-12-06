@@ -63,19 +63,7 @@
       zz = "z -I";
       bd = "z -b";
 
-      gl =
-        "git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset)"
-        + " - %C(bold yellow)%<|(27)%ar%C(reset) %C(bold green)%<|(70)%s%C(reset) %C(dim white)-"
-        + " %an%C(reset)%C(bold red)%d%C(reset)%n' --all --stat";
-      gs = "git status -s";
-      gmc = "gitmoji -c";
-
       cal = "cal -3m";
-
-      kt = "kotlin";
-      ktc = "kotlinc";
-      kts = "kotlinc -script";
-      py = "python3";
 
       copy = "wl-copy";
       paste = "wl-paste";
@@ -103,7 +91,7 @@
       bindkey '^[[A' up-line-or-search
       bindkey '^[[B' down-line-or-search
 
-      eval ''${${pkgs.thefuck} --alias}
+      eval $(${pkgs.thefuck}/bin/thefuck --alias)
 
       if [ -n "$name" ]; then
         PROMPT="[$name] $PROMPT";

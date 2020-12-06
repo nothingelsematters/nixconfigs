@@ -1,6 +1,13 @@
 { pkgs, ... }:
 
 {
+  programs.zsh.shellAliases = {
+    kt = "kotlin";
+    ktc = "kotlinc";
+    kts = "kotlinc -script";
+    py = "python3";
+  };
+
   home.packages = with pkgs; [
     # markdown
     mdcat

@@ -6,19 +6,17 @@
       add_newline = false;
       scan_timeout = 10;
 
-      character = {
-        success_symbol = "[🗸](bold green) ";
-        error_symbol = "[✗](bold red) ";
-      };
-
       cmd_duration = {
         min_time = 500;
         show_milliseconds = true;
       };
 
-      nix_shell = { use_name = true; };
+      nix_shell = {
+        use_name = true;
+        symbol = "❄️";
+      };
 
-      memory_usage = { disabled = false; };
+      memory_usage.disabled = false;
     };
   };
 }
