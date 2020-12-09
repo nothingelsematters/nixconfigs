@@ -12,12 +12,6 @@
     # markdown
     mdcat
 
-    # c++
-    gcc
-    gdb
-    cmake
-    valgrind
-
     # kotlin
     kotlin
     ktlint
@@ -26,6 +20,30 @@
     jdk14
     maven
     antlr4
+
+    # c++
+    gcc
+    gdb
+    cmake
+    valgrind
+
+    # rust
+    rustup
+
+    # nix
+    niv
+    nixfmt
+    cachix
+    manix
+    cached-nix-shell
+    generation-diff
+
+    # databases
+    postgresql_12
+
+    # javascript
+    nodejs
+    yarn
 
     # python
     (python3.withPackages (ps:
@@ -38,23 +56,5 @@
         tqdm
         ipywidgets
       ]))
-
-    # python2
-    (python2.withPackages (ps: with ps; [ pip ]))
-
-    # javascript
-    nodejs
-    yarn
-
-    # nix
-    niv
-    nixfmt
-    cachix
-    manix
-    cached-nix-shell
-    generation-diff
-
-    # databases
-    postgresql_12
   ];
 }

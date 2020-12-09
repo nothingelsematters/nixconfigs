@@ -2,8 +2,16 @@
 
 with pkgs;
 with vscode-extensions;
-[ bbenoist.Nix justusadam.language-haskell ]
-++ vscode-utils.extensionsFromVscodeMarketplace [
+[
+  # nix
+  bbenoist.Nix
+
+  # haskell
+  justusadam.language-haskell
+
+  # rust
+  matklad.rust-analyzer
+] ++ vscode-utils.extensionsFromVscodeMarketplace [
   {
     name = "github-vscode-theme";
     publisher = "github";
@@ -15,12 +23,6 @@ with vscode-extensions;
     publisher = "file-icons";
     version = "1.0.24";
     sha256 = "0mcaz4lv7zb0gw0i9zbd0cmxc41dnw344ggwj1wy9y40d627wdcx";
-  }
-  {
-    name = "bracket-pair-colorizer-2";
-    publisher = "coenraads";
-    version = "0.1.2";
-    sha256 = "1n34m3i5cjd0x2qcvvk5ipp5ippxmsrq6218xw40ag0n39lsknri";
   }
   {
     name = "vscode-diff";
@@ -49,40 +51,6 @@ with vscode-extensions;
     sha256 = "0mhgl7sdqdzj5gsrajrfq4g6wqikk19fa59rrr2dhq6hrin7a9mb";
   }
 
-  # markdown
-  {
-    name = "markdown-all-in-one";
-    publisher = "yzhang";
-    version = "3.1.0";
-    sha256 = "0b5fqwaxbdqpqx53gxjjfawghwrpbj9zmbvsw5wamn1jx3djgflk";
-  }
-  {
-    name = "markdown-mermaid";
-    publisher = "bierner";
-    version = "1.5.1";
-    sha256 = "1nym9b2wfhclm3s8fq2ks13z3yzkbjbkbpbgsqq698f9hss2qvmm";
-  }
-
-  # haskell
-  {
-    name = "haskell-linter";
-    publisher = "hoovercj";
-    version = "0.0.6";
-    sha256 = "0fb71cbjx1pyrjhi5ak29wj23b874b5hqjbh68njs61vkr3jlf1j";
-  }
-  {
-    name = "stylish-haskell";
-    publisher = "vigoo";
-    version = "0.0.10";
-    sha256 = "1zkvcan7zmgkg3cbzw6qfrs3772i0dwhnywx1cgwhy39g1l62r0q";
-  }
-  {
-    name = "vscode-ghc-simple";
-    publisher = "dramforever";
-    version = "0.1.22";
-    sha256 = "0x3csdn3pz5rhl9mhplpm8kxb40l1dw5rnwhh3zsif3rz0nqhk2a";
-  }
-
   # nix
   {
     name = "nixfmt-vscode";
@@ -103,5 +71,41 @@ with vscode-extensions;
     publisher = "esafirm";
     version = "0.0.6";
     sha256 = "00w7d0iyr3nf5jqzwy7kk7awyh3fnljzrjbkknxmpjyjyvaa7n0z";
+  }
+
+  # rust
+  {
+    name = "rust";
+    publisher = "rust-lang";
+    version = "0.7.8";
+    sha256 = "039ns854v1k4jb9xqknrjkj8lf62nfcpfn0716ancmjc4f0xlzb3";
+  }
+
+  # markdown
+  {
+    name = "markdown-all-in-one";
+    publisher = "yzhang";
+    version = "3.1.0";
+    sha256 = "0b5fqwaxbdqpqx53gxjjfawghwrpbj9zmbvsw5wamn1jx3djgflk";
+  }
+
+  # haskell
+  {
+    name = "haskell-linter";
+    publisher = "hoovercj";
+    version = "0.0.6";
+    sha256 = "0fb71cbjx1pyrjhi5ak29wj23b874b5hqjbh68njs61vkr3jlf1j";
+  }
+  {
+    name = "stylish-haskell";
+    publisher = "vigoo";
+    version = "0.0.10";
+    sha256 = "1zkvcan7zmgkg3cbzw6qfrs3772i0dwhnywx1cgwhy39g1l62r0q";
+  }
+  {
+    name = "vscode-ghc-simple";
+    publisher = "dramforever";
+    version = "0.1.22";
+    sha256 = "0x3csdn3pz5rhl9mhplpm8kxb40l1dw5rnwhh3zsif3rz0nqhk2a";
   }
 ]
