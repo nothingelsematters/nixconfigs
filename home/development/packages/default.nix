@@ -5,6 +5,7 @@
     kt = "kotlin";
     ktc = "kotlinc";
     kts = "kotlinc -script";
+    rs = "rustc";
     py = "python3";
   };
 
