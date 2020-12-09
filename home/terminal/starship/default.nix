@@ -12,7 +12,10 @@
         show_milliseconds = true;
       };
 
-      nix_shell.use_name = true;
+      nix_shell = {
+        symbol = "❄️";
+        use_name = true;
+      };
 
       python.python_binary = [ "python3" ];
 
