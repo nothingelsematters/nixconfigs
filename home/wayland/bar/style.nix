@@ -19,9 +19,7 @@ in {
       color = theme.colors.text.primary;
     };
 
-    "#custom-apps".margin-right = "1px";
-
-    "#custom-windows".margin-right = 0;
+    "#custom-windows".margin = "0 0 0 0";
 
     "#custom-spotify".margin-top = "4px";
 

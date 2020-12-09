@@ -11,17 +11,11 @@ in {
     layer = "top";
     position = "top";
 
-    modules-left = [ "custom/apps" "custom/windows" "custom/spotify" ];
+    modules-left = [ "custom/windows" "custom/spotify" ];
     modules-center = [ "clock" ];
     modules-right = [ "custom/layout" "pulseaudio" "cpu" "battery" "tray" ];
 
     modules = {
-      "custom/apps" = {
-        format = "";
-        on-click = packages.launcher.cmd;
-        tooltip = false;
-      };
-
       "custom/windows" = import ./windows arg;
       "custom/spotify" = import ./spotify arg;
 

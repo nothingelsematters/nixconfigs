@@ -1,76 +1,54 @@
 { config, pkgs, ... }:
 
+with config.lib;
 let
-  configFileName = "lavalauncher/lavalauncher.conf";
-  lavalauncher = pkgs.nixpkgs-wayland.lavalauncher;
+  appsmenu = "rofi/appsmenu.rasi";
+
+  makeTheme = fileName: ''
+    * {
+      foreground:       ${theme.colors.text.primary};
+      text-font:        "${theme.fonts.notification} 10";
+    }
+
+    ${builtins.readFile fileName}
+  '';
+
 in {
-  home.packages = [ lavalauncher ];
+  xdg.configFile.${appsmenu}.text = makeTheme ./appsmenu.rasi;
 
-  systemd.user.services.lavalauncher = {
-    Unit = {
-      Description = "Dock-like launcher";
-      PartOf = [ "graphical-session.target" ];
-    };
-
-    Install.WantedBy = [ "graphical-session.target" ];
-
-    Service = {
-      Restart = "on-abort";
-      ExecStart = with pkgs;
-        with config;
-        # TODO replace $PATH hardcode
-        lib.functions.toScript "lavalauncher.sh" [ ]
-        ("export PATH=/home/simon/.yarn/bin/" + ":${kitty}/bin"
-          + ":${imagemagick}/bin"
-          + ":/nix/store/h0d22zybfmklxmalv0g9ccbncsmwn8ml-xsel-unstable-2019-08-21/bin"
-          + ":/nix/store/ncgqkpqj9gjaz6abxlwv15jpdn2nc818-ncurses-6.2-dev/bin"
-          + ":${swaybg}/bin:/run/wrappers/bin:/home/simon/.nix-profile/bin"
-          + ":/etc/profiles/per-user/simon/bin:/nix/var/nix/profiles/default/bin"
-          + ":/run/current-system/sw/bin"
-          + ":/home/simon/.zsh/plugins/nix-zsh-completions"
-          + ":/home/simon/.zsh/plugins/you-should-use"
-          + ":/home/simon/.zsh/plugins/fast-syntax-highlighting"
-          + ":/home/simon/.zsh/plugins/command-time"
-          + ":/home/simon/.zsh/plugins/forgit" + ''
-
-            ${lavalauncher}/bin/lavalauncher -c ${xdg.configHome}/${configFileName}
-          '');
-    };
+  lib.packages.launcher = {
+    name = "rofi";
+    cmd = "rofi -show";
+    package = config.programs.rofi.package;
   };
 
-  xdg.configFile.${configFileName}.text = let
-    appButton = name: cmd: ''
-      button
-      {
-        image-path = "${pkgs.papirus-icon-theme}/share/icons/Papirus-Dark/16x16/apps/${name}.svg";
-        command = "${cmd}";
-      }
-    '';
-    appButton' = name: appButton name name;
-  in with config.lib.theme.colors; ''
-    bar
-    {
-      output = eDP-1;
-      position = bottom;
-      background-colour = "#00000000";
-      hidden-size = 1;
-      border = 0 0 2 0;
-      radius = 0;
-      size = 45;
-      icon-padding = 5;
-      exclusive-zone = false;
-      layer = top;
-      indicator-hover-colour = "${background.secondary}BA";
-      indicator-active-colour = "${text.secondary}D0";
+  programs.rofi = {
+    enable = true;
+    lines = 8;
+    cycle = false;
+    fullscreen = true;
+    scrollbar = false;
+    theme = config.xdg.configHome + ("/" + appsmenu);
+    terminal = config.lib.packages.terminal.name;
 
-      ${appButton' "firefox"}
-      ${appButton "telegram" "telegram-desktop"}
-      ${appButton' "spotify"}
-      ${appButton "visual-studio-code" "code"}
-      ${appButton' "slack"}
-      ${appButton "libreoffice6.4-writer" "libreoffice"}
-      ${appButton "utilities-x-terminal" config.lib.packages.terminal.name}
-      ${appButton "htop" "kitty htop"}
-    }
-  '';
+    font = "${theme.fonts.notification} 10";
+
+    extraConfig = ''
+      rofi.font:                ${theme.fonts.notification} 10
+      rofi.show-icons:          true
+      rofi.drun-display-format: {name}
+      rofi.threads:             0
+      rofi.matching:            fuzzy
+      rofi.disable-history:     false
+      rofi.modi:                drun
+      rofi.window-thumbnail:    true
+      rofi.drun-match-fields:   name
+      rofi.kb-row-select:       ctrl+shift+space
+      rofi.kb-cancel:           Menu,Escape,alt+r
+      rofi.kb-row-tab:          shift+Tab
+      rofi.icon-theme:          ${theme.icons.name}
+      rofi.display-drun:        apps
+      rofi.columns:             8
+    '';
+  };
 }
