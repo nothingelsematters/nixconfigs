@@ -16,6 +16,8 @@
         symbol = "❄️";
       };
 
+      python.python_binary = [ "python3" ];
+
       memory_usage.disabled = false;
     };
   };
