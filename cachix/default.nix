@@ -1,14 +1,18 @@
 # WARN: this file will get overwritten by $ cachix use <name>
 { lib, ... }:
 
-let
-  folder = ./.;
-  toImport = name: _: folder + ("/" + name);
-  filterCaches = key: value:
-    value == "regular" && lib.hasSuffix ".nix" key && key != "default.nix";
-  imports = lib.mapAttrsToList toImport
-    (lib.filterAttrs filterCaches (builtins.readDir folder));
-in {
-  inherit imports;
-  nix.binaryCaches = [ "https://cache.nixos.org/" ];
+{
+  nix = {
+    binaryCaches = [
+      "https://cache.nixos.org/"
+      "https://nixpkgs-wayland.cachix.org"
+      "https://nothingelsematters.cachix.org"
+      "https://quentini.cachix.org"
+    ];
+    binaryCachePublicKeys = [
+      "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
+      "nothingelsematters.cachix.org-1:zRZaHQgixucyZdxxClIKICy1QHtTFGeGng//uxspSPQ="
+      "quentini.cachix.org-1:fgzasbBNj2JBTzzpLnpSfulnC06ImDvzYJEXiACwNkg="
+    ];
+  };
 }
