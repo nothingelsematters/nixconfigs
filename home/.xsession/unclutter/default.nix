@@ -1,1 +1,0 @@
-{ services.unclutter.enable = true; }
