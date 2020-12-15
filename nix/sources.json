@@ -90,10 +90,10 @@
         "homepage": "https://github.com/NixOS/nixpkgs",
         "owner": "NixOS",
         "repo": "nixpkgs-channels",
-        "rev": "df25e214c8e662d693ef89e45ce56bbf58d6c59e",
-        "sha256": "117ir2ysw310q87mndv6czph5qjbhvggmhawcvak6x507yf0dxin",
+        "rev": "030e2ce817c8e83824fb897843ff70a15c131b96",
+        "sha256": "110kgp4x5bx44rgw55ngyhayr4s19xwy19n6qw9g01hvhdisilwf",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs-channels/archive/df25e214c8e662d693ef89e45ce56bbf58d6c59e.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs-channels/archive/030e2ce817c8e83824fb897843ff70a15c131b96.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "sddm-theme-clairvoyance": {
