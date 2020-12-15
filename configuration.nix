@@ -2,7 +2,7 @@
 
 let sources = import ./nix/sources.nix;
 in {
-  imports = [ ./hosts/simyon "${sources.home-manager}/nixos" ./cachix ];
+  imports = [ ./hosts/simyon "${sources.home-manager}/nixos" ./nix/cachix.nix ];
 
   nixpkgs = {
     config.allowUnfree = true;
