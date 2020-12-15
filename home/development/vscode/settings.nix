@@ -45,12 +45,12 @@ with config.lib; {
   "terminal.integrated.fontFamily" = theme.fonts.mono.name;
   "terminal.integrated.fontSize" = 10;
   "terminal.explorerKind" = "external";
-  "terminal.external.linuxExec" = "kitty";
+  "terminal.external.linuxExec" = config.packages.terminal.name;
 
   "update.mode" = "none";
 
   "window.menuBarVisibility" = "toggle";
-  "window.title" = "\${dirty} \${activeEditorMedium}\${separator}\${rootName}";
+  "window.title" = "\${dirty}  \${rootName}\${separator}\${activeEditorMedium}";
   "window.titleBarStyle" = "native";
 
   "workbench.colorTheme" = "Github Dark";
@@ -106,4 +106,8 @@ with config.lib; {
   # python
   "python.dataScience.alwaysTrustNotebooks" = true;
   "python.dataScience.askForKernelRestart" = false;
+  "workbench.editorAssociations" = [{
+    "viewType" = "jupyter.notebook.ipynb";
+    "filenamePattern" = "*.ipynb";
+  }];
 }

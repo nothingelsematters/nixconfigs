@@ -24,7 +24,7 @@
     key = "ctrl+f5";
   }
   {
-    command = "workbench.panel.terminal.focus";
+    command = "workbench.action.terminal.toggleTerminal";
     key = "ctrl+shift+t";
   }
   {
