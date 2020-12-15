@@ -45,7 +45,7 @@ with config.lib; {
   "terminal.integrated.fontFamily" = theme.fonts.mono.name;
   "terminal.integrated.fontSize" = 10;
   "terminal.explorerKind" = "external";
-  "terminal.external.linuxExec" = config.packages.terminal.name;
+  "terminal.external.linuxExec" = config.lib.packages.terminal.name;
 
   "update.mode" = "none";
 
