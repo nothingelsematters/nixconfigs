@@ -13,7 +13,7 @@
       };
 
       nix_shell = {
-        symbol = "❄️";
+        symbol = "❄️ ";
         use_name = true;
       };
 
