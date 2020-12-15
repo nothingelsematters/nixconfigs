@@ -15,10 +15,20 @@
     </a>
 </p>
 
-<p align="center"> custom nixOS configuration </p>
+<h1 align="center"> custom <a href="https://nixos.org">NixOS</a> configuration </h1>
 
-### Usage
+## Nix tools being used
 
-```bash
-./make.sh switch
-```
++ [Cachix](https://cachix.org) - Nix binary cache hosting: [several caches](nix/cachix.nix)
++ [Niv](https://github.com/nmattia/niv) - Easy dependency management for Nix project: [generated `source.json` file](nix/sources.json)
++ [Niv updater GitHub action](https://github.com/knl/niv-updater-action) - GitHub Action creating meaningful pull requests with Niv updates: [corresponding configuration](.github/workflows/niv-updates.yaml)
++ [Travis CI](https://travis-ci.org) checking building: [travis configuration](.travis.yml)
+
+## Usage
+
+There is a [script file](make.sh) to escape boilerplate routine. There are following subcommands:
+
++ `link` - add needed links
++ `build` - just build configuration derivation
++ `switch` - build & switch on it
++ `clean` - clean up generations
