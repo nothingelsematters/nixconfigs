@@ -2,6 +2,7 @@
 
 with config.lib; {
   "breadcrumbs.enabled" = true;
+  "breadcrumbs.filePath" = "last";
 
   "editor.cursorBlinking" = "solid";
   "editor.cursorSmoothCaretAnimation" = false;
@@ -9,7 +10,7 @@ with config.lib; {
 
   "editor.fontFamily" = "'${theme.fonts.mono.name}'";
   "editor.fontLigatures" = true;
-  "editor.fontSize" = 9.26;
+  "editor.fontSize" = 11.01;
 
   "editor.minimap.enabled" = false;
   "editor.renderWhitespace" = "none";
@@ -43,7 +44,7 @@ with config.lib; {
   "terminal.integrated.cursorBlinking" = false;
   "terminal.integrated.cursorStyle" = "underline";
   "terminal.integrated.fontFamily" = theme.fonts.mono.name;
-  "terminal.integrated.fontSize" = 10;
+  "terminal.integrated.fontSize" = 12;
   "terminal.explorerKind" = "external";
   "terminal.external.linuxExec" = config.lib.packages.terminal.name;
 
@@ -52,6 +53,7 @@ with config.lib; {
   "window.menuBarVisibility" = "toggle";
   "window.title" = "\${dirty}  \${rootName}\${separator}\${activeEditorMedium}";
   "window.titleBarStyle" = "native";
+  "window.zoomLevel" = -1;
 
   "workbench.colorTheme" = "Github Dark";
   "workbench.editor.enablePreviewFromQuickOpen" = false;
@@ -62,6 +64,7 @@ with config.lib; {
   "workbench.statusBar.visible" = true;
   "workbench.tips.enabled" = false;
   "workbench.tree.indent" = 18;
+  "workbench.tree.renderIndentGuides" = "always";
   "workbench.panel.defaultLocation" = "right";
 
   "zenMode.centerLayout" = false;

@@ -40,10 +40,6 @@
         src = zsh-fast-syntax-highlighting + /share/zsh/site-functions;
       }
       {
-        name = "command-time";
-        src = zsh-command-time + /share/zsh/plugins/command-time;
-      }
-      {
         name = "forgit";
         src = forgit;
       }
@@ -104,6 +100,10 @@
       if [ "$NIX_NAME" ]; then
           export PROMPT="[$NIX_NAME] $PROMPT";
       fi
+
+      wifi() {
+        nmcli d wifi connect $(nmcli d wifi list --rescan yes | rg $0 | gawk '{ print $1 }')
+      }
     '';
   };
 }
