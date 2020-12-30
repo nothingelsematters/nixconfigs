@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
 {
+  home.packages = [ pkgs.nodePackages.gitmoji-cli ];
+
   programs = {
     gh.enable = true;
 
@@ -19,6 +21,7 @@
         + " %an%C(reset)%C(bold red)%d%C(reset)%n' --all --stat";
 
       gcmsg = "git commit -m";
+      gc = "git commit";
       gmc = "gitmoji -c";
     };
 
