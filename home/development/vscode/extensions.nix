@@ -63,8 +63,8 @@ with vscode-extensions;
   {
     name = "kotlin";
     publisher = "fwcd";
-    version = "0.2.11";
-    sha256 = "1zk5qdppcgsal9fppmpyxn58fbpan405pvv70c5cj6kqwp5crw4s";
+    version = "0.2.18";
+    sha256 = "06ni65a2q75zlld3cx8mp7jl38icaqmb7wmcrnblxzr2sxkyjzp9";
   }
   {
     name = "kotlin-formatter";
