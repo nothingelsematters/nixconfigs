@@ -5,10 +5,10 @@
         "homepage": "",
         "owner": "wfxr",
         "repo": "forgit",
-        "rev": "1397e6904be84d3fda48639c929c5045f289fbe3",
-        "sha256": "02xx360662j2jhs4q4krvh2f4bj757kg1q4lxqb0y366dhlghwzd",
+        "rev": "84c515db1df98ceacfe08fd10c01e5d5c3a01db8",
+        "sha256": "0gldmq8mwkm8xdgjfc909pyqjrsrbapyf132zr0sk7igxdk4j46v",
         "type": "tarball",
-        "url": "https://github.com/wfxr/forgit/archive/1397e6904be84d3fda48639c929c5045f289fbe3.tar.gz",
+        "url": "https://github.com/wfxr/forgit/archive/84c515db1df98ceacfe08fd10c01e5d5c3a01db8.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "home-manager": {
