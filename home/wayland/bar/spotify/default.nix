@@ -21,7 +21,7 @@ with theme.colors; {
                   ;;
 
               "Playing" )
-                  echo "<span foreground=\"${text.secondary}\"> " \
+                  echo "<span foreground=\"${text.primary}\"> " \
                       "$( playerctl metadata artist -p spotify ) — " \
                       "$( playerctl metadata title -p spotify )</span>"
                   ;;
