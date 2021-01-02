@@ -1,20 +1,16 @@
 { config, pkgs, ... }:
 
 with config.lib;
-let
-  appsmenu = "rofi/appsmenu.rasi";
-
-  makeTheme = fileName: ''
+let appsmenu = "rofi/appsmenu.rasi";
+in {
+  xdg.configFile.${appsmenu}.text = ''
     * {
-      foreground:       ${theme.colors.text.primary};
-      text-font:        "${theme.fonts.notification} 10";
+      foreground: ${theme.colors.text.primary};
+      text-font:  "${theme.fonts.notification} 10";
     }
 
-    ${builtins.readFile fileName}
+    ${builtins.readFile ./appsmenu.rasi}
   '';
-
-in {
-  xdg.configFile.${appsmenu}.text = makeTheme ./appsmenu.rasi;
 
   lib.packages.launcher = {
     name = "rofi";
