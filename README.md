@@ -19,10 +19,10 @@
 
 ## Nix tools being used
 
-+ [Cachix](https://cachix.org) - Nix binary cache hosting: [several caches](nix/cachix.nix)
 + [Niv](https://github.com/nmattia/niv) - Easy dependency management for Nix project: [generated `source.json` file](nix/sources.json)
-+ [Niv updater GitHub action](https://github.com/knl/niv-updater-action) - GitHub Action creating meaningful pull requests with Niv updates: [corresponding configuration](.github/workflows/niv-updates.yaml)
-+ [Travis CI](https://travis-ci.org) checking building: [travis configuration](.travis.yml)
++ [Cachix](https://cachix.org) - Nix binary cache hosting: [several caches](nix/cachix.nix)
++ [Niv updater GitHub action](https://github.com/knl/niv-updater-action) - creating meaningful pull requests with Niv updates: [corresponding configuration](.github/workflows/niv-updates.yaml)
++ [Cachix Github Action](https://github.com/cachix/cachix-action) - checking builds on push and keeping cachix up-to-date: [corresponding configuration](.github/workflows/cachix.yaml)
 
 ## Usage
 
