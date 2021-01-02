@@ -21,7 +21,7 @@
         + " %an%C(reset)%C(bold red)%d%C(reset)%n' --all --stat";
 
       gcmsg = "git commit -m";
-      gc = "git commit";
+      gc = "git commit --no-edit";
       gmc = "gitmoji -c";
     };
 
