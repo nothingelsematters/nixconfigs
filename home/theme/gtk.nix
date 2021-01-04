@@ -35,7 +35,7 @@ in with (import ./colors args); {
           stripHash colors.background.primary
         }\n \
           FG=${stripHash colors.text.primary}\n \
-          MATERIA_VIEW=${stripHash colors.background.primary}\n \
+          MATERIA_VIEW=${stripHash colors.background.accent}\n \
           MATERIA_SURFACE=${stripHash colors.background.secondary}\n \
           HDR_BG=${stripHash colors.background.secondary}\n \
           HDR_FG=${stripHash colors.text.primary}\n \

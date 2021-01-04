@@ -1,8 +1,8 @@
 arg@{ config, pkgs, lib, ... }:
 
 with config.lib;
-with config.lib.theme.utils;
-# with builtins;
+with theme.utils;
+with builtins;
 let scripts = import ./scripts arg;
 in {
   imports = [ ./keybindings.nix ];
@@ -55,11 +55,23 @@ in {
       modifier = "Mod4";
       fonts = [ "${theme.fonts.notification} 8" ];
 
-      window.border = 0;
-      floating = {
-        modifier = modifier;
+      window = {
         border = 0;
-        criteria = [{ title = "Choose files"; }];
+        commands = let
+          titles = [ "Choose files" "Open File" ];
+          commands =
+            [ "resize width 700 height 550" "move center" "border pixel 1" ];
+        in concatLists (map (command:
+          map (title: {
+            inherit command;
+            criteria = { inherit title; };
+          }) titles) commands);
+      };
+
+      floating = {
+        inherit modifier;
+        border = 0;
+        criteria = [ { title = "Choose files"; } { title = "Open File"; } ];
       };
 
       gaps = {
@@ -114,8 +126,6 @@ in {
       seat seat0 xcursor_theme "Paper"
       seat * hide_cursor 1000
       focus_wrapping workspace
-      for_window [title="Choose files"] resize width 700 height 550
-      for_window [title="Choose files"] move center
       exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | ${pkgs.wob}/bin/wob -W 300 -H 25 -b 1 -o 1 -p 1 -a top -a right -M 20 -t 500
     '';
   };

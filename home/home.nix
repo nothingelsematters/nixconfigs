@@ -22,6 +22,12 @@ with config.lib; {
       layout = "us,ru";
       options = [ "grp:caps_toggle" ];
     };
+
+    extraProfileCommands = ''
+      if [[ -d "$out/share/applications" ]] ; then
+        ${pkgs.desktop-file-utils}/bin/update-desktop-database $out/share/applications
+      fi
+    '';
   };
 
   manual.manpages.enable = true;
