@@ -1,6 +1,10 @@
 let
   files = "rg --files";
-  preview = [ "--preview 'bat --color always {}'" ];
+  preview = [''
+    --preview "sh -c 'if [ -d {} ]; \
+        then exa -T {} | head -100; \
+        else bat --color always {}; \
+      fi'"''];
 in {
   programs.fzf = {
     enable = true;
@@ -8,6 +12,6 @@ in {
     defaultCommand = files;
     fileWidgetCommand = files;
     fileWidgetOptions = preview;
-    changeDirWidgetOptions = [ "--preview 'exa --tree {} | head -100'" ];
+    changeDirWidgetOptions = preview;
   };
 }
