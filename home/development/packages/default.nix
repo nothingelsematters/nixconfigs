@@ -43,7 +43,7 @@
     postgresql_12
 
     # javascript
-    nodejs
+    nodejs-14_x
     yarn
 
     # python
