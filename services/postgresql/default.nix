@@ -5,7 +5,7 @@
     enable = true;
     enableTCPIP = true;
 
-    package = pkgs.postgresql_12;
+    package = pkgs.postgresql_13;
 
     authentication = pkgs.lib.mkOverride 10 ''
       local all all trust

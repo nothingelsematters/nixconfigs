@@ -40,7 +40,7 @@
     generation-diff
 
     # databases
-    postgresql_12
+    postgresql_13
 
     # javascript
     nodejs-14_x
