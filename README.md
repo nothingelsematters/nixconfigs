@@ -21,6 +21,16 @@
 + [Niv updater GitHub action](https://github.com/knl/niv-updater-action) - creating meaningful pull requests with Niv updates: [corresponding configuration](.github/workflows/niv-updates.yaml)
 + [Cachix Github Action](https://github.com/cachix/cachix-action) - checking builds on push and keeping cachix up-to-date: [corresponding configuration](.github/workflows/cachix.yaml)
 
+## Miscellaneous Package Confgurations
+
++ [VS Code](home/development/vscode/default.nix)
++ [git](home/development/git/default.nix)
++ [zsh](home/terminal/zsh/default.nix) and [starship](home/terminal/starship/default.nix)
++ [Firefox](home/firefox/)
+  using [Material Fox](https://github.com/muckSponge/MaterialFox/)
+  and [User.js privacy configuration](https://github.com/pyllyukko/user.js)
++ [Docker](services/docker/default.nix)
+
 ## Usage
 
 There is a [script file](make.sh) to escape boilerplate routine. There are following subcommands:
