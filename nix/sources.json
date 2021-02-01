@@ -66,10 +66,10 @@
         "homepage": "",
         "owner": "colemickens",
         "repo": "nixpkgs-wayland",
-        "rev": "1a9fbeda0567a66f38c565367d243f868cafdce3",
-        "sha256": "0d7acivwrz4dpv8vp7slbfjfxf3158d3b01c7ciplhsfhwayw188",
+        "rev": "81c067ca664bef93bb303690e19535cfaf88268e",
+        "sha256": "1mcxhxw9l8wp8waa9ijylmsmaqzyrkj3wzrd2yvwnx75bxyf44h4",
         "type": "tarball",
-        "url": "https://github.com/colemickens/nixpkgs-wayland/archive/1a9fbeda0567a66f38c565367d243f868cafdce3.tar.gz",
+        "url": "https://github.com/colemickens/nixpkgs-wayland/archive/81c067ca664bef93bb303690e19535cfaf88268e.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nord-dircolors": {
