@@ -78,6 +78,9 @@ with config.lib; {
 
   "gitmoji.outputType" = "code";
 
+  # rust
+  "[rust]"."editor.defaultFormatter" = "rust-lang.rust";
+
   # nix
   "[nix]" = {
     "editor.defaultFormatter" = "brettm12345.nixfmt-vscode";
