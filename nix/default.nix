@@ -7,6 +7,8 @@ let
   imports = import ../home/lib/imports.nix {
     inherit lib;
     dir = ./.;
+    includeFiles = true;
+    exclude = [ "/cachix.nix" "/sources.nix" ];
   };
 
   overlays = map import imports;

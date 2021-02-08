@@ -1,5 +1,5 @@
 { lib, dir, includeDirectories ? true, includeFiles ? false, skipDotted ? true
-, additional ? [ ], recursive ? false }:
+, additional ? [ ], exclude ? [ ], recursive ? false }:
 
 with lib.attrsets;
 with lib.lists;
@@ -18,7 +18,7 @@ let
   hasDefault = directory:
     any isDefaultNix (mapAttrsToList const (readDir directory));
 
-  filter = filterAttrs (name: type:
+  filterFiles = filterAttrs (name: type:
     (includeDir type || includeFile name type) && includeHidden name);
   merge = directory:
     mapAttrsToList (name:
@@ -29,6 +29,14 @@ let
       else
         singleton) child);
 
+  filterExclusion = filter (a: count (b: a == (dir + b)) exclude == 0);
+
   exploreDir = directory:
-    pipe directory [ readDir filter (merge directory) concatLists ];
+    pipe directory [
+      readDir
+      filterFiles
+      (merge directory)
+      concatLists
+      filterExclusion
+    ];
 in additional ++ exploreDir dir

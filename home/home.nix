@@ -5,6 +5,8 @@ with config.lib; {
     inherit lib;
     dir = ./.;
     recursive = true;
+    includeFiles = true;
+    exclude = [ "/simon.nix" "/home.nix" ];
   };
 
   home = {
