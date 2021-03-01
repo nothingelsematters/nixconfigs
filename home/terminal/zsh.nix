@@ -11,21 +11,6 @@
       ignoreDups = false;
     };
 
-    # oh-my-zsh = {
-    #   enable = true;
-    #   theme = "half-life";
-    #   plugins = [
-    #     "git"
-    #     "sudo"
-    #     "python"
-    #     "pip"
-    #     "git-extras"
-    #     "catimg"
-    #     "colored-man-pages"
-    #     "stack"
-    #   ];
-    # };
-
     plugins = with pkgs; [
       {
         name = "nix-zsh-completions";
