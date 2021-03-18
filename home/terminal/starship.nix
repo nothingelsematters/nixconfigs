@@ -34,59 +34,16 @@
         extensions = [ "kt" ];
       };
 
-      format = ''
-        $username\
-        $hostname\
-        $shlvl\
-        $kubernetes\
-        $directory\
-        $git_branch\
-        $git_commit\
-        $git_state\
-        $git_status\
-        $hg_branch\
-        $docker_context\
-        $package\
-        $cmake\
-        $dart\
-        $dotnet\
-        $elixir\
-        $elm\
-        $erlang\
-        $golang\
-        $helm\
-        $java\
-        $julia\
-        $nim\
-        $nodejs\
-        $ocaml\
-        $perl\
-        $php\
-        $purescript\
-        $python\
-        $ruby\
-        $rust\
-        $swift\
-        $terraform\
-        $zig\
-        $custom\
-        $nix_shell\
-        $env_var\
-        $conda\
-        $memory_usage\
-        $aws\
-        $gcloud\
-        $openstack\
-        $crystal\
-        $cmd_duration\
-        $line_break\
-        $lua\
-        $jobs\
-        $battery\
-        $time\
-        $status\
-        $character
-      '';
+      format = "$username" + "$hostname" + "$shlvl" + "$kubernetes"
+        + "$directory" + "$git_branch" + "$git_commit" + "$git_state"
+        + "$git_status" + "$hg_branch" + "$docker_context" + "$package"
+        + "$cmake" + "$dart" + "$dotnet" + "$elixir" + "$elm" + "$erlang"
+        + "$golang" + "$helm" + "$java" + "$julia" + "$nim" + "$nodejs"
+        + "$ocaml" + "$perl" + "$php" + "$purescript" + "$python" + "$ruby"
+        + "$rust" + "$swift" + "$terraform" + "$zig" + "$custom" + "$nix_shell"
+        + "$env_var" + "$conda" + "$memory_usage" + "$aws" + "$gcloud"
+        + "$openstack" + "$crystal" + "$cmd_duration" + "$line_break" + "$lua"
+        + "$jobs" + "$battery" + "$time" + "$status" + "$character";
     };
   };
 }

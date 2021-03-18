@@ -73,8 +73,12 @@
       zstyle ':completion:*:approximate:*' max-errors 1 numeric
       zstyle -e ':completion:*:approximate:*' \
               max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3))numeric)'
+
       bindkey '^[[A' up-line-or-search
       bindkey '^[[B' down-line-or-search
+      bindkey "^[[1;5C" forward-word
+      bindkey "^[[1;5D" backward-word
+      bindkey "^[[3~" delete-char
 
       eval $(${pkgs.thefuck}/bin/thefuck --alias)
 

@@ -20,7 +20,7 @@
 - [Cachix](https://cachix.org) - Nix binary cache hosting: [several caches](nix/cachix.nix)
 - [Niv updater GitHub action](https://github.com/knl/niv-updater-action) - creating meaningful pull requests with Niv updates: [corresponding configuration](.github/workflows/niv-updates.yaml)
 - [Cachix Github Action](https://github.com/cachix/cachix-action) - checking builds on push and keeping cachix up-to-date: [corresponding configuration](.github/workflows/cachix.yaml)
-- _TODO_: move onto [nix flakes](https://nixos.wiki/wiki/Flakes) :hmm:
+- _TODO_: move onto [nix flakes](https://nixos.wiki/wiki/Flakes) 🤔
 
 ## Miscellaneous Package Confgurations
 
@@ -33,6 +33,10 @@
   and [User.js privacy configuration](https://github.com/pyllyukko/user.js)
 - <img src="https://simpleicons.org/icons/docker.svg" height="12pt"> [Docker](services/docker/default.nix)
 
+---
+
+- [Little terminal package subset to use at work in Ubuntu WSL 🙈](home/work-ubuntu-wsl.nix)
+
 ## Usage
 
 There is a [script file](make.sh) to escape boilerplate routine. There are following subcommands:
@@ -41,6 +45,23 @@ There is a [script file](make.sh) to escape boilerplate routine. There are follo
 - `build` - just build configuration derivation
 - `switch` - build & switch on it
 - `clean` - clean up generations
+
+## WSL Ubuntu installation guide
+
+- `sudo mkdir -p /etc/nix`
+- `/etc/nix/nix.conf`:
+  ```
+  sandbox = false
+  use-sqlite-wal = false
+  ```
+- `sh <(curl -L https://nixos.org/nix/install) --no-daemon`
+- `nix-channel --add http://github.com/nix-community/home-manager/archive/master.tar.gz home-manager`
+- `nix-channel --update`
+- `nix-shell '<home-manager>' -A install`
+- clone this repo into `/home/{user}/.config/nixpkgs`
+- `ln -fs nixconfigs/home/work-ubuntu-wsl.nix`
+- `home-manager switch`
+- `sudo chsh -s $(which zsh) {user}`
 
 ## Inspiration
 

@@ -1,4 +1,4 @@
-name: Cachix updates
+name: Continious Integration
 
 on: [pull_request, push]
 
@@ -7,21 +7,21 @@ jobs:
     name: build system
     runs-on: ubuntu-latest
     steps:
-    - name: checkout
-      uses: actions/checkout@v2.3.4
+      - name: checkout
+        uses: actions/checkout@v2.3.4
 
-    - name: install cachix
-      uses: cachix/install-nix-action@v12
+      - name: install cachix
+        uses: cachix/install-nix-action@v12
 
-    - name: setup cachix
-      uses: cachix/cachix-action@v8
-      with:
-        name: nothingelsematters
-        signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
-        authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+      - name: setup cachix
+        uses: cachix/cachix-action@v8
+        with:
+          name: nothingelsematters
+          signingKey: "${{ secrets.CACHIX_SIGNING_KEY }}"
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
 
-    - name: use cachix
-      run: cachix use nothingelsematters
+      - name: use cachix
+        run: cachix use nothingelsematters
 
-    - name: build system
-      run: nix build --no-link -I nixpkgs="$(nix eval --raw "(import nix/sources.nix).nixpkgs.outPath")" -f ./vm.nix --keep-going --show-trace
+      - name: build system
+        run: nix build --no-link -I nixpkgs="$(nix eval --raw "(import nix/sources.nix).nixpkgs.outPath")" -f ./vm.nix --keep-going --show-trace

@@ -6,7 +6,7 @@ with config.lib; {
     dir = ./.;
     recursive = true;
     includeFiles = true;
-    exclude = [ "/simon.nix" "/home.nix" ];
+    exclude = [ "/simon.nix" "/home.nix" "/work-ubuntu-wsl.nix" ];
   };
 
   home = {
