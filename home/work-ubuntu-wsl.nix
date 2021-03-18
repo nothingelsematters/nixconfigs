@@ -19,6 +19,7 @@
 
   programs.starship.settings = {
     git_branch.symbol = "on ";
+    java.symbol = "java ";
     character = {
       success_symbol = "[>](bold green)";
       error_symbol = "[>](bold red)";
