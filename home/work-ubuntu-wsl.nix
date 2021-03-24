@@ -12,13 +12,7 @@
     ./terminal/zsh.nix
   ];
 
-  home.packages = with pkgs; [
-    jdk11
-    maven
-    cached-nix-shell
-    docker
-    docker-compose
-  ];
+  home.packages = with pkgs; [ jdk11 maven cached-nix-shell ];
 
   nixpkgs.overlays = with lib;
     trivial.pipe ../nix/sources.nix [
@@ -37,15 +31,19 @@
         git_branch.symbol = "";
         java.symbol = "java ";
         nix_shell.symbol = "nix ";
+        jobs.symbol = "+";
+
+        custom = { };
+
         character = {
           success_symbol = "[>](bold green)";
           error_symbol = "[>](bold red)";
           vicmd_symbol = "[<](bold green)";
         };
         format = "$shlvl" + "$directory" + "$git_branch" + "$git_commit"
-          + "$git_state" + "$git_status" + "$docker_context" + "$package"
-          + "$java" + "$nix_shell" + "$memory_usage" + "$cmd_duration"
-          + "$line_break" + "$jobs" + "$battery" + "$character";
+          + "$git_state" + "$docker_context" + "$package" + "$java"
+          + "$nix_shell" + "$memory_usage" + "$cmd_duration" + "$line_break"
+          + "$jobs" + "$battery" + "$character";
       };
     };
 
