@@ -101,19 +101,10 @@ with config.lib; {
     "editor.tabSize" = 2;
     "editor.rulers" = [ 80 ];
   };
-  # "haskell.hlint.executablePath" = pkgs.hlint + /bin/hlint;
-  # "haskell.hlint.run" = "onType";
-  # "ghcSimple.startupCommands.all" = [
-  #   "System.IO.hSetBuffering System.IO.stderr System.IO.NoBuffering"
-  #   "System.IO.hSetBuffering System.IO.stdout System.IO.NoBuffering"
-  #   ":set -haddock"
-  # ];
 
   # python
   "python.dataScience.alwaysTrustNotebooks" = true;
   "python.dataScience.askForKernelRestart" = false;
-  "workbench.editorAssociations" = [{
-    "viewType" = "jupyter.notebook.ipynb";
-    "filenamePattern" = "*.ipynb";
-  }];
+  "jupyter.experiments.optInfo" = [ "CustomEditor" ];
+  "jupyter.askForKernelRestart" = false;
 }

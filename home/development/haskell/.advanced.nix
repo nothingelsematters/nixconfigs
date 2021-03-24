@@ -30,4 +30,14 @@
           tasty-hedgehog
         ]))
     ];
+
+  programs.vscode.userSettings = {
+    "haskell.hlint.executablePath" = pkgs.hlint + /bin/hlint;
+    "haskell.hlint.run" = "onType";
+    "ghcSimple.startupCommands.all" = [
+      "System.IO.hSetBuffering System.IO.stderr System.IO.NoBuffering"
+      "System.IO.hSetBuffering System.IO.stdout System.IO.NoBuffering"
+      ":set -haddock"
+    ];
+  };
 }
