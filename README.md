@@ -25,13 +25,13 @@
 ## Miscellaneous Package Confgurations
 
 - <img src="https://simpleicons.org/icons/visualstudiocode.svg" height="12pt"> [VS Code](home/home/development/vscode/default.nix)
-- <img src="https://simpleicons.org/icons/git.svg" height="12pt"> [git](home/common/git/default.nix)
+- <img src="https://simpleicons.org/icons/git.svg" height="12pt"> [git](home/common/git.nix)
 - <img src="https://simpleicons.org/icons/starship.svg" height="12pt"> [zsh](home/common/zsh.nix)
-  and [starship](home/common/starship.nix)
+  and [starship](home/home/terminal/starship.nix)
 - <img src="https://simpleicons.org/icons/firefox.svg" height="12pt"> [Firefox](home/home/firefox/)
   using [Material Fox](https://github.com/muckSponge/MaterialFox/)
   and [User.js privacy configuration](https://github.com/pyllyukko/user.js)
-- <img src="https://simpleicons.org/icons/docker.svg" height="12pt"> [Docker](host/services/docker/default.nix)
+- <img src="https://simpleicons.org/icons/docker.svg" height="12pt"> [Docker](host/services/docker.nix)
 
 ---
 
@@ -61,7 +61,6 @@ There is a [script file](make.sh) to escape boilerplate routine. There are follo
 - clone this repo into `/home/{user}/.config/nixpkgs`
 - `ln -fs nixconfigs/home/work/default.nix home.nix`
 - `home-manager switch`
-- `sudo chsh -s $(which zsh) {user}`
 
 ## Inspiration
 
