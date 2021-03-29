@@ -1,7 +1,7 @@
 args@{ lib, pkgs, ... }:
 
 {
-  lib.theme = lib.trivial.pipe (import ../lib/imports.nix {
+  lib.theme = lib.trivial.pipe (import ../../../lib/imports.nix {
     inherit lib;
     dir = ./.;
     includeFiles = true;

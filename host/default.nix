@@ -1,7 +1,12 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
-  imports = [ ./hardware.nix ../../home/simon.nix ../../services ];
+  imports = [ ../home/home ] ++ import ../lib/imports.nix {
+    inherit lib;
+    dir = ./.;
+    recursive = true;
+    includeFiles = true;
+  };
 
   system = {
     stateVersion = "20.03";

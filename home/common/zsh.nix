@@ -37,7 +37,7 @@
 
       confs = "z conf; $EDITOR .";
 
-      l = "exa -lh --git --group-directories-first";
+      l = "exa -lh --git --group-directories-first --no-user";
       la = "l -a";
       tree = "l -T";
       ll = "tree -L 2";

@@ -24,6 +24,7 @@ with config.lib; {
   "explorer.autoReveal" = true;
   "explorer.openEditors.visible" = 0;
   "explorer.confirmDelete" = false;
+  "explorer.confirmDragAndDrop" = false;
 
   "extensions.ignoreRecommendations" = true;
   "extensions.showRecommendationsOnlyOnDemand" = true;

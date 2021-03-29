@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./common.nix ];
-
   home.packages = [ pkgs.nodePackages.gitmoji-cli ];
 
   programs = {

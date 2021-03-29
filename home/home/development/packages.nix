@@ -49,13 +49,19 @@
     # python
     (python3.withPackages (ps:
       with ps; [
+        # jupyter
         notebook
         ipykernel
+        tqdm
+        ipywidgets
+
+        # calculations
         numpy
         matplotlib
         sklearn-deap
-        tqdm
-        ipywidgets
+
+        # formatter
+        autopep8
       ]))
   ];
 }

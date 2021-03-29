@@ -4,7 +4,7 @@ with builtins;
 with lib;
 with attrsets;
 let
-  imports = import ../home/lib/imports.nix {
+  imports = import ../lib/imports.nix {
     inherit lib;
     dir = ./.;
     includeFiles = true;

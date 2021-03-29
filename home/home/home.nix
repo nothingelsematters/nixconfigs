@@ -1,12 +1,12 @@
 { lib, pkgs, config, overlays, ... }:
 
 with config.lib; {
-  imports = import lib/imports.nix {
+  imports = [ ../common ] ++ import ../../lib/imports.nix {
     inherit lib;
     dir = ./.;
     recursive = true;
     includeFiles = true;
-    exclude = [ "/simon.nix" "/home.nix" "/work-ubuntu-wsl.nix" ];
+    exclude = [ "/default.nix" "/home.nix" ];
   };
 
   home = {
@@ -32,20 +32,6 @@ with config.lib; {
     '';
   };
 
-  manual.manpages.enable = true;
-
-  nixpkgs = {
-    inherit overlays;
-    config.allowUnfreePredicate = pkg:
-      builtins.elem (lib.strings.getName pkg) [
-        "typora"
-        "slack"
-        "vscode"
-        "spotify"
-        "spotify-unwrapped"
-      ];
-  };
-
   gtk = {
     enable = true;
     iconTheme = theme.icons;
@@ -54,19 +40,16 @@ with config.lib; {
     gtk3.extraConfig.gtk-application-prefer-dark-theme = theme.isDark;
   };
 
-  programs.home-manager = {
-    enable = true;
-    path = "https://github.com/rycee/home-manager/archive/master.tar.gz";
-  };
-
   xdg.mimeApps.defaultApplications = with packages;
     let
       desktop = x: [ (x + ".desktop") ];
       browser = desktop browser.name;
+      evince = desktop "evince";
+      feh = desktop "feh";
     in {
       # Doc viewer
-      "application/pdf" = desktop "evince";
-      "image/vnd.djvu" = desktop "evince";
+      "application/pdf" = evince;
+      "image/vnd.djvu" = evince;
       # Browser
       "application/x-extension-htm" = browser;
       "application/x-extension-html" = browser;
@@ -77,8 +60,8 @@ with config.lib; {
       "x-scheme-handler/http" = browser;
       "x-scheme-handler/https" = browser;
       # Pic viewer
-      "image/png" = desktop "feh";
-      "image/jpeg" = desktop "feh";
+      "image/png" = feh;
+      "image/jpeg" = feh;
       # Text viewer
       "text/plain" = desktop editor.name;
     };
