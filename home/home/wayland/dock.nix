@@ -1,8 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 let
   configFileName = "lavalauncher/lavalauncher.conf";
-  lavalauncher = pkgs.nixpkgs-wayland.lavalauncher;
+  lavalauncher = inputs.nixpkgs-wayland.packages.x86_64-linux.lavalauncher;
 in {
   home.packages = [ lavalauncher ];
 

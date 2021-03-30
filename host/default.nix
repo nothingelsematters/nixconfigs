@@ -1,55 +1,32 @@
-{ lib, pkgs, ... }:
+inputs@{ system, nixpkgs, nixpkgs-turbo, nixpkgs-wayland, home, flake-utils
+, materialFox, nord-dircolors, forgit, vars, ... }:
 
-{
-  imports = [ ../home/home ] ++ import ../lib/imports.nix {
+with nixpkgs;
+lib.nixosSystem rec {
+  inherit system;
+
+  specialArgs = { inherit inputs vars; };
+
+  modules = import ../lib/imports.nix {
     inherit lib;
     dir = ./.;
     recursive = true;
     includeFiles = true;
-  };
 
-  system = {
-    stateVersion = "20.03";
-    autoUpgrade.enable = true;
-  };
+    additional = [
+      home.nixosModules.home-manager
 
-  sound.enable = true;
-  networking.networkmanager.enable = true;
+      ../home/home
 
-  time.timeZone = "Europe/Moscow";
-
-  fonts = {
-    fontconfig = {
-      enable = true;
-
-      defaultFonts = {
-        monospace = [ "Jetbrains Mono" ];
-        emoji = [ "Joypixels" ];
-      };
-    };
-
-    fonts = with pkgs; [
-      ubuntu_font_family
-      font-awesome_4
-      font-awesome
-      noto-fonts
-      noto-fonts-cjk
-      noto-fonts-emoji
-      joypixels
-      material-icons
-      comfortaa
-      jetbrains-mono
+      ({ config, lib, ... }: {
+        options.home-manager.users = lib.mkOption {
+          type = with lib.types;
+            attrsOf (submoduleWith {
+              inherit specialArgs;
+              modules = [ ];
+            });
+        };
+      })
     ];
   };
-
-  nix = {
-    autoOptimiseStore = true;
-    gc.automatic = true;
-    optimise.automatic = true;
-  };
-
-  services.udev.extraRules = ''
-    ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chgrp video /sys/class/backlight/%k/brightness"
-    ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chmod g+w /sys/class/backlight/%k/brightness"
-  '';
 }

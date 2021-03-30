@@ -1,4 +1,4 @@
-arg@{ config, pkgs, ... }:
+arg@{ config, pkgs, inputs, ... }:
 
 with config.lib;
 let
@@ -23,8 +23,9 @@ in {
           id = 0;
           isDefault = true;
           settings = import ./settings.nix arg;
+          # TODO it is broken
           userChrome = ''
-            @import "${pkgs.materialFox + /chrome/userChrome.css}";
+            @import "${inputs.materialFox + /chrome/userChrome.css}";
             ${themeCss}
             ${builtins.readFile ./overrides.css}
           '';

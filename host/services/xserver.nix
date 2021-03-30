@@ -20,7 +20,7 @@
 
       libinput = {
         enable = true;
-        naturalScrolling = true;
+        touchpad.naturalScrolling = true;
       };
 
       layout = "us,ru";
@@ -30,14 +30,14 @@
         sddm = {
           enable = true;
           theme = "clairvoyance";
-          extraConfig = ''
-            [Theme]
-            ThemeDir=${pkgs.sddm-theme-clairvoyance}/share
-            EnableAvatars=true
+          # extraConfig = ''
+          #   [Theme]
+          #   ThemeDir=${pkgs.sddm-theme-clairvoyance}/share
+          #   EnableAvatars=true
 
-            [Users]
-            HideUsers=jupyter
-          '';
+          #   [Users]
+          #   HideUsers=jupyter
+          # '';
         };
       };
     };

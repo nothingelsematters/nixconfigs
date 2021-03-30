@@ -18,7 +18,7 @@
     ktlint
 
     # java
-    jdk14
+    jdk15_headless
     maven
     antlr4
 
@@ -37,7 +37,6 @@
     cachix
     manix
     cached-nix-shell
-    generation-diff
 
     # databases
     postgresql_13
@@ -58,7 +57,8 @@
         # calculations
         numpy
         matplotlib
-        sklearn-deap
+        pandas
+        scikitlearn
 
         # formatter
         autopep8

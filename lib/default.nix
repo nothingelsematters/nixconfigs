@@ -10,7 +10,7 @@ with lib.attrsets; {
       toScript = name: packs: str:
         let
           patched = ''
-            export PATH=${stdenv.lib.makeBinPath packs}
+            export PATH=${lib.makeBinPath packs}
           '' + str;
         in (writeShellScriptBin name patched) + "/bin/" + name;
 

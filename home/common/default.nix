@@ -1,24 +1,12 @@
 { lib, config, ... }:
 
 with config.lib; {
-  imports = [ ../../lib ] ++ import ../../lib/imports.nix {
+  imports = import ../../lib/imports.nix {
     inherit lib;
     dir = ./.;
     recursive = true;
     includeFiles = true;
-  };
-
-  nixpkgs = {
-    overlays = import ../../nix lib;
-
-    config.allowUnfreePredicate = pkg:
-      builtins.elem (lib.strings.getName pkg) [
-        "typora"
-        "slack"
-        "vscode"
-        "spotify"
-        "spotify-unwrapped"
-      ];
+    additional = [ ../../lib ];
   };
 
   manual.manpages.enable = true;

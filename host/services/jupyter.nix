@@ -3,10 +3,20 @@
 let
   pythonEnv = (pkgs.python3.withPackages (pythonPackages:
     with pythonPackages; [
+      # jupyter
+      notebook
       ipykernel
+      tqdm
+      ipywidgets
+
+      # calculations
+      numpy
       matplotlib
       pandas
       scikitlearn
+
+      # formatter
+      autopep8
     ]));
 in {
   services.jupyter = {

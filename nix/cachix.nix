@@ -1,4 +1,3 @@
-# WARN: this file will get overwritten by $ cachix use <name>
 { lib, ... }:
 
 {

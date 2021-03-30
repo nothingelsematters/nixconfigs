@@ -1,11 +1,16 @@
 self: super:
 
-let clairvoyance = super.sddm-theme-clairvoyance;
+let rev = "dfc5984ff8f4a0049190da8c6173ba5667904487";
 in {
-  sddm-theme-clairvoyance = super.stdenv.mkDerivation {
+  sddm-theme-clairvoyance = super.stdenv.mkDerivation rec {
     pname = "sddm-clairvoyance";
-    version = clairvoyance.rev;
-    src = clairvoyance;
+    version = rev;
+    src = self.fetchFromGitHub {
+      inherit rev;
+      owner = "eayus";
+      repo = "sddm-theme-clairvoyance";
+      sha256 = "0qs4xmfa4f45ss5h7nq2razh7pxgplp49qdyvpkpn9hc80ivg26z";
+    };
 
     nativeBuildInputs = with self; [ imagemagick ];
 

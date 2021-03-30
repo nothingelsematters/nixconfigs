@@ -1,12 +1,13 @@
 { lib, pkgs, config, overlays, ... }:
 
 with config.lib; {
-  imports = [ ../common ] ++ import ../../lib/imports.nix {
+  imports = import ../../lib/imports.nix {
     inherit lib;
     dir = ./.;
     recursive = true;
     includeFiles = true;
     exclude = [ "/default.nix" "/home.nix" ];
+    additional = [ ./theme.nix ../common ];
   };
 
   home = {
@@ -17,7 +18,6 @@ with config.lib; {
       USE_NIX2_COMMAND = 1;
       XDG_CURRENT_DESKTOP = "Gnome";
       QT_QPA_PLATFORM = "wayland";
-      NIX_PATH = "nixpkgs=${pkgs.nixpkgs.outPath}";
     };
 
     keyboard = {
@@ -50,6 +50,7 @@ with config.lib; {
       # Doc viewer
       "application/pdf" = evince;
       "image/vnd.djvu" = evince;
+
       # Browser
       "application/x-extension-htm" = browser;
       "application/x-extension-html" = browser;
@@ -59,9 +60,11 @@ with config.lib; {
       "application/x-extension-xht" = browser;
       "x-scheme-handler/http" = browser;
       "x-scheme-handler/https" = browser;
+
       # Pic viewer
       "image/png" = feh;
       "image/jpeg" = feh;
+
       # Text viewer
       "text/plain" = desktop editor.name;
     };

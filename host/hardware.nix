@@ -1,10 +1,6 @@
 { lib, pkgs, ... }:
 
-let sources = import ../nix/sources.nix;
-in {
-  imports =
-    [ "${sources.nixpkgs}/nixos/modules/installer/scan/not-detected.nix" ];
-
+{
   boot = {
     initrd.availableKernelModules =
       [ "ahci" "xhci_pci" "usb_storage" "sd_mod" "sdhci_acpi" ];
@@ -34,7 +30,7 @@ in {
   hardware = {
     bluetooth = {
       enable = true;
-      config.General.Enable = "Source,Sink,Media,Socket";
+      settings.General.Enable = "Source,Sink,Media,Socket";
     };
 
     opengl = {

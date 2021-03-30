@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   home.packages = [ pkgs.thefuck ];
@@ -26,18 +26,15 @@
       }
       {
         name = "forgit";
-        src = forgit;
+        # TODO
+        src = inputs.forgit;
       }
     ];
 
     shellAliases = rec {
-      nixx = "sudo /etc/nixos/make.sh";
-      nixxs = "${nixx} switch";
       nsp = "cached-nix-shell --run zsh -p";
 
-      confs = "z conf; $EDITOR .";
-
-      l = "exa -lh --git --group-directories-first --no-user";
+      l = "exa -lh --git --no-user --group-directories-first";
       la = "l -a";
       tree = "l -T";
       ll = "tree -L 2";
@@ -49,9 +46,6 @@
       "...." = "cd ../../..";
 
       cal = "cal -3m";
-
-      copy = "wl-copy";
-      paste = "wl-paste";
     };
 
     initExtra = ''

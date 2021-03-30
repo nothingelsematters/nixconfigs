@@ -5,6 +5,7 @@
     zsh.shellAliases = {
       g = "git";
       gco = "git checkout";
+      gcl = "git clone";
 
       current_branch = "git rev-parse --abbrev-ref HEAD";
       gpull = "git pull origin $(current_branch)";

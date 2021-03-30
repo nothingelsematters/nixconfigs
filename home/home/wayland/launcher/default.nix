@@ -29,22 +29,21 @@ in {
 
     font = "${theme.fonts.notification} 10";
 
-    extraConfig = ''
-      rofi.font:                ${theme.fonts.notification} 10
-      rofi.show-icons:          true
-      rofi.drun-display-format: {name}
-      rofi.threads:             0
-      rofi.matching:            fuzzy
-      rofi.disable-history:     false
-      rofi.modi:                drun
-      rofi.window-thumbnail:    true
-      rofi.drun-match-fields:   name
-      rofi.kb-row-select:       ctrl+shift+space
-      rofi.kb-cancel:           Menu,Escape,alt+r
-      rofi.kb-row-tab:          shift+Tab
-      rofi.icon-theme:          ${theme.icons.name}
-      rofi.display-drun:        apps
-      rofi.columns:             8
-    '';
+    extraConfig = {
+      show-icons = true;
+      drun-display-format = "{name}";
+      threads = 0;
+      matching = "fuzzy";
+      disable-history = false;
+      modi = "drun";
+      window-thumbnail = true;
+      drun-match-fields = "name";
+      kb-row-select = "ctrl+shift+space";
+      kb-cancel = "Menu,Escape,alt+r";
+      kb-row-tab = "shift+Tab";
+      icon-theme = theme.icons.name;
+      display-drun = "apps";
+      columns = 8;
+    };
   };
 }
