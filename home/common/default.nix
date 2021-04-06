@@ -6,7 +6,6 @@ with config.lib; {
     dir = ./.;
     recursive = true;
     includeFiles = true;
-    additional = [ ../../lib ];
   };
 
   manual.manpages.enable = true;

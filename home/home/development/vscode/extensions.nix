@@ -3,38 +3,36 @@
 with pkgs;
 with vscode-extensions;
 [
+  tomoki1207.pdf
+
+  # theme
+  file-icons.file-icons
+  gruntfuggly.todo-tree
+  github.github-vscode-theme
+
   # nix
   bbenoist.Nix
+  brettm12345.nixfmt-vscode
+  jnoortheen.nix-ide
 
   # haskell
   justusadam.language-haskell
 
   # rust
   matklad.rust-analyzer
+  serayuzgur.crates
+
+  # latex
+  james-yu.latex-workshop
+
+  # markdown
+  yzhang.markdown-all-in-one
 ] ++ vscode-utils.extensionsFromVscodeMarketplace [
-  {
-    name = "github-vscode-theme";
-    publisher = "github";
-    version = "1.1.5";
-    sha256 = "1llyrm4iwdp79ylnw4kn5g6qlp8blrpaddszhl61yv82rs60kw0h";
-  }
-  {
-    name = "file-icons";
-    publisher = "file-icons";
-    version = "1.0.24";
-    sha256 = "0mcaz4lv7zb0gw0i9zbd0cmxc41dnw344ggwj1wy9y40d627wdcx";
-  }
   {
     name = "vscode-diff";
     publisher = "fabiospampinato";
     version = "1.4.0";
     sha256 = "10ayc6677clpnid4lm6h22v5635k1aidp7pr2iwkiblbqq6ri5s0";
-  }
-  {
-    name = "todo-tree";
-    publisher = "gruntfuggly";
-    version = "0.0.177";
-    sha256 = "1j3vgyimc4gamp3dnym9wfk445q5hipjq3cimvpqqa22pk4g0224";
   }
 
   # git
@@ -49,14 +47,6 @@ with vscode-extensions;
     publisher = "Vtrois";
     version = "0.1.9";
     sha256 = "0mhgl7sdqdzj5gsrajrfq4g6wqikk19fa59rrr2dhq6hrin7a9mb";
-  }
-
-  # nix
-  {
-    name = "nixfmt-vscode";
-    publisher = "brettm12345";
-    version = "0.0.1";
-    sha256 = "07w35c69vk1l6vipnq3qfack36qcszqxn8j3v332bl0w6m02aa7k";
   }
 
   # kotlin
@@ -79,14 +69,6 @@ with vscode-extensions;
     publisher = "rust-lang";
     version = "0.7.8";
     sha256 = "039ns854v1k4jb9xqknrjkj8lf62nfcpfn0716ancmjc4f0xlzb3";
-  }
-
-  # markdown
-  {
-    name = "markdown-all-in-one";
-    publisher = "yzhang";
-    version = "3.1.0";
-    sha256 = "0b5fqwaxbdqpqx53gxjjfawghwrpbj9zmbvsw5wamn1jx3djgflk";
   }
 
   # haskell

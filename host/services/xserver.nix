@@ -30,14 +30,14 @@
         sddm = {
           enable = true;
           theme = "clairvoyance";
-          # extraConfig = ''
-          #   [Theme]
-          #   ThemeDir=${pkgs.sddm-theme-clairvoyance}/share
-          #   EnableAvatars=true
-
-          #   [Users]
-          #   HideUsers=jupyter
-          # '';
+          settings = {
+            Users.HideUsers = "jupyter";
+            Theme = {
+              # TODO
+              # ThemeDir = "${pkgs.sddm-theme-clairvoyance}/share";
+              EnableAvatars = true;
+            };
+          };
         };
       };
     };
