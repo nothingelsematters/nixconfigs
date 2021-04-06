@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ../common ];
+  imports = [ ./common ];
 
   home.packages = with pkgs; [ jdk11 maven cached-nix-shell ];
 

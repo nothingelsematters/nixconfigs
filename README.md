@@ -54,7 +54,7 @@
 - `nix-channel --update`
 - `nix-shell '<home-manager>' -A install`
 - clone this repo into `/home/{user}/.config/nixpkgs`
-- `ln -fs nixconfigs/home/work/default.nix home.nix`
+- `ln -fs nixconfigs/home/work.nix home.nix`
 - `home-manager switch`
 
 ## Inspiration
