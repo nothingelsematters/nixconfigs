@@ -17,7 +17,7 @@
 ## Nix tools being used
 
 - [Nix Flakes](https://nixos.wiki/wiki/Flakes) - dependency specification feature
-- [Cachix](https://cachix.org) - Nix binary cache hosting: [several caches](nix/cachix.nix)
+- [Cachix](https://cachix.org) - Nix binary cache hosting
 - _TODO:_ [Cachix Github Action](https://github.com/cachix/cachix-action) - checking builds on push and keeping cachix up-to-date
 - _TODO:_ flakes update GitHub pull request action
 
