@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, nixpkgs-turbo, ... }:
 
 {
   programs.zsh.shellAliases = {
@@ -35,6 +35,7 @@
 
     # rust
     rustup
+    turbo.glibc
 
     # nix
     niv

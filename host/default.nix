@@ -1,5 +1,5 @@
-inputs@{ system, nixpkgs, nixpkgs-turbo, nixpkgs-wayland, home, flake-utils
-, materialFox, nord-dircolors, forgit, vars, ... }:
+inputs@{ system, nixpkgs, nixpkgs-turbo, nixpkgs-stable, nixpkgs-wayland, home
+, flake-utils, materialFox, nord-dircolors, forgit, vars, ... }:
 
 with nixpkgs;
 lib.nixosSystem rec {

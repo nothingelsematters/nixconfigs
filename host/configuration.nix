@@ -39,7 +39,7 @@
       allowUnfree = true;
       joypixels.acceptLicense = true;
     };
-    overlays = import ../nix lib;
+    overlays = import ../nix lib inputs;
   };
 
   home-manager = {

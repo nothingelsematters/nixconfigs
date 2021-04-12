@@ -96,13 +96,13 @@
         "type": "indirect"
       }
     },
-    "nixpkgs-reliable": {
+    "nixpkgs-stable": {
       "locked": {
-        "lastModified": 1617090276,
-        "narHash": "sha256-iLyhMpKHxPoDQOPHlrENoh3uiOIlwtWi9Luj6xd3IOs=",
+        "lastModified": 1618242476,
+        "narHash": "sha256-B0cKMkAisdZJLcdMIB4QofpVritVrRUmyYVaR6wIvZk=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "3e0a085d07f6a84fd5f35ce188f84ca50d224849",
+        "rev": "c3253cdab424b87ad8490d42f6585302b20bd39b",
         "type": "github"
       },
       "original": {
@@ -200,7 +200,7 @@
         "home": "home",
         "materialFox": "materialFox",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs-reliable": "nixpkgs-reliable",
+        "nixpkgs-stable": "nixpkgs-stable",
         "nixpkgs-turbo": "nixpkgs-turbo",
         "nixpkgs-wayland": "nixpkgs-wayland",
         "nord-dircolors": "nord-dircolors"
