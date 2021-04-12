@@ -10,6 +10,11 @@
   };
 
   home.packages = with pkgs; [
+    docker
+    docker_compose
+    subversion
+    (texlive.combine { inherit (texlive) scheme-full latexmk; })
+
     # markdown
     mdcat
 

@@ -47,6 +47,10 @@
     useUserPackages = true;
   };
 
+  systemd.extraConfig = ''
+    DefaultLimitNOFILE=102400
+  '';
+
   fonts = {
     fontconfig = {
       enable = true;

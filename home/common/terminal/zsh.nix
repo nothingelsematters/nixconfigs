@@ -34,6 +34,7 @@
     shellAliases = rec {
       nsp = "cached-nix-shell --run zsh -p";
 
+      dc = "docker-compose";
       l = "exa -lh --git --no-user --group-directories-first";
       la = "l -a";
       tree = "l -T";
@@ -46,6 +47,12 @@
       "...." = "cd ../../..";
 
       cal = "cal -3m";
+    };
+
+    shellGlobalAliases = {
+      "..." = "../..";
+      "...." = "../../..";
+      "....." = "../../../..";
     };
 
     initExtra = ''

@@ -63,14 +63,6 @@ with vscode-extensions;
     sha256 = "00w7d0iyr3nf5jqzwy7kk7awyh3fnljzrjbkknxmpjyjyvaa7n0z";
   }
 
-  # rust
-  {
-    name = "rust";
-    publisher = "rust-lang";
-    version = "0.7.8";
-    sha256 = "039ns854v1k4jb9xqknrjkj8lf62nfcpfn0716ancmjc4f0xlzb3";
-  }
-
   # haskell
   {
     name = "haskell-linter";

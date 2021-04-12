@@ -2,8 +2,7 @@
 
 {
   programs.zsh.shellAliases = rec {
-    nrs = "sudo nixos-rebuild switch --keep-going --show-trace";
-    nsp = "cached-nix-shell --run zsh -p";
+    nrs = "sudo nixos-rebuild switch --keep-going";
 
     confs = "z conf; $EDITOR .";
 

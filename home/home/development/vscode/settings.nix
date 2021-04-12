@@ -19,7 +19,7 @@ with config.lib; {
   "editor.smoothScrolling" = true;
   "editor.scrollBeyondLastLine" = false;
   "editor.multiCursorModifier" = "ctrlCmd";
-  "editor.find.autoFindInSelection" = "always";
+  "editor.find.autoFindInSelection" = "new";
 
   "explorer.autoReveal" = true;
   "explorer.openEditors.visible" = 0;
@@ -108,4 +108,7 @@ with config.lib; {
   "python.dataScience.askForKernelRestart" = false;
   "jupyter.experiments.optInfo" = [ "CustomEditor" ];
   "jupyter.askForKernelRestart" = false;
+
+  # latex
+  "[latex]"."editor.wordWrap" = "on";
 }
