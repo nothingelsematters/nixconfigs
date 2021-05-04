@@ -77,38 +77,9 @@ with config.lib; {
 
   "todo-tree.tree.showScanModeButton" = false;
 
-  "gitmoji.outputType" = "code";
-
-  # rust
-  "[rust]"."editor.defaultFormatter" = "rust-lang.rust";
-
-  # nix
-  "[nix]" = {
-    "editor.defaultFormatter" = "brettm12345.nixfmt-vscode";
-    "editor.tabSize" = 2;
-    "editor.rulers" = [ 80 ];
-  };
-  "nixfmt.path" = pkgs.nixfmt + /bin/nixfmt;
-
   # sql
   "[sql]" = {
     "editor.tabSize" = 2;
     "editor.rulers" = [ 80 ];
   };
-
-  # haskell
-  "[haskell]" = {
-    "editor.defaultFormatter" = "vigoo.stylish-haskell";
-    "editor.tabSize" = 2;
-    "editor.rulers" = [ 80 ];
-  };
-
-  # python
-  "python.dataScience.alwaysTrustNotebooks" = true;
-  "python.dataScience.askForKernelRestart" = false;
-  "jupyter.experiments.optInfo" = [ "CustomEditor" ];
-  "jupyter.askForKernelRestart" = false;
-
-  # latex
-  "[latex]"."editor.wordWrap" = "on";
 }

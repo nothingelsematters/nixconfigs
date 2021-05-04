@@ -11,11 +11,6 @@
 
     env_var.variable = "NIX_NAME";
 
-    nix_shell = {
-      symbol = "❄️ ";
-      use_name = true;
-    };
-
     format = "$username" + "$hostname" + "$shlvl" + "$kubernetes" + "$directory"
       + "$git_branch" + "$git_commit" + "$git_state" + "$git_status"
       + "$docker_context" + "$nix_shell" + "$env_var" + "$memory_usage"

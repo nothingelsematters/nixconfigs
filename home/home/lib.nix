@@ -1,9 +1,8 @@
 { pkgs, lib, ... }:
 
 with builtins;
-with pkgs;
-with lib.attrsets; {
-  lib = {
+with pkgs; {
+  lib = rec {
     constants.barHeight = 16;
 
     functions = rec {
@@ -17,73 +16,6 @@ with lib.attrsets; {
       getScript = file: packs:
         toScript (replaceStrings [ "/" ] [ "" ] (toString file)) packs
         (readFile file);
-
-      toCSS = let
-        concatMapped = f: set: concatStringsSep "\n" (mapAttrsToList f set);
-        mapValues = name: value: "    ${name}: ${toString value};";
-        mapGroups = name: value: ''
-          ${name} {
-          ${concatMapped mapValues value}
-          }'';
-      in concatMapped mapGroups;
-
-      toCSON = let
-        indent = map (str: "  ${str}");
-        processSet = set: concatLists (mapAttrsToList valueToCSON set);
-        valueToCSON = name:
-          let left = ''"${name}": '';
-          in value:
-          if isAttrs value then
-            [ left ] ++ indent (processSet value)
-          else if isList value then
-            [ (left + "[") ] ++ indent (map (str: ''"${str}"'') value)
-            ++ [ "]" ]
-          else if isString value then
-            [ ''${left}"${value}"'' ]
-          else if isBool value then
-            [ (left + (if value then "true" else "false")) ]
-          else
-            [ "${left}${toString value}" ];
-      in set: concatStringsSep "\n" (processSet set);
-    };
-
-    theme.utils = let
-      mkCommon = { prefix, postfix, valuef }:
-
-        let
-          recurse = func: path:
-            mapAttrs (name: value:
-              (if isAttrs value then (recurse func) else valuef)
-              (path ++ [ name ]) value);
-
-          collect = attrs:
-            if isAttrs attrs then
-              concatMap collect (attrValues attrs)
-            else
-              [ attrs ];
-        in attrs: ''
-          ${prefix}
-          ${concatStringsSep "\n" (collect (recurse valuef [ ] attrs))}
-          ${postfix}
-        '';
-    in {
-      mkOpaque = color: color + "bf";
-
-      mkCss = mkCommon {
-        prefix = "{";
-        postfix = "}";
-        valuef = path: value:
-          "--${(concatStringsSep "-" ([ "theme" ] ++ path))}: ${
-            toString value
-          };";
-      };
-
-      mkINI = mkCommon {
-        prefix = "[theme]";
-        postfix = "";
-        valuef = path: value:
-          "${(concatStringsSep "-" path)} = ${toString value}";
-      };
     };
   };
 }

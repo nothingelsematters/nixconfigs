@@ -3,7 +3,7 @@
 {
   imports = [ ./common ];
 
-  home.packages = with pkgs; [ jdk11 maven cached-nix-shell ];
+  home.packages = with pkgs; [ jdk11 maven ];
 
   lib.theme.isDark = true;
 
@@ -29,8 +29,6 @@
         symbol = "nix ";
         use_name = true;
       };
-
-      python.python_binary = [ "python3" ];
 
       character = {
         success_symbol = "[>](bold green)";

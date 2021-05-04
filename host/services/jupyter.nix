@@ -37,4 +37,9 @@ in {
       };
     };
   };
+
+  users.users.jupyter = {
+    isNormalUser = false;
+    isSystemUser = true;
+  };
 }

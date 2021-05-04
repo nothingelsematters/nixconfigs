@@ -1,7 +1,6 @@
 arg@{ config, pkgs, lib, ... }:
 
 with config.lib;
-with theme.utils;
 with builtins;
 let scripts = import ./scripts arg;
 in {
@@ -53,7 +52,10 @@ in {
       ];
 
       modifier = "Mod4";
-      fonts = [ "${theme.fonts.notification} 8" ];
+      fonts = {
+        names = [ theme.fonts.notification ];
+        size = 8.0;
+      };
 
       window = {
         border = 0;
@@ -101,7 +103,7 @@ in {
           text = theme.colors.text.primary;
         };
         focusedInactive = rec {
-          background = mkOpaque focused.background;
+          background = "${focused.background}bf";
           border = background;
           childBorder = border;
           indicator = "#484e50";

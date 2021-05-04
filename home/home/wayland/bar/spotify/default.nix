@@ -1,11 +1,10 @@
 { config, pkgs, ... }:
 
 with config.lib;
-with functions;
 with theme.colors; {
   max-length = 70;
   exec = with pkgs;
-    toScript "waybar-spotify.sh" [ sway playerctl ] ''
+    functions.toScript "waybar-spotify.sh" [ sway playerctl ] ''
       while true; do
           swaymsg -t subscribe '[ "window" ]' > /dev/null
 

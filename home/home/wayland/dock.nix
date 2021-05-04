@@ -59,6 +59,7 @@ in {
       size = 45;
       icon-padding = 5;
       exclusive-zone = false;
+      hidden-mode = always;
       layer = top;
       indicator-hover-colour = "#AAAAAA22";
       indicator-active-colour = "#AAAAAA22";

@@ -1,11 +1,21 @@
-{ config, ... }:
+{ config, lib, ... }:
 
 with config.lib;
+with builtins;
+with lib.attrsets;
 let
-  margin =
-    builtins.toString (config.wayland.windowManager.sway.config.gaps.outer + 2);
+  margin = toString (config.wayland.windowManager.sway.config.gaps.outer + 2);
+
+  toCSS = let
+    concatMapped = f: set: concatStringsSep "\n" (mapAttrsToList f set);
+    mapValues = name: value: "    ${name}: ${toString value};";
+    mapGroups = name: value: ''
+      ${name} {
+      ${concatMapped mapValues value}
+      }'';
+  in concatMapped mapGroups;
 in {
-  programs.waybar.style = functions.toCSS {
+  programs.waybar.style = toCSS {
     "*" = {
       font-family = ''${theme.fonts.notification}, "Font Awesome 5 Brands", ''
         + ''"Font Awesome 5 Free", "Font Awesome 5 Free Solid", ''

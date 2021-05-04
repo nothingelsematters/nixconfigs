@@ -18,8 +18,6 @@
 
 - [Nix Flakes](https://nixos.wiki/wiki/Flakes) - dependency specification feature
 - [Cachix](https://cachix.org) - Nix binary cache hosting
-- _TODO:_ [Cachix Github Action](https://github.com/cachix/cachix-action) - checking builds on push and keeping cachix up-to-date
-- _TODO:_ flakes update GitHub pull request action
 
 ## Miscellaneous Package Confgurations
 
@@ -40,6 +38,7 @@
 
 - Build: `sudo nixos-rebuild switch --flake . --keep-going --show-trace`
 - Update: `nix flake update . --update-input <whatever>`
+- Clean up generations: `sudo nix-collect-garbage -d`
 
 ## WSL Ubuntu installation guide
 

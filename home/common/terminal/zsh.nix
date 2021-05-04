@@ -1,7 +1,7 @@
 { pkgs, inputs, ... }:
 
 {
-  home.packages = [ pkgs.thefuck ];
+  home.packages = with pkgs; [ thefuck mdcat ];
 
   programs.zsh = {
     enable = true;
@@ -34,7 +34,6 @@
     shellAliases = rec {
       nsp = "cached-nix-shell --run zsh -p";
 
-      dc = "docker-compose";
       l = "exa -lh --git --no-user --group-directories-first";
       la = "l -a";
       tree = "l -T";
