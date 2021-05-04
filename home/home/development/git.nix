@@ -18,14 +18,14 @@
         {
           name = "git-graph";
           publisher = "mhutchie";
-          version = "1.22.0";
-          sha256 = "06j49pxz9vp6z4hax60jsn4fa2iig76d8p9cjhdhbvmyil0dgggx";
+          version = "1.30.0";
+          sha256 = "sha256-sHeaMMr5hmQ0kAFZxxMiRk6f0mfjkg2XMnA4Gf+DHwA=";
         }
         {
           name = "gitmoji-vscode";
           publisher = "Vtrois";
-          version = "0.1.9";
-          sha256 = "0mhgl7sdqdzj5gsrajrfq4g6wqikk19fa59rrr2dhq6hrin7a9mb";
+          version = "1.0.5";
+          sha256 = "sha256-zJbRle6dKT45gFR/S5dwPJJoIcJTd47pe905gjV9W6w=";
         }
       ];
     };

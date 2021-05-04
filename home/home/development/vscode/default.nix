@@ -26,8 +26,8 @@ args@{ config, pkgs, ... }:
       ] ++ vscode-utils.extensionsFromVscodeMarketplace [{
         name = "vscode-diff";
         publisher = "fabiospampinato";
-        version = "1.4.0";
-        sha256 = "10ayc6677clpnid4lm6h22v5635k1aidp7pr2iwkiblbqq6ri5s0";
+        version = "1.4.1";
+        sha256 = "sha256-PgkXh65lBvX4XwYdKCqdjQbBr156qE4QMbnjJ+Tb8QI=";
       }];
   };
 }

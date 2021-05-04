@@ -1,41 +1,44 @@
 { pkgs, ... }:
 
 {
-  config.lib.language = {
-    packages = [
-      (pkgs.ghc.withHoogle (ps:
-        with ps; [
-          # necessary
-          pretty-simple
-          unordered-containers
-          microlens
+  home.packages = [
+    (pkgs.ghc.withHoogle (ps:
+      with ps; [
+        # necessary
+        pretty-simple
+        unordered-containers
+        microlens
 
-          # building
-          stack
-          cabal2nix
+        # building
+        stack
+        cabal2nix
 
-          # coding
-          hlint
-          stylish-haskell
+        # coding
+        hlint
+        stylish-haskell
 
-          # analyzing
-          threadscope
+        # analyzing
+        threadscope
 
-          # libraries
-          optparse-applicative
-          directory
-          ncurses
+        # libraries
+        optparse-applicative
+        directory
+        ncurses
 
-          # testing
-          criterion
-          hedgehog
-          hedgehog-fn
-          tasty
-          tasty-hedgehog
-        ]))
-    ];
+        # testing
+        criterion
+        hedgehog
+        hedgehog-fn
+        tasty
+        tasty-hedgehog
+      ]))
+  ];
 
-    settings = {
+  programs.vscode = {
+    enable = true;
+    hie.enable = false;
+
+    userSettings = {
       "[haskell]" = {
         "editor.defaultFormatter" = "vigoo.stylish-haskell";
         "editor.tabSize" = 2;
@@ -86,9 +89,4 @@
     :def hoogle \s -> return $ ":! hoogle search -l --colour --count=15 \"" ++ s ++ "\""
     :def doc \s -> return $ ":! hoogle search -l --colour --info \"" ++ s ++ "\""
   '';
-
-  programs.vscode.haskell = {
-    enable = true;
-    hie.enable = false;
-  };
 }

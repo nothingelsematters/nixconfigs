@@ -7,8 +7,7 @@
     zsh.shellAliases.rs = "rustc";
 
     vscode = {
-
-      userSettings."[rust]"."editor.defaultFormatter" = "rust-lang.rust";
+      userSettings."[rust]"."editor.defaultFormatter" = "matklad.rust-analyzer";
 
       extensions = with pkgs.vscode-extensions; [
         matklad.rust-analyzer

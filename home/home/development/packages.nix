@@ -22,7 +22,5 @@
 
     # paper writing
     subversion
-
-    dart
   ];
 }

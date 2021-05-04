@@ -19,7 +19,7 @@ with config.lib; {
   "editor.smoothScrolling" = true;
   "editor.scrollBeyondLastLine" = false;
   "editor.multiCursorModifier" = "ctrlCmd";
-  "editor.find.autoFindInSelection" = "new";
+  "editor.find.autoFindInSelection" = "never";
 
   "explorer.autoReveal" = true;
   "explorer.openEditors.visible" = 0;
@@ -27,7 +27,6 @@ with config.lib; {
   "explorer.confirmDragAndDrop" = false;
 
   "extensions.ignoreRecommendations" = true;
-  "extensions.showRecommendationsOnlyOnDemand" = true;
 
   "files.autoSave" = "onFocusChange";
   "files.exclude"."**/.git" = true;
