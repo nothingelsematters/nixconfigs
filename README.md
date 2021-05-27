@@ -53,8 +53,11 @@
 - `nix-channel --update`
 - `nix-shell '<home-manager>' -A install`
 - clone this repo into `/home/{user}/.config/nixpkgs`
-- `ln -fs nixconfigs/home/work.nix home.nix`
+- `ln -fs nixconfigs/home/work/wsl-<number>.nix home.nix`
 - `home-manager switch`
+
+> There are two WSL configurations, since in the first WSL version `z-lua` package doesn't work, it kills CPU somehow,
+> and in the second version `docker-compose` works properly.
 
 ## Inspiration
 

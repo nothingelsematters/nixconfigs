@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./common ];
+  imports = [ ../common ];
 
   home.packages = with pkgs; [ jdk11 maven ];
 
@@ -13,7 +13,10 @@
     starship.settings = {
       scan_timeout = 1;
 
-      memory_usage.disabled = false;
+      memory_usage = {
+        disabled = false;
+        format = "ram ([\${ram}]($style))";
+      };
 
       cmd_duration = {
         min_time = 500;
@@ -36,9 +39,8 @@
         vicmd_symbol = "[<](bold green)";
       };
       format = "$shlvl" + "$directory" + "$git_branch" + "$git_commit"
-        + "$git_state" + "$docker_context" + "$package" + "$java" + "$nix_shell"
-        + "$memory_usage" + "$cmd_duration" + "$line_break" + "$jobs"
-        + "$battery" + "$character";
+        + "$git_state" + "$docker_context" + "$nix_shell" + "$memory_usage"
+        + "$cmd_duration" + "$line_break" + "$jobs" + "$battery" + "$character";
     };
   };
 }
