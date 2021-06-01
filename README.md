@@ -23,7 +23,7 @@
 
 ### NixOS
 
-[Home manager](home/home/) and [host](host/) configurations
+[Home manager](home/home/) and [host](host/) configurations.
 
 - <img src="https://simpleicons.org/icons/visualstudiocode.svg" height="12pt"> [VS Code](home/home/development/vscode/default.nix)
 - <img src="https://simpleicons.org/icons/git.svg" height="12pt"> [git](home/common/development/git.nix)

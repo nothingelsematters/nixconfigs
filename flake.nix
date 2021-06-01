@@ -39,7 +39,7 @@
             configuration = { pkgs, lib, ... }: {
               imports = [ file ];
               nixpkgs = {
-                overlays = [ (self: super: { inherit forgit; }) ];
+                overlays = [ (self: super: { inherit inputs; }) ];
                 config.allowUnfree = true;
               };
             };
