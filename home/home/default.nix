@@ -1,4 +1,4 @@
-{ config, pkgs, vars, ... }:
+{ config, pkgs, vars, inputs, ... }:
 
 with vars; {
   users.users."${username}" = {
@@ -13,10 +13,7 @@ with vars; {
   };
 
   home-manager.users."${username}" = args:
-    import ./home.nix (args // {
-      inherit pkgs;
-      overlays = config.nixpkgs.overlays;
-    });
+    import ./home.nix (args // { inherit pkgs inputs; });
 
   systemd.services."home-manager-${username}".preStart = ''
     ${pkgs.nix}/bin/nix-env -i -E

@@ -1,4 +1,4 @@
-{ lib, pkgs, config, overlays, ... }:
+{ lib, pkgs, config, ... }:
 
 with config.lib; {
   imports = import ../../lib/imports.nix {

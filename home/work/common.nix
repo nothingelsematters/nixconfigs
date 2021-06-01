@@ -10,6 +10,11 @@
   programs = {
     git.extraConfig.core.editor = "nano";
 
+    zsh.plugins = [{
+      name = "forgit";
+      src = pkgs.inputs.forgit;
+    }];
+
     starship.settings = {
       scan_timeout = 1;
 

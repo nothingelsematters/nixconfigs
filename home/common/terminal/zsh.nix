@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
   home.packages = with pkgs; [ thefuck mdcat ];
@@ -23,10 +23,6 @@
       {
         name = "fast-syntax-highlighting";
         src = zsh-fast-syntax-highlighting + /share/zsh/site-functions;
-      }
-      {
-        name = "forgit";
-        src = inputs.forgit;
       }
     ];
 
