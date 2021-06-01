@@ -34,12 +34,9 @@
     ];
   };
 
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-      joypixels.acceptLicense = true;
-    };
-    overlays = import ./nix lib inputs;
+  nixpkgs.config = {
+    allowUnfree = true;
+    joypixels.acceptLicense = true;
   };
 
   home-manager = {

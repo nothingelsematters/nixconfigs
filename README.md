@@ -75,7 +75,7 @@
 
 #### Use configuration
 
-- clone this repo into `/home/{user}/.config/nixpkgs`
+- clone this repo
 - `nix build .#homeConfiguration.wsl<number>.activatePackage`
 - `./result/activate`
 
