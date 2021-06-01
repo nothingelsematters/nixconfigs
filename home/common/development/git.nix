@@ -12,10 +12,11 @@
       gpush = "git push origin $(current_branch)";
 
       gs = "git status -s";
-      gl =
+      gl = "gll --all --stat";
+      gll =
         "git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset)"
         + " - %C(bold yellow)%<|(27)%ar%C(reset) %C(bold green)%<|(70)%s%C(reset) %C(dim white)-"
-        + " %an%C(reset)%C(bold red)%d%C(reset)%n' --all --stat";
+        + " %an%C(reset)%C(bold red)%d%C(reset)%n'";
 
       gcmsg = "git commit -m";
       gc = "git commit --no-edit";
@@ -36,7 +37,6 @@
       };
 
       extraConfig = {
-        core.editor = "$EDITOR --wait";
         pull.rebase = true;
         credential.helper = "store";
         color.ui = true;

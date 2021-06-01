@@ -7,6 +7,7 @@
     gh.enable = true;
 
     git = {
+      extraConfig.core.editor = "$EDITOR --wait";
       userName = "Simon Naumov";
       userEmail = "daretoodefy@gmail.com";
     };

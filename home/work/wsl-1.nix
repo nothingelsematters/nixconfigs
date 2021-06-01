@@ -10,12 +10,14 @@
   programs = {
     zsh.shellAliases.hms = "home-manager switch";
 
+    git.extraConfig.core.editor = "nano";
+
     starship.settings = {
       scan_timeout = 1;
 
       memory_usage = {
         disabled = false;
-        format = "ram ([\${ram}]($style))";
+        format = "ram ([\${ram}]($style)) ";
       };
 
       cmd_duration = {

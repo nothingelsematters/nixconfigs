@@ -29,7 +29,8 @@
     shellAliases = rec {
       nsp = "cached-nix-shell --run zsh -p";
 
-      l = "exa -lh --git --no-user --group-directories-first";
+      l = "exa -lh --no-user --group-directories-first";
+      lg = "l --git";
       la = "l -a";
       tree = "l -T";
       ll = "tree -L 2";
