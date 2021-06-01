@@ -1,48 +1,7 @@
-{ config, lib, pkgs, ... }:
-
 {
-  imports = [ ../common ];
+  imports = [ ./common.nix ];
 
-  home.packages = with pkgs; [ jdk11 maven ];
-
-  lib.theme.isDark = true;
-
-  programs = {
-    zsh.shellAliases.hms = "home-manager switch";
-
-    git.extraConfig.core.editor = "nano";
-
-    starship.settings = {
-      scan_timeout = 1;
-
-      memory_usage = {
-        disabled = false;
-        format = "ram ([\${ram}]($style)) ";
-      };
-
-      cmd_duration = {
-        min_time = 500;
-        show_milliseconds = true;
-      };
-
-      git_branch.symbol = "";
-      java.symbol = "java ";
-      jobs.symbol = "+";
-
-      env_var.variable = "NIX_NAME";
-      nix_shell = {
-        symbol = "nix ";
-        use_name = true;
-      };
-
-      character = {
-        success_symbol = "[>](bold green)";
-        error_symbol = "[>](bold red)";
-        vicmd_symbol = "[<](bold green)";
-      };
-      format = "$shlvl" + "$directory" + "$git_branch" + "$git_commit"
-        + "$git_state" + "$docker_context" + "$nix_shell" + "$memory_usage"
-        + "$cmd_duration" + "$line_break" + "$jobs" + "$battery" + "$character";
-    };
-  };
+  programs.zsh.shellAliases.hms =
+    "nix build .#homeConfiguration.wsl1.activatePackage "
+    + "&& ./result/activate";
 }

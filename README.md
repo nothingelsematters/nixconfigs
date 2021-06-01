@@ -12,14 +12,18 @@
     </a>
 </p>
 
-<h1 align="center"> custom <a href="https://nixos.org">NixOS</a> configuration </h1>
+<h1 align="center"> custom <a href="https://nixos.org">nix</a> configuration </h1>
 
 ## Nix tools being used
 
 - [Nix Flakes](https://nixos.wiki/wiki/Flakes) - dependency specification feature
 - [Cachix](https://cachix.org) - Nix binary cache hosting
 
-## Miscellaneous Package Confgurations
+## Configurations
+
+### NixOS
+
+[Home manager](home/home/) and [host](host/) configurations
 
 - <img src="https://simpleicons.org/icons/visualstudiocode.svg" height="12pt"> [VS Code](home/home/development/vscode/default.nix)
 - <img src="https://simpleicons.org/icons/git.svg" height="12pt"> [git](home/common/development/git.nix)
@@ -30,17 +34,28 @@
   and [User.js privacy configuration](https://github.com/pyllyukko/user.js)
 - <img src="https://simpleicons.org/icons/docker.svg" height="12pt"> [Docker](host/services/docker.nix)
 
----
+### Windows Subsystem Linux (Ubuntu)
 
-- [Little terminal package subset to use at work in Ubuntu WSL 🙈](home/work/default.nix)
+- [WSL 1](home/work/wsl-1.nix).
+  In the first WSL version [z-lua](https://github.com/skywind3000/z.lua) package doesn't work,
+  it just kills the CPU somehow.
+  However, in this version every CPU bound task performs better than on the second version due to virtualization method.
+
+- [WSL 2](home/work/wsl-2.nix).
+  In the second WSL version [docker compose](https://docs.docker.com/compose/) works properly
+  because of the virtualization method.
 
 ## Usage
 
-- Build: `sudo nixos-rebuild switch --flake . --keep-going --show-trace`
+### NixOS
+
+- Build: `sudo nixos-rebuild switch --flake . --keep-going`
 - Update: `nix flake update . --update-input <whatever>`
 - Clean up generations: `sudo nix-collect-garbage -d`
 
-## WSL Ubuntu installation guide
+### WSL installation guide
+
+#### Install nix
 
 - `sudo mkdir -p /etc/nix`
 - `/etc/nix/nix.conf` (requires `sudo`):
@@ -49,15 +64,22 @@
   use-sqlite-wal = false
   ```
 - `sh <(curl -L https://nixos.org/nix/install) --no-daemon`
-- `nix-channel --add http://github.com/nix-community/home-manager/archive/master.tar.gz home-manager`
-- `nix-channel --update`
-- `nix-shell '<home-manager>' -A install`
-- clone this repo into `/home/{user}/.config/nixpkgs`
-- `ln -fs nixconfigs/home/work/wsl-<number>.nix home.nix`
-- `home-manager switch`
 
-> There are two WSL configurations, since in the first WSL version `z-lua` package doesn't work, it kills CPU somehow,
-> and in the second version `docker-compose` works properly.
+#### Install nix flakes
+
+- `nix-env -iA nixpkgs.nixFlakes`
+- `/home/{user}/.config/nix/nix.conf`:
+  ```
+  experimental-features = nix-command flakes
+  ```
+
+#### Use configuration
+
+- clone this repo into `/home/{user}/.config/nixpkgs`
+- `nix build .#homeConfiguration.wsl<number>.activatePackage`
+- `./result/activate`
+
+There is an alias for the last two commands after you do this for the first time: `hms`.
 
 ## Inspiration
 
