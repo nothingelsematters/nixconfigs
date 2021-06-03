@@ -11,10 +11,9 @@
 
     env_var.variable = "NIX_NAME";
 
-    format = "$username" + "$hostname" + "$shlvl" + "$kubernetes" + "$directory"
-      + "$git_branch" + "$git_commit" + "$git_state" + "$git_status"
-      + "$docker_context" + "$nix_shell" + "$env_var" + "$memory_usage"
-      + "$cmd_duration" + "$line_break" + "$jobs" + "$battery" + "$status"
-      + "$character";
+    format = "$username" + "$hostname" + "$shlvl" + "$directory" + "$git_branch"
+      + "$git_commit" + "$git_state" + "$git_status" + "$docker_context"
+      + "$nix_shell" + "$env_var" + "$memory_usage" + "$cmd_duration"
+      + "$line_break" + "$jobs" + "$battery" + "$status" + "$character";
   };
 }
