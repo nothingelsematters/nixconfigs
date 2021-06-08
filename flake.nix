@@ -2,7 +2,7 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixpkgs-turbo.url = "nixpkgs/master";
-    nixpkgs-stable.url = "nixpkgs/release-20.09";
+    nixpkgs-stable.url = "nixpkgs/release-21.05";
     nixpkgs-wayland.url = "github:colemickens/nixpkgs-wayland";
     home.url = "github:nix-community/home-manager/master";
     flake-utils.url = "github:numtide/flake-utils";
