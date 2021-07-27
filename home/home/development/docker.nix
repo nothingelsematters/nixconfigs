@@ -6,5 +6,5 @@
     dc-restart = "dc down --remove-orphans --volumes && dc up --detach --build --force-recreate";
   };
 
-  home.packages = with pkgs; [ docker docker_compose ];
+  home.packages = with pkgs; [ docker docker_compose dive ];
 }
