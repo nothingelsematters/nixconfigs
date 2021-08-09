@@ -13,9 +13,13 @@
   programs = {
     git.extraConfig.core.editor = "nano";
 
-    zsh.plugins = [{
-      name = "forgit";
-      src = pkgs.inputs.forgit;
-    }];
+    zsh = {
+      shellAliases.mci = "mvn clean install -DskipTests";
+
+      plugins = [{
+        name = "forgit";
+        src = pkgs.inputs.forgit;
+      }];
+    };
   };
 }
