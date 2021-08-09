@@ -3,7 +3,10 @@
 {
   imports = [ ../common ./starship.nix ];
 
-  home.packages = with pkgs; [ jdk11 maven kubernetes ];
+  home = {
+    packages = with pkgs; [ jdk11 maven kubernetes ];
+    sessionVariables.JAVA_HOME = "${pkgs.jdk11}";
+  };
 
   lib.theme.isDark = true;
 
