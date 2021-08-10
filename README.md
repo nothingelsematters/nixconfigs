@@ -50,7 +50,7 @@
 ### NixOS
 
 - Build: `sudo nixos-rebuild switch --flake . --keep-going`
-- Update: `nix flake update . --update-input <whatever>`
+- Update: `nix flake update .
 - Clean up generations: `sudo nix-collect-garbage -d`
 
 ### WSL installation guide
