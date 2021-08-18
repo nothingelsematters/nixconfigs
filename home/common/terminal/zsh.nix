@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ thefuck mdcat ];
+  home.packages = with pkgs; [ mdcat ];
 
   programs.zsh = {
     enable = true;
@@ -75,8 +75,6 @@
       bindkey "^[[1;5C" forward-word
       bindkey "^[[1;5D" backward-word
       bindkey "^[[3~" delete-char
-
-      eval $(${pkgs.thefuck}/bin/thefuck --alias)
 
       if [ -n "$name" ]; then
         PROMPT="[$name] $PROMPT";
