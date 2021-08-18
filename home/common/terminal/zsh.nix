@@ -91,10 +91,10 @@
 
       function gb() {
         current=$(git rev-parse --abbrev-ref HEAD)
-        branches=$(git for-each-ref --format='%(refname)' refs/heads/ | sed 's|refs/heads/||')
+        branches=("''${(@f)$(git for-each-ref --format='%(refname)' refs/heads/ | sed 's|refs/heads/||')}")
         for branch in $branches; do
           desc=$(git config branch.$branch.description)
-          if [ $branch == $current ]; then
+          if [ $branch = $current ]; then
             branch="* \033[0;32m$branch\033[0m"
           else
             branch="  $branch"
