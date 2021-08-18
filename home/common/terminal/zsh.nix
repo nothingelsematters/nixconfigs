@@ -41,7 +41,7 @@
       "..." = "cd ../..";
       "...." = "cd ../../..";
 
-      cal = "cal -3m";
+      cal = "ncal -3bM";
     };
 
     shellGlobalAliases = {
