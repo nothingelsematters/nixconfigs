@@ -4,8 +4,6 @@
   home.packages = [ pkgs.nodePackages.gitmoji-cli ];
 
   programs = {
-    gh.enable = true;
-
     git = {
       extraConfig.core.editor = "$EDITOR --wait";
       userName = "Simon Naumov";
