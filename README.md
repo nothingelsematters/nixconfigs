@@ -36,14 +36,18 @@
 
 ### Windows Subsystem Linux (Ubuntu)
 
-- [WSL 1](home/work/wsl-1.nix).
+- [WSL 1](home/wsl/wsl-1.nix).
   In the first WSL version [z-lua](https://github.com/skywind3000/z.lua) package doesn't work,
   it just kills the CPU somehow.
   However, in this version every CPU bound task performs better than on the second version due to virtualization method.
 
-- [WSL 2](home/work/wsl-2.nix).
+- [WSL 2](home/wsl/wsl-2.nix).
   In the second WSL version [docker compose](https://docs.docker.com/compose/) works properly
   because of the virtualization method.
+
+### MacOS
+
+[Configuration](home/mac/default.nix)
 
 ## Usage
 
@@ -76,10 +80,30 @@
 #### Use configuration
 
 - clone this repo
-- `nix build .#homeConfiguration.wsl<number>.activatePackage`
+- `nix build .#homeManagerConfigurations.wsl<number>.activatePackage`
 - `./result/activate`
 
 There is an alias for the last two commands after you do this for the first time: `hms`.
+
+### MacOS
+
+#### Installing nix
+
+- `sh <(curl -L https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-volume`
+
+#### Installing nix flakes
+
+- `nix-env -iA nixpkgs.nixFlakes`
+- `~/{user}/.config/nix/nix.conf`:
+  ```
+  experimental-features = nix-command flakes
+  ```
+
+#### Use configuration
+
+- clone this repo
+- `nix build .#homeManagerConfigurations.mac.activatePackage`
+- `./result/activate`
 
 ## Inspiration
 

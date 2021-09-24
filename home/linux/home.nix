@@ -7,7 +7,7 @@ with config.lib; {
     recursive = true;
     includeFiles = true;
     exclude = [ "/default.nix" "/home.nix" ];
-    additional = [ ./theme.nix ../common ];
+    additional = [ ../common ];
   };
 
   home = {

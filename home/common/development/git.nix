@@ -32,7 +32,7 @@
           line-numbers = true;
           decorations = true;
           theme =
-            "OneHalf${if config.lib.theme.isDark then "Dark" else "Light"}";
+            "OneHalfDark";
         };
       };
 

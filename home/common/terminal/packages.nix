@@ -3,7 +3,6 @@
 with pkgs; {
   home.packages = [
     # filesystem utility packages
-    exa     # rip ls
     ripgrep # rip grep
     fd      # rip find
     lf      # terminal file manager
@@ -18,7 +17,6 @@ with pkgs; {
     # terminal helpful
     man    # on-line reference manuals
     tldr   # simplified man pages
-    psmisc # fuser, killall and pstree...
 
     # archive management
     atool # archive command line helper

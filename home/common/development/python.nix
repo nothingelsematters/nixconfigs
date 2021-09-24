@@ -5,16 +5,16 @@
     (pkgs.python3.withPackages (ps:
       with ps; [
         # jupyter
-        notebook
-        ipykernel
-        tqdm
-        ipywidgets
+        # notebook
+        # ipykernel
+        # tqdm
+        # ipywidgets
 
         # calculations
-        numpy
-        matplotlib
-        pandas
-        scikitlearn
+        # numpy
+        # matplotlib
+        # pandas
+        # scikitlearn
 
         # formatter
         autopep8

@@ -84,11 +84,6 @@
           export PROMPT="[$NIX_NAME] $PROMPT";
       fi
 
-      wifi() {
-        nmcli d wifi connect $(nmcli d wifi list --rescan yes | rg $0 | gawk '{ print $1 }')
-      }
-
-
       function gb() {
         current=$(git rev-parse --abbrev-ref HEAD)
         branches=("''${(@f)$(git for-each-ref --format='%(refname)' refs/heads/ | sed 's|refs/heads/||')}")
@@ -102,6 +97,10 @@
           echo -e "$branch \033[0;36m$desc\033[0m"
         done
       }
+
+      if [[ -f "$HOME/.nix-profile/etc/profile.d/nix.sh" ]]; then
+        . "$HOME/.nix-profile/etc/profile.d/nix.sh"
+      fi
     '';
   };
 }

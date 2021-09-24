@@ -7,16 +7,6 @@
     maven
     antlr4
 
-    # c++
-    gcc
-    gdb
-    cmake
-    valgrind
-
-    # javascript
-    nodejs-16_x
-    yarn
-
     # databases
     postgresql_13
 

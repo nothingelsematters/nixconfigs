@@ -1,7 +1,7 @@
 { pkgs, nixpkgs-turbo, ... }:
 
 {
-  home.packages = with pkgs; [ rustup turbo.glibc ];
+  home.packages = with pkgs; [ rustup ];
 
   programs = {
     zsh.shellAliases.rs = "rustc";

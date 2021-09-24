@@ -16,7 +16,7 @@ lib.nixosSystem rec {
     additional = [
       home.nixosModules.home-manager
 
-      ../home/home
+      ../home/linux
 
       ({ config, lib, ... }: {
         options.home-manager.users = lib.mkOption {

@@ -8,9 +8,9 @@ with config.lib; {
   "editor.cursorSmoothCaretAnimation" = false;
   "editor.cursorStyle" = "underline";
 
-  "editor.fontFamily" = "'${theme.fonts.mono.name}'";
+  "editor.fontFamily" = "'JetBrains Mono'";
   "editor.fontLigatures" = true;
-  "editor.fontSize" = 11.01;
+  "editor.fontSize" = 14.01;
 
   "editor.minimap.enabled" = false;
   "editor.renderWhitespace" = "none";
@@ -43,10 +43,10 @@ with config.lib; {
 
   "terminal.integrated.cursorBlinking" = false;
   "terminal.integrated.cursorStyle" = "underline";
-  "terminal.integrated.fontFamily" = theme.fonts.mono.name;
+  "terminal.integrated.fontFamily" = "JetBrains Mono";
   "terminal.integrated.fontSize" = 12;
   "terminal.explorerKind" = "external";
-  "terminal.external.linuxExec" = config.lib.packages.terminal.name;
+  # "terminal.external.linuxExec" = config.lib.packages.terminal.name;
 
   "update.mode" = "none";
 
