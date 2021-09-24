@@ -10,7 +10,7 @@
 
     Service = {
       Type = "oneshot";
-      ExecStart = "${pkgs.swaybg}/bin/swaybg -i ${./background.jpg}";
+      ExecStart = "${pkgs.swaybg}/bin/swaybg -i ${../../../background.jpg}";
       IOSchedulingClass = "idle";
     };
 
