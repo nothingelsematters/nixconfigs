@@ -4,7 +4,7 @@
   home.packages = with pkgs; [ nixfmt cachix manix ];
 
   programs = {
-    zsh.shellAliases= {
+    zsh.shellAliases = {
       nrs = "sudo nixos-rebuild switch --keep-going";
       nsp = "nix-shell --run zsh -p";
     };

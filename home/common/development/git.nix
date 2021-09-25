@@ -31,8 +31,7 @@
         options = {
           line-numbers = true;
           decorations = true;
-          theme =
-            "OneHalfDark";
+          theme = "OneHalfDark";
         };
       };
 
