@@ -1,8 +1,6 @@
 { pkgs, ... }:
 
+# TODO
 with pkgs; {
-  home.packages = [
-    exa # rip ls
-    psmisc # fuser, killall and pstree...
-  ];
+  home.packages = [ exa ];
 }

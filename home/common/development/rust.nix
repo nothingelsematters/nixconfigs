@@ -1,4 +1,4 @@
-{ pkgs, nixpkgs-turbo, ... }:
+{ pkgs, ... }:
 
 {
   home.packages = with pkgs; [ rustup ];

@@ -10,7 +10,7 @@ with config.lib; {
 
   "editor.fontFamily" = "'JetBrains Mono'";
   "editor.fontLigatures" = true;
-  "editor.fontSize" = 14.01;
+  "editor.fontSize" = 12.01;
 
   "editor.minimap.enabled" = false;
   "editor.renderWhitespace" = "none";
@@ -44,16 +44,14 @@ with config.lib; {
   "terminal.integrated.cursorBlinking" = false;
   "terminal.integrated.cursorStyle" = "underline";
   "terminal.integrated.fontFamily" = "JetBrains Mono";
-  "terminal.integrated.fontSize" = 12;
+  "terminal.integrated.fontSize" = 10;
   "terminal.explorerKind" = "external";
-  # "terminal.external.linuxExec" = config.lib.packages.terminal.name;
 
   "update.mode" = "none";
 
   "window.menuBarVisibility" = "toggle";
   "window.title" = "\${dirty}  \${rootName}\${separator}\${activeEditorMedium}";
   "window.titleBarStyle" = "native";
-  "window.zoomLevel" = -1;
 
   "workbench.colorTheme" = "Github Dark";
   "workbench.editor.enablePreviewFromQuickOpen" = false;

@@ -18,6 +18,7 @@ with pkgs; {
     feh
 
     # other
+    psmisc # fuser, killall and pstree...
     inotify-tools
     blueman
     jmtpfs # a FUSE filesystem for MTP devices like Android phones

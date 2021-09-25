@@ -3,6 +3,7 @@
 {
   imports = [
     ../common/development/vscode
+    ../common/development/docker.nix
     ../common/development/git.nix
     ../common/development/git-additional.nix
     ../common/development/kotlin.nix
@@ -24,14 +25,18 @@
     ../common/theme.nix
   ];
 
-  programs.zsh = {
-    shellAliases.hms =
-      "nix build .#homeManagerConfigurations.mac.activationPackage "
-      + "&& ./result/activate";
+  programs = {
+    vscode.package = pkgs.fixed.vscode;
 
-    plugins = [{
-      name = "forgit";
-      src = pkgs.inputs.forgit;
-    }];
+    zsh = {
+      shellAliases.hms =
+        "nix build .#homeManagerConfigurations.mac.activationPackage "
+        + "&& ./result/activate";
+
+      plugins = [{
+        name = "forgit";
+        src = pkgs.forgit;
+      }];
+    };
   };
 }

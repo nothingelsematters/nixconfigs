@@ -27,7 +27,7 @@
     ];
 
     shellAliases = rec {
-      nsp = "cached-nix-shell --run zsh -p";
+      nsp = "nix-shell --run zsh -p";
 
       l = "exa -lh --no-user --group-directories-first";
       lg = "l --git";
@@ -40,8 +40,6 @@
       ".." = "cd ..";
       "..." = "cd ../..";
       "...." = "cd ../../..";
-
-      cal = "ncal -3bM";
     };
 
     shellGlobalAliases = {
