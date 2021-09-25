@@ -20,7 +20,20 @@
 
   outputs = inputs@{ nixpkgs, nixpkgs-turbo, nixpkgs-stable, nixpkgs-fixed, home
     , forgit, ... }:
-    let username = "simon";
+    let
+      username = "simon";
+      overlay = system: self: super:
+        let
+          unfreeConfig = {
+            inherit system;
+            config.allowUnfree = true;
+          };
+        in {
+          inherit forgit;
+          turbo = import nixpkgs-turbo unfreeConfig;
+          stable = import nixpkgs-stable unfreeConfig;
+          fixed = import nixpkgs-fixed unfreeConfig;
+        };
     in rec {
       # home, NixOS
       nixosConfigurations.simyon = import ./host (inputs // {
@@ -36,28 +49,8 @@
 
             configuration = { pkgs, lib, ... }: {
               imports = [ file ];
-
               nixpkgs = {
-                overlays = [
-                  (self: super: {
-                    inherit forgit;
-
-                    turbo = import nixpkgs-turbo {
-                      inherit system;
-                      config.allowUnfree = true;
-                    };
-
-                    stable = import nixpkgs-stable {
-                      inherit system;
-                      config.allowUnfree = true;
-                    };
-
-                    fixed = import nixpkgs-fixed {
-                      inherit system;
-                      config.allowUnfree = true;
-                    };
-                  })
-                ];
+                overlays = [ (overlay system) ];
                 config.allowUnfree = true;
               };
             };
@@ -69,7 +62,7 @@
         wsl1 = makeWsl ./home/work/wsl-1.nix;
         wsl2 = makeWsl ./home/work/wsl-2.nix;
         mac =
-          makeConfiguration "aarch64-darwin" "/Users/simonnaumov" ./home/mac;
+          makeConfiguration "aarch64-darwin" "/Users/${username}" ./home/mac;
       };
     };
 }
