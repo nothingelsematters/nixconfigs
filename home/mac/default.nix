@@ -6,6 +6,7 @@
     ../common/development/docker.nix
     ../common/development/git.nix
     ../common/development/git-additional.nix
+    ../common/development/java.nix
     ../common/development/kotlin.nix
     ../common/development/nix.nix
     ../common/development/python.nix

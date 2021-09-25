@@ -27,8 +27,6 @@
     ];
 
     shellAliases = rec {
-      nsp = "nix-shell --run zsh -p";
-
       l = "exa -lh --no-user --group-directories-first";
       lg = "l --git";
       la = "l -a";

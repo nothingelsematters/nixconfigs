@@ -5,7 +5,7 @@
     ./starship.nix
 
     ../common/development/git.nix
-    ../common/development/nix-packages.nix
+    ../common/development/nix.nix
 
     ../common/terminal/bat.nix
     ../common/terminal/direnv.nix
@@ -13,7 +13,6 @@
     ../common/terminal/htop.nix
     ../common/terminal/most.nix
     ../common/terminal/packages.nix
-    ../common/terminal/packages-linux.nix
     ../common/terminal/starship.nix
     ../common/terminal/zsh.nix
   ];
