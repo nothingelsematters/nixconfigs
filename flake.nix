@@ -12,18 +12,14 @@
       url = "github:muckSponge/materialFox";
       flake = false;
     };
-    nord-dircolors = {
-      url = "github:arcticicestudio/nord-dircolors";
-      flake = false;
-    };
     forgit = {
       url = "github:wfxr/forgit";
       flake = false;
     };
   };
 
-  outputs =
-    inputs@{ nixpkgs, nixpkgs-turbo, nixpkgs-stable, nixpkgs-fixed, home, forgit, ... }:
+  outputs = inputs@{ nixpkgs, nixpkgs-turbo, nixpkgs-stable, nixpkgs-fixed, home
+    , forgit, ... }:
     let username = "simon";
     in rec {
       # home, NixOS
@@ -36,43 +32,44 @@
       homeManagerConfigurations = let
         makeConfiguration = system: homeDirectory: file:
           home.lib.homeManagerConfiguration {
-              inherit username system homeDirectory;
+            inherit username system homeDirectory;
 
-              configuration = { pkgs, lib, ... }: {
-                imports = [ file ];
+            configuration = { pkgs, lib, ... }: {
+              imports = [ file ];
 
-                nixpkgs = {
-                  overlays = [
-                    (self: super: {
-                      inherit forgit;
+              nixpkgs = {
+                overlays = [
+                  (self: super: {
+                    inherit forgit;
 
-                      turbo = import nixpkgs-turbo {
-                        inherit system;
-                        config.allowUnfree = true;
-                      };
+                    turbo = import nixpkgs-turbo {
+                      inherit system;
+                      config.allowUnfree = true;
+                    };
 
-                      stable = import nixpkgs-stable {
-                        inherit system;
-                        config.allowUnfree = true;
-                      };
+                    stable = import nixpkgs-stable {
+                      inherit system;
+                      config.allowUnfree = true;
+                    };
 
-                      fixed = import nixpkgs-fixed {
-                        inherit system;
-                        config.allowUnfree = true;
-                      };
-                    })
-                  ];
-                  config.allowUnfree = true;
-                };
+                    fixed = import nixpkgs-fixed {
+                      inherit system;
+                      config.allowUnfree = true;
+                    };
+                  })
+                ];
+                config.allowUnfree = true;
               };
             };
+          };
 
         makeWsl = file:
           makeConfiguration "x86_64-linux" "/home/${username}" file;
       in {
         wsl1 = makeWsl ./home/work/wsl-1.nix;
         wsl2 = makeWsl ./home/work/wsl-2.nix;
-        mac = makeConfiguration "aarch64-darwin" "/Users/simonnaumov/home" ./home/mac;
+        mac =
+          makeConfiguration "aarch64-darwin" "/Users/simonnaumov" ./home/mac;
       };
     };
 }

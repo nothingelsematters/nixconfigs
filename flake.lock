@@ -191,22 +191,6 @@
         "type": "github"
       }
     },
-    "nord-dircolors": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1606638347,
-        "narHash": "sha256-6A3h1R1+kZbCwouUshvRpUL3fVkkDuHCD+bz8Jbq4M0=",
-        "owner": "arcticicestudio",
-        "repo": "nord-dircolors",
-        "rev": "35166d328992213194d7d02cd034e39da962f19e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "arcticicestudio",
-        "repo": "nord-dircolors",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -217,8 +201,7 @@
         "nixpkgs-fixed": "nixpkgs-fixed",
         "nixpkgs-stable": "nixpkgs-stable",
         "nixpkgs-turbo": "nixpkgs-turbo",
-        "nixpkgs-wayland": "nixpkgs-wayland",
-        "nord-dircolors": "nord-dircolors"
+        "nixpkgs-wayland": "nixpkgs-wayland"
       }
     }
   },
