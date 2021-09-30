@@ -26,7 +26,7 @@
       }
       {
         name = "forgit";
-        src = pkgs.forgit;
+        src = forgit;
       }
     ];
 

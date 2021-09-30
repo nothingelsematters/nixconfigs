@@ -8,12 +8,12 @@
     home.url = "github:nix-community/home-manager/master";
     flake-utils.url = "github:numtide/flake-utils";
 
-    materialFox = {
-      url = "github:muckSponge/materialFox";
-      flake = false;
-    };
     forgit = {
       url = "github:wfxr/forgit";
+      flake = false;
+    };
+    materialFox = {
+      url = "github:muckSponge/materialFox";
       flake = false;
     };
   };
