@@ -15,6 +15,7 @@ args@{ config, pkgs, ... }:
       with vscode-extensions;
       [
         tomoki1207.pdf
+        editorconfig.editorconfig
 
         # theme
         file-icons.file-icons
@@ -26,8 +27,8 @@ args@{ config, pkgs, ... }:
       ] ++ vscode-utils.extensionsFromVscodeMarketplace [{
         name = "vscode-diff";
         publisher = "fabiospampinato";
-        version = "1.4.1";
-        sha256 = "sha256-PgkXh65lBvX4XwYdKCqdjQbBr156qE4QMbnjJ+Tb8QI=";
+        version = "1.4.2";
+        sha256 = "sha256-b1N+m+Y4kUylXrJOU0Y1c9eRI12CSkb5mWyKYy+FAzc=";
       }];
   };
 }

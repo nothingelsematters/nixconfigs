@@ -13,8 +13,8 @@
     vscode.extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
       name = "kotlin";
       publisher = "fwcd";
-      version = "0.2.22";
-      sha256 = "sha256-CkoAl2hmkrf+hnDQo6CdgWsqUeF6EgeS1Pjabqo7nVk=";
+      version = "0.2.23";
+      sha256 = "sha256-nKhQrDdpKnZmC5nnfSTevUES1G6H8WNlLF26zFWnTmQ=";
     }];
   };
 }
