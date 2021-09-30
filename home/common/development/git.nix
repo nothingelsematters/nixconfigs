@@ -1,6 +1,8 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
+  home.packages = [ pkgs.nodePackages.gitmoji-cli ];
+
   programs = {
     zsh.shellAliases = {
       g = "git";
@@ -23,8 +25,12 @@
       gmc = "gitmoji -c";
     };
 
+    gh.enable = true;
+
     git = {
       enable = true;
+      userName = "Simon Naumov";
+      userEmail = "daretoodefy@gmail.com";
 
       delta = {
         enable = true;
@@ -38,7 +44,10 @@
       extraConfig = {
         pull.rebase = true;
         credential.helper = "store";
-        color.ui = true;
+        color = {
+          ui = true;
+          editor = "$EDITOR --wait";
+        };
 
         "color \"diff-highlight\"" = {
           oldNormal = "red bold";
@@ -58,6 +67,15 @@
       };
     };
 
-    gh.enable = true;
+    vscode = {
+      userSettings."gitmoji.outputType" = "code";
+
+      extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
+        name = "git-graph";
+        publisher = "mhutchie";
+        version = "1.30.0";
+        sha256 = "sha256-sHeaMMr5hmQ0kAFZxxMiRk6f0mfjkg2XMnA4Gf+DHwA=";
+      }];
+    };
   };
 }
