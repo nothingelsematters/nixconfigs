@@ -1,7 +1,7 @@
 { config, inputs, lib, ... }:
 
 {
-  nixpkgs.overlays = map import (import ../../lib/imports.nix {
+  nixpkgs.overlays = map import (import ../../../lib/imports.nix {
     inherit lib;
     dir = ./.;
     includeFiles = true;

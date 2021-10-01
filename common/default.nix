@@ -1,7 +1,7 @@
 { lib, config, ... }:
 
 with config.lib; {
-  imports = import ../../lib/imports.nix {
+  imports = import ../lib/imports.nix {
     inherit lib;
     dir = ./.;
     recursive = true;

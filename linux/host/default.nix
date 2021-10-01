@@ -7,7 +7,7 @@ lib.nixosSystem rec {
 
   specialArgs = { inherit inputs vars; };
 
-  modules = import ../lib/imports.nix {
+  modules = import ../../lib/imports.nix {
     inherit lib;
     dir = ./.;
     recursive = true;
@@ -16,7 +16,7 @@ lib.nixosSystem rec {
     additional = [
       home.nixosModules.home-manager
 
-      ../home/linux
+      ../home
 
       ({ config, lib, ... }: {
         options.home-manager.users = lib.mkOption {

@@ -1,12 +1,15 @@
 {
-  inputs = {
+  inputs = rec {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixpkgs-turbo.url = "nixpkgs/master";
     nixpkgs-stable.url = "nixpkgs/release-21.05";
     nixpkgs-fixed.url = "nixpkgs/ec81333c99894f6dd9b248efe617ff79482cc8f6";
     nixpkgs-wayland.url = "github:colemickens/nixpkgs-wayland";
-    home.url = "github:nix-community/home-manager/master";
-    flake-utils.url = "github:numtide/flake-utils";
+
+    home = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = nixpkgs.url;
+    };
 
     forgit = {
       url = "github:wfxr/forgit";
@@ -36,7 +39,7 @@
         };
     in rec {
       # home, NixOS
-      nixosConfigurations.simyon = import ./host (inputs // {
+      nixosConfigurations.simyon = import ./linux/host (inputs // {
         system = "x86_64-linux";
         vars.username = username;
       });
