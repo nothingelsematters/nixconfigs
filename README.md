@@ -54,25 +54,28 @@
 ### NixOS
 
 - Build: `sudo nixos-rebuild switch --flake . --keep-going`
-- Update: `nix flake update .
+- Update: `nix flake update .`
 - Clean up generations: `sudo nix-collect-garbage -d`
 
-### WSL installation guide
+### WSL and MacOS
 
 #### Install nix
 
-- `sudo mkdir -p /etc/nix`
-- `/etc/nix/nix.conf` (requires `sudo`):
-  ```
-  sandbox = false
-  use-sqlite-wal = false
-  ```
-- `sh <(curl -L https://nixos.org/nix/install) --no-daemon`
+- WSL
+  - `sudo mkdir -p /etc/nix`
+  - `/etc/nix/nix.conf` (requires `sudo`):
+    ```
+    sandbox = false
+    use-sqlite-wal = false
+    ```
+  - `sh <(curl -L https://nixos.org/nix/install) --no-daemon`
+- MacOS
+  - `sh <(curl -L https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-volume`
 
 #### Install nix flakes
 
 - `nix-env -iA nixpkgs.nixFlakes`
-- `/home/{user}/.config/nix/nix.conf`:
+- `~/.config/nix/nix.conf`:
   ```
   experimental-features = nix-command flakes
   ```
@@ -80,30 +83,12 @@
 #### Use configuration
 
 - clone this repo
-- `nix build .#homeManagerConfigurations.wsl<number>.activatePackage`
+- activate packages
+  - WSL: `nix build .#homeManagerConfigurations.wsl<number>.activatePackage`
+  - MacOS: `nix build .#homeManagerConfigurations.mac.activatePackage`
 - `./result/activate`
 
 There is an alias for the last two commands after you do this for the first time: `hms`.
-
-### MacOS
-
-#### Installing nix
-
-- `sh <(curl -L https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-volume`
-
-#### Installing nix flakes
-
-- `nix-env -iA nixpkgs.nixFlakes`
-- `~/{user}/.config/nix/nix.conf`:
-  ```
-  experimental-features = nix-command flakes
-  ```
-
-#### Use configuration
-
-- clone this repo
-- `nix build .#homeManagerConfigurations.mac.activatePackage`
-- `./result/activate`
 
 ## Inspiration
 
