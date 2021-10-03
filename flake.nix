@@ -59,13 +59,11 @@
             };
           };
 
-        makeWsl = file:
-          makeConfiguration "x86_64-linux" "/home/${username}" file;
+        makeWsl = makeConfiguration "x86_64-linux" "/home/${username}";
       in {
-        wsl1 = makeWsl ./home/work/wsl-1.nix;
-        wsl2 = makeWsl ./home/work/wsl-2.nix;
-        mac =
-          makeConfiguration "aarch64-darwin" "/Users/${username}" ./home/mac;
+        wsl1 = makeWsl ./wsl/wsl-1.nix;
+        wsl2 = makeWsl ./wsl/wsl-2.nix;
+        mac = makeConfiguration "aarch64-darwin" "/Users/${username}" ./mac;
       };
     };
 }

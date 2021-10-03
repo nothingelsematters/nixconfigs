@@ -19,35 +19,36 @@
 - [Nix Flakes](https://nixos.wiki/wiki/Flakes) - dependency specification feature
 - [Cachix](https://cachix.org) - Nix binary cache hosting
 
-## Configurations
+## Configuration
 
-### NixOS
+- <img src="https://simpleicons.org/icons/visualstudiocode.svg" height="12pt"> [vs code](common/development/vscode/)
+- <img src="https://simpleicons.org/icons/git.svg" height="12pt"> [git](common/development/git.nix)
+- <img src="https://simpleicons.org/icons/starship.svg" height="12pt"> [zsh](common/terminal/zsh.nix)
+  with [starship](common/terminal/starship.nix)
+- <img src="https://simpleicons.org/icons/docker.svg" height="12pt"> [docker](common/development/docker.nix)
 
-[Home manager](home/home/) and [host](host/) configurations.
+### MacOS
 
-- <img src="https://simpleicons.org/icons/visualstudiocode.svg" height="12pt"> [VS Code](home/home/development/vscode/default.nix)
-- <img src="https://simpleicons.org/icons/git.svg" height="12pt"> [git](home/common/development/git.nix)
-- <img src="https://simpleicons.org/icons/starship.svg" height="12pt"> [zsh](home/common/terminal/zsh.nix)
-  and [starship](home/home/terminal/starship.nix)
-- <img src="https://simpleicons.org/icons/firefox.svg" height="12pt"> [Firefox](home/home/firefox/)
-  using [Material Fox](https://github.com/muckSponge/MaterialFox/)
-  and [User.js privacy configuration](https://github.com/pyllyukko/user.js)
-- <img src="https://simpleicons.org/icons/docker.svg" height="12pt"> [Docker](host/services/docker.nix)
+[Configuration](mac/default.nix)
 
 ### Windows Subsystem Linux (Ubuntu)
 
-- [WSL 1](home/wsl/wsl-1.nix).
+- [WSL 1](wsl/wsl-1.nix).
   In the first WSL version [z-lua](https://github.com/skywind3000/z.lua) package doesn't work,
   it just kills the CPU somehow.
   However, in this version every CPU bound task performs better than on the second version due to virtualization method.
 
-- [WSL 2](home/wsl/wsl-2.nix).
+- [WSL 2](wsl/wsl-2.nix).
   In the second WSL version [docker compose](https://docs.docker.com/compose/) works properly
   because of the virtualization method.
 
-### MacOS
+### NixOS
 
-[Configuration](home/mac/default.nix)
+[Home manager](linux/home/) and [host](linux/host/) configurations.
+
+- <img src="https://simpleicons.org/icons/firefox.svg" height="12pt"> [Firefox](linux/home/firefox/)
+  using [Material Fox](https://github.com/muckSponge/MaterialFox/)
+  and [User.js privacy configuration](https://github.com/pyllyukko/user.js)
 
 ## Usage
 
