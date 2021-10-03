@@ -8,7 +8,7 @@
 
     home = {
       url = "github:nix-community/home-manager/master";
-      inputs.nixpkgs.follows = nixpkgs.url;
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     forgit = {
@@ -38,13 +38,13 @@
           fixed = import nixpkgs-fixed unfreeConfig;
         };
     in rec {
-      # home, NixOS
+      # NixOS
       nixosConfigurations.simyon = import ./linux/host (inputs // {
         system = "x86_64-linux";
         vars.username = username;
       });
 
-      # home managers
+      # WSL, MacOS
       homeManagerConfigurations = let
         makeConfiguration = system: homeDirectory: file:
           home.lib.homeManagerConfiguration {
