@@ -8,20 +8,14 @@ with pkgs; {
     fd      # rip find
     lf      # terminal file manager
     loc     # count lines of code quickly
-    file    # determine file type
     wget    # download
 
     # utility packages
-    gnumake  # control the generation of non-source files from sources
-    binutils # tools for manipulating binaries (linker, assembler, etc)
-    jq       # processing JSON inputs
-
-    # terminal helpful
-    man    # on-line reference manuals
-    tldr   # simplified man pages
+    gnumake # control the generation of non-source files from sources
+    jq      # processing JSON inputs
+    man     # on-line reference manuals
 
     # archive management
-    atool # archive command line helper
     zip   # package and compress archive files
     unzip # zip format extraction
   ];

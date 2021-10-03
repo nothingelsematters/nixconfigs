@@ -4,10 +4,7 @@
   home.packages = with pkgs; [ nixfmt cachix manix ];
 
   programs = {
-    zsh.shellAliases = {
-      nrs = "sudo nixos-rebuild switch --keep-going";
-      nsp = "nix-shell --run zsh -p";
-    };
+    zsh.shellAliases.nsp = "nix-shell --run zsh -p";
 
     vscode = {
       userSettings = {
@@ -19,11 +16,10 @@
         };
       };
 
-      extensions = with pkgs;
-        with vscode-extensions; [
-          bbenoist.nix
-          brettm12345.nixfmt-vscode
-        ];
+      extensions = with pkgs.vscode-extensions; [
+        bbenoist.nix
+        brettm12345.nixfmt-vscode
+      ];
     };
   };
 }
