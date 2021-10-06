@@ -72,8 +72,10 @@
 
       bindkey '^[[A' up-line-or-search
       bindkey '^[[B' down-line-or-search
-      bindkey "^[[1;5C" forward-word
-      bindkey "^[[1;5D" backward-word
+      bindkey "^[f" forward-word
+      bindkey "^[b" backward-word
+      bindkey "^[[1;3C" forward-word
+      bindkey "^[[1;3D" backward-word
       bindkey "^[[3~" delete-char
 
       if [ -n "$name" ]; then
