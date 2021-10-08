@@ -8,6 +8,7 @@
     extensions = with pkgs.vscode-extensions; [
       matklad.rust-analyzer
       serayuzgur.crates
+      tamasfe.even-better-toml
     ];
   };
 }
