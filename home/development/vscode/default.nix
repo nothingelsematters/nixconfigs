@@ -8,6 +8,7 @@ args@{ config, pkgs, ... }:
 
   programs.vscode = {
     enable = true;
+    package = pkgs.fixed.vscode;
     keybindings = import ./keybindings.nix;
     userSettings = import ./settings.nix args;
 

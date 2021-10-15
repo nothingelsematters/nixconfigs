@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "cachix": {
-      "locked": {
-        "lastModified": 1632639184,
-        "narHash": "sha256-fRLxre+gPxIkjFVj17O68pyAWU1cxT20XFOiulIWzRw=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "fd8a7fd07da0f3fc0e27575891f45c2f88e5dd44",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-21.05",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "forgit": {
       "flake": false,
       "locked": {
@@ -50,22 +34,6 @@
         "owner": "nix-community",
         "ref": "master",
         "repo": "home-manager",
-        "type": "github"
-      }
-    },
-    "materialFox": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1628492921,
-        "narHash": "sha256-ZwIftGrplZG3zigU08OyeFUMmTby1yuTAdARWt1bhBc=",
-        "owner": "muckSponge",
-        "repo": "materialFox",
-        "rev": "683f56a1ca9600c6dc3e8d0708609c1592d9cf21",
-        "type": "github"
-      },
-      "original": {
-        "owner": "muckSponge",
-        "repo": "materialFox",
         "type": "github"
       }
     },
@@ -129,51 +97,14 @@
         "type": "indirect"
       }
     },
-    "nixpkgs-wayland": {
-      "inputs": {
-        "cachix": "cachix",
-        "nixpkgs": "nixpkgs_2"
-      },
-      "locked": {
-        "lastModified": 1632882519,
-        "narHash": "sha256-6UC9pi7rqId449AnRdfPv0Sfx+2rpIizaXRikUhHoSA=",
-        "owner": "colemickens",
-        "repo": "nixpkgs-wayland",
-        "rev": "42e07dc73fc569322da41cf980bb103fa8d6880c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "colemickens",
-        "repo": "nixpkgs-wayland",
-        "type": "github"
-      }
-    },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1632660378,
-        "narHash": "sha256-sjA8eQlnyDjDLyAyq3XlJmN0nqW0ftl/pb7VnMg86L0=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "31ffc50c571e6683e9ecc9dbcbd4a8e9914b4497",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "forgit": "forgit",
         "home": "home",
-        "materialFox": "materialFox",
         "nixpkgs": "nixpkgs",
         "nixpkgs-fixed": "nixpkgs-fixed",
         "nixpkgs-stable": "nixpkgs-stable",
-        "nixpkgs-turbo": "nixpkgs-turbo",
-        "nixpkgs-wayland": "nixpkgs-wayland"
+        "nixpkgs-turbo": "nixpkgs-turbo"
       }
     }
   },

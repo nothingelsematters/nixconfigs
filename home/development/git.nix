@@ -44,7 +44,7 @@
       extraConfig = {
         pull.rebase = true;
         credential.helper = "store";
-        core.editor = "$EDITOR --wait";
+        core.editor = "${config.lib.packages.editor.name} --wait";
         color.ui = true;
 
         "color \"diff-highlight\"" = {

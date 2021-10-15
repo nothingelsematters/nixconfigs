@@ -21,59 +21,21 @@
 
 ## Configuration
 
-- <img src="https://simpleicons.org/icons/visualstudiocode.svg" height="12pt"> [vs code](common/development/vscode/)
-- <img src="https://simpleicons.org/icons/git.svg" height="12pt"> [git](common/development/git.nix)
-- <img src="https://simpleicons.org/icons/starship.svg" height="12pt"> [zsh](common/terminal/zsh.nix)
-  with [starship](common/terminal/starship.nix)
-- <img src="https://simpleicons.org/icons/docker.svg" height="12pt"> [docker](common/development/docker.nix)
+- <img src="https://simpleicons.org/icons/visualstudiocode.svg" height="12pt"> [vs code](home/development/vscode/)
+- <img src="https://simpleicons.org/icons/git.svg" height="12pt"> [git](home/development/git.nix)
+- <img src="https://simpleicons.org/icons/starship.svg" height="12pt"> [zsh](home/terminal/zsh.nix)
+  with [starship](home/terminal/starship.nix)
+- <img src="https://simpleicons.org/icons/docker.svg" height="12pt"> [docker](home/development/docker.nix)
 
-### MacOS
-
-[Configuration](mac/default.nix)
-
-### Windows Subsystem Linux (Ubuntu)
-
-- [WSL 1](wsl/wsl-1.nix).
-  In the first WSL version [z-lua](https://github.com/skywind3000/z.lua) package doesn't work,
-  it just kills the CPU somehow.
-  However, in this version every CPU bound task performs better than on the second version due to virtualization method.
-
-- [WSL 2](wsl/wsl-2.nix).
-  In the second WSL version [docker compose](https://docs.docker.com/compose/) works properly
-  because of the virtualization method.
-
-### NixOS
-
-[Home manager](linux/home/) and [host](linux/host/) configurations.
-
-- <img src="https://simpleicons.org/icons/firefox.svg" height="12pt"> [Firefox](linux/home/firefox/)
-  using [Material Fox](https://github.com/muckSponge/MaterialFox/)
-  and [User.js privacy configuration](https://github.com/pyllyukko/user.js)
+A historic configuration with **NixOS linux** and **WSL linux**: [4cb13be](https://github.com/nothingelsematters/nixconfigs/tree/4cb13be652046935c9aee971b6a49d141f633993)
 
 ## Usage
 
-### NixOS
+### Install nix
 
-- Build: `sudo nixos-rebuild switch --flake . --keep-going`
-- Update: `nix flake update .`
-- Clean up generations: `sudo nix-collect-garbage -d`
+- `sh <(curl -L https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-volume`
 
-### WSL and MacOS
-
-#### Install nix
-
-- WSL
-  - `sudo mkdir -p /etc/nix`
-  - `/etc/nix/nix.conf` (requires `sudo`):
-    ```
-    sandbox = false
-    use-sqlite-wal = false
-    ```
-  - `sh <(curl -L https://nixos.org/nix/install) --no-daemon`
-- MacOS
-  - `sh <(curl -L https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-volume`
-
-#### Install nix flakes
+### Install nix flakes
 
 - `nix-env -iA nixpkgs.nixFlakes`
 - `~/.config/nix/nix.conf`:
@@ -81,12 +43,10 @@
   experimental-features = nix-command flakes
   ```
 
-#### Use configuration
+### Use configuration
 
 - clone this repo
-- activate packages
-  - WSL: `nix build .#homeManagerConfigurations.wsl<number>.activatePackage`
-  - MacOS: `nix build .#homeManagerConfigurations.mac.activatePackage`
+- activate packages `nix build .#mac.activatePackage`
 - `./result/activate`
 
 There is an alias for the last two commands after you do this for the first time: `hms`.

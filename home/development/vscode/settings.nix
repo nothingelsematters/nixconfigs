@@ -8,7 +8,7 @@ with config.lib; {
   "editor.cursorSmoothCaretAnimation" = false;
   "editor.cursorStyle" = "underline";
 
-  "editor.fontFamily" = "'JetBrains Mono'";
+  "editor.fontFamily" = "'${theme.fonts.mono.name}'";
   "editor.fontLigatures" = true;
   "editor.fontSize" = 12.01;
 
