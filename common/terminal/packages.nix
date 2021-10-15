@@ -6,7 +6,6 @@ with pkgs; {
     exa     # rip ls
     ripgrep # rip grep
     fd      # rip find
-    lf      # terminal file manager
     loc     # count lines of code quickly
     wget    # download
 
