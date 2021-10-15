@@ -44,10 +44,8 @@
       extraConfig = {
         pull.rebase = true;
         credential.helper = "store";
-        color = {
-          ui = true;
-          editor = "$EDITOR --wait";
-        };
+        core.editor = "$EDITOR --wait";
+        color.ui = true;
 
         "color \"diff-highlight\"" = {
           oldNormal = "red bold";
