@@ -16,6 +16,7 @@ args@{ config, pkgs, ... }:
       [
         tomoki1207.pdf
         editorconfig.editorconfig
+        usernamehw.errorlens
 
         # theme
         file-icons.file-icons
