@@ -44,6 +44,8 @@
       extraConfig = {
         pull.rebase = true;
         credential.helper = "store";
+        init.defaultBranch = "main";
+
         core.editor = "${config.lib.packages.editor.name} --wait";
         color.ui = true;
 
