@@ -46,7 +46,7 @@ A historic configuration with **NixOS linux** and **WSL linux**: [4cb13be](https
 ### Use configuration
 
 - clone this repo
-- activate packages `nix build .#mac.activateionPackage`
+- activate packages `nix build .#mac.activationPackage`
 - `./result/activate`
 
 There is an alias for the last two commands after you do this for the first time: `hms`.
