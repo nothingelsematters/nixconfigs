@@ -3,7 +3,6 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixpkgs-turbo.url = "nixpkgs/master";
     nixpkgs-stable.url = "nixpkgs/release-21.05";
-    nixpkgs-fixed.url = "nixpkgs/ec81333c99894f6dd9b248efe617ff79482cc8f6";
 
     home = {
       url = "github:nix-community/home-manager/master";
@@ -16,8 +15,8 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs, nixpkgs-turbo, nixpkgs-stable, nixpkgs-fixed, home
-    , forgit, ... }:
+  outputs =
+    inputs@{ nixpkgs, nixpkgs-turbo, nixpkgs-stable, home, forgit, ... }:
     let
       overlay = system: self: super:
         let
@@ -29,7 +28,6 @@
           inherit forgit;
           turbo = import nixpkgs-turbo unfreeConfig;
           stable = import nixpkgs-stable unfreeConfig;
-          fixed = import nixpkgs-fixed unfreeConfig;
         };
     in rec {
       mac = home.lib.homeManagerConfiguration rec {

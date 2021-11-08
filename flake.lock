@@ -52,21 +52,6 @@
         "type": "indirect"
       }
     },
-    "nixpkgs-fixed": {
-      "locked": {
-        "lastModified": 1628603465,
-        "narHash": "sha256-Du2oxiDeJtYranzBCDkPxNaYMeuXYwu6i5kKbY7F8/s=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "ec81333c99894f6dd9b248efe617ff79482cc8f6",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "rev": "ec81333c99894f6dd9b248efe617ff79482cc8f6",
-        "type": "indirect"
-      }
-    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1635933255,
@@ -102,7 +87,6 @@
         "forgit": "forgit",
         "home": "home",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-fixed": "nixpkgs-fixed",
         "nixpkgs-stable": "nixpkgs-stable",
         "nixpkgs-turbo": "nixpkgs-turbo"
       }
