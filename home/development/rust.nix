@@ -6,7 +6,7 @@
   programs.vscode = {
     userSettings."[rust]"."editor.defaultFormatter" = "matklad.rust-analyzer";
     extensions = with pkgs.vscode-extensions; [
-      pkgs.stable.vscode-extensions.matklad.rust-analyzer # TODO
+      matklad.rust-analyzer
       serayuzgur.crates
       tamasfe.even-better-toml
     ];
