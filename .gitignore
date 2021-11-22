@@ -1,2 +1,4 @@
-# wsl home manager build directory
+.DS_Store
+
+# home manager build directory
 result
