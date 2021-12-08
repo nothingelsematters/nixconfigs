@@ -1,0 +1,5 @@
+<application>
+  <component name="KotlinCodeInsightSettings">
+    <option name="addUnambiguousImportsOnTheFly" value="true" />
+  </component>
+</application>

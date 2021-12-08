@@ -1,0 +1,24 @@
+<application>
+  <component name="Atom Icon Selections Config">
+    <option name="selectedFileAssociations">
+      <SelectedAssociations>
+        <option name="ownAssociations">
+          <map>
+            <entry key="README">
+              <value>
+                <RegexAssociation>
+                  <option name="matcher" value="^(README|readme)(\.(md|txt))?$" />
+                  <option name="pattern" value="^(README|readme)(\.(md|txt))?$" />
+                  <option name="touched" value="true" />
+                  <option name="name" value="README" />
+                  <option name="icon" value="/icons/files/markdown.svg" />
+                  <option name="priority" value="1000" />
+                </RegexAssociation>
+              </value>
+            </entry>
+          </map>
+        </option>
+      </SelectedAssociations>
+    </option>
+  </component>
+</application>
