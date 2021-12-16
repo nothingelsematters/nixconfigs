@@ -12,6 +12,7 @@
       current_branch = "git rev-parse --abbrev-ref HEAD";
       gpull = "git pull origin $(current_branch)";
       gpush = "git push origin $(current_branch)";
+      "GPUSH!" = "gpush --force";
 
       gs = "git status -s";
       gl = "gll --all --stat";
