@@ -31,14 +31,6 @@
     ];
 
     shellAliases = rec {
-      l = "exa -lh --no-user --group-directories-first";
-      lg = "l --git";
-      la = "l -a";
-      tree = "l -T";
-      ll = "tree -L 2";
-      lll = "tree -L 3";
-      zz = "z -I";
-      bd = "z -b";
       ".." = "cd ..";
       "..." = "cd ../..";
       "...." = "cd ../../..";

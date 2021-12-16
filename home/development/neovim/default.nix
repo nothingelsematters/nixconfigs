@@ -25,7 +25,7 @@
 
       # Style
       nightfox-nvim
-      nvim-web-devicons
+      nvim-web-devicons # Needs nerd font
       vim-devicons
       bufferline-nvim
       scrollbar-nvim
