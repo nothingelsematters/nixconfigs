@@ -30,8 +30,6 @@
 
     git = {
       enable = true;
-      userName = "Simon Naumov";
-      userEmail = "daretoodefy@gmail.com";
 
       delta = {
         enable = true;

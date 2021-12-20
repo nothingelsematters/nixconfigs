@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  superImport = { dir, includeDirectories ? true, includeFiles ? false
+  superImport = { lib, dir, includeDirectories ? true, includeFiles ? false
     , skipDotted ? true, additional ? [ ], exclude ? [ ], recursive ? false }:
 
     with lib.attrsets;
@@ -32,7 +32,10 @@ let
           else
             singleton) child);
 
-      filterExclusion = filter (a: count (b: a == (dir + b)) exclude == 0);
+      filterExclusion = filter (a:
+        count (b:
+          a == (dir + b) || builtins.match "${builtins.toString dir}/${b}/.*"
+          (builtins.toString a) != null) exclude == 0);
 
       exploreDir = directory:
         pipe directory [
@@ -45,11 +48,10 @@ let
     in additional ++ exploreDir dir;
 in {
   imports = superImport {
-    dir = ./.;
+    inherit lib;
+    dir = ../.;
     recursive = true;
     includeFiles = true;
+    exclude = [ "profile" ];
   };
-
-  programs.zsh.shellAliases.hms =
-    "nix build .#mac.activationPackage && ./result/activate";
 }

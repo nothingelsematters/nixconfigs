@@ -29,19 +29,24 @@
           turbo = import nixpkgs-turbo unfreeConfig;
           stable = import nixpkgs-stable unfreeConfig;
         };
-    in rec {
-      mac = home.lib.homeManagerConfiguration rec {
-        username = "simon";
-        system = "aarch64-darwin";
-        homeDirectory = "/Users/${username}";
 
-        configuration = { pkgs, lib, ... }: {
-          imports = [ ./home ];
-          nixpkgs = {
-            overlays = [ (overlay system) ];
-            config.allowUnfree = true;
+      mkHomeConfig = username: system: homePrefix: file:
+        home.lib.homeManagerConfiguration rec {
+          inherit username system;
+          homeDirectory = "${homePrefix}/${username}";
+
+          configuration = { pkgs, lib, ... }: {
+            imports = [ file ];
+            nixpkgs = {
+              overlays = [ (overlay system) ];
+              config.allowUnfree = true;
+            };
           };
         };
-      };
+    in rec {
+      mac =
+        mkHomeConfig "simon" "aarch64-darwin" "/Users" ./home/profile/home.nix;
+      work =
+        mkHomeConfig "sdnaumov" "x86_64-linux" "/home" ./home/profile/work.nix;
     };
 }
