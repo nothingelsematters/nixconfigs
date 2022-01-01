@@ -12,6 +12,8 @@
         scikitlearn
         pyenchant
         nltk
+        emoji
+        inflect
       ]))
   ];
 

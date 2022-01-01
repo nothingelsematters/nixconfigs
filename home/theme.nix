@@ -1,7 +1,7 @@
 args@{ lib, pkgs, ... }:
 
-{
-  home.packages = [ pkgs.jetbrains-mono ];
+rec {
+  home.packages = [ lib.theme.fonts.mono.package ];
 
   lib.theme = {
     isDark = true;

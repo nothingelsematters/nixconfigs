@@ -2,10 +2,7 @@
 
 # TODO
 # - scroll beyond last line
-# + tabs
 # + line transition in normal mode ->
-# + option navigation
-# + formatting on save (exit insert)
 # + hover (language server)
 {
   programs.neovim = {
@@ -29,6 +26,7 @@
       vim-devicons
       bufferline-nvim
       scrollbar-nvim
+      barbar-nvim # tabs
 
       # LSP
       nvim-lspconfig # Collection of common configurations for the Nvim LSP client
