@@ -5,7 +5,7 @@ with config.lib.theme; {
     enable = true;
 
     font = with fonts; {
-      name = "${mono.name} 10";
+      name = mono.name;
       inherit (mono) package;
     };
 
