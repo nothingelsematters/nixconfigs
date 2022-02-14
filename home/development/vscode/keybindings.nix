@@ -24,11 +24,15 @@
     key = "ctrl+f5";
   }
   {
+    command = "workbench.action.closeSidebar";
+    key = "ctrl+shift+q";
+  }
+  {
     command = "workbench.action.terminal.toggleTerminal";
     key = "ctrl+shift+t";
   }
   {
-    command = "workbench.action.closeSidebar";
-    key = "ctrl+shift+q";
+    command = "test-explorer.focus";
+    key = "ctrl+shift+i";
   }
 ]

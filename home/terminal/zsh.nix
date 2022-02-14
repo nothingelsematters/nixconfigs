@@ -48,7 +48,7 @@
       setopt histignorealldups # If a new command is a duplicate, remove the older one
       setopt autocd autopushd  # Implied cd
       autoload -U compinit     # Completion
-      compinit
+      compinit -u
 
       # Speed up completions
       zstyle ':completion:*' accept-exact '*(N)'

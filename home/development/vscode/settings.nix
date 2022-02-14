@@ -44,7 +44,7 @@ with config.lib; {
   "terminal.integrated.cursorBlinking" = false;
   "terminal.integrated.cursorStyle" = "underline";
   "terminal.integrated.fontFamily" = "JetBrains Mono";
-  "terminal.integrated.fontSize" = 10;
+  "terminal.integrated.fontSize" = 11;
   "terminal.explorerKind" = "external";
 
   "update.mode" = "none";
