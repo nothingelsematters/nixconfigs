@@ -3,7 +3,24 @@
 {
   imports = [ ./common.nix ];
 
-  home.packages = with pkgs; [ zoom-us etcd_3_4 ];
+  home = with pkgs; {
+    sessionVariables = {
+      OPENSSL_ROOT_DIR = "${openssl}";
+      PKG_CONFIG_PATH = "$PKG_CONFIG_PATH:${openssl.dev}/lib/pkgconfig";
+    };
+    packages = [
+      # building
+      gcc
+      cmake
+      binutils
+      openssl.dev
+      openssl
+      # devopsing
+      etcd_3_4
+      stable.dbeaver
+      oracle-instantclient
+    ];
+  };
 
   programs = {
     zsh = {
