@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ nixfmt cachix manix ];
+  home.packages = with pkgs; [ nixfmt manix ];
 
   programs = {
     zsh.shellAliases.nsp = "nix-shell --run zsh -p";

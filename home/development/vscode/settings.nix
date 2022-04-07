@@ -7,6 +7,7 @@ with config.lib; {
   "editor.cursorBlinking" = "solid";
   "editor.cursorSmoothCaretAnimation" = false;
   "editor.cursorStyle" = "underline";
+  "editor.cursorSurroundingLines" = 5;
 
   "editor.fontFamily" = "'${theme.fonts.mono.name}'";
   "editor.fontLigatures" = true;

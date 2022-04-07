@@ -2,18 +2,18 @@
 
 with pkgs; {
   home.packages = [
-    # filesystem utility packages
+    # filesystem
     ripgrep # rip grep
     fd      # rip find
-    loc     # count lines of code quickly
+    loc     # count lines of code
 
-    # utility packages
-    gnumake # control the generation of non-source files from sources
-    jq      # processing JSON inputs
-    man     # on-line reference manuals
+    # utility
+    mdcat   # cat for markdown
+    gnumake # make builder
+    jq      # processing JSON
 
-    # archive management
-    zip   # package and compress archive files
-    unzip # zip format extraction
+    # archive
+    zip
+    unzip
   ];
 }

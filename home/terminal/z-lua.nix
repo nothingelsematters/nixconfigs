@@ -1,3 +1,5 @@
+{ config, ... }:
+
 {
   programs = {
     z-lua = {
@@ -6,9 +8,17 @@
       options = [ "zsh" "enhanced" "once" "fzf" ];
     };
 
-    zsh.shellAliases = {
-      zz = "z -I";
-      bd = "z -b";
+    zsh = {
+      shellAliases = {
+        zz = "z -I";
+        bd = "z -b";
+      };
+
+      initExtra = ''
+        zcd() {
+          _zlua $1 && ${config.lib.packages.editor.name} .
+        }
+      '';
     };
   };
 }

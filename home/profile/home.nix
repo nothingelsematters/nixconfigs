@@ -1,7 +1,13 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./common.nix ];
+  imports = import ./import.nix {
+    inherit lib;
+    dir = ../.;
+    recursive = true;
+    includeFiles = true;
+    exclude = [ "profile" ];
+  };
 
   programs = {
     zsh.shellAliases.hms =

@@ -1,13 +1,29 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./common.nix ];
+  imports = import ./import.nix {
+    inherit lib;
+    dir = ../.;
+    recursive = true;
+    includeFiles = true;
+    exclude = [
+      "development/docker.nix"
+      "development/nix.nix"
+      "development/python.nix"
+      "profile"
+      "terminal/kitty.nix"
+    ];
+  };
 
   home = with pkgs; {
     sessionVariables = {
       OPENSSL_ROOT_DIR = "${openssl}";
       PKG_CONFIG_PATH = "$PKG_CONFIG_PATH:${openssl.dev}/lib/pkgconfig";
+      # install oracle client manually because of tnsnames.ora
+      LD_LIBRARY_PATH =
+        "$LD_LIBRARY_PATH:/usr/lib/oracle/21/client64/lib:${libaio}/lib";
     };
+
     packages = [
       # building
       gcc
@@ -15,10 +31,11 @@
       binutils
       openssl.dev
       openssl
+
       # devopsing
       etcd_3_4
       stable.dbeaver
-      oracle-instantclient
+      libaio # for oracle client
     ];
   };
 

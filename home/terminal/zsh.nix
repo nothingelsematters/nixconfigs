@@ -1,8 +1,6 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ mdcat ];
-
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;
@@ -12,10 +10,6 @@
     };
 
     plugins = with pkgs; [
-      {
-        name = "nix-zsh-completions";
-        src = nix-zsh-completions + /share/zsh/plugins/nix;
-      }
       {
         name = "you-should-use";
         src = zsh-you-should-use + /share/zsh/plugins/you-should-use;
@@ -30,7 +24,7 @@
       }
     ];
 
-    shellAliases = rec {
+    shellAliases = {
       ".." = "cd ..";
       "..." = "cd ../..";
       "...." = "cd ../../..";

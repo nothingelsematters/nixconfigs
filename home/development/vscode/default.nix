@@ -6,12 +6,6 @@ args@{ config, pkgs, ... }:
     package = config.programs.vscode.package;
   };
 
-  programs.zsh.initExtra = ''
-    zcd() {
-      _zlua $1 && code .
-    }
-  '';
-
   programs.vscode = {
     enable = true;
     keybindings = import ./keybindings.nix;
