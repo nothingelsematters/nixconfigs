@@ -8,5 +8,5 @@
     dlaunch = "open /Applications/Docker.app";
   };
 
-  home.packages = with pkgs; [ docker docker_compose dive ];
+  home.packages = with pkgs; [ docker docker-compose dive ];
 }
