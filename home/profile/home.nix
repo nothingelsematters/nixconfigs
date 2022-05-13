@@ -9,6 +9,8 @@
     exclude = [ "profile" ];
   };
 
+  home.packages = [ pkgs.heroku ];
+
   programs = {
     zsh.shellAliases.hms =
       "nix build .#mac.activationPackage && ./result/activate";
