@@ -42,6 +42,13 @@ args@{ config, pkgs, ... }:
           version = "0.0.1";
           sha256 = "sha256-8xg8cy2OtJ0CdEclE6grIAHXHHN5eBfNKYAqu4sk6y8=";
         }
+        # command + shift + P -> Open Scratchpad
+        {
+          name = "scratchpad";
+          publisher = "awesomektvn";
+          version = "0.1.0";
+          sha256 = "sha256-jbyua6slJpA4SDxPyvyLuz4R5drcrwNtLIKYR8jNpZg=";
+        }
       ];
   };
 }
