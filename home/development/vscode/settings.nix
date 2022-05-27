@@ -8,6 +8,7 @@ with config.lib; {
   "editor.cursorSmoothCaretAnimation" = false;
   "editor.cursorStyle" = "underline";
   "editor.cursorSurroundingLines" = 5;
+  "editor.lineNumbers" = "relative";
 
   "editor.fontFamily" = "'${theme.fonts.mono.name}'";
   "editor.fontLigatures" = true;
@@ -74,10 +75,4 @@ with config.lib; {
   "files.maxMemoryForLargeFilesMB" = 1024;
 
   "todo-tree.tree.showScanModeButton" = false;
-
-  # sql
-  "[sql]" = {
-    "editor.tabSize" = 2;
-    "editor.rulers" = [ 80 ];
-  };
 }

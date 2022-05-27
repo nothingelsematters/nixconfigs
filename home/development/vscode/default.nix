@@ -17,6 +17,7 @@ args@{ config, pkgs, ... }:
         tomoki1207.pdf
         editorconfig.editorconfig
         usernamehw.errorlens
+        asvetliakov.vscode-neovim
 
         # theme
         file-icons.file-icons
@@ -25,6 +26,9 @@ args@{ config, pkgs, ... }:
 
         # markdown
         yzhang.markdown-all-in-one
+
+        # rest
+        turbo.vscode-extensions.humao.rest-client
       ] ++ vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "vscode-diff";
@@ -33,10 +37,10 @@ args@{ config, pkgs, ... }:
           sha256 = "sha256-b1N+m+Y4kUylXrJOU0Y1c9eRI12CSkb5mWyKYy+FAzc=";
         }
         {
-          name = "rest-client";
-          publisher = "humao";
-          version = "0.24.6";
-          sha256 = "sha256-g1RSkRnKamuaegmNX6MnDLfKL0SQThr2XQgRsN+p16Q=";
+          name = "relativegoto";
+          publisher = "retepaskab";
+          version = "0.0.1";
+          sha256 = "sha256-8xg8cy2OtJ0CdEclE6grIAHXHHN5eBfNKYAqu4sk6y8=";
         }
       ];
   };
