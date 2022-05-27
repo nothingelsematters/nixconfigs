@@ -7,17 +7,9 @@
     <a href="https://github.com/nothingelsematters">
         <img src="https://img.shields.io/github/commit-activity/y/nothingelsematters/nixconfigs?style=flat-square&logo=github">
     </a>
-    <a href="https://www.codefactor.io/repository/github/nothingelsematters/nixconfigs">
-        <img src="https://img.shields.io/codefactor/grade/github/nothingelsematters/nixconfigs?style=flat-square&logo=codefactor">
-    </a>
 </p>
 
 <h1 align="center"> custom <a href="https://nixos.org">nix</a> configuration </h1>
-
-## Nix tools being used
-
-- [Nix Flakes](https://nixos.wiki/wiki/Flakes) - dependency specification feature
-- [Cachix](https://cachix.org) - Nix binary cache hosting
 
 ## Configuration
 
@@ -31,26 +23,39 @@ A historic configuration with **NixOS linux** and **WSL linux**: [4cb13be](https
 
 ## Usage
 
-### Install nix
+### Installation
 
-- `sh <(curl -L https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-volume`
+- Install [nix](https://nixos.wiki/wiki/Nix_Expression_Language) \
+  `sh <(curl -L https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-volume`
 
-### Install nix flakes
+- Install nix [flakes](https://nixos.wiki/wiki/Flakes)
 
-- `nix-env -iA nixpkgs.nixFlakes`
-- `~/.config/nix/nix.conf`:
+  ```shell
+  nix-env -iA nixpkgs.nixFlakes
+  mkdir -p ~/.config/nix/
+  echo "experimental-features = nix-command flakes" > ~/.config/nix/nix.conf
   ```
-  experimental-features = nix-command flakes
-  ```
 
-### Use configuration
+- Use configuration
+  - Clone this repo \
+    `git clone git@github.com:nothingelsematters/nixconfigs.git`
 
-- clone this repo
-- activate packages `nix build .#mac.activationPackage`
-- `./result/activate`
+  - Activate packages
 
-There is an alias for the last two commands after you do this for the first time: `hms`.
+    - for the first time \
+      `nix build .#mac.activationPackage && ./result/activate`
+
+    - after the first time \
+      `hms`
+
+### Update
+
+`nix flake update .`
+
+### Clean up
+
+`nix-collect-garbage -d`
 
 ## Inspiration
 
-- My bro's configuration [QuentinI/dotnix](https://github.com/QuentinI/dotnix/)
+My bro's configuration [QuentinI/dotnix](https://github.com/QuentinI/dotnix/)
