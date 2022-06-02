@@ -10,6 +10,7 @@
     userSettings = {
       "[rust]"."editor.defaultFormatter" = "matklad.rust-analyzer";
       "rust-analyzer.checkOnSave.command" = "clippy";
+      "rust-analyzer.cargo.features" = "all";
     };
 
     extensions = with pkgs.vscode-extensions; [
