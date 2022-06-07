@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 
 with config.lib.theme; {
   programs.kitty = {

@@ -29,7 +29,7 @@
           configuration = import file;
           pkgs = import nixpkgs (unfreeConfig // {
             overlays = [
-              (self: super: {
+              (_: _: {
                 inherit forgit;
                 turbo = import nixpkgs-turbo unfreeConfig;
                 stable = import nixpkgs-stable unfreeConfig;

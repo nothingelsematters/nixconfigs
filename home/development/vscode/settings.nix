@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 
 with config.lib; {
   "breadcrumbs.enabled" = true;

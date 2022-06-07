@@ -1,4 +1,4 @@
-args@{ lib, pkgs, ... }:
+{ pkgs, ... }:
 
 rec {
   home.packages = [ lib.theme.fonts.mono.package ];
