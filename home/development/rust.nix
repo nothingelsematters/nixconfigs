@@ -11,7 +11,7 @@
 
     vscode = {
       userSettings = {
-        "[rust]"."editor.defaultFormatter" = "matklad.rust-analyzer";
+        "[rust]"."editor.defaultFormatter" = "rust-lang.rust-analyzer";
         "rust-analyzer.checkOnSave.command" = "clippy";
         "rust-analyzer.cargo.features" = "all";
       };
