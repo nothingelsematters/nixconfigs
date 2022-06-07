@@ -17,7 +17,6 @@ args@{ config, pkgs, ... }:
         tomoki1207.pdf
         editorconfig.editorconfig
         usernamehw.errorlens
-        asvetliakov.vscode-neovim
 
         # theme
         file-icons.file-icons
