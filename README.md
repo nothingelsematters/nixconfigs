@@ -14,9 +14,10 @@
 ## Configuration
 
 - <img src="https://simpleicons.org/icons/visualstudiocode.svg" height="12pt"> [vs code](home/development/vscode/)
-- <img src="https://simpleicons.org/icons/git.svg" height="12pt"> [git](home/development/git.nix)
 - <img src="https://simpleicons.org/icons/starship.svg" height="12pt"> [zsh](home/terminal/zsh.nix)
   with [starship](home/terminal/starship.nix)
+- <img src="https://simpleicons.org/icons/gnometerminal.svg" height="12pt"> [kitty](home/terminal/kitty)
+- <img src="https://simpleicons.org/icons/git.svg" height="12pt"> [git](home/development/git.nix)
 - <img src="https://simpleicons.org/icons/docker.svg" height="12pt"> [docker](home/development/docker.nix)
 
 A historic configuration with **NixOS linux** and **WSL linux**: [4cb13be](https://github.com/nothingelsematters/nixconfigs/tree/4cb13be652046935c9aee971b6a49d141f633993)
@@ -36,17 +37,16 @@ A historic configuration with **NixOS linux** and **WSL linux**: [4cb13be](https
   echo "experimental-features = nix-command flakes" > ~/.config/nix/nix.conf
   ```
 
-- Use configuration
-  - Clone this repo \
-    `git clone git@github.com:nothingelsematters/nixconfigs.git`
+- Clone the repository \
+  `git clone git@github.com:nothingelsematters/nixconfigs.git`
 
-  - Activate packages
+- Activate packages
 
-    - for the first time \
-      `nix build .#mac.activationPackage && ./result/activate`
+  - for the first time \
+    `nix build .#mac.activationPackage && ./result/activate`
 
-    - after the first time \
-      `hms`
+  - after the first time \
+    `hms`
 
 ### Update
 
