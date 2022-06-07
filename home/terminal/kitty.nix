@@ -20,6 +20,9 @@ with config.lib.theme; {
         mouse_hide_wait = "3.0";
         background_opacity = "0.93";
 
+        tab_bar_edge = "top";
+        tab_bar_style = "slant";
+
         url_color = "#0087BD";
         cursor = "#e0e4e8";
         background = background.primary;
