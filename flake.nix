@@ -2,7 +2,7 @@
   inputs = rec {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixpkgs-turbo.url = "nixpkgs/master";
-    nixpkgs-stable.url = "nixpkgs/release-21.11";
+    nixpkgs-stable.url = "nixpkgs/release-22.05";
 
     home = {
       url = "github:nix-community/home-manager/master";
@@ -15,33 +15,27 @@
     };
   };
 
-  outputs =
-    inputs@{ nixpkgs, nixpkgs-turbo, nixpkgs-stable, home, forgit, ... }:
+  outputs = { nixpkgs, nixpkgs-turbo, nixpkgs-stable, home, forgit, ... }:
     let
-      overlay = system: self: super:
+      mkHomeConfig = username: system: homePrefix: file:
         let
           unfreeConfig = {
             inherit system;
             config.allowUnfree = true;
           };
-        in {
-          inherit forgit;
-          turbo = import nixpkgs-turbo unfreeConfig;
-          stable = import nixpkgs-stable unfreeConfig;
-        };
-
-      mkHomeConfig = username: system: homePrefix: file:
-        home.lib.homeManagerConfiguration rec {
+        in home.lib.homeManagerConfiguration rec {
           inherit username system;
           homeDirectory = "${homePrefix}/${username}";
-
-          configuration = { pkgs, lib, ... }: {
-            imports = [ file ];
-            nixpkgs = {
-              overlays = [ (overlay system) ];
-              config.allowUnfree = true;
-            };
-          };
+          configuration = import file;
+          pkgs = import nixpkgs (unfreeConfig // {
+            overlays = [
+              (self: super: {
+                inherit forgit;
+                turbo = import nixpkgs-turbo unfreeConfig;
+                stable = import nixpkgs-stable unfreeConfig;
+              })
+            ];
+          });
         };
     in rec {
       mac =

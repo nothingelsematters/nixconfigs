@@ -27,7 +27,7 @@ args@{ config, pkgs, ... }:
         yzhang.markdown-all-in-one
 
         # rest
-        turbo.vscode-extensions.humao.rest-client
+        humao.rest-client
       ] ++ vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "vscode-diff";

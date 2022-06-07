@@ -2,7 +2,7 @@
 
 {
   home.packages = [
-    (pkgs.python39.withPackages (ps:
+    (pkgs.stable.python310.withPackages (ps:
       with ps; [
         autopep8
 
@@ -10,10 +10,6 @@
         ipykernel
         pandas
         scikitlearn
-        pyenchant
-        nltk
-        emoji
-        inflect
       ]))
   ];
 
