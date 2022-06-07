@@ -12,8 +12,10 @@
   home.packages = [ pkgs.heroku ];
 
   programs = {
-    zsh.shellAliases.hms =
-      "nix build .#mac.activationPackage && ./result/activate";
+    zsh.shellAliases = {
+      hms = "nix build .#mac.activationPackage && ./result/activate";
+      dlaunch = "open /Applications/Docker.app";
+    };
 
     git = {
       userName = "Simon Naumov";

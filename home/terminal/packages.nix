@@ -8,7 +8,6 @@ with pkgs; {
     loc     # count lines of code
 
     # utility
-    mdcat   # cat for markdown
     gnumake # make builder
     jq      # processing JSON
 

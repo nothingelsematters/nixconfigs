@@ -7,7 +7,6 @@
     recursive = true;
     includeFiles = true;
     exclude = [
-      "development/docker.nix"
       "development/nix.nix"
       "development/python.nix"
       "profile"
