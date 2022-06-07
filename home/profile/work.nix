@@ -30,6 +30,7 @@
       binutils
       openssl.dev
       openssl
+      turbo.zlib
 
       # devopsing
       etcd_3_4
