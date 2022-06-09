@@ -4,30 +4,6 @@
   home.packages = [ pkgs.nodePackages.gitmoji-cli ];
 
   programs = {
-    zsh.shellAliases = {
-      g = "git";
-      gco = "git checkout";
-      gcl = "git clone";
-
-      current_branch = "git rev-parse --abbrev-ref HEAD";
-      gpull = "git pull origin $(current_branch)";
-      gpush = "git push origin $(current_branch)";
-      "GPUSH!" = "gpush --force";
-
-      gs = "git status -s";
-      gl = "gll --all --stat";
-      gll =
-        "git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset)"
-        + " - %C(bold yellow)%<|(27)%ar%C(reset) %C(bold green)%<|(70)%s%C(reset) %C(dim white)-"
-        + " %an%C(reset)%C(bold red)%d%C(reset)%n'";
-
-      gcmsg = "git commit -m";
-      gc = "git commit --no-edit";
-      gmc = "gitmoji -c";
-    };
-
-    gh.enable = true;
-
     git = {
       enable = true;
 
@@ -66,15 +42,33 @@
       };
     };
 
+    gh.enable = true;
+
+    zsh.shellAliases = {
+      g = "git";
+      gco = "git checkout";
+      gcl = "git clone";
+
+      current_branch = "git rev-parse --abbrev-ref HEAD";
+      gpull = "git pull origin $(current_branch)";
+      gpush = "git push origin $(current_branch)";
+      "GPUSH!" = "gpush --force";
+
+      gs = "git status -s";
+      gl = "gll --all --stat";
+      gll =
+        "git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset)"
+        + " - %C(bold yellow)%<|(27)%ar%C(reset) %C(bold green)%<|(70)%s%C(reset) %C(dim white)-"
+        + " %an%C(reset)%C(bold red)%d%C(reset)%n'";
+
+      gcmsg = "git commit -m";
+      gc = "git commit --no-edit";
+      gmc = "gitmoji -c";
+    };
+
     vscode = {
       userSettings."gitmoji.outputType" = "code";
-
-      extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
-        name = "git-graph";
-        publisher = "mhutchie";
-        version = "1.30.0";
-        sha256 = "sha256-sHeaMMr5hmQ0kAFZxxMiRk6f0mfjkg2XMnA4Gf+DHwA=";
-      }];
+      extensions = [ pkgs.vscode-extensions.mhutchie.git-graph ];
     };
   };
 }
