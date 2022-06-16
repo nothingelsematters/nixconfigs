@@ -41,8 +41,6 @@
       setopt appendhistory     # Immediately append history instead of overwriting
       setopt histignorealldups # If a new command is a duplicate, remove the older one
       setopt autocd autopushd  # Implied cd
-      autoload -U compinit     # Completion
-      compinit -u
 
       # Speed up completions
       zstyle ':completion:*' accept-exact '*(N)'
@@ -72,23 +70,37 @@
           export PROMPT="[$NIX_NAME] $PROMPT";
       fi
 
-      function gb() {
-        current=$(git rev-parse --abbrev-ref HEAD)
-        branches=("''${(@f)$(git for-each-ref --format='%(refname)' refs/heads/ | sed 's|refs/heads/||')}")
-        for branch in $branches; do
-          desc=$(git config branch.$branch.description)
-          if [ $branch = $current ]; then
-            branch="* \033[0;32m$branch\033[0m"
-          else
-            branch="  $branch"
-          fi
-          echo -e "$branch \033[0;36m$desc\033[0m"
-        done
-      }
-
       if [[ -f "$HOME/.nix-profile/etc/profile.d/nix.sh" ]]; then
         . "$HOME/.nix-profile/etc/profile.d/nix.sh"
       fi
+
+      # title change
+      function title {
+        emulate -L zsh
+        setopt prompt_subst
+        print -Pn "\e]2;$1:q\a" # set window name
+        print -Pn "\e]1;$1:q\a" # set tab name
+      }
+
+      function title_precmd {
+        title "''${PWD##*/}"
+      }
+
+      function title_preexec {
+        setopt shwordsplit
+        ARGS=($1)
+        if [[ ''${ARGS[1]} =~ ^(sudo|ssh|cargo|c)$ ]]; then
+          local CMD="''${ARGS[1]} ''${ARGS[2]}"
+        else
+          local CMD=''${ARGS[1]}
+        fi
+        title "''${PWD##*/} : $CMD"
+      }
+
+      title "''${PWD##*/}"
+      autoload -U add-zsh-hook
+      add-zsh-hook precmd title_precmd
+      add-zsh-hook preexec title_preexec
     '';
   };
 }

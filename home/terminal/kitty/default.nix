@@ -11,6 +11,8 @@ with config.lib.theme; {
 
     settings = with colors;
       with ansi; {
+        confirm_os_window_close = 2;
+
         font_size = 11;
         cursor_shape = "underline";
         cursor_underline_thickness = "1.1";
@@ -21,6 +23,9 @@ with config.lib.theme; {
         background_opacity = "0.93";
 
         tab_bar_edge = "top";
+        tab_fade = "0.33 0.67 1";
+        tab_bar_min_tabs = 1;
+        tab_title_template = "{fmt.fg.tab}{fmt.noitalic}{sup.index}{title}";
 
         url_color = "#0087BD";
         cursor = "#e0e4e8";
