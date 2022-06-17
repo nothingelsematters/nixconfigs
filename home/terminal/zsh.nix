@@ -89,7 +89,7 @@
       function title_preexec {
         setopt shwordsplit
         ARGS=($1)
-        if [[ ''${ARGS[1]} =~ ^(sudo|ssh|cargo|c)$ ]]; then
+        if [[ ''${ARGS[1]} =~ ^(sudo|ssh|cargo|c|git|g)$ ]]; then
           local CMD="''${ARGS[1]} ''${ARGS[2]}"
         else
           local CMD=''${ARGS[1]}

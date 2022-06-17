@@ -53,6 +53,7 @@
       gpull = "git pull origin $(current_branch)";
       gpush = "git push origin $(current_branch)";
       "GPUSH!" = "gpush --force";
+      grpo = "git remote prune origin";
 
       gs = "git status -s";
       gl = "gll --all --stat";
@@ -64,11 +65,6 @@
       gcmsg = "git commit -m";
       gc = "git commit --no-edit";
       gmc = "gitmoji -c";
-    };
-
-    vscode = {
-      userSettings."gitmoji.outputType" = "code";
-      extensions = [ pkgs.vscode-extensions.mhutchie.git-graph ];
     };
   };
 }
