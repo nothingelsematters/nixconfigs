@@ -52,19 +52,38 @@
       current_branch = "git rev-parse --abbrev-ref HEAD";
       gpull = "git pull origin $(current_branch)";
       gpush = "git push origin $(current_branch)";
-      "GPUSH!" = "gpush --force";
+      "gpush!!" = "gpush --force";
       grpo = "git remote prune origin";
 
       gs = "git status -s";
-      gl = "gll --all --stat";
-      gll =
-        "git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset)"
-        + " - %C(bold yellow)%<|(27)%ar%C(reset) %C(bold green)%<|(70)%s%C(reset) %C(dim white)-"
-        + " %an%C(reset)%C(bold red)%d%C(reset)%n'";
 
-      gcmsg = "git commit -m";
-      gc = "git commit --no-edit";
+      gcm = "git commit -m";
       gmc = "gitmoji -c";
-    };
+    }
+    # git log aliases
+      // (let
+        colored = color: text: "%C(${color})${text}%C(reset)";
+
+        format = colored "bold blue" "%>|(13)%h" # commit hash
+          + " - " + colored "bold yellow" "%<(12)%ad" # date, time
+          + colored "bold green" " %<(60,trunc)%s" # message
+          + colored "dim white" " - %an" # author
+          + colored "bold red" "%d"; # ref names
+
+        commonArgs =
+          "-c color.ui=always log --graph --abbrev-commit --decorate --date=format:'%Y-%m-%d %H:%M:%S'";
+      in {
+        gl = "git ${commonArgs} --format=format:'${format}%n' --all --stat";
+        gll = "git ${commonArgs} --format=format:'${format}'";
+
+        # replaces :fire: -> 🔥
+        gle = ''
+          gll \
+            | sed -E "$(
+              gitmoji -l \
+                | awk '{ print "s/" $3 "(.*37m)/" $1 "\\1" sprintf("%" (length($3) - 2) "s", "") "/g" }'
+            )" \
+            | less -R'';
+      });
   };
 }
