@@ -6,12 +6,7 @@
     dir = ../.;
     recursive = true;
     includeFiles = true;
-    exclude = [
-      "development/nix.nix"
-      "development/python.nix"
-      "profile"
-      "terminal/kitty.nix"
-    ];
+    exclude = [ "development/nix.nix" "development/python.nix" "profile" ];
   };
 
   home = with pkgs; {
