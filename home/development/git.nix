@@ -64,26 +64,34 @@
       // (let
         colored = color: text: "%C(${color})${text}%C(reset)";
 
-        format = colored "bold blue" "%>|(13)%h" # commit hash
+        shortFormat = colored "bold blue" "%>|(13)%h" # commit hash
           + " - " + colored "bold yellow" "%<(12)%ad" # date, time
           + colored "bold green" " %<(60,trunc)%s" # message
           + colored "dim white" " - %an" # author
           + colored "bold red" "%d"; # ref names
 
-        commonArgs =
-          "-c color.ui=always log --graph --abbrev-commit --decorate --date=format:'%Y-%m-%d %H:%M:%S'";
+        longFormat = colored "bold blue" "%>|(13)%h" # commit hash
+          + " - " + colored "bold yellow" "%<(12)%ad" # date, time
+          + colored "bold green" " %<(60)%s" # message
+          + colored "dim white" " by %an" # author
+          + colored "bold red" "%d" + "%n"; # ref names
+
+        format = format:
+          "git -c color.ui=always log --graph --abbrev-commit --decorate"
+          + " --date=format:'%Y-%m-%d %H:%M:%S' --format=format:'${format}'";
+
+        less = command: "${command} | less -R";
       in {
-        gl = "git ${commonArgs} --format=format:'${format}%n' --all --stat";
-        gll = "git ${commonArgs} --format=format:'${format}'";
+        gl = less (format shortFormat);
+        gll = less "${format longFormat} --all --stat";
 
         # replaces :fire: -> 🔥
-        gle = ''
-          gll \
+        gle = less ''
+          gl \
             | sed -E "$(
               gitmoji -l \
                 | awk '{ print "s/" $3 "(.*37m)/" $1 "\\1" sprintf("%" (length($3) - 2) "s", "") "/g" }'
-            )" \
-            | less -R'';
+            )"'';
       });
   };
 }
