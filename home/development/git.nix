@@ -69,7 +69,7 @@
           + " - " + colored "bold yellow" "%<(12)%ad" # date, time
           + colored "bold green" " %<(60,trunc)%s" # message
           + colored "dim white" " - %an" # author
-          + colored "bold red" "%d"; # ref names
+          + colored "bold red" "%d" + "%n"; # ref names
 
         longFormat = colored "bold blue" "%>|(13)%h" # commit hash
           + " - " + colored "bold yellow" "%<(12)%ad" # date, time
