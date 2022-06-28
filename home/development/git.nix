@@ -6,6 +6,7 @@
   programs = {
     git = {
       enable = true;
+      userName = "Simon Naumov";
 
       delta = {
         enable = true;
@@ -52,7 +53,7 @@
       current_branch = "git rev-parse --abbrev-ref HEAD";
       gpull = "git pull origin $(current_branch)";
       gpush = "git push origin $(current_branch)";
-      "gpush!!" = "gpush --force";
+      "gpush!" = "gpush --force";
       grpo = "git remote prune origin";
 
       gs = "git status -s";

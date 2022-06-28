@@ -1,5 +1,5 @@
-{ lib, dir, includeDirectories ? true, includeFiles ? false, skipDotted ? true
-, additional ? [ ], exclude ? [ ], recursive ? false }:
+{ lib, dir, includeDirectories ? true, includeFiles ? true, skipDotted ? true
+, recursive ? true, additional ? [ ], exclude ? [ ] }:
 
 with lib.attrsets;
 with lib.lists;
@@ -31,9 +31,9 @@ let
 
   filterExclusion = filter (a:
     count (b:
-      a == (dir + b)
-      || builtins.match "${builtins.toString dir}/${b}/.*" (builtins.toString a)
-      != null) exclude == 0);
+      "${toString a}" == "${toString dir}/${b}"
+      || match "${toString dir}/${b}/.*" (toString a) != null)
+    (exclude ++ [ "profile" ]) == 0);
 
   exploreDir = directory:
     pipe directory [

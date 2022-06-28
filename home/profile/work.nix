@@ -4,9 +4,6 @@
   imports = import ./import.nix {
     inherit lib;
     dir = ../.;
-    recursive = true;
-    includeFiles = true;
-    exclude = [ "development/nix.nix" "development/python.nix" "profile" ];
   };
 
   home = with pkgs; {
@@ -35,6 +32,8 @@
   };
 
   programs = {
+    git.userEmail = "s.d.naumov@tinkoff.ru";
+
     zsh = {
       shellAliases.hms =
         "nix build .#work.activationPackage && ./result/activate";
@@ -47,11 +46,6 @@
         bindkey "^[[1;5C" forward-word
         bindkey "^[[1;5D" backward-word
       '';
-    };
-
-    git = {
-      userName = "Simon Naumov";
-      userEmail = "s.d.naumov@tinkoff.ru";
     };
   };
 }
