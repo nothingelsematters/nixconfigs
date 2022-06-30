@@ -46,20 +46,27 @@
     gh.enable = true;
 
     zsh.shellAliases = {
-      g = "git";
-      gco = "git checkout";
-      gcl = "git clone";
-
       current_branch = "git rev-parse --abbrev-ref HEAD";
+      repo_default_branch =
+        "git remote show origin | rg 'HEAD branch' | cut -d' ' -f5";
+
+      g = "git";
+
+      gcl = "git clone";
       gpull = "git pull origin $(current_branch)";
       gpush = "git push origin $(current_branch)";
       "gpush!" = "gpush --force";
       grpo = "git remote prune origin";
 
       gs = "git status -s";
-
       gcm = "git commit -m";
-      gmc = "gitmoji -c";
+
+      gco = "git checkout";
+      gcom = "git checkout $(repo_default_branch)";
+      gcompull = "gcom && gpull";
+
+      gr = "git rebase";
+      grm = "git rebase $(repo_default_branch)";
     }
     # git log aliases
       // (let
