@@ -73,6 +73,7 @@
 
         gr = "git rebase";
         grm = "git rebase $(repo_default_branch)";
+        grc = "git rebase --continue";
       }
       # git log aliases
         // (let
