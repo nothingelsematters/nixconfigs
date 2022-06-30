@@ -45,61 +45,68 @@
 
     gh.enable = true;
 
-    zsh.shellAliases = {
-      current_branch = "git rev-parse --abbrev-ref HEAD";
-      repo_default_branch =
-        "git remote show origin | rg 'HEAD branch' | cut -d' ' -f5";
+    zsh = {
+      plugins = [{
+        name = "forgit";
+        src = pkgs.forgit;
+      }];
 
-      g = "git";
+      shellAliases = {
+        current_branch = "git rev-parse --abbrev-ref HEAD";
+        repo_default_branch =
+          "git remote show origin | rg 'HEAD branch' | cut -d' ' -f5";
 
-      gcl = "git clone";
-      gpull = "git pull origin $(current_branch)";
-      gpush = "git push origin $(current_branch)";
-      "gpush!" = "gpush --force";
-      grpo = "git remote prune origin";
+        g = "git";
 
-      gs = "git status -s";
-      gcm = "git commit -m";
+        gcl = "git clone";
+        gpull = "git pull origin $(current_branch)";
+        gpush = "git push origin $(current_branch)";
+        "gpush!" = "gpush --force";
+        grpo = "git remote prune origin";
 
-      gco = "git checkout";
-      gcom = "git checkout $(repo_default_branch)";
-      gcompull = "gcom && gpull";
+        gs = "git status -s";
+        gcm = "git commit -m";
 
-      gr = "git rebase";
-      grm = "git rebase $(repo_default_branch)";
-    }
-    # git log aliases
-      // (let
-        colored = color: text: "%C(${color})${text}%C(reset)";
+        gco = "git checkout";
+        gcom = "git checkout $(repo_default_branch)";
+        gcompull = "gcom && gpull";
 
-        shortFormat = colored "bold blue" "%>|(13)%h" # commit hash
-          + " - " + colored "bold yellow" "%<(12)%ad" # date, time
-          + colored "bold green" " %<(60,trunc)%s" # message
-          + colored "dim white" " - %an" # author
-          + colored "bold red" "%d" + "%n"; # ref names
+        gr = "git rebase";
+        grm = "git rebase $(repo_default_branch)";
+      }
+      # git log aliases
+        // (let
+          colored = color: text: "%C(${color})${text}%C(reset)";
 
-        longFormat = colored "bold blue" "%>|(13)%h" # commit hash
-          + " - " + colored "bold yellow" "%<(12)%ad" # date, time
-          + colored "bold green" " %<(60)%s" # message
-          + colored "dim white" " by %an" # author
-          + colored "bold red" "%d" + "%n"; # ref names
+          shortFormat = colored "bold blue" "%>|(13)%h" # commit hash
+            + " - " + colored "bold yellow" "%<(12)%ad" # date, time
+            + colored "bold green" " %<(60,trunc)%s" # message
+            + colored "dim white" " - %an" # author
+            + colored "bold red" "%d" + "%n"; # ref names
 
-        format = format:
-          "git -c color.ui=always log --graph --abbrev-commit --decorate"
-          + " --date=format:'%Y-%m-%d %H:%M:%S' --format=format:'${format}'";
+          longFormat = colored "bold blue" "%>|(13)%h" # commit hash
+            + " - " + colored "bold yellow" "%<(12)%ad" # date, time
+            + colored "bold green" " %<(60)%s" # message
+            + colored "dim white" " by %an" # author
+            + colored "bold red" "%d" + "%n"; # ref names
 
-        less = command: "${command} | less -R";
-      in {
-        gl = less (format shortFormat);
-        gll = less "${format longFormat} --all --stat";
+          format = format:
+            "git -c color.ui=always log --graph --abbrev-commit --decorate"
+            + " --date=format:'%Y-%m-%d %H:%M:%S' --format=format:'${format}'";
 
-        # replaces :fire: -> 🔥
-        gle = less ''
-          gl \
-            | sed -E "$(
-              gitmoji -l \
-                | awk '{ print "s/" $3 "(.*37m)/" $1 "\\1" sprintf("%" (length($3) - 2) "s", "") "/g" }'
-            )"'';
-      });
+          less = command: "${command} | less -R";
+        in {
+          gl = less (format shortFormat);
+          gll = less "${format longFormat} --all --stat";
+
+          # replaces :fire: -> 🔥
+          gle = less ''
+            gl \
+              | sed -E "$(
+                gitmoji -l \
+                  | awk '{ print "s/" $3 "(.*37m)/" $1 "\\1" sprintf("%" (length($3) - 2) "s", "") "/g" }'
+              )"'';
+        });
+    };
   };
 }

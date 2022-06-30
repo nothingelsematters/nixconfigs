@@ -18,10 +18,6 @@
         name = "fast-syntax-highlighting";
         src = zsh-fast-syntax-highlighting + /share/zsh/site-functions;
       }
-      {
-        name = "forgit";
-        src = forgit;
-      }
     ];
 
     shellAliases = {
