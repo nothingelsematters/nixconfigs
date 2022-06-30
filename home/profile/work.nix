@@ -42,9 +42,6 @@
         if [[ -f "$HOME/.nix-profile/etc/profile.d/nix.sh" ]]; then
           . "$HOME/.nix-profile/etc/profile.d/nix.sh"
         fi
-
-        bindkey "^[[1;5C" forward-word
-        bindkey "^[[1;5D" backward-word
       '';
     };
   };

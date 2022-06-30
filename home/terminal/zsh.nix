@@ -54,13 +54,21 @@
       zstyle -e ':completion:*:approximate:*' \
               max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3))numeric)'
 
-      bindkey '^[[A' up-line-or-search
-      bindkey '^[[B' down-line-or-search
-      bindkey "^[f" forward-word
-      bindkey "^[b" backward-word
+      bindkey "^[[A"    up-line-or-search
+      bindkey "^[[B"    down-line-or-search
+      bindkey "^[[H"    beginning-of-line
+      bindkey "^[[F"    end-of-line
+      bindkey "^[[3~"   delete-char
+
+      # MacOS
+      bindkey "^[f"     forward-word
+      bindkey "^[b"     backward-word
       bindkey "^[[1;3C" forward-word
       bindkey "^[[1;3D" backward-word
-      bindkey "^[[3~" delete-char
+
+      # Linux
+      bindkey "^[[1;5C" forward-word
+      bindkey "^[[1;5D" backward-word
 
       if [ -n "$name" ]; then
         PROMPT="[$name] $PROMPT";
