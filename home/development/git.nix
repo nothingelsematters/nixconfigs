@@ -43,7 +43,10 @@
       };
     };
 
-    gh.enable = true;
+    gh = {
+      enable = true;
+      extensions = [ pkgs.turbo.gh-dash ];
+    };
 
     zsh = {
       plugins = [{
