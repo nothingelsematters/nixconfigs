@@ -23,10 +23,7 @@
             inherit system;
             config.allowUnfree = true;
           };
-        in home.lib.homeManagerConfiguration rec {
-          inherit username system;
-          homeDirectory = "${homePrefix}/${username}";
-          configuration = import file;
+        in home.lib.homeManagerConfiguration {
           pkgs = import nixpkgs (unfreeConfig // {
             overlays = [
               (_: _: {
@@ -36,6 +33,16 @@
               })
             ];
           });
+          modules = [
+            file
+            {
+              home = {
+                inherit username;
+                homeDirectory = "${homePrefix}/${username}";
+                stateVersion = "22.05";
+              };
+            }
+          ];
         };
     in rec {
       mac =
