@@ -77,14 +77,19 @@
 
         gr = "git rebase";
         grm = "git rebase $(repo_default_branch)";
-        grmnew =
-          let colorised_log = text: ''echo "\e[1;34m> ${text} \e[0m" &&'';
-          in "CURRENT_BRANCH=$(current_branch) && "
-          + colorised_log "Checking out main branch" + " gcom &&"
-          + colorised_log "Pulling" + " gpull &&"
-          + colorised_log "Checking out back"
-          + " gco $CURRENT_BRANCH && unset CURRENT_BRANCH && "
-          + colorised_log "Rebasing on main" + " grm";
+        grmnew = let colorised_log = text: ''echo "\e[1;34m> ${text} \e[0m"'';
+        in ''
+          CURRENT_BRANCH=$(current_branch) &&
+            ${colorised_log "Checking out main branch"} &&
+            gcom &&
+            ${colorised_log "Pulling"} &&
+            gpull &&
+            ${colorised_log "Checking out back"} &&
+            gco $CURRENT_BRANCH &&
+            unset CURRENT_BRANCH &&
+            ${colorised_log "Rebasing on main"} &&
+            grm
+        '';
         grc = "git rebase --continue";
       }
       # git log aliases
