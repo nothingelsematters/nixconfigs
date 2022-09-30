@@ -6,13 +6,13 @@
     settings = {
       scan_timeout = 10;
 
-      memory_usage.disabled = false;
-      shlvl = {
+      nix_shell.symbol = "❄️";
+
+      env_var.variable = "NIX_NAME";
+
+      memory_usage = {
+        format = "$symbol [\${ram}( | \${swap})]($style) ";
         disabled = false;
-        symbol = "❯";
-        repeat = true;
-        style = "bold white";
-        format = "[$symbol]($style)";
       };
 
       cmd_duration = {
@@ -20,12 +20,21 @@
         show_milliseconds = true;
       };
 
-      env_var.variable = "NIX_NAME";
+      status.disabled = false;
+
+      shlvl = {
+        disabled = false;
+        threshold = 1;
+        symbol = "❯";
+        repeat = true;
+        style = "bold white";
+        format = "[$symbol]($style) ";
+      };
 
       format = "$directory" + "$git_branch" + "$git_state" + "$git_status"
         + "$docker_context" + "$nix_shell" + "$env_var" + "$memory_usage"
-        + "$cmd_duration" + "$line_break" + "$shlvl" + "$jobs" + "$battery"
-        + "$status" + "$character";
+        + "$cmd_duration" + "$line_break" + "$status" + "$battery" + "$jobs"
+        + "$shlvl";
     };
   };
 }
