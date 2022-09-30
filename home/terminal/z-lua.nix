@@ -10,12 +10,13 @@
 
     zsh = {
       shellAliases = {
-        zz = "z -I";
-        bd = "z -b";
+        j = "_zlua";
+        jj = "j -I";
+        bd = "j -b";
       };
 
       initExtra = ''
-        zcd() {
+        jcd() {
           _zlua $1 && ${config.lib.packages.editor.name} .
         }
       '';
