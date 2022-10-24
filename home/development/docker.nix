@@ -2,8 +2,9 @@
 
 {
   programs.zsh.shellAliases = {
+    d = "docker";
     dc = "docker-compose";
-    dc-restart =
+    "dc.restart" =
       "dc down --remove-orphans --volumes && dc up --detach --build --force-recreate";
   };
 
