@@ -20,21 +20,18 @@
         show_milliseconds = true;
       };
 
-      status.disabled = false;
-
       shlvl = {
         disabled = false;
-        threshold = 1;
-        symbol = "❯";
-        repeat = true;
+        threshold = 2;
+        symbol = "↓";
+        repeat = false;
         style = "bold white";
-        format = "[$symbol]($style) ";
       };
 
       format = "$directory" + "$git_branch" + "$git_state" + "$git_status"
         + "$docker_context" + "$nix_shell" + "$env_var" + "$memory_usage"
-        + "$cmd_duration" + "$line_break" + "$status" + "$battery" + "$jobs"
-        + "$shlvl";
+        + "$cmd_duration" + "$line_break" + "$battery" + "$jobs" + "$shlvl"
+        + "$character";
     };
   };
 }
