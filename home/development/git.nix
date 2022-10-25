@@ -65,19 +65,20 @@
         "g.cl" = "git clone";
         "g.pull" = "git pull origin $(current_branch)";
         "g.push" = "git push origin $(current_branch)";
-        "gpush!" = "gpush --force";
+        "g.push!" = "g.push --force";
         "g.rpo" = "git remote prune origin";
 
         "g.s" = "git status -s";
-        "g.cm" = "git commit -m";
+        "g.c.m" = "git commit -m";
 
         "g.co" = "git checkout";
-        "g.com" = "git checkout $(repo_default_branch)";
-        "g.compull" = "gcom && gpull";
+        "g.co.m" = "git checkout $(repo_default_branch)";
+        "g.co.m+pull" = "g.co.m && g.pull";
 
         "g.r" = "git rebase";
-        "g.rm" = "git rebase $(repo_default_branch)";
-        "g.rmnew" =
+        "g.r.c" = "git rebase --continue";
+        "g.r.m" = "git rebase $(repo_default_branch)";
+        "g.r.m.new" =
           let colorised_log = text: ''echo "\e[1;34m> ${text} \e[0m"'';
           in ''
             CURRENT_BRANCH=$(current_branch) &&
@@ -91,7 +92,6 @@
               ${colorised_log "Rebasing on main"} &&
               grm
           '';
-        "g.rc" = "git rebase --continue";
       }
       # git log aliases
         // (let
