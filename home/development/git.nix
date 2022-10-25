@@ -62,35 +62,36 @@
 
         g = "git";
 
-        gcl = "git clone";
-        gpull = "git pull origin $(current_branch)";
-        gpush = "git push origin $(current_branch)";
+        "g.cl" = "git clone";
+        "g.pull" = "git pull origin $(current_branch)";
+        "g.push" = "git push origin $(current_branch)";
         "gpush!" = "gpush --force";
-        grpo = "git remote prune origin";
+        "g.rpo" = "git remote prune origin";
 
-        gs = "git status -s";
-        gcm = "git commit -m";
+        "g.s" = "git status -s";
+        "g.cm" = "git commit -m";
 
-        gco = "git checkout";
-        gcom = "git checkout $(repo_default_branch)";
-        gcompull = "gcom && gpull";
+        "g.co" = "git checkout";
+        "g.com" = "git checkout $(repo_default_branch)";
+        "g.compull" = "gcom && gpull";
 
-        gr = "git rebase";
-        grm = "git rebase $(repo_default_branch)";
-        grmnew = let colorised_log = text: ''echo "\e[1;34m> ${text} \e[0m"'';
-        in ''
-          CURRENT_BRANCH=$(current_branch) &&
-            ${colorised_log "Checking out main branch"} &&
-            gcom &&
-            ${colorised_log "Pulling"} &&
-            gpull &&
-            ${colorised_log "Checking out back"} &&
-            gco $CURRENT_BRANCH &&
-            unset CURRENT_BRANCH &&
-            ${colorised_log "Rebasing on main"} &&
-            grm
-        '';
-        grc = "git rebase --continue";
+        "g.r" = "git rebase";
+        "g.rm" = "git rebase $(repo_default_branch)";
+        "g.rmnew" =
+          let colorised_log = text: ''echo "\e[1;34m> ${text} \e[0m"'';
+          in ''
+            CURRENT_BRANCH=$(current_branch) &&
+              ${colorised_log "Checking out main branch"} &&
+              gcom &&
+              ${colorised_log "Pulling"} &&
+              gpull &&
+              ${colorised_log "Checking out back"} &&
+              gco $CURRENT_BRANCH &&
+              unset CURRENT_BRANCH &&
+              ${colorised_log "Rebasing on main"} &&
+              grm
+          '';
+        "g.rc" = "git rebase --continue";
       }
       # git log aliases
         // (let
@@ -114,11 +115,11 @@
 
           less = command: "${command} | less -R";
         in {
-          gl = less (format shortFormat);
-          gll = less "${format longFormat} --all --stat";
+          "g.l" = less (format shortFormat);
+          "g.ll" = less "${format longFormat} --all --stat";
 
           # replaces :fire: -> 🔥
-          gle = less ''
+          "g.le" = less ''
             gl \
               | sed -E "$(
                 gitmoji -l \

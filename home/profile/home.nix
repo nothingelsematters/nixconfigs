@@ -13,7 +13,7 @@
 
     zsh.shellAliases = {
       hms = "nix build .#mac.activationPackage && ./result/activate";
-      dlaunch = "open /Applications/Docker.app";
+      "d.launch" = "open /Applications/Docker.app";
     };
   };
 }
