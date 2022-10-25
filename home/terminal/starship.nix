@@ -6,8 +6,6 @@
     settings = {
       scan_timeout = 10;
 
-      env_var.variable = "NIX_NAME";
-
       memory_usage = {
         format = "$symbol [\${ram}( | \${swap})]($style) ";
         disabled = false;
@@ -32,9 +30,8 @@
       };
 
       format = "$directory" + "$git_branch" + "$git_state" + "$git_status"
-        + "$docker_context" + "$env_var" + "$memory_usage" + "$cmd_duration"
-        + "$line_break" + "$battery" + "$jobs" + "$nix_shell" + "$shlvl"
-        + "$character";
+        + "$docker_context" + "$memory_usage" + "$cmd_duration" + "$line_break"
+        + "$battery" + "$jobs" + "$nix_shell" + "$shlvl" + "$character";
     };
   };
 }
