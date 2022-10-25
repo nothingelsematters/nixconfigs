@@ -6,8 +6,6 @@
     settings = {
       scan_timeout = 10;
 
-      nix_shell.symbol = "❄️";
-
       env_var.variable = "NIX_NAME";
 
       memory_usage = {
@@ -20,6 +18,11 @@
         show_milliseconds = true;
       };
 
+      nix_shell = {
+        format = "[$symbol]($style)";
+        symbol = "❄️";
+      };
+
       shlvl = {
         disabled = false;
         threshold = 2;
@@ -29,8 +32,8 @@
       };
 
       format = "$directory" + "$git_branch" + "$git_state" + "$git_status"
-        + "$docker_context" + "$nix_shell" + "$env_var" + "$memory_usage"
-        + "$cmd_duration" + "$line_break" + "$battery" + "$jobs" + "$shlvl"
+        + "$docker_context" + "$env_var" + "$memory_usage" + "$cmd_duration"
+        + "$line_break" + "$battery" + "$jobs" + "$nix_shell" + "$shlvl"
         + "$character";
     };
   };
