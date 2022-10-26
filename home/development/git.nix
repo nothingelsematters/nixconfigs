@@ -56,41 +56,43 @@
       }];
 
       shellAliases = {
-        current_branch = "git rev-parse --abbrev-ref HEAD";
-        repo_default_branch =
-          "git remote show origin | rg 'HEAD branch' | cut -d' ' -f5";
-
         g = "git";
 
-        "g.cl" = "git clone";
-        "g.pull" = "git pull origin $(current_branch)";
-        "g.push" = "git push origin $(current_branch)";
+        current_branch = "g rev-parse --abbrev-ref HEAD";
+        repo_default_branch =
+          "g remote show origin | rg 'HEAD branch' | cut -d' ' -f5";
+
+        "g.a" = "forgit::add";
+
+        "g.cl" = "g clone";
+        "g.pull" = "g pull origin $(current_branch)";
+        "g.push" = "g push origin $(current_branch)";
         "g.push!" = "g.push --force";
-        "g.rpo" = "git remote prune origin";
+        "g.rpo" = "g remote prune origin";
 
-        "g.s" = "git status -s";
-        "g.c.m" = "git commit -m";
+        "g.s" = "g status -s";
+        "g.c.m" = "g commit -m";
 
-        "g.co" = "git checkout";
-        "g.co.m" = "git checkout $(repo_default_branch)";
-        "g.co.m+pull" = "g.co.m && g.pull";
+        "g.co" = "g checkout";
+        "g.co.m" = "g.co $(repo_default_branch)";
+        "g.co.m.new" = "g.co.m && g.pull";
 
-        "g.r" = "git rebase";
-        "g.r.c" = "git rebase --continue";
-        "g.r.m" = "git rebase $(repo_default_branch)";
+        "g.r" = "g rebase";
+        "g.r.c" = "g.r --continue";
+        "g.r.m" = "g.r $(repo_default_branch)";
         "g.r.m.new" =
           let colorised_log = text: ''echo "\e[1;34m> ${text} \e[0m"'';
           in ''
             CURRENT_BRANCH=$(current_branch) &&
               ${colorised_log "Checking out main branch"} &&
-              gcom &&
+              g.co.m &&
               ${colorised_log "Pulling"} &&
-              gpull &&
+              g.pull &&
               ${colorised_log "Checking out back"} &&
-              gco $CURRENT_BRANCH &&
+              g.co $CURRENT_BRANCH &&
               unset CURRENT_BRANCH &&
               ${colorised_log "Rebasing on main"} &&
-              grm
+              g.r.m
           '';
       }
       # git log aliases
@@ -110,7 +112,7 @@
             + colored "bold red" "%d" + "%n"; # ref names
 
           format = format:
-            "git -c color.ui=always log --graph --abbrev-commit --decorate"
+            "g -c color.ui=always log --graph --abbrev-commit --decorate"
             + " --date=format:'%Y-%m-%d %H:%M:%S' --format=format:'${format}'";
 
           less = command: "${command} | less -R";
@@ -120,7 +122,7 @@
 
           # replaces :fire: -> 🔥
           "g.le" = less ''
-            gl \
+            g.l \
               | sed -E "$(
                 gitmoji -l \
                   | awk '{ print "s/" $3 "(.*37m)/" $1 "\\1" sprintf("%" (length($3) - 2) "s", "") "/g" }'
