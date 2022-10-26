@@ -8,6 +8,7 @@
       expireDuplicatesFirst = false;
       ignoreDups = false;
     };
+    historySubstringSearch.enable = true;
 
     plugins = with pkgs; [
       {
@@ -45,6 +46,12 @@
 
       # Fuzzy completions
       zstyle ':completion:*' completer _complete _match _approximate
+
+      ## commands
+      zstyle ':completion:*' group-name '''
+      zstyle ':completion:*:*:*:*:descriptions' format '%F{green}-- %d --%f'
+      zstyle ':completion:*:*:-command-:*:*' group-order aliases commands builtins
+
       zstyle ':completion:*:match:*' original only
       zstyle ':completion:*:approximate:*' max-errors 1 numeric
       zstyle -e ':completion:*:approximate:*' \
