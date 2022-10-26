@@ -1,5 +1,5 @@
 {
-  programs.editorconfig = {
+  editorconfig = {
     enable = true;
     settings = {
       "*" = {
