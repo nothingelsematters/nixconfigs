@@ -4,9 +4,10 @@
   programs.zsh.shellAliases = {
     d = "docker";
     dc = "docker-compose";
-    "dc.restart" =
-      "dc down --remove-orphans --volumes && dc up --detach --build --force-recreate";
+    "dc.up" = "dc up --detach --build --force-recreate";
+    "dc.down" = "dc down --remove-orphans --volumes";
+    "dc.restart" = "dc.down && dc.up";
   };
 
-  home.packages = with pkgs; [ docker pkgs.stable.docker-compose dive ];
+  home.packages = with pkgs; [ docker docker-compose dive ];
 }
