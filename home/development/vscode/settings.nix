@@ -53,7 +53,8 @@ with config.lib; {
 
   "window.menuBarVisibility" = "toggle";
   "window.title" = "\${dirty}  \${rootName}\${separator}\${activeEditorMedium}";
-  "window.titleBarStyle" = "native";
+  "window.titleBarStyle" = "custom";
+  "window.commandCenter" = true;
 
   "workbench.colorTheme" = "GitHub Dark";
   "workbench.editor.enablePreviewFromQuickOpen" = false;
@@ -66,6 +67,7 @@ with config.lib; {
   "workbench.tree.indent" = 18;
   "workbench.tree.renderIndentGuides" = "always";
   "workbench.panel.defaultLocation" = "right";
+  "workbench.layoutControl.enabled" = false;
 
   "zenMode.centerLayout" = false;
   "zenMode.fullScreen" = false;
