@@ -55,8 +55,11 @@ with config.lib; {
   "window.title" = "\${dirty}  \${rootName}\${separator}\${activeEditorMedium}";
   "window.titleBarStyle" = "custom";
   "window.commandCenter" = true;
+  "window.autoDetectColorScheme" = true;
 
-  "workbench.colorTheme" = "GitHub Dark";
+  "workbench.colorTheme" = "GitHub Light";
+  "workbench.preferredLightColorTheme" = "GitHub Light";
+  "workbench.preferredDarkColorTheme" = "GitHub Dark";
   "workbench.editor.enablePreviewFromQuickOpen" = false;
   "workbench.iconTheme" = "file-icons";
   "workbench.settings.enableNaturalLanguageSearch" = false;
