@@ -22,6 +22,7 @@ with config.lib; {
   "editor.scrollBeyondLastLine" = false;
   "editor.multiCursorModifier" = "ctrlCmd";
   "editor.find.autoFindInSelection" = "never";
+  "editor.suggest.preview" = true;
 
   "explorer.autoReveal" = true;
   "explorer.openEditors.visible" = 0;
