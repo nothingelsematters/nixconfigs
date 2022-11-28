@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 {
+  home.sessionVariables.TERM = "xterm";
+
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;

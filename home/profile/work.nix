@@ -14,7 +14,6 @@
       # install oracle client manually because of tnsnames.ora
       LD_LIBRARY_PATH =
         "$LD_LIBRARY_PATH:/usr/lib/oracle/21/client64/lib:${libaio}/lib";
-      TERM = "xterm";
     };
 
     packages = [
