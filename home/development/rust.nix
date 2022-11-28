@@ -7,7 +7,11 @@
   };
 
   programs = {
-    zsh.shellAliases.c = "cargo";
+    zsh.shellAliases = {
+      c = "cargo";
+      "c.t" = "RUST_BACKTRACE=1 cargo test -- --nocapture";
+      "c.t.r" = "RUST_BACKTRACE=1 cargo test --release -- --nocapture";
+    };
 
     vscode = {
       userSettings = {
