@@ -5,6 +5,6 @@
 
   programs = {
     go.enable = true;
-    vscode = { extensions = with pkgs.vscode-extensions; [ golang.go ]; };
+    vscode.extensions = with pkgs.vscode-extensions; [ golang.go ];
   };
 }
