@@ -1,4 +1,4 @@
-<p align="center"><img src="https://raw.githubusercontent.com/jglovier/dotfiles-logo/main/dotfiles-logo.svg" width=512></p>
+<p align="center"><img src="https://raw.githubusercontent.com/jglovier/dotfiles-logo/main/dotfiles-logo.svg" width=384></p>
 
 <p align="center">
     <a href="https://builtwithnix.org/">
@@ -14,9 +14,9 @@
 ## Configuration
 
 - <img src="https://simpleicons.org/icons/visualstudiocode.svg" height="12pt"> [vs code](home/development/vscode/)
+- <img src="https://simpleicons.org/icons/gnometerminal.svg" height="12pt"> [kitty](home/terminal/kitty)
 - <img src="https://simpleicons.org/icons/starship.svg" height="12pt"> [zsh](home/terminal/zsh.nix)
   with [starship](home/terminal/starship.nix)
-- <img src="https://simpleicons.org/icons/gnometerminal.svg" height="12pt"> [kitty](home/terminal/kitty)
 - <img src="https://simpleicons.org/icons/git.svg" height="12pt"> [git](home/development/git.nix)
 - <img src="https://simpleicons.org/icons/docker.svg" height="12pt"> [docker](home/development/docker.nix)
 

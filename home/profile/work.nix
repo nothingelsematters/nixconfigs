@@ -4,7 +4,7 @@
   imports = import ./import.nix {
     inherit lib;
     dir = ../.;
-    exclude = [ "development/go.nix" ];
+    exclude = [ "development/fleet.nix" "development/go.nix" ];
   };
 
   home = with pkgs; {
