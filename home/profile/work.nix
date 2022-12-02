@@ -24,11 +24,14 @@
       openssl.dev
       openssl
       turbo.zlib
+      protobuf
+      gawk
 
       # devopsing
       etcd_3_4
       stable.dbeaver
       libaio # for oracle client
+      postgresql
     ];
   };
 
