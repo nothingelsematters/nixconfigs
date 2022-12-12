@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
-{
+let editor = config.lib.packages.editor.name;
+in {
   home.packages = [ pkgs.nodePackages.gitmoji-cli ];
 
   programs = {
@@ -23,7 +24,7 @@
         init.defaultBranch = "main";
         advice.skippedCherryPicks = false;
 
-        core.editor = "${config.lib.packages.editor.name} --wait";
+        core.editor = "${editor} --wait";
         color.ui = true;
 
         "color \"diff-highlight\"" = {
@@ -52,34 +53,47 @@
         src = pkgs.forgit;
       }];
 
-      shellAliases = {
-        g = "git";
+      shellAliases =
+        let colorised_log = text: ''echo "\e[1;34m> ${text} \e[0m"'';
+        in {
+          g = "git";
 
-        current_branch = "g rev-parse --abbrev-ref HEAD";
-        repo_default_branch =
-          "g remote show origin | rg 'HEAD branch' | cut -d' ' -f5";
+          current_branch = "g rev-parse --abbrev-ref HEAD";
+          default_branch =
+            "g remote show origin | rg 'HEAD branch' | cut -d' ' -f5";
 
-        "g.a" = "forgit::add";
+          # remote
+          "g.cl" = "g clone --recurse-submodules";
+          "g.pull" = "g pull origin $(current_branch)";
+          "g.push" = "g push origin $(current_branch)";
+          "g.push!" = "g.push --force";
+          "g.rpo" = "g remote prune origin";
 
-        "g.cl" = "g clone";
-        "g.pull" = "g pull origin $(current_branch)";
-        "g.push" = "g push origin $(current_branch)";
-        "g.push!" = "g.push --force";
-        "g.rpo" = "g remote prune origin";
+          # commit
+          "g.s" = "g status -s";
+          "g.a" = "forgit::add";
+          "g.c.m" = "g commit -m";
 
-        "g.s" = "g status -s";
-        "g.c.m" = "g commit -m";
+          # checkout
+          "g.co" = "g checkout";
+          "g.co.b" = "forgit::checkout::branch";
+          "g.co.m" = "g.co $(default_branch)";
+          "g.co.m.new" = "g.co.m && g.pull";
 
-        "g.co" = "g checkout";
-        "g.co.m" = "g.co $(repo_default_branch)";
-        "g.co.m.new" = "g.co.m && g.pull";
-
-        "g.r" = "g rebase";
-        "g.r.c" = "g.r --continue";
-        "g.r.m" = "g.r $(repo_default_branch)";
-        "g.r.m.new" =
-          let colorised_log = text: ''echo "\e[1;34m> ${text} \e[0m"'';
-          in ''
+          # rebase
+          "g.r" = "g rebase";
+          "g.r.m" = "g.r $(default_branch)";
+          "g.r.c" = ''
+            ${colorised_log "Status"} &&
+              g.s &&
+              ${colorised_log "Opening in ${editor} & waiting"} &&
+              g.s | rg UU | awk '{ print $2 }' | xargs ${editor} --wait &&
+              ${colorised_log "Adding"} &&
+              g.s | rg UU | awk '{ print $2 }' | xargs g add
+              ${colorised_log "Continue rebasing"} &&
+              GIT_EDITOR=true g.r --continue
+          '';
+          "g.r.m.new" = ''
             CURRENT_BRANCH=$(current_branch) &&
               ${colorised_log "Checking out main branch"} &&
               g.co.m &&
@@ -89,10 +103,11 @@
               g.co $CURRENT_BRANCH &&
               unset CURRENT_BRANCH &&
               ${colorised_log "Rebasing on main"} &&
-              g.r.m
+              g.r.m ||
+              g.r.c
           '';
-      }
-      # git log aliases
+        }
+        # log
         // (let
           colored = color: text: "%C(${color})${text}%C(reset)";
 
