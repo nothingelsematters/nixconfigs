@@ -6,8 +6,6 @@
     dir = ../.;
   };
 
-  home.packages = [ pkgs.heroku ];
-
   programs = {
     git.userEmail = "daretoodefy@gmail.com";
 
