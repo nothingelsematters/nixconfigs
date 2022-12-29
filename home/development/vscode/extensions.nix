@@ -5,6 +5,7 @@ let
   extensions = with pkgs.vscode-extensions; [
     tomoki1207.pdf
     editorconfig.editorconfig
+    gitlab.gitlab-workflow
     usernamehw.errorlens
     fabiospampinato.vscode-diff
     retepaskab.relativegoto
