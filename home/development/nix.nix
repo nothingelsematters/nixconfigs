@@ -3,6 +3,8 @@
 {
   home.packages = with pkgs; [ nixfmt manix ];
 
+  editorconfig.settings."*.nix".indent_size = 2;
+
   programs = {
     zsh.shellAliases.nsp = "nix-shell --run zsh -p";
 
