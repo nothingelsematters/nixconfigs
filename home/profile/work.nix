@@ -9,6 +9,7 @@
       "development/go.nix"
       "development/flutter.nix"
       "development/thesis.nix"
+      "packages.nix"
     ];
   };
 
