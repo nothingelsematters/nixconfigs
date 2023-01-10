@@ -2,14 +2,17 @@
 
 with pkgs; {
   home.packages = [
-    # filesystem
-    ripgrep # rip grep
-    fd      # rip find
-    loc     # count lines of code
+    # rip grep
+    ripgrep
+    # rip find
+    fd
+    # count lines of code
+    loc
 
-    # utility
-    gnumake # make builder
-    jq      # processing JSON
+    # make builder
+    gnumake
+    # processing JSON
+    jq
 
     # archive
     zip
