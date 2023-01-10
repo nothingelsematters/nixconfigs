@@ -8,12 +8,8 @@ with pkgs; {
     fd
     # count lines of code
     loc
-
-    # make builder
-    gnumake
     # processing JSON
     jq
-
     # archive
     zip
     unzip
