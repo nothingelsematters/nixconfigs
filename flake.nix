@@ -2,7 +2,7 @@
   inputs = rec {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixpkgs-turbo.url = "nixpkgs/master";
-    nixpkgs-stable.url = "nixpkgs/release-22.05";
+    nixpkgs-stable.url = "nixpkgs/release-22.11";
 
     home = {
       url = "github:nix-community/home-manager/master";
@@ -39,7 +39,7 @@
               home = {
                 inherit username;
                 homeDirectory = "${homePrefix}/${username}";
-                stateVersion = "22.05";
+                stateVersion = "22.11";
               };
             }
           ];
