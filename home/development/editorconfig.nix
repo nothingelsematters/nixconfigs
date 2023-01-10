@@ -12,7 +12,7 @@
         trim_trailing_whitespace = true;
       };
 
-      "*.{nix, json, html, css}".indent_size = 2;
+      "*.{json, html, css}".indent_size = 2;
       "*.md".trim_trailing_whitespace = false;
     };
   };

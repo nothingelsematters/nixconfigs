@@ -103,8 +103,7 @@ in {
               g.co $CURRENT_BRANCH &&
               unset CURRENT_BRANCH &&
               ${colorised_log "rebasing on main"} &&
-              g.r.m ||
-              g.r.c
+              g.r.m
           '';
         }
         # log
