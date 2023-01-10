@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 
-let editor = config.lib.packages.editor.name;
+let editor = config.lib.packages.editor.command;
 in {
   home.packages = [ pkgs.nodePackages.gitmoji-cli ];
 

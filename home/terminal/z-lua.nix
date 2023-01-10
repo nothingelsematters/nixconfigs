@@ -17,7 +17,7 @@
 
       initExtra = ''
         jcd() {
-          _zlua $1 && ${config.lib.packages.editor.name} .
+          _zlua $1 && ${config.lib.packages.editor.command} .
         }
       '';
     };

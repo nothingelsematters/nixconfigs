@@ -1,56 +1,55 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
-with config.lib.theme; {
+{
   programs.kitty = {
     enable = true;
 
-    font = with fonts; {
-      name = mono.name;
-      inherit (mono) package;
+    font = {
+      name = "Jetbrains Mono";
+      package = pkgs.jetbrains-mono;
     };
 
-    settings = with colors;
-      with ansi; {
-        confirm_os_window_close = 2;
+    settings = {
+      confirm_os_window_close = 2;
 
-        font_size = 11;
-        cursor_shape = "underline";
-        cursor_underline_thickness = "1.1";
-        cursor_blink_interval = 0;
-        disable_ligatures = "cursor";
-        enable_audio_bell = "no";
-        mouse_hide_wait = "3.0";
-        background_opacity = "0.93";
+      font_size = 11;
+      cursor_shape = "underline";
+      cursor_underline_thickness = "1.1";
+      cursor_blink_interval = 0;
+      disable_ligatures = "cursor";
+      enable_audio_bell = "no";
+      mouse_hide_wait = "3.0";
+      background_opacity = "0.93";
 
-        tab_bar_edge = "top";
-        tab_fade = "0.33 0.67 1";
-        tab_bar_min_tabs = 1;
-        tab_title_template = "{fmt.fg.tab}{fmt.noitalic}{sup.index}{title}";
+      tab_bar_edge = "top";
+      tab_fade = "0.33 0.67 1";
+      tab_bar_min_tabs = 1;
+      tab_title_template = "{fmt.fg.tab}{fmt.noitalic}{sup.index}{title}";
 
-        url_color = "#0087BD";
-        cursor = "#e0e4e8";
-        background = background.primary;
-        cursor_text_color = text.primary;
-        selection_foreground = text.selection;
-        selection_background = background.selection;
+      url_color = "#0087BD";
+      cursor = "#e0e4e8";
+      background = "#23282e";
+      selection_background = "#1d476a";
+      cursor_text_color = "#e0e3e8";
+      selection_foreground = "#e0e3e8";
 
-        color0 = black;
-        color1 = red;
-        color2 = green;
-        color3 = yellow;
-        color4 = blue;
-        color5 = magenta;
-        color6 = cyan;
-        color7 = white;
-        color8 = blackBright;
-        color9 = redBright;
-        color10 = greenBright;
-        color11 = yellowBright;
-        color12 = blueBright;
-        color13 = magentaBright;
-        color14 = cyanBright;
-        color15 = whiteBright;
-      };
+      color0 = "#586069";
+      color1 = "#ea4a5a";
+      color2 = "#34d058";
+      color3 = "#ffea7f";
+      color4 = "#2188ff";
+      color5 = "#b392f0";
+      color6 = "#39c5cf";
+      color7 = "#d1d5da";
+      color8 = "#959da5";
+      color9 = "#f97583";
+      color10 = "#85e89d";
+      color11 = "#ffea7f";
+      color12 = "#79b8ff";
+      color13 = "#b392f0";
+      color14 = "#56d4dd";
+      color15 = "#fafbfc";
+    };
 
     extraConfig = ''
       map ctrl+1 goto_tab 1

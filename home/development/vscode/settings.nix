@@ -1,6 +1,4 @@
-{ config, ... }:
-
-with config.lib; {
+{
   "breadcrumbs.enabled" = true;
   "breadcrumbs.filePath" = "last";
 
@@ -10,7 +8,7 @@ with config.lib; {
   "editor.cursorSurroundingLines" = 5;
   "editor.lineNumbers" = "relative";
 
-  "editor.fontFamily" = "'${theme.fonts.mono.name}'";
+  "editor.fontFamily" = "'Jetbrains Mono'";
   "editor.fontLigatures" = true;
   "editor.fontSize" = 12.01;
 

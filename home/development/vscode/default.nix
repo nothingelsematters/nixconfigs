@@ -2,7 +2,7 @@ args@{ config, pkgs, ... }:
 
 {
   lib.packages.editor = {
-    name = "code";
+    command = "code";
     package = config.programs.vscode.package;
   };
 
@@ -10,6 +10,6 @@ args@{ config, pkgs, ... }:
     enable = true;
     extensions = import ./extensions.nix args;
     keybindings = import ./keybindings.nix;
-    userSettings = import ./settings.nix args;
+    userSettings = import ./settings.nix;
   };
 }
