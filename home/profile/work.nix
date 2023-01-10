@@ -8,6 +8,7 @@
       "development/fleet.nix"
       "development/go.nix"
       "development/flutter.nix"
+      "development/thesis.nix"
     ];
   };
 
