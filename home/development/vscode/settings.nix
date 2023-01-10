@@ -41,8 +41,7 @@ with config.lib; {
     "**/node_modules/**" = true;
   };
 
-  "telemetry.enableCrashReporter" = false;
-  "telemetry.enableTelemetry" = false;
+  "telemetry.telemetryLevel" = "off";
 
   "terminal.integrated.cursorBlinking" = false;
   "terminal.integrated.cursorStyle" = "underline";
@@ -52,7 +51,6 @@ with config.lib; {
 
   "update.mode" = "none";
 
-  "window.menuBarVisibility" = "toggle";
   "window.title" = "\${dirty}  \${rootName}\${separator}\${activeEditorMedium}";
   "window.titleBarStyle" = "custom";
   "window.commandCenter" = true;
@@ -79,6 +77,4 @@ with config.lib; {
   "zenMode.hideStatusBar" = false;
 
   "files.maxMemoryForLargeFilesMB" = 1024;
-
-  "todo-tree.tree.showScanModeButton" = false;
 }
