@@ -83,16 +83,6 @@ in {
           # rebase
           "g.r" = "g rebase";
           "g.r.m" = "g.r $(default_branch)";
-          "g.r.c" = ''
-            ${colorised_log "status"} &&
-              g.s &&
-              ${colorised_log "opening in ${editor} & waiting"} &&
-              g.s | rg UU | awk '{ print $2 }' | xargs ${editor} --wait &&
-              ${colorised_log "adding"} &&
-              g.s | rg UU | awk '{ print $2 }' | xargs g add
-              ${colorised_log "continue rebasing"} &&
-              GIT_EDITOR=true g.r --continue
-          '';
           "g.r.m.new" = ''
             CURRENT_BRANCH=$(current_branch) &&
               ${colorised_log "checking out main branch"} &&
@@ -103,7 +93,19 @@ in {
               g.co $CURRENT_BRANCH &&
               unset CURRENT_BRANCH &&
               ${colorised_log "rebasing on main"} &&
-              g.r.m
+              g.r.m;
+              ${colorised_log "status"} &&
+              g.s &&
+              ${colorised_log "opening in ${editor}"} &&
+              g.s | rg UU | awk '{ print $2 }' | xargs --no-run-if-empty ${editor}
+          '';
+          "g.r.c" = ''
+            ${colorised_log "continue rebasing"} &&
+              GIT_EDITOR=true g.r --continue;
+              ${colorised_log "status"} &&
+              g.s &&
+              ${colorised_log "opening in ${editor}"} &&
+              g.s | rg UU | awk '{ print $2 }' | xargs --no-run-if-empty ${editor}
           '';
         }
         # log
