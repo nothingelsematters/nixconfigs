@@ -3,7 +3,7 @@
   "breadcrumbs.filePath" = "last";
 
   "editor.cursorBlinking" = "solid";
-  "editor.cursorSmoothCaretAnimation" = false;
+  "editor.cursorSmoothCaretAnimation" = "off";
   "editor.cursorStyle" = "underline";
   "editor.cursorSurroundingLines" = 5;
   "editor.lineNumbers" = "relative";
