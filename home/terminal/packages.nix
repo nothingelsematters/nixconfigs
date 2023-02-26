@@ -2,14 +2,11 @@
 
 with pkgs; {
   home.packages = [
-    # rip grep
     ripgrep
-    # rip find
-    fd
-    # count lines of code
-    loc
-    # processing JSON
-    jq
+    fd # rip find
+    loc # count lines of code
+    jq # processing JSON
+
     # archive
     zip
     unzip
