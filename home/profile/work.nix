@@ -44,16 +44,7 @@
 
   programs = {
     git.userEmail = "s.d.naumov@tinkoff.ru";
-
-    zsh = {
-      shellAliases.hms =
-        "nix build .#work.activationPackage && ./result/activate";
-
-      initExtra = ''
-        if [[ -f "$HOME/.nix-profile/etc/profile.d/nix.sh" ]]; then
-          . "$HOME/.nix-profile/etc/profile.d/nix.sh"
-        fi
-      '';
-    };
+    zsh.shellAliases.hms =
+      "nix build .#work.activationPackage && ./result/activate";
   };
 }
