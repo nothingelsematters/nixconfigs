@@ -53,6 +53,7 @@
   "window.titleBarStyle" = "custom";
   "window.commandCenter" = true;
   "window.autoDetectColorScheme" = true;
+  "window.newWindowDimensions" = "offset";
 
   "workbench.colorTheme" = "GitHub Light";
   "workbench.preferredLightColorTheme" = "GitHub Light";
