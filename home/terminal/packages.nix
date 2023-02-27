@@ -1,8 +1,7 @@
 { pkgs, ... }:
 
-with pkgs; {
-  home.packages = [
-    ripgrep
+{
+  home.packages = with pkgs; [
     fd # rip find
     loc # count lines of code
     jq # processing JSON
