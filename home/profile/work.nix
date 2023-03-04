@@ -5,7 +5,6 @@
     inherit lib;
     dir = ../.;
     exclude = [
-      "development/fleet.nix"
       "development/go.nix"
       "development/flutter.nix"
       "development/packages.nix"
