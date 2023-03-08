@@ -18,6 +18,7 @@
   "editor.rulers" = [ 120 ];
   "editor.smoothScrolling" = true;
   "editor.scrollBeyondLastLine" = false;
+  "editor.stickyScroll.enabled" = true;
   "editor.multiCursorModifier" = "ctrlCmd";
   "editor.find.autoFindInSelection" = "never";
   "editor.suggest.preview" = true;
