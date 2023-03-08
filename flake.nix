@@ -8,14 +8,9 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    forgit = {
-      url = "github:wfxr/forgit";
-      flake = false;
-    };
   };
 
-  outputs = { nixpkgs, nixpkgs-turbo, nixpkgs-stable, home, forgit, ... }:
+  outputs = { nixpkgs, nixpkgs-turbo, nixpkgs-stable, home, ... }:
     let
       mkHomeConfig = username: system: homePrefix: file:
         let
@@ -27,7 +22,6 @@
           pkgs = import nixpkgs (unfreeConfig // {
             overlays = [
               (_: _: {
-                inherit forgit;
                 turbo = import nixpkgs-turbo unfreeConfig;
                 stable = import nixpkgs-stable unfreeConfig;
               })

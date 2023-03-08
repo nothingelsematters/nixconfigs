@@ -50,7 +50,7 @@ in {
     zsh = {
       plugins = [{
         name = "forgit";
-        src = pkgs.forgit;
+        src = pkgs.zsh-forgit + /share/zsh/zsh-forgit;
       }];
 
       shellAliases =
