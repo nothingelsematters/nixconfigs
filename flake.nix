@@ -12,7 +12,7 @@
 
   outputs = { nixpkgs, nixpkgs-turbo, nixpkgs-stable, home, ... }:
     let
-      mkHomeConfig = username: system: homePrefix: file:
+      mkHomeConfig = { username, system, homePrefix, file }:
         let
           unfreeConfig = {
             inherit system;
@@ -39,9 +39,18 @@
           ];
         };
     in rec {
-      mac =
-        mkHomeConfig "simon" "aarch64-darwin" "/Users" ./home/profile/home.nix;
-      work =
-        mkHomeConfig "sdnaumov" "x86_64-linux" "/home" ./home/profile/work.nix;
+      mac = mkHomeConfig {
+        username = "simon";
+        system = "aarch64-darwin";
+        homePrefix = "/Users";
+        file = ./home/profile/home.nix;
+      };
+
+      work = mkHomeConfig {
+        username = "sdnaumov";
+        system = "x86_64-linux";
+        homePrefix = "/home";
+        file = ./home/profile/work.nix;
+      };
     };
 }
