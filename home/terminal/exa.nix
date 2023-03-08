@@ -1,14 +1,23 @@
 {
   programs = {
-    exa.enable = true;
+    exa = {
+      enable = true;
+      icons = true;
+      extraOptions = [
+        "--header"
+        "--no-user"
+        "--no-permissions"
+        "--group-directories-first"
+      ];
+    };
 
     zsh.shellAliases = {
-      l = "exa -lh --no-user --no-permissions --group-directories-first";
+      l = "exa --long";
       lg = "l --git";
-      la = "l -a";
-      tree = "l -T";
-      ll = "tree -L 2";
-      lll = "tree -L 3";
+      la = "l --all";
+      tree = "l --tree";
+      ll = "tree --level 2";
+      lll = "tree --level 3";
     };
   };
 }
