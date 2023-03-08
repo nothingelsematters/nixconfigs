@@ -1,3 +1,5 @@
+{ lib, ... }:
+
 {
   programs.starship = {
     enable = true;
@@ -29,9 +31,21 @@
         style = "bold white";
       };
 
-      format = "$directory" + "$git_branch" + "$git_state" + "$git_status"
-        + "$docker_context" + "$memory_usage" + "$cmd_duration" + "$line_break"
-        + "$battery" + "$jobs" + "$nix_shell" + "$shlvl" + "$character";
+      format = lib.concatStrings [
+        "$directory"
+        "$git_branch"
+        "$git_state"
+        "$git_status"
+        "$docker_context"
+        "$memory_usage"
+        "$cmd_duration"
+        "$line_break"
+        "$battery"
+        "$jobs"
+        "$nix_shell"
+        "$shlvl"
+        "$character"
+      ];
     };
   };
 }
