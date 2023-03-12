@@ -34,6 +34,7 @@
   "files.exclude"."**/.git" = true;
   "files.insertFinalNewline" = true;
   "files.trimTrailingWhitespace" = true;
+  "files.maxMemoryForLargeFilesMB" = 1024;
   "files.watcherExclude" = {
     "**/.git/objects/**" = true;
     "**/.git/subtree-cache/**" = true;
@@ -76,5 +77,11 @@
   "zenMode.hideLineNumbers" = false;
   "zenMode.hideStatusBar" = false;
 
-  "files.maxMemoryForLargeFilesMB" = 1024;
+  "[markdown]" = {
+    "editor.wordWrap" = "bounded";
+    "editor.wordWrapColumn" = 1000;
+  };
+
+  # usernamehw.errorlens extension
+  "errorLens.gutterIconsEnabled" = true;
 }

@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
   editorconfig = {
     enable = true;
@@ -16,4 +18,7 @@
       "*.md".trim_trailing_whitespace = false;
     };
   };
+
+  programs.vscode.extensions =
+    [ pkgs.vscode-extensions.editorconfig.editorconfig ];
 }
