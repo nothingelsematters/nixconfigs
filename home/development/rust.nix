@@ -18,6 +18,7 @@
         "[rust]"."editor.defaultFormatter" = "rust-lang.rust-analyzer";
         "rust-analyzer.check.command" = "clippy";
         "rust-analyzer.cargo.features" = "all";
+        "rust-analyzer.cargo.extraArgs" = [ "--target-dir" "target/rls" ];
       };
 
       extensions = with pkgs.vscode-extensions; [
