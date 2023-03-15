@@ -10,8 +10,8 @@
     zsh.shellAliases = {
       c = "cargo";
       "c.c" = "cargo clippy --fix --allow-dirty --allow-staged";
-      "c.t" = "RUST_BACKTRACE=1 cargo test -- --nocapture";
-      "c.t.r" = "RUST_BACKTRACE=1 cargo test --release -- --nocapture";
+      "c.t" = "RUST_BACKTRACE=1 cargo test --quiet -- --nocapture";
+      "c.t.r" = "RUST_BACKTRACE=1 cargo test --quiet --release -- --nocapture";
     };
 
     vscode = {
