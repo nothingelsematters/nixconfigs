@@ -59,12 +59,10 @@ in {
           g = "git";
 
           current_branch = "g rev-parse --abbrev-ref HEAD";
-          default_branch =
-            "g remote show origin | rg 'HEAD branch' | cut -d' ' -f5";
 
           # remote
           "g.cl" = "g clone --recurse-submodules";
-          "g.pull" = "g pull origin $(current_branch)";
+          "g.pull" = "g pull origin $(current_branch) --recurse-submodules";
           "g.push" = "g push origin $(current_branch)";
           "g.push!" = "g.push --force";
           "g.rpo" = "g remote prune origin";
@@ -77,12 +75,12 @@ in {
           # checkout
           "g.co" = "g checkout";
           "g.co.b" = "forgit::checkout::branch";
-          "g.co.m" = "g.co $(default_branch)";
+          "g.co.m" = "g.co main || g.co master";
           "g.co.m.new" = "g.co.m && g.pull";
 
           # rebase
           "g.r" = "g rebase";
-          "g.r.m" = "g.r $(default_branch)";
+          "g.r.m" = "g.r main || g.r master";
           "g.r.m.new" = ''
             CURRENT_BRANCH=$(current_branch) &&
               ${colorised_log "checking out main branch"} &&
