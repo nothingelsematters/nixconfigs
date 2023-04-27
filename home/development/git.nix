@@ -2,7 +2,7 @@
 
 let editor = config.lib.packages.editor.command;
 in {
-  home.packages = [ pkgs.nodePackages.gitmoji-cli ];
+  home.packages = with pkgs; [ nodePackages.gitmoji-cli lab ];
 
   programs = {
     git = {
