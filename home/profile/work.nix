@@ -13,6 +13,16 @@
     ];
   };
 
+  programs = {
+    git.userEmail = "s.d.naumov@tinkoff.ru";
+    zsh.shellAliases = {
+      hms = "nix build .#work.activationPackage && ./result/activate";
+
+      "gl.mr.c" = "lab mr create origin master -a s.d.naumov -m";
+      "gl.mr.o" = "lab mr browse";
+    };
+  };
+
   home = with pkgs; {
     sessionVariables = {
       OPENSSL_ROOT_DIR = "${openssl}";
@@ -39,11 +49,5 @@
       libaio # for oracle client
       postgresql
     ];
-  };
-
-  programs = {
-    git.userEmail = "s.d.naumov@tinkoff.ru";
-    zsh.shellAliases.hms =
-      "nix build .#work.activationPackage && ./result/activate";
   };
 }
