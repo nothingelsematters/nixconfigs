@@ -14,6 +14,7 @@
 
       font_size = 11;
       cursor_shape = "underline";
+      shell_integration = "no-cursor";
       cursor_underline_thickness = "1.1";
       cursor_blink_interval = 0;
       disable_ligatures = "cursor";
