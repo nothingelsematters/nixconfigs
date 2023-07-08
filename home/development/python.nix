@@ -3,7 +3,7 @@
 {
   home.packages = with pkgs; [
     poetry
-    (python311.withPackages (ps: with ps; [ autopep8 ]))
+    (python311.withPackages (ps: with ps; [ autopep8 ipython ]))
   ];
 
   programs = {
