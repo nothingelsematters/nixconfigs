@@ -5,7 +5,7 @@
   "editor.cursorBlinking" = "solid";
   "editor.cursorSmoothCaretAnimation" = "off";
   "editor.cursorStyle" = "underline";
-  "editor.cursorSurroundingLines" = 5;
+  "editor.cursorSurroundingLines" = 10;
   "editor.lineNumbers" = "relative";
 
   "editor.fontFamily" = "'Jetbrains Mono'";
