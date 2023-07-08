@@ -23,9 +23,10 @@
       background_opacity = "0.93";
 
       tab_bar_edge = "top";
-      tab_fade = "0.33 0.67 1";
+      tab_fade = "1";
       tab_bar_min_tabs = 1;
       tab_title_template = "{fmt.fg.tab}{fmt.noitalic}{sup.index}{title}";
+      tab_title_max_length = 50;
 
       url_color = "#0087BD";
       cursor = "#e0e4e8";
