@@ -24,17 +24,16 @@
   "editor.suggest.preview" = true;
 
   "explorer.autoReveal" = true;
-  "explorer.openEditors.visible" = 0;
   "explorer.confirmDelete" = false;
   "explorer.confirmDragAndDrop" = false;
 
   "extensions.ignoreRecommendations" = true;
+  "extensions.autoUpdate" = false;
 
   "files.autoSave" = "onFocusChange";
   "files.exclude"."**/.git" = true;
   "files.insertFinalNewline" = true;
   "files.trimTrailingWhitespace" = true;
-  "files.maxMemoryForLargeFilesMB" = 1024;
   "files.watcherExclude" = {
     "**/.git/objects/**" = true;
     "**/.git/subtree-cache/**" = true;
