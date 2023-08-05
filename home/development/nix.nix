@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ nixfmt manix ];
+  home.packages = [ pkgs.nixfmt ];
 
   editorconfig.settings."*.nix".indent_size = 2;
 
