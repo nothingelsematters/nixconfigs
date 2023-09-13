@@ -12,9 +12,13 @@
       ipy = "ipython";
     };
 
-    vscode.extensions = with pkgs.vscode-extensions; [
-      ms-python.python
-      ms-pyright.pyright
-    ];
+    vscode = {
+      userSettings."files.exclude"."**/__pycache__" = true;
+
+      extensions = with pkgs.vscode-extensions; [
+        ms-python.python
+        ms-pyright.pyright
+      ];
+    };
   };
 }
