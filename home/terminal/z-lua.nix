@@ -16,8 +16,11 @@
       };
 
       initExtra = ''
-        jcd() {
+        jcode() {
           _zlua $1 && ${config.lib.packages.editor.command} .
+        }
+        jjcode() {
+          jj $1 && ${config.lib.packages.editor.command} .
         }
       '';
     };
