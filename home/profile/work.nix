@@ -4,12 +4,7 @@
   imports = import ./import.nix {
     inherit lib;
     dir = ../.;
-    exclude = [
-      "development/go.nix"
-      "development/packages.nix"
-      "development/thesis.nix"
-      "packages.nix"
-    ];
+    exclude = [ "development/packages.nix" "packages.nix" ];
   };
 
   programs = {
