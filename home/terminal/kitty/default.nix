@@ -4,10 +4,7 @@
   programs.kitty = {
     enable = true;
 
-    font = {
-      name = "Jetbrains Mono";
-      package = pkgs.jetbrains-mono;
-    };
+    font = config.lib.fonts.mono;
 
     settings = {
       confirm_os_window_close = 2;

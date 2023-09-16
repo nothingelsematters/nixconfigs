@@ -1,4 +1,7 @@
-{
+{ config, ... }:
+
+let mono = config.lib.fonts.mono.name;
+in {
   "breadcrumbs.enabled" = true;
   "breadcrumbs.filePath" = "last";
 
@@ -8,7 +11,7 @@
   "editor.cursorSurroundingLines" = 10;
   "editor.lineNumbers" = "relative";
 
-  "editor.fontFamily" = "'Jetbrains Mono'";
+  "editor.fontFamily" = "'${mono}'";
   "editor.fontLigatures" = true;
   "editor.fontSize" = 12.01;
 
@@ -44,7 +47,7 @@
 
   "terminal.integrated.cursorBlinking" = false;
   "terminal.integrated.cursorStyle" = "underline";
-  "terminal.integrated.fontFamily" = "JetBrains Mono";
+  "terminal.integrated.fontFamily" = mono;
   "terminal.integrated.fontSize" = 12.01;
   "terminal.explorerKind" = "external";
 
