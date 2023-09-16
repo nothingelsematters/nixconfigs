@@ -1,10 +1,7 @@
 args@{ config, pkgs, ... }:
 
 {
-  lib.packages.editor = {
-    command = "code";
-    package = config.programs.vscode.package;
-  };
+  lib.packages.editor = "code";
 
   programs.vscode = {
     enable = true;

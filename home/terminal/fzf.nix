@@ -1,10 +1,11 @@
 let
   files = "rg --files";
   preview = [''
-    --preview \"sh -c 'if [ -d {} ]; \
-        then exa -T {} | head -100; \
+    --preview \"if [ -d {} ]; \
+        then eza --color always --icons --tree --level 2 {}; \
         else bat --color always {}; \
-      fi'\"''];
+      fi\"
+  ''];
 in {
   programs.fzf = {
     enable = true;

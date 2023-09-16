@@ -1,6 +1,9 @@
 { config, ... }:
 
 {
+  home.sessionVariables._ZL_FZF_FLAG = ''
+    --reverse --preview \"if [ -d {2} ]; then eza --color always --icons --tree --level 2 {2}; else bat --color always {2}; fi\"'';
+
   programs = {
     z-lua = {
       enable = true;
@@ -11,16 +14,15 @@
     zsh = {
       shellAliases = {
         j = "_zlua";
-        jj = "j -I";
-        bd = "j -b";
+        "j.fzf" = "j -I";
       };
 
       initExtra = ''
-        jcode() {
-          _zlua $1 && ${config.lib.packages.editor.command} .
+        j.code() {
+          _zlua $1 && ${config.lib.packages.editor} .
         }
-        jjcode() {
-          jj $1 && ${config.lib.packages.editor.command} .
+        j.fzf.code() {
+          j.fzf $1 && ${config.lib.packages.editor} .
         }
       '';
     };

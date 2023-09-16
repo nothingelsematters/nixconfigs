@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 
-let editor = config.lib.packages.editor.command;
+let editor = config.lib.packages.editor;
 in {
   home.packages = with pkgs; [ nodePackages.gitmoji-cli lab pre-commit ];
 
