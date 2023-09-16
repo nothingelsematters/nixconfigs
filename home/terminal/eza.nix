@@ -1,6 +1,6 @@
 {
   programs = {
-    exa = {
+    eza = {
       enable = true;
       icons = true;
       extraOptions = [
@@ -12,7 +12,7 @@
     };
 
     zsh.shellAliases = {
-      l = "exa --long";
+      l = "eza --long";
       lg = "l --git";
       la = "l --all";
       tree = "l --tree";
