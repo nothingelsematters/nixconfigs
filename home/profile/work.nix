@@ -12,7 +12,8 @@
     zsh.shellAliases = {
       hms = "nix build .#work.activationPackage && ./result/activate";
 
-      "gl.mr.c" = "lab mr create origin master -a s.d.naumov -m";
+      "gl.mr.c" =
+        "() { lab mr create origin master -a s.d.naumov -m $1 && gl.mr.o }";
       "gl.mr.o" = "lab mr browse";
     };
   };
