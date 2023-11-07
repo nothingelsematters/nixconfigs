@@ -59,4 +59,6 @@ A historic configuration with **NixOS linux** and **WSL linux**: [4cb13be](https
 
 ## Inspiration
 
-My bro's configuration [QuentinI/dotnix](https://github.com/QuentinI/dotnix/)
+My bro's configuration:
+
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=QuentinI&repo=dotnix&show_owner=true)](https://github.com/QuentinI/dotnix)
