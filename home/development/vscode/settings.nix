@@ -66,7 +66,6 @@ in {
   "workbench.iconTheme" = "file-icons";
   "workbench.settings.enableNaturalLanguageSearch" = false;
   "workbench.startupEditor" = "none";
-  "workbench.activityBar.visible" = true;
   "workbench.statusBar.visible" = true;
   "workbench.tips.enabled" = false;
   "workbench.tree.indent" = 18;
