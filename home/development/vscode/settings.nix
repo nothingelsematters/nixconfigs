@@ -49,6 +49,7 @@ in {
   "terminal.integrated.cursorStyle" = "underline";
   "terminal.integrated.fontFamily" = mono;
   "terminal.integrated.fontSize" = 12.01;
+  "terminal.integrated.stickyScroll.enabled" = true;
   "terminal.explorerKind" = "external";
 
   "update.mode" = "none";
