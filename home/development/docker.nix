@@ -5,9 +5,9 @@
     d = "docker";
     dc = "docker-compose";
 
-    "dc.up" = "dc up --build --force-recreate";
-    "dc.up.d" = "dc up --build --force-recreate --detach";
-    "dc.down" = "dc down --remove-orphans --volumes";
+    "dc.up" = "docker-compose up --build --force-recreate";
+    "dc.up.d" = "docker-compose up --build --force-recreate --detach";
+    "dc.down" = "docker-compose down --remove-orphans --volumes";
 
     "dc.restart" = "dc.down && dc.up";
   };
