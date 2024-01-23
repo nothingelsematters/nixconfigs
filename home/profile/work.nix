@@ -17,8 +17,7 @@
         () {
           lab mr create origin master -a s.d.naumov -m "$1" &&
             lab mr browse
-        }
-      '';
+        }'';
     };
   };
 
