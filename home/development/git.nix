@@ -85,21 +85,29 @@ in {
         "g.r.m" = "git rebase main || git rebase master";
         "g.r.m.pull" = ''
           CURRENT_BRANCH=$(current_branch) &&
-            ${log_and_run "git checkout main || git checkout master"} &&
-            ${log_and_run shellAliases."g.pull"} &&
-            ${log_and_run "git checkout $CURRENT_BRANCH"} &&
-            unset CURRENT_BRANCH &&
-            ${log_and_run shellAliases."g.r.m"} &&
-            ${log_and_run shellAliases."g.s"} &&
-            ${log_and_run edit_conflicts} ||
-            ${log_and_run "git checkout $CURRENT_BRANCH"} &&
-            unset CURRENT_BRANCH &&
-            false;
+            (
+              ${log_and_run shellAliases."g.co.m"} &&
+              ${log_and_run shellAliases."g.pull"} &&
+              ${log_and_run "git checkout $CURRENT_BRANCH"} &&
+              unset CURRENT_BRANCH ||
+              (
+                ${log_and_run "git checkout $CURRENT_BRANCH"} &&
+                unset CURRENT_BRANCH &&
+                false
+              )
+            ) &&
+            (
+              ${log_and_run shellAliases."g.r.m"} &&
+              ${log_and_run shellAliases."g.s"} &&
+              ${log_and_run edit_conflicts}
+            )
         '';
         "g.r.c" = ''
-          ${log_and_run "GIT_EDITOR=true git rebase --continue"};
-            ${log_and_run shellAliases."g.s"} &&
-            ${log_and_run edit_conflicts}
+          ${log_and_run "GIT_EDITOR=true git rebase --continue"} ||
+            (
+              ${log_and_run shellAliases."g.s"} &&
+              ${log_and_run edit_conflicts}
+            )
         '';
       }
       # log
