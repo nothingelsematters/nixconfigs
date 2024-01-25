@@ -97,7 +97,7 @@ in {
               )
             ) &&
             (
-              ${log_and_run shellAliases."g.r.m"} &&
+              ${log_and_run shellAliases."g.r.m"} ||
               ${log_and_run shellAliases."g.s"} &&
               ${log_and_run edit_conflicts}
             )
