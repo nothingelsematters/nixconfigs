@@ -41,6 +41,7 @@
       turbo.zlib
       protobuf
       gawk
+      cyrus_sasl
 
       # devopsing
       etcd_3_4
