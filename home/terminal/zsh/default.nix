@@ -1,7 +1,10 @@
 { pkgs, ... }:
 
 {
-  home.sessionVariables.TERM = "xterm";
+  home.sessionVariables = {
+    TERM = "xterm";
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE = "fg=#a8a8a8,underline";
+  };
 
   programs.zsh = {
     enable = true;
