@@ -5,14 +5,14 @@
     enable = true;
 
     font = config.lib.fonts.mono;
+    shellIntegration.mode = "no-cursor no-title";
 
     settings = {
       confirm_os_window_close = 2;
 
       font_size = 11;
       cursor_shape = "underline";
-      shell_integration = "no-cursor";
-      cursor_underline_thickness = "1.1";
+      cursor_underline_thickness = "2";
       cursor_blink_interval = 0;
       disable_ligatures = "cursor";
       enable_audio_bell = "no";
