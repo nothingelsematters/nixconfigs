@@ -12,8 +12,7 @@
     };
 
     zsh.shellAliases = {
-      l = "eza --long";
-      lg = "l --git";
+      l = "eza --long --no-time --git";
       la = "l --all";
       tree = "l --tree";
       ll = "tree --level 2";
