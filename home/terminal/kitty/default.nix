@@ -12,7 +12,7 @@
 
       font_size = 11;
       cursor_shape = "underline";
-      cursor_underline_thickness = "2";
+      cursor_underline_thickness = "1";
       cursor_blink_interval = 0;
       disable_ligatures = "cursor";
       enable_audio_bell = "no";
