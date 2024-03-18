@@ -1,14 +1,14 @@
 { pkgs, ... }:
 
 {
-  home.sessionVariables = {
-    TERM = "xterm";
-    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE = "fg=#a8a8a8,underline";
-  };
+  home.sessionVariables.TERM = "xterm";
 
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
+    autosuggestion = {
+      enable = true;
+      highlight = "fg=#a8a8a8,underline";
+    };
 
     history = {
       expireDuplicatesFirst = false;
