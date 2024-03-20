@@ -9,17 +9,8 @@
 
   programs = {
     git.userEmail = "s.d.naumov@tinkoff.ru";
-    zsh.shellAliases = {
-      hms = "nix build .#work.activationPackage && ./result/activate";
-
-      "gl.mr.o" = "lab mr browse";
-      "gl.mr.c" = ''
-        () {
-          lab mr create origin master -a s.d.naumov -m "$1" &&
-            lab mr browse
-        }'';
-      "gl.mr.c.push" = "g.push && gl.mr.c";
-    };
+    zsh.shellAliases.hms =
+      "nix build .#work.activationPackage && ./result/activate";
   };
 
   home = with pkgs; {
