@@ -11,7 +11,7 @@
       # WARN: hardcoded username
       "gl.mr.c" = ''
         () {
-          echo "title: $1"
+          echo "\\e[1;34mtitle:\\e[0m $1"
           REVIEWERS=$(
             cat $(git rev-parse --show-toplevel)/approvers.y(|a)ml |
               yq -r '.developers.users[]' |
@@ -19,7 +19,7 @@
               fzf --no-preview --height ~30% --header-first --header "reviewers: " |
               awk -v ORS=' ' '{ print "-r " $1 }'
           )
-          echo "reviewers: $REVIEWERS"
+          echo "\\e[1;34mreviewers:\\e[0m $REVIEWERS"
           lab mr create origin master -a s.d.naumov $REVIEWERS -m "$1" &&
             lab mr browse
         }'';
