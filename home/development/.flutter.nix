@@ -1,12 +1,11 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs;
-    [
-      # for now: https://docs.flutter.dev/get-started/install/macos
-      # flutter
-      cocoapods
-    ];
+  home.packages = with pkgs; [
+    # for now: https://docs.flutter.dev/get-started/install/macos
+    # flutter
+    cocoapods
+  ];
 
   editorconfig.settings."*.dart".indent_size = 2;
 

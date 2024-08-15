@@ -9,19 +9,30 @@
     };
   };
 
-  outputs = { nixpkgs, nixpkgs-turbo, home, ... }:
+  outputs =
+    {
+      nixpkgs,
+      nixpkgs-turbo,
+      home,
+      ...
+    }:
     let
-      mkHomeConfig = { username, homeDirectory, file }:
+      mkHomeConfig =
+        {
+          username,
+          homeDirectory,
+          file,
+        }:
         let
           unfreeConfig = {
             system = "aarch64-darwin";
             config.allowUnfree = true;
           };
-        in home.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs (unfreeConfig // {
-            overlays =
-              [ (_: _: { turbo = import nixpkgs-turbo unfreeConfig; }) ];
-          });
+        in
+        home.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs (
+            unfreeConfig // { overlays = [ (_: _: { turbo = import nixpkgs-turbo unfreeConfig; }) ]; }
+          );
           modules = [
             file
             {
@@ -32,7 +43,8 @@
             }
           ];
         };
-    in rec {
+    in
+    rec {
       home = mkHomeConfig {
         username = "simon";
         homeDirectory = "/Users/simon";

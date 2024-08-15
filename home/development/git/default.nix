@@ -1,17 +1,24 @@
 { config, pkgs, ... }:
 
-let editor = config.lib.packages.editor;
-in {
-  home.packages = with pkgs; [ nodePackages.gitmoji-cli pre-commit ];
+let
+  editor = config.lib.packages.editor;
+in
+{
+  home.packages = with pkgs; [
+    nodePackages.gitmoji-cli
+    pre-commit
+  ];
 
   programs = {
     gh.enable = true;
 
     zsh = rec {
-      plugins = [{
-        name = "forgit";
-        src = pkgs.zsh-forgit + /share/zsh/zsh-forgit;
-      }];
+      plugins = [
+        {
+          name = "forgit";
+          src = pkgs.zsh-forgit + /share/zsh/zsh-forgit;
+        }
+      ];
 
       shellAliases = import ./aliases.nix editor;
     };

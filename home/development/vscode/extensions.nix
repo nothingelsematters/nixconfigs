@@ -33,4 +33,5 @@ let
     version = "0.0.1";
     sha256 = "sha256-8xg8cy2OtJ0CdEclE6grIAHXHHN5eBfNKYAqu4sk6y8=";
   };
-in extensions
+in
+extensions

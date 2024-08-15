@@ -12,7 +12,6 @@
 
   programs = {
     git.userEmail = "simon.naumov@zalando.de";
-    zsh.shellAliases.hms =
-      "nix build .#work.activationPackage && ./result/activate";
+    zsh.shellAliases.hms = "nix build .#work.activationPackage && ./result/activate";
   };
 }

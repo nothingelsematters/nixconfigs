@@ -1,7 +1,9 @@
 { config, ... }:
 
-let mono = config.lib.fonts.mono.name;
-in {
+let
+  mono = config.lib.fonts.mono.name;
+in
+{
   "breadcrumbs.enabled" = true;
   "breadcrumbs.filePath" = "last";
 

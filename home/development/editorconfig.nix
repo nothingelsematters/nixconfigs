@@ -19,6 +19,5 @@
     };
   };
 
-  programs.vscode.extensions =
-    [ pkgs.vscode-extensions.editorconfig.editorconfig ];
+  programs.vscode.extensions = [ pkgs.vscode-extensions.editorconfig.editorconfig ];
 }

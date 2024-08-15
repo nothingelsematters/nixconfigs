@@ -13,5 +13,10 @@
     "dc.restart" = "dc.down && dc.up";
   };
 
-  home.packages = with pkgs; [ docker docker-compose dive kubectl ];
+  home.packages = with pkgs; [
+    docker
+    docker-compose
+    dive
+    kubectl
+  ];
 }
