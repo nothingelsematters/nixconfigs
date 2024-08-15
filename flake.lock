@@ -36,21 +36,6 @@
         "type": "indirect"
       }
     },
-    "nixpkgs-stable": {
-      "locked": {
-        "lastModified": 1716795920,
-        "narHash": "sha256-rVILUKoMmEDIXN3b3Oci9pdSDAK52NPbzxwndkpsmkc=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "70e5ed1d3185d9962646c86496eee88788ffb2f4",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "ref": "release-23.11",
-        "type": "indirect"
-      }
-    },
     "nixpkgs-turbo": {
       "locked": {
         "lastModified": 1716803448,
@@ -70,7 +55,6 @@
       "inputs": {
         "home": "home",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-stable": "nixpkgs-stable",
         "nixpkgs-turbo": "nixpkgs-turbo"
       }
     }

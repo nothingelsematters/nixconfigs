@@ -2,7 +2,6 @@
   inputs = rec {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixpkgs-turbo.url = "nixpkgs/master";
-    nixpkgs-stable.url = "nixpkgs/release-23.11";
 
     home = {
       url = "github:nix-community/home-manager/master";
@@ -10,46 +9,39 @@
     };
   };
 
-  outputs = { nixpkgs, nixpkgs-turbo, nixpkgs-stable, home, ... }:
+  outputs = { nixpkgs, nixpkgs-turbo, home, ... }:
     let
-      mkHomeConfig = { username, system, homePrefix, file }:
+      mkHomeConfig = { username, homeDirectory, file }:
         let
           unfreeConfig = {
-            inherit system;
+            system = "aarch64-darwin";
             config.allowUnfree = true;
           };
         in home.lib.homeManagerConfiguration {
           pkgs = import nixpkgs (unfreeConfig // {
-            overlays = [
-              (_: _: {
-                turbo = import nixpkgs-turbo unfreeConfig;
-                stable = import nixpkgs-stable unfreeConfig;
-              })
-            ];
+            overlays =
+              [ (_: _: { turbo = import nixpkgs-turbo unfreeConfig; }) ];
           });
           modules = [
             file
             {
               home = {
-                inherit username;
-                homeDirectory = "${homePrefix}/${username}";
-                stateVersion = "23.11";
+                inherit username homeDirectory;
+                stateVersion = "24.05";
               };
             }
           ];
         };
     in rec {
-      mac = mkHomeConfig {
+      home = mkHomeConfig {
         username = "simon";
-        system = "aarch64-darwin";
-        homePrefix = "/Users";
+        homeDirectory = "/Users/simon";
         file = ./home/profile/home.nix;
       };
 
       work = mkHomeConfig {
-        username = "sdnaumov";
-        system = "x86_64-linux";
-        homePrefix = "/home";
+        username = "snaumov";
+        homeDirectory = "/";
         file = ./home/profile/work.nix;
       };
     };

@@ -8,10 +8,7 @@
 
   programs = {
     git.userEmail = "daretoodefy@gmail.com";
-
-    zsh.shellAliases = {
-      hms = "nix build .#mac.activationPackage && ./result/activate";
-      "d.launch" = "open /Applications/Docker.app";
-    };
+    zsh.shellAliases.hms =
+      "nix build .#home.activationPackage && ./result/activate";
   };
 }

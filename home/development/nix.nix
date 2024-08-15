@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  home.packages = [ pkgs.nixfmt ];
+  home.packages = [ pkgs.nixfmt-rfc-style ];
 
   editorconfig.settings."*.nix".indent_size = 2;
 
@@ -10,7 +10,7 @@
 
     vscode = {
       userSettings = {
-        "nixfmt.path" = pkgs.nixfmt + /bin/nixfmt;
+        "nixfmt.path" = pkgs.nixfmt-rfc-style + /bin/nixfmt;
         "[nix]" = {
           "editor.defaultFormatter" = "brettm12345.nixfmt-vscode";
           "editor.tabSize" = 2;

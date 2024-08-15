@@ -4,6 +4,7 @@
   programs.zsh.shellAliases = {
     d = "docker";
     dc = "docker-compose";
+    "d.launch" = "open /Applications/Docker.app";
 
     "dc.up" = "docker-compose up --build --force-recreate";
     "dc.up.d" = "docker-compose up --build --force-recreate --detach";
