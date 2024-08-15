@@ -29,6 +29,7 @@ in
 
       delta = {
         enable = true;
+        package = pkgs.turbo.delta;
         options = {
           line-numbers = true;
           decorations = true;
