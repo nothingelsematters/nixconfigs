@@ -53,7 +53,7 @@
 
       work = mkHomeConfig {
         username = "snaumov";
-        homeDirectory = "/";
+        homeDirectory = "/Users/simon.naumov";
         file = ./home/profile/work.nix;
       };
     };
