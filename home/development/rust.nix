@@ -3,7 +3,7 @@
 {
   home = {
     packages = with pkgs; [ rustup ];
-    sessionVariables.PATH = "$PATH:/Users/simon/.cargo/bin";
+    sessionPath = [ "$HOME/.cargo/bin" ];
   };
 
   programs = {
