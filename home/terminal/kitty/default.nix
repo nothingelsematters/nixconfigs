@@ -10,7 +10,7 @@
     settings = {
       confirm_os_window_close = 2;
 
-      font_size = 11;
+      font_size = 12;
       cursor_shape = "underline";
       cursor_underline_thickness = "1";
       cursor_blink_interval = 0;
