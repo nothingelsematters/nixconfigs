@@ -26,7 +26,7 @@
 
         # zalando utils
         zkc = "zkubectl";
-        zaws = "zalando-aws-cli";
+        zawsc = "zalando-aws-cli";
       };
 
       initExtra = "eval \"$(zalando-aws-cli completion zsh)\"";
