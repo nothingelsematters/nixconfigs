@@ -25,6 +25,8 @@ A historic configuration with **NixOS linux** and **WSL linux**: [4cb13be](https
 
 ## Usage
 
+[[Application usage guides]](home/)
+
 ### Installation
 
 - Install [nix](https://nixos.wiki/wiki/Nix_Expression_Language) \

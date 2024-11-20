@@ -10,7 +10,10 @@ in
   ];
 
   programs = {
-    gh.enable = true;
+    gh = {
+      enable = true;
+      settings.editor = "${editor} --wait";
+    };
 
     zsh = rec {
       plugins = [

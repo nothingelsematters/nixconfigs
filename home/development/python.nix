@@ -3,7 +3,13 @@
 {
   home.packages = with pkgs; [
     poetry
-    (python311.withPackages (ps: with ps; [ ipython ]))
+    (python312.withPackages (
+      ps: with ps; [
+        ipython
+        requests
+        python-dateutil
+      ]
+    ))
   ];
 
   programs = {
