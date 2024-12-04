@@ -7,7 +7,7 @@
   };
 
   programs = {
-    git.userEmail = "daretoodefy@gmail.com";
+    git.userEmail = "simon.naumov.mail@gmail.com";
     zsh.shellAliases.hms = "nix build .#home.activationPackage && ./result/activate";
   };
 }
