@@ -8,6 +8,6 @@
 
   programs = {
     git.userEmail = "simon.naumov.mail@gmail.com";
-    zsh.shellAliases.hms = "nix build .#home.activationPackage && ./result/activate";
+    zsh.shellAliases.hms = "nix build '.#home.activationPackage' && ./result/activate";
   };
 }

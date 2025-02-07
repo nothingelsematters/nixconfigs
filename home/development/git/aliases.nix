@@ -17,6 +17,7 @@ let
       # commit
       "g.s" = "git status --short";
       "g.a" = "forgit::add";
+      "g.rst.h" = "forgit::reset::head";
       "g.c.m" = "git commit --message";
 
       # checkout
@@ -99,6 +100,7 @@ let
       {
         "g.l" = less (format shortFormat);
         "g.ll" = less "${format longFormat} --all --stat";
+        "g.l.fzf" = "forgit::log";
 
         # replaces emojis: :fire: -> 🔥
         "g.le" = less ''

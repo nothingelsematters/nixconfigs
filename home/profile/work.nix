@@ -10,26 +10,34 @@
     ];
   };
 
-  home.sessionPath = [ "/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home" ];
+  home.sessionPath = [
+    "/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home"
+    # ruby (iOS)
+    "$HOME/.mint/bin"
+    "$HOME/.rvm/bin"
+  ];
 
   programs = {
     git = {
       userEmail = "simon.naumov@zalando.de";
       extraConfig = {
-        url."ssh://git@github.bus.zalan.do/".insteadOf = "https://github.bus.zalan.do/";
+        credential."https://github.bus.zalan.do".username = "snaumov";
       };
     };
 
     zsh = {
       shellAliases = {
-        hms = "nix build .#work.activationPackage && ./result/activate";
+        hms = "nix build '.#work.activationPackage' && ./result/activate";
 
         # zalando utils
         zkc = "zkubectl";
         zawsc = "zalando-aws-cli";
       };
 
-      initExtra = "eval \"$(zalando-aws-cli completion zsh)\"";
+      initExtra = ''
+        eval "$(zalando-aws-cli completion zsh)"
+        eval "$(rbenv init - zsh)" # ruby (iOS)
+      '';
     };
   };
 }
