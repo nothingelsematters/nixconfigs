@@ -1,8 +1,6 @@
 args@{ pkgs, ... }:
 
 {
-  lib.packages.editor = "code";
-
   programs.vscode = {
     enable = true;
     profiles.default = {

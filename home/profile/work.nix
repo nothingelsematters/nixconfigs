@@ -10,6 +10,8 @@
     ];
   };
 
+  lib.packages.editor = "idea";
+
   home = {
     packages = with pkgs; [
       # man-in-the-middle proxy

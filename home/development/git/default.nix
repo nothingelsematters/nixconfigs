@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 
-let
-  editor = config.lib.packages.editor;
-in
+with config.lib;
 {
   home = {
     packages = with pkgs; [
@@ -21,7 +19,7 @@ in
   programs = {
     gh = {
       enable = true;
-      settings.editor = "${editor} --wait";
+      settings.editor = "${packages.editor} --wait";
     };
 
     zsh = rec {
@@ -32,7 +30,7 @@ in
         }
       ];
 
-      shellAliases = import ./aliases.nix editor;
+      shellAliases = import ./aliases.nix packages.editor;
     };
 
     git = rec {
@@ -55,7 +53,7 @@ in
         init.defaultBranch = "main";
         advice.skippedCherryPicks = false;
 
-        core.editor = "${editor} --wait";
+        core.editor = "${packages.editor} --wait";
         color.ui = true;
 
         "color \"diff-highlight\"" = {

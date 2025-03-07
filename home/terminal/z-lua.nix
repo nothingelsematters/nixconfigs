@@ -15,15 +15,11 @@
       ];
     };
 
-    zsh.shellAliases =
-      let
-        editor = config.lib.packages.editor;
-      in
-      {
-        j = "_zlua";
-        "j.fzf" = "j -I";
-        "j.code" = "() { j $1 && ${editor} . }";
-        "j.fzf.code" = "() { j.fzf $1 && ${editor} . }";
-      };
+    zsh.shellAliases = with config.lib; {
+      j = "_zlua";
+      "j.fzf" = "j -I";
+      "j.code" = "() { j $1 && ${packages.editor} . }";
+      "j.fzf.code" = "() { j.fzf $1 && ${packages.editor} . }";
+    };
   };
 }

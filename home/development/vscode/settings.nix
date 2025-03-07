@@ -1,8 +1,6 @@
 { config, ... }:
 
-let
-  mono = config.lib.fonts.mono.name;
-in
+with config.lib;
 {
   "breadcrumbs.enabled" = true;
   "breadcrumbs.filePath" = "last";
@@ -13,7 +11,7 @@ in
   "editor.cursorSurroundingLines" = 10;
   "editor.lineNumbers" = "relative";
 
-  "editor.fontFamily" = "'${mono}'";
+  "editor.fontFamily" = "'${fonts.mono.name}'";
   "editor.fontLigatures" = true;
   "editor.fontSize" = 12.01;
 
@@ -49,7 +47,7 @@ in
 
   "terminal.integrated.cursorBlinking" = false;
   "terminal.integrated.cursorStyle" = "underline";
-  "terminal.integrated.fontFamily" = mono;
+  "terminal.integrated.fontFamily" = fonts.mono.name;
   "terminal.integrated.fontSize" = 12.01;
   "terminal.integrated.stickyScroll.enabled" = true;
   "terminal.explorerKind" = "external";
