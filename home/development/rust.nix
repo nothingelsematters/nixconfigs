@@ -14,7 +14,7 @@
       "c.t.r" = "RUST_BACKTRACE=1 cargo test --release -- --nocapture";
     };
 
-    vscode = {
+    vscode.profiles.default = {
       userSettings = {
         "[rust]"."editor.defaultFormatter" = "rust-lang.rust-analyzer";
         "rust-analyzer.check.command" = "clippy";

@@ -8,7 +8,7 @@
   programs = {
     zsh.shellAliases.nsp = "nix-shell --run zsh -p";
 
-    vscode = {
+    vscode.profiles.default = {
       userSettings = {
         "nixfmt.path" = pkgs.nixfmt-rfc-style + /bin/nixfmt;
         "[nix]" = {

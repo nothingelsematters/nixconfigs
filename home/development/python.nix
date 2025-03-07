@@ -18,7 +18,7 @@
       ipy = "ipython";
     };
 
-    vscode = {
+    vscode.profiles.default = {
       userSettings."files.exclude"."**/__pycache__" = true;
 
       extensions = with pkgs.vscode-extensions; [

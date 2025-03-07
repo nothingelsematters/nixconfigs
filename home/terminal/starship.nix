@@ -44,7 +44,6 @@
         "$git_state"
         "$git_status"
         "$kubernetes"
-        "$docker_context"
         "$memory_usage"
         "$cmd_duration"
         "$line_break"

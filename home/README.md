@@ -4,8 +4,8 @@
 - [Keybinding guides](#keybinding-guides)
   - [Kitty](#kitty)
   - [VS Code](#vs-code)
-  - [Arc](#arc)
   - [Intellij IDEA](#intellij-idea)
+  - [Arc](#arc)
 
 
 # Alias/Usage guides
@@ -24,8 +24,7 @@
 | `g.co.b`          | forgit::checkout::branch |
 | `g.r`             | rebase                   |
 | `g.r.m.pull`      | pull main + rebase main  |
-| `g.l`             | log                      |
-| `g.ll`            | extended log             |
+| `g.l`             | forgit::log              |
 
 ## gh
 
@@ -42,7 +41,7 @@ Useful commands:
 
 [[reference]](https://sw.kovidgoyal.net/kitty/conf/)
 
-| 🍎 MacOS            | action                      |
+| keybinding         | action                      |
 | :----------------- | :-------------------------- |
 | **defaults**       |                             |
 | ⌘ page_up (fn ↑)   | scroll_page_up              |
@@ -79,6 +78,14 @@ Useful commands:
 | ⌃ ⇧ T        | `workbench.action.terminal.toggleTerminal`  |
 
 
+## Intellij IDEA
+
+| keybinding    | action                                            |
+| :------------ | :------------------------------------------------ |
+| ⌥ + ⌥ up/down | Add carets above/below                            |
+| ⌃ G           | Add carets, select multiple occurrences of a word |
+
+
 ## Arc
 
 [[reference]](https://arc.net/)
@@ -95,10 +102,3 @@ Useful commands:
 | ⌘ D        | Pin/Unpin Tab                      |
 | ⌥ ⌘ V      | Paste as New Tab                   |
 | ⇧ ⌘ R      | Force Refresh the Page             |
-
-## Intellij IDEA
-
-| keybinding    | action                                            |
-| :------------ | :------------------------------------------------ |
-| ⌥ + ⌥ up/down | Add carets above/below                            |
-| ⌃ G           | Add carets, select multiple occurrences of a word |
