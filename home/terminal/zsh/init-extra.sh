@@ -2,6 +2,7 @@ setopt numericglobsort   # Sort filenames numerically when it makes sense
 setopt appendhistory     # Immediately append history instead of overwriting
 setopt histignorealldups # If a new command is a duplicate, remove the older one
 setopt autocd autopushd  # Implied cd
+setopt no_nomatch        # fixing "zsh: no matches found: HEAD^"
 
 # Speed up completions
 zstyle ':completion:*' accept-exact '*(N)'
