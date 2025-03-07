@@ -41,7 +41,7 @@ let
   filterExclusion = filter (
     a:
     count (
-      b: "${toString a}" == "${toString dir}/${b}" || match "${toString dir}/${b}/.*" (toString a) != null
+      b: toString a == "${toString dir}/${b}" || match "${toString dir}/${b}/.*" (toString a) != null
     ) (exclude ++ [ "profile" ]) == 0
   );
 

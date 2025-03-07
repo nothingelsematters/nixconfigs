@@ -1,4 +1,4 @@
-args@{ config, pkgs, ... }:
+args:
 
 {
   lib.packages.editor = "code";
