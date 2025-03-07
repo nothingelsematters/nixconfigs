@@ -4,7 +4,6 @@ let
   shellAliases =
     {
       g = "git";
-
       current_branch = "git rev-parse --abbrev-ref HEAD";
 
       # remote
@@ -19,12 +18,17 @@ let
       "g.a" = "forgit::add";
       "g.rst.h" = "forgit::reset::head";
       "g.c.m" = "git commit --message";
+      "g.c.tmp" = "git add . && git commit --message tmp";
 
       # checkout
       "g.co" = "git checkout";
+      "g.co.f" = "forgit::checkout::file";
       "g.co.b" = "forgit::checkout::branch";
       "g.co.m" = "git checkout main || git checkout master";
       "g.co.m.pull" = "g.co.m && g.pull";
+
+      # log
+      "g.l" = "forgit::log";
     }
 
     # rebase
@@ -64,51 +68,6 @@ let
               ${log_and_run edit_conflicts}
             )
         '';
-      }
-    )
-
-    # log
-    // (
-      let
-        colored = color: text: "%C(${color})${text}%C(reset)";
-
-        shortFormat =
-          colored "bold blue" "%>|(13)%h" # commit hash
-          + " - "
-          + colored "bold yellow" "%<(12)%ad" # date, time
-          + colored "bold green" " %<(60,trunc)%s" # message
-          + colored "dim white" " - %an" # author
-          + colored "bold red" "%d"
-          + "%n"; # ref names
-
-        longFormat =
-          colored "bold blue" "%>|(13)%h" # commit hash
-          + " - "
-          + colored "bold yellow" "%<(12)%ad" # date, time
-          + colored "bold green" " %<(60)%s" # message
-          + colored "dim white" " by %an" # author
-          + colored "bold red" "%d"
-          + "%n"; # ref names
-
-        format =
-          format:
-          "g -c color.ui=always log --graph --abbrev-commit --decorate"
-          + " --date=format:'%Y-%m-%d %H:%M:%S' --format=format:'${format}'";
-
-        less = command: "${command} | less -R";
-      in
-      {
-        "g.l" = less (format shortFormat);
-        "g.ll" = less "${format longFormat} --all --stat";
-        "g.l.fzf" = "forgit::log";
-
-        # replaces emojis: :fire: -> 🔥
-        "g.le" = less ''
-          g.l \
-            | sed -E "$(
-              gitmoji -l \
-                | awk '{ print "s/" $3 "(.*37m)/" $1 "\\1" sprintf("%" (length($3) - 2) "s", "") "/g" }'
-            )"'';
       }
     );
 in

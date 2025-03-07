@@ -4,10 +4,19 @@ let
   editor = config.lib.packages.editor;
 in
 {
-  home.packages = with pkgs; [
-    nodePackages.gitmoji-cli
-    pre-commit
-  ];
+  home = {
+    packages = with pkgs; [
+      pre-commit
+      emojify
+      nodePackages.gitmoji-cli
+    ];
+
+    sessionVariables = rec {
+      # forgit::log
+      FORGIT_LOG_FORMAT = "%C(blue)%h %C(dim white)%ad%C(reset) %C(bold white)%s %C(dim white)%d%C(reset)";
+      FORGIT_LOG_GIT_OPTS = "--date=short";
+    };
+  };
 
   programs = {
     gh = {
@@ -26,7 +35,7 @@ in
       shellAliases = import ./aliases.nix editor;
     };
 
-    git = {
+    git = rec {
       enable = true;
       userName = "Simon Naumov";
 

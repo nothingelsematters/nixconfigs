@@ -23,19 +23,17 @@ zstyle -e ':completion:*:approximate:*' \
 
 bindkey "^[[A"    up-line-or-search
 bindkey "^[[B"    down-line-or-search
-bindkey "^[[H"    beginning-of-line
-bindkey "^[[F"    end-of-line
 bindkey "^[[3~"   delete-char
 
-# MacOS
 bindkey "^[f"     forward-word
 bindkey "^[b"     backward-word
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
 
-# Linux
-bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word
+bindkey "^[[1;9D" beginning-of-line
+bindkey "^[[H"    beginning-of-line
+bindkey "^[[1;9C" end-of-line
+bindkey "^[[F"    end-of-line
 
 if [ -n "$name" ]; then
     PROMPT="[$name] $PROMPT";
