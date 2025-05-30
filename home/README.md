@@ -84,6 +84,7 @@ Useful commands:
 | :------------ | :------------------------------------------------ |
 | ⌥ + ⌥ up/down | Add carets above/below                            |
 | ⌃ G           | Add carets, select multiple occurrences of a word |
+| ⌃ J           | Quick documentation pop up                        |
 
 
 ## Arc
