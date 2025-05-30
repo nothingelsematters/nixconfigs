@@ -16,7 +16,7 @@
     };
     historySubstringSearch.enable = true;
 
-    initExtra = builtins.readFile ./init-extra.sh;
+    initContent = builtins.readFile ./init-content.sh;
 
     shellGlobalAliases = {
       "..." = "../..";
