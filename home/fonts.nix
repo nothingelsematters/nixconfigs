@@ -8,7 +8,7 @@
   ];
 
   lib.fonts.mono = {
-    name = "Jetbrains Mono";
-    package = pkgs.jetbrains-mono;
+    name = "JetBrainsMono Nerd Font Mono";
+    package = pkgs.nerd-fonts.jetbrains-mono;
   };
 }

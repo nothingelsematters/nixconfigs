@@ -3,11 +3,12 @@
 {
   home.packages = with pkgs; [
     poetry
-    (python312.withPackages (
+    (python313.withPackages (
       ps: with ps; [
         ipython
         requests
         python-dateutil
+        pyyaml
       ]
     ))
   ];

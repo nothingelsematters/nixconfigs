@@ -55,7 +55,7 @@
         zawsc = "zalando-aws-cli";
       };
 
-      initExtra = ''
+      initContent = ''
         eval "$(zalando-aws-cli completion zsh)"
 
         # ruby (iOS)

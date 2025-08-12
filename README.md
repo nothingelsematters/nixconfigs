@@ -35,7 +35,7 @@ A historic configuration with **NixOS linux** and **WSL linux**: [4cb13be](https
 - Install nix [flakes](https://nixos.wiki/wiki/Flakes)
 
   ```shell
-  nix-env -iA nixpkgs.nixFlakes
+  nix-env -iA nixpkgs.nixVersions.stable
   mkdir -p ~/.config/nix/
   echo "experimental-features = nix-command flakes" > ~/.config/nix/nix.conf
   ```
@@ -46,7 +46,7 @@ A historic configuration with **NixOS linux** and **WSL linux**: [4cb13be](https
 - Activate packages
 
   - for the first time \
-    `nix build .#mac.activationPackage && ./result/activate`
+    `nix build ".#home.activationPackage" && ./result/activate`
 
   - after the first time \
     `hms`
