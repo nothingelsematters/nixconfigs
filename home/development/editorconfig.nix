@@ -14,7 +14,7 @@
         trim_trailing_whitespace = true;
       };
 
-      "*.{json, html, css}".indent_size = 2;
+      "*.{json, html, css, ts, tsx}".indent_size = 2;
       "*.md".trim_trailing_whitespace = false;
     };
   };

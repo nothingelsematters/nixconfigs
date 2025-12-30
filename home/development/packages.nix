@@ -8,5 +8,7 @@
     ngrok
     # PostgreSQL client
     postgresql_15
+
+    pnpm_9
   ];
 }
