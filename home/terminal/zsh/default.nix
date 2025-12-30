@@ -31,7 +31,7 @@
       }
       {
         name = "fast-syntax-highlighting";
-        src = zsh-fast-syntax-highlighting + /share/zsh/site-functions;
+        src = zsh-fast-syntax-highlighting + /share/zsh/plugins/fast-syntax-highlighting;
       }
     ];
   };

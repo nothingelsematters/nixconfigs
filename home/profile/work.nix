@@ -38,7 +38,7 @@
   };
 
   programs = {
-    git.userEmail = "simon.naumov@zalando.de";
+    git.settings.user.email = "simon.naumov@zalando.de";
 
     zsh = {
       shellAliases = {

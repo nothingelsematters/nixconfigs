@@ -35,19 +35,9 @@ with config.lib;
 
     git = rec {
       enable = true;
-      userName = "Simon Naumov";
 
-      delta = {
-        enable = true;
-        package = pkgs.turbo.delta;
-        options = {
-          line-numbers = true;
-          decorations = true;
-          theme = "OneHalfDark";
-        };
-      };
-
-      extraConfig = {
+      settings = {
+        user.name = "Simon Naumov";
         pull.rebase = true;
         credential.helper = "store";
         init.defaultBranch = "main";

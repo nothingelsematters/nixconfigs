@@ -9,7 +9,7 @@
   lib.packages.editor = "code";
 
   programs = {
-    git.userEmail = "simon.naumov.mail@gmail.com";
+    git.settings.user.email = "simon.naumov.mail@gmail.com";
     zsh.shellAliases.hms = "nix build '.#home.activationPackage' && ./result/activate";
   };
 }
