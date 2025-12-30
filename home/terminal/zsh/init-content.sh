@@ -75,3 +75,11 @@ title "${PWD##*/}"
 autoload -U add-zsh-hook
 add-zsh-hook precmd title_precmd
 add-zsh-hook preexec title_preexec
+
+# Show separators between executed commands
+function precmd() {
+    print -P ""
+    local width=$COLUMNS
+    local line="${(l:$width::─:)}"
+    print -P "%F{250}${line}%f"
+}

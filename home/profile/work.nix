@@ -38,13 +38,7 @@
   };
 
   programs = {
-    git = {
-      userEmail = "simon.naumov@zalando.de";
-      extraConfig = {
-        url."ssh://git@github.bus.zalan.do/".insteadOf = "https://github.bus.zalan.do/";
-        credential."https://github.bus.zalan.do".username = "snaumov";
-      };
-    };
+    git.userEmail = "simon.naumov@zalando.de";
 
     zsh = {
       shellAliases = {

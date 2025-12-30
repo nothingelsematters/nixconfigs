@@ -12,18 +12,29 @@
 
       font_size = 12;
       cursor_shape = "underline";
-      cursor_underline_thickness = "1";
+      cursor_underline_thickness = 1;
       cursor_blink_interval = 0;
       disable_ligatures = "cursor";
       enable_audio_bell = "no";
-      mouse_hide_wait = "3.0";
-      background_opacity = "0.93";
+      mouse_hide_wait = 3.0;
+      background_opacity = 0.7;
+      background_blur = 20;
+      window_padding_width = 10;
 
       tab_bar_edge = "top";
-      tab_fade = "1";
+      tab_bar_margin_width = 10.0;
+      tab_bar_margin_height = "10.0 0.0";
+      tab_bar_style = "separator";
+      tab_bar_background = "none";
       tab_bar_min_tabs = 1;
-      tab_title_template = "{fmt.fg.tab}{fmt.noitalic}{sup.index}{title}";
+
+      tab_separator = ''""'';
+      tab_fade = 1;
       tab_title_max_length = 50;
+      active_tab_title_template = "{fmt.fg._8aa2f7}{fmt.bg.default}{fmt.fg._1e1e2e}{fmt.bg._8aa2f7}{sup.index}{title}{fmt.fg._8aa2f7}{fmt.bg.default} ";
+      active_tab_font_style = "bold";
+      tab_title_template = "{fmt.fg._585b70}{fmt.bg.default}{fmt.fg._cdd6f4}{fmt.bg._585b70}{sup.index}{title}{fmt.fg._585b70}{fmt.bg.default} ";
+      inactive_tab_font_style = "normal";
 
       url_color = "#0087BD";
       cursor = "#e0e4e8";

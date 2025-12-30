@@ -9,6 +9,7 @@
         requests
         python-dateutil
         pyyaml
+        pre-commit-hooks
       ]
     ))
   ];
