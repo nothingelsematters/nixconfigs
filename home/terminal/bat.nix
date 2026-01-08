@@ -4,7 +4,7 @@
     config = {
       paging = "never";
       color = "always";
-      theme = "Sublime Snazzy";
+      theme = "Coldark-Dark";
     };
   };
 }
