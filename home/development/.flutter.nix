@@ -9,7 +9,7 @@
 
   editorconfig.settings."*.dart".indent_size = 2;
 
-  programs.vscode.extensions = with pkgs.vscode-extensions; [
+  programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
     dart-code.dart-code
     dart-code.flutter
   ];
