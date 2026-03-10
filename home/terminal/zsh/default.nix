@@ -33,6 +33,10 @@
         name = "fast-syntax-highlighting";
         src = zsh-fast-syntax-highlighting + /share/zsh/plugins/fast-syntax-highlighting;
       }
+      {
+        name = "fzf-tab";
+        src = zsh-fzf-tab + /share/fzf-tab;
+      }
     ];
   };
 }

@@ -3,6 +3,7 @@
   - [gh](#gh)
 - [Keybinding guides](#keybinding-guides)
   - [Kitty](#kitty)
+  - [ZSH](#zsh)
   - [VS Code](#vs-code)
   - [Intellij IDEA](#intellij-idea)
   - [Arc](#arc)
@@ -58,6 +59,13 @@ Useful commands:
 | **custom**         |                             |
 | ⌘ {1-9}            | goto_tab {1-9}              |
 
+## [ZSH](teminal/zsh/)
+
+| keybinding | action                                         |
+| :--------- | :--------------------------------------------- |
+| **custom** |                                                |
+| ⌃ H        | history search ([[atuin]](terminal/atuin.nix)) |
+| ⌃ F        | file search ([[fzf]](terminal/fzf.nix))        |
 
 ## [VS Code](development/vscode/)
 

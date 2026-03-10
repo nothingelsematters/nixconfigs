@@ -36,6 +36,9 @@ bindkey "^[[H"    beginning-of-line
 bindkey "^[[1;9C" end-of-line
 bindkey "^[[F"    end-of-line
 
+bindkey '^H' atuin-search
+bindkey '^F' fzf-file-widget
+
 if [ -n "$name" ]; then
     PROMPT="[$name] $PROMPT";
 fi

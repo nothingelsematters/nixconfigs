@@ -1,3 +1,5 @@
+{ config, ... }:
+
 {
   programs.delta = {
     enable = true;
@@ -6,7 +8,7 @@
     options = {
       line-numbers = true;
       decorations = true;
-      theme = "OneHalfDark";
+      syntax-theme = config.programs.bat.config.theme;
     };
   };
 }
