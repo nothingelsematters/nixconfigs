@@ -12,16 +12,20 @@
 
   lib.packages.editor = "idea";
 
+  editorconfig = {
+    settings."*.go" = {
+      indent_size = 2;
+      indent_style = "tab";
+    };
+  };
+
   home = {
     packages = with pkgs; [
       # man-in-the-middle proxy
-      turbo.mitmproxy
+      mitmproxy
     ];
 
     sessionPath = [
-      # java
-      "/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home"
-
       # ruby (iOS)
       "$HOME/.mint/bin"
       "$HOME/.rvm/bin"

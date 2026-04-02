@@ -1,7 +1,10 @@
 { pkgs, ... }:
 
 {
-  home.packages = [ pkgs.gopls ];
+  home.packages = with pkgs; [
+    gopls
+    richgo
+  ];
 
   programs = {
     go.enable = true;
