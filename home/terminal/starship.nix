@@ -13,7 +13,10 @@
         add_newline = false;
         scan_timeout = 10;
 
-        git_branch.style = git_style;
+        git_branch = {
+          style = git_style;
+          symbol = " ";
+        };
         git_state.style = git_style;
 
         git_metrics.disabled = false;
@@ -33,7 +36,7 @@
         cmd_duration = {
           min_time = 500;
           show_milliseconds = true;
-          format = ''⏱️ [$duration]($style)'';
+          format = "⏱️ [$duration]($style)";
         };
 
         nix_shell = {
