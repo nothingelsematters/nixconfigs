@@ -6,7 +6,7 @@ with config.lib;
     packages = with pkgs; [
       pre-commit
       emojify
-      nodePackages.gitmoji-cli
+      gitmoji-cli
     ];
 
     sessionVariables = rec {
