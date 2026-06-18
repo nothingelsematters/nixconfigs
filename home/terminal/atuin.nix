@@ -1,13 +1,20 @@
 {
-  programs.atuin = {
-    enable = true;
-    enableZshIntegration = true;
-    flags = [ "--disable-up-arrow" ];
+  programs = {
+    atuin = {
+      enable = true;
+      enableZshIntegration = true;
+      flags = [ "--disable-up-arrow" ];
 
-    settings = {
-      enter_accept = true;
-      invert = true;
-      style = "compact";
+      settings = {
+        enter_accept = true;
+        invert = true;
+        style = "compact";
+      };
+
     };
+
+    zsh.initContent = ''
+      bindkey '^H' atuin-search
+    '';
   };
 }

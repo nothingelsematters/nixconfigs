@@ -9,11 +9,22 @@
       enableZshIntegration = true;
     };
 
-    zsh.shellAliases = with config.lib; {
-      j = "z";
-      "j.fzf" = "zi";
-      "j.code" = "() { j $1 && ${packages.editor} . }";
-      "j.fzf.code" = "() { j.fzf $1 && ${packages.editor} . }";
+    zsh = {
+      shellAliases = with config.lib; {
+        j = "z";
+        "j.fzf" = "zi";
+        "j.code" = "() { j $1 && ${packages.editor} . }";
+        "j.fzf.code" = "() { j.fzf $1 && ${packages.editor} . }";
+      };
+      initContent = ''
+        zoxide-jump-widget() {
+          zi
+          zle reset-prompt
+        }
+
+        zle -N zoxide-jump-widget
+        bindkey '^J' zoxide-jump-widget
+      '';
     };
   };
 }
