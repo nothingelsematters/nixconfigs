@@ -40,11 +40,9 @@
       NODE_EXTRA_CA_CERTS = "/usr/local/share/ca-certificates/zalando-all.crt";
 
       # test containers
-      DOCKER_HOST = "unix:///Users/simon.naumov/.colima/default/docker.sock";
       TESTCONTAINERS_CHECKS_DISABLE = "true";
-      TESTCONTAINERS_RYUK_DISABLE = "true";
+      TESTCONTAINERS_RYUK_DISABLED = "true";
       TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE = "/var/run/docker.sock";
-      TESTCONTAINERS_HOST_OVERRIDE = "192.168.106.2";
     };
   };
 

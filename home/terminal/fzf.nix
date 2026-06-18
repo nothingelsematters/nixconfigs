@@ -15,7 +15,9 @@ in
     defaultOptions = [
       "-m"
       "--reverse"
-    ] ++ preview;
+      "--preview-window 'right:50%,border-left,<80(bottom:50%,border-top)'"
+    ]
+    ++ preview;
     defaultCommand = files;
     fileWidgetCommand = files;
     fileWidgetOptions = preview;
