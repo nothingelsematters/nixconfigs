@@ -28,7 +28,7 @@
     sessionPath = [
       # ruby (iOS)
       "$HOME/.mint/bin"
-      "$HOME/.rvm/bin"
+      "$HOME/.rbenv/bin"
 
       # zalando utils
       "$HOME/work/zalando-scripts"

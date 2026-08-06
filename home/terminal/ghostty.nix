@@ -12,11 +12,14 @@
       font-size = 12;
 
       # cursor & mouse
+      cursor-style = "bar";
       cursor-style-blink = false;
       cursor-color = "#e0e4e8";
       cursor-text = "#e0e3e8";
       mouse-hide-while-typing = true;
       quit-after-last-window-closed = true;
+      shell-integration-features = "no-cursor";
+      macos-option-as-alt = true;
 
       # window and background
       background-blur = "macos-glass-clear";
@@ -24,6 +27,15 @@
       window-padding-x = 10;
       window-padding-y = 10;
       macos-titlebar-style = "tabs";
+
+      # notifications
+      bell-features = [
+        "system"
+        "audio"
+        "attention"
+        "title"
+        "no-border"
+      ];
 
       # colors
       selection-background = "#1d476a";
